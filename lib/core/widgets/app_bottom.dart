@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class CustomBottom extends StatelessWidget {
@@ -15,22 +16,26 @@ class CustomBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        backgroundColor: backgroundColor,
-        shape: StadiumBorder(
-          side: BorderSide(
-            color: ColorManger.primaryColor,
+    return SizedBox(
+      width: double.infinity,
+      height: 50.h,
+      child: TextButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          backgroundColor: backgroundColor,
+          shape: StadiumBorder(
+            side: BorderSide(
+              color: ColorManger.primaryColor,
+            ),
           ),
         ),
+        child: Text(bottomtext,
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium!
+                .copyWith(color: ColorManger.whiteColor)),
       ),
-      child: Text(bottomtext,
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(color: ColorManger.whiteColor)),
     );
   }
 }
