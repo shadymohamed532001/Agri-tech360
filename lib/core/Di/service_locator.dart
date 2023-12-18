@@ -3,6 +3,12 @@
 // import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:get_it/get_it.dart';
+import 'package:smartsoil/Feature/auth/data/login/repositories/login_repo.dart';
+import 'package:smartsoil/Feature/auth/data/login/repositories/login_repo_impl.dart';
+import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.dart';
+import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
+import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
+import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
@@ -47,8 +53,8 @@ class ServiceLocator {
   void _setupForRepos() {
     serviceLocator
         .registerLazySingleton<OnBoardingRepo>(() => OnBoardingRepoImpl());
-    // serviceLocator.registerLazySingleton<LoginRepo>(() => LoginRepoImpl());
-    // serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
+    serviceLocator.registerLazySingleton<LoginRepo>(() => LoginRepoImpl());
+    serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
     // serviceLocator.registerLazySingleton<ForgetPasswordRepo>(
     //     () => ForgetPasswordRepoImpl(dioConsumer: serviceLocator.get()));
     // serviceLocator.registerLazySingleton<SignUpRepo>(
@@ -62,10 +68,10 @@ class ServiceLocator {
       () =>
           OnbordingCubit(onBoardingRepo: serviceLocator.get<OnBoardingRepo>()),
     );
-    // serviceLocator.registerFactory<LoginCubit>(
-    //     () => LoginCubit(loginRepo: serviceLocator.get<LoginRepo>()));
-    // serviceLocator.registerFactory<SignUpCubit>(
-    //     () => SignUpCubit(signUpRepo: serviceLocator.get<SignUpRepo>()));
+    serviceLocator.registerFactory<LoginCubit>(
+        () => LoginCubit(loginRepo: serviceLocator.get<LoginRepo>()));
+    serviceLocator.registerFactory<SignUpCubit>(
+        () => SignUpCubit(signUpRepo: serviceLocator.get<SignUpRepo>()));
 
     // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>
     //     ForgetPasswordCubit(

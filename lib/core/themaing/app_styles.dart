@@ -9,14 +9,44 @@ class AppStyle {
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
   );
+  static TextStyle font14Blacksemibold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semibold,
+    color: Colors.black,
+  );
+  static TextStyle font12Blackmedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.black,
+  );
+  static TextStyle font14lightblacksemibold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semibold,
+    color: ColorManger.blackColor.withOpacity(0.8),
+  );
 
   static TextStyle font16LightGreymedium = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.medium,
     color: ColorManger.lightGreyColor,
   );
+  static TextStyle font13LightGreyregular = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorManger.lightGreyColor,
+  );
   static TextStyle font15PrimaryBold = TextStyle(
     fontSize: 15.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.primaryColor,
+  );
+  static TextStyle font13PrimaryBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorManger.primaryColor,
+  );
+  static TextStyle font20Primaryregular = TextStyle(
+    fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.primaryColor,
   );
