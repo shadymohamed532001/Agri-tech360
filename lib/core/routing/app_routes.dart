@@ -1,6 +1,9 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
+import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/Feature/splash/splash_view.dart';
+import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 
 class AppRoutes {
@@ -8,10 +11,15 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initialRoute:
         return MaterialPageRoute(builder: (context) => const SplashView());
-      // case Routes.loginViewRoute:
-      //   return MaterialPageRoute(builder: (context) => const LoginView());
-      // case Routes.signupViewRoute:
-      //   return MaterialPageRoute(builder: (context) => const SignUpView());
+
+      case Routes.onBordingViewRoute:
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => serviceLocator.get<OnbordingCubit>(),
+                  child: const OnBordingView(),
+                ));
+      case Routes.signupViewRoute:
+        return MaterialPageRoute(builder: (context) => const SplashView());
 
       // case Routes.authViewRoute:
       //   return MaterialPageRoute(
@@ -35,13 +43,8 @@ class AppRoutes {
     return MaterialPageRoute(
       builder: (context) => const Scaffold(
         body: Center(
-          child: Text(
-            'Not Found this Route',
-           style:TextStyle(
-            color: Colors.black,
-            fontSize: 22
-           )
-          ),
+          child: Text('Not Found this Route',
+              style: TextStyle(color: Colors.black, fontSize: 22)),
         ),
       ),
     );

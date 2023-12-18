@@ -4,13 +4,13 @@ class ColorManger {
   static Color backGroundSplahColor =
       const Color(0xffE6CABC); // primary dark color
 
-  static Color primaryColor = const Color(0xff517261); // primary dark color
+  static Color primaryColor = const Color(0xffC15940); // primary dark color
   static Color lightprimaryColor =
       const Color(0xBD517261); // light dark color  = 74
   static Color darkprimaryColor = const Color(0xff4C6B5B); // dark primary color
 
   static Color darkGreyColor = const Color(0xff333333);
-  static Color lightGreyColor = const Color(0xff848484);
+  static Color lightGreyColor = const Color(0xff919191);
   static Color lightMoreGreyColor = const Color(0xffA7A6A5);
 
   static Color darkWhiteColor = const Color(0xffE5E7E6);
