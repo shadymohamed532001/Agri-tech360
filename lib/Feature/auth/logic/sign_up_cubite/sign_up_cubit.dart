@@ -65,6 +65,18 @@ class SignUpCubit extends Cubit<SignUpState> {
   //   });
   // }
 
+  var formKey = GlobalKey<FormState>();
+
+  AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
+
+  TextEditingController nameController = TextEditingController();
+
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+
+  TextEditingController phoneController = TextEditingController();
+
   bool isPasswordShow = true;
 
   Widget icon = const Icon(Icons.visibility_off);
