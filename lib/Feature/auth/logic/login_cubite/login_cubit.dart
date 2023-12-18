@@ -35,6 +35,13 @@ class LoginCubit extends Cubit<LoginState> {
     });
   }
 
+  var formKey = GlobalKey<FormState>();
+
+  var emailController = TextEditingController();
+
+  var passwordController = TextEditingController();
+  AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
+
   bool isPasswordShow = true;
   Widget icon = const Icon(Icons.visibility_off);
   void changepasswordVisiability() {

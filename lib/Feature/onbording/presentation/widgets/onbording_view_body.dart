@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
@@ -55,18 +56,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.cubit.onBoardingRepo
-                          .onBoardingPages()[index]
-                          .tittle,
-                      style: AppStyle.font32BlackBold,
-                    ),
-                    verticalSpacing(16),
-                    Text(
-                      widget.cubit.onBoardingRepo
-                          .onBoardingPages()[index]
-                          .subtittle,
-                      style: AppStyle.font16LightGreymedium,
+                    FadeInUp(
+                      child: TittleAndSubtittleText(index: index),
                     ),
                     verticalSpacing(81),
                     Row(
@@ -75,22 +66,25 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         CustomDotItems(
                           currnetIndex: index,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            widget.cubit.navigateBetweenPages(
-                              context: context,
-                              pageController: pageController,
-                            );
-                          },
-                          child: Text(
-                            index ==
-                                    BlocProvider.of<OnbordingCubit>(context)
-                                            .onBoardingPages()
-                                            .length -
-                                        1
-                                ? 'Get Started Now'
-                                : 'Next',
-                            style: AppStyle.font15PrimaryBold,
+                        FadeInRight(
+                          duration: const Duration(milliseconds: 700),
+                          child: GestureDetector(
+                            onTap: () {
+                              widget.cubit.navigateBetweenPages(
+                                context: context,
+                                pageController: pageController,
+                              );
+                            },
+                            child: Text(
+                              index ==
+                                      BlocProvider.of<OnbordingCubit>(context)
+                                              .onBoardingPages()
+                                              .length -
+                                          1
+                                  ? 'Get Started Now'
+                                  : 'Next',
+                              style: AppStyle.font15PrimaryBold,
+                            ),
                           ),
                         ),
                       ],
@@ -102,6 +96,38 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           ),
         );
       },
+    );
+  }
+}
+
+class TittleAndSubtittleText extends StatelessWidget {
+  const TittleAndSubtittleText({super.key, required this.index});
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context
+              .read<OnbordingCubit>()
+              .onBoardingRepo
+              .onBoardingPages()[index]
+              .tittle,
+          style: AppStyle.font32BlackBold,
+        ),
+        verticalSpacing(16),
+        Text(
+          context
+              .read<OnbordingCubit>()
+              .onBoardingRepo
+              .onBoardingPages()[index]
+              .subtittle,
+          style: AppStyle.font16LightGreymedium,
+        ),
+      ],
     );
   }
 }

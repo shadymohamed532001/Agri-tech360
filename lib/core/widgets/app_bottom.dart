@@ -18,10 +18,14 @@ class CustomBottom extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          backgroundColor: backgroundColor,
-          shape:
-              StadiumBorder(side: BorderSide(color: ColorManger.primaryColor))),
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        backgroundColor: backgroundColor,
+        shape: StadiumBorder(
+          side: BorderSide(
+            color: ColorManger.primaryColor,
+          ),
+        ),
+      ),
       child: Text(bottomtext,
           style: Theme.of(context)
               .textTheme
