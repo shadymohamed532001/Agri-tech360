@@ -50,7 +50,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     key: 'token', value: state.bagRegisterModel.data!.token)
                 .then((value) {
               context.pushNamedAndRemoveUntil(
-                Routes.homeViewRoute,
+                Routes.helperViewRoute,
                 routePredicate: (route) => false,
               );
               // pushAndFinsh(context, pageName: HomeView.routeName);

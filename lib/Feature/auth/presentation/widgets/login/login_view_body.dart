@@ -47,7 +47,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               value: state.bagLoginModel.data!.token,
             ).then((value) {
               context.pushNamedAndRemoveUntil(
-                Routes.homeViewRoute,
+                Routes.helperViewRoute,
                 routePredicate: (route) => false,
               );
             });

@@ -9,6 +9,9 @@ import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.da
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
+import 'package:smartsoil/Feature/helper_view/data/repositories/helper_view.repo.dart';
+import 'package:smartsoil/Feature/helper_view/data/repositories/helper_view_repo_impl.dart';
+import 'package:smartsoil/Feature/helper_view/logic/helper_view_cubite.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
@@ -55,8 +58,10 @@ class ServiceLocator {
         .registerLazySingleton<OnBoardingRepo>(() => OnBoardingRepoImpl());
     serviceLocator.registerLazySingleton<LoginRepo>(() => LoginRepoImpl());
     serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
-    // serviceLocator.registerLazySingleton<ForgetPasswordRepo>(
-    //     () => ForgetPasswordRepoImpl(dioConsumer: serviceLocator.get()));
+
+    serviceLocator
+        .registerLazySingleton<HelperViewRepo>(() => HelperViewRepoImpl());
+
     // serviceLocator.registerLazySingleton<SignUpRepo>(
     //     () => SingUpRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
     // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
@@ -72,6 +77,8 @@ class ServiceLocator {
         () => LoginCubit(loginRepo: serviceLocator.get<LoginRepo>()));
     serviceLocator.registerFactory<SignUpCubit>(
         () => SignUpCubit(signUpRepo: serviceLocator.get<SignUpRepo>()));
+    serviceLocator.registerFactory<HelperViewCubit>(() =>
+        HelperViewCubit(helperViewRepo: serviceLocator.get<HelperViewRepo>()));
 
     // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>
     //     ForgetPasswordCubit(
