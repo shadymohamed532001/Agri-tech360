@@ -1,5 +1,7 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/explor/presentation/widgets/Listview_of_explor_plant_information.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -19,7 +21,7 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
       children: [
         Container(
           width: double.infinity,
-          height: 250,
+          height: 200.h,
           color: ColorManger.primaryColor,
         ),
         SafeArea(
@@ -28,12 +30,20 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '   Find your Plant',
-                  style: AppStyle.font16Whitebold,
+                FadeInDown(
+                  child: Text(
+                    '   Find your Plant',
+                    style: AppStyle.font16Whitebold,
+                  ),
                 ),
-                verticalSpacing(15),
-                const AppSearchBar(),
+                verticalSpacing(16),
+                FadeInRight(child: const AppSearchBar()),
+                verticalSpacing(60),
+                Expanded(
+                  child: FadeInDown(
+                    child: const ListOfExplorPlantInformation(),
+                  ),
+                ),
               ],
             ),
           ),
