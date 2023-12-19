@@ -19,5 +19,21 @@ add the the feature of App
 # 🖥️ System design
 <div align="start">
 <img src="https://github.com/shadymohamed532001/Doc/assets/126605393/2aae2522-1512-44e6-a76a-3e38401a667a" alt="Logo" width="500" height="500">
+This action writes the results of the `tree` command **in each directory where the README exists** to each README.  
+  
+For example, when the directory structure is as follows, the following is written in each README.
+
+```
+.
+├── dir1
+│   ├── README.md
+│   ├── dir1
+│   │   └── file
+│   └── dir2
+│       └── file
+└── dir2
+    ├── README.md
+    └── file
+      
 
 
