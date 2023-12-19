@@ -28,11 +28,9 @@ class SignUpRepoImpl extends SignUpRepo {
       return right(user);
     } catch (e) {
       if (e is DioException) {
-        return left(
-          ServerFailure.fromDioException(e),
-        );
+        return Left(ServerFailure.fromDioException(e));
       }
-      return left(ServerFailure(e.toString()));
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

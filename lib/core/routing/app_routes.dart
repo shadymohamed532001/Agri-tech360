@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/auth_view_body.dart';
+import 'package:smartsoil/Feature/explor/presentation/explor_plant_details_view.dart';
 import 'package:smartsoil/Feature/helper_view/logic/helper_view_cubite.dart';
 import 'package:smartsoil/Feature/helper_view/presentation/helper_view.dart';
 import 'package:smartsoil/Feature/home/presentation/home_view.dart';
@@ -50,6 +51,9 @@ class AppRoutes {
 
       case Routes.homeViewRoute:
         return MaterialPageRoute(builder: (context) => const HomeView());
+      case Routes.explorPlantDetailsViewRoute:
+        return MaterialPageRoute(
+            builder: (context) => const ExplorPlantDetailsView());
 
       default:
         return _unFoundRoute();

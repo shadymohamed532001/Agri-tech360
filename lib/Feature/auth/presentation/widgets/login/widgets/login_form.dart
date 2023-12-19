@@ -17,6 +17,8 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   String errorMessage = '';
 
+  bool ispassword = true;
+
   @override
   Widget build(BuildContext context) {
     var logincubite = context.read<LoginCubit>();
@@ -70,14 +72,17 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           CustomTextFormFiled(
-            obscureText: logincubite.isPasswordShow,
+            obscureText: ispassword,
             suffixIcon: InkWell(
               splashColor: Colors.transparent,
               onTap: () {
-                BlocProvider.of<LoginCubit>(context)
-                    .changepasswordVisiability();
+                setState(() {
+                  ispassword = !ispassword;
+                });
               },
-              child: BlocProvider.of<LoginCubit>(context).icon,
+              child: ispassword
+                  ? const Icon(Icons.visibility_off)
+                  : const Icon(Icons.visibility),
             ),
             hintText: 'Min 6 Cyfr',
             keyboardType: TextInputType.visiblePassword,

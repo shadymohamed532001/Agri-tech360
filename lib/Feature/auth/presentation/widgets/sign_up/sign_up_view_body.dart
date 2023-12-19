@@ -1,16 +1,14 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
+import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/widgets/sign_up_form.dart';
 import 'package:smartsoil/core/helper/extentaions.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
-import 'package:smartsoil/core/widgets/app_text_formfield.dart';
 import 'package:smartsoil/core/widgets/shows_toust_color.dart';
 
 // ignore: must_be_immutable
@@ -32,12 +30,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         if (state is SignUpLoading) {
           // show the CircularProgressIndicator widget
           showDialog(
-              context: context,
-              builder: (_) => Center(
-                    child: CircularProgressIndicator(
-                      color: ColorManger.whiteColor,
-                    ),
-                  ));
+            context: context,
+            builder: (_) => Center(
+              child: CircularProgressIndicator(
+                color: ColorManger.whiteColor,
+              ),
+            ),
+          );
         } else if (state is SignUpSucess) {
           if (state.bagRegisterModel.status == true) {
             Navigator.of(context)
@@ -47,21 +46,27 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               state: ToustState.SUCCESS,
             );
             LocalServices.saveData(
-                    key: 'token', value: state.bagRegisterModel.data!.token)
-                .then((value) {
+              key: 'token',
+              value: state.bagRegisterModel.data!.token,
+            ).then((value) {
               context.pushNamedAndRemoveUntil(
                 Routes.helperViewRoute,
                 routePredicate: (route) => false,
               );
-              // pushAndFinsh(context, pageName: HomeView.routeName);
             });
           } else {
-            Navigator.of(context).pop(); // close the dialog if login fails
             showTouster(
               massage: state.bagRegisterModel.message!,
               state: ToustState.ERROR,
             );
+            Navigator.of(context).pop(); // close the dialog if login fails
           }
+        } else if (state is SignUpError) {
+          Navigator.of(context).pop(); // close the dialog if login fails
+          showTouster(
+            massage: state.errorMessage,
+            state: ToustState.ERROR,
+          );
         }
       },
       builder: (context, state) {
@@ -145,10 +150,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       style: AppStyle.font12Blackmedium,
                     ),
                     TextButton(
-                      onPressed: () {
-                        // Navigator.pushNamedAndRemoveUntil(context,
-                        //     AuthViewBody.routeName, (route) => false);
-                      },
+                      onPressed: () {},
                       child: Text(
                         'Sign In',
                         style: AppStyle.font13PrimaryBold.copyWith(
@@ -171,145 +173,5 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         password: context.read<SignUpCubit>().passwordController.text,
         name: context.read<SignUpCubit>().nameController.text,
         phone: context.read<SignUpCubit>().phoneController.text);
-  }
-}
-
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({super.key});
-
-  @override
-  State<SignUpForm> createState() => _SignUpFormState();
-}
-
-class _SignUpFormState extends State<SignUpForm> {
-  String errorMessage = '';
-
-  @override
-  Widget build(BuildContext context) {
-    var signupCubite = context.read<SignUpCubit>();
-    return Form(
-      key: signupCubite.formKey,
-      autovalidateMode: signupCubite.autovalidateMode,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 16.0.w),
-            child: Text(
-              'Full Name',
-              style: AppStyle.font14lightblacksemibold,
-            ),
-          ),
-          CustomTextFormFiled(
-            obscureText: false,
-            hintText: 'Name',
-            keyboardType: TextInputType.text,
-            controller: signupCubite.nameController,
-            validator: (text) {
-              if (text == null || text.trim().isEmpty) {
-                return 'Please enter your name';
-              }
-              return null;
-            },
-          ),
-          Padding(
-              padding: const EdgeInsets.only(left: 16.0),
-              child: Text(
-                'Email',
-                style: AppStyle.font14lightblacksemibold,
-              )),
-          CustomTextFormFiled(
-            onChanged: (value) {
-              validateEmail(value);
-            },
-            obscureText: false,
-            hintText: 'Patient@self.com',
-            keyboardType: TextInputType.emailAddress,
-            controller: signupCubite.emailController,
-            validator: (text) {
-              if (text == null || text.trim().isEmpty) {
-                return 'Please enter your email address';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 26),
-            child: Text(
-              errorMessage,
-              style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-                color: ColorManger.redColor,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.003,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text(
-              'Password',
-              style: AppStyle.font14lightblacksemibold,
-            ),
-          ),
-          CustomTextFormFiled(
-            obscureText: BlocProvider.of<SignUpCubit>(context).isPasswordShow,
-            suffixIcon: InkWell(
-              splashColor: Colors.transparent,
-              onTap: () {
-                BlocProvider.of<SignUpCubit>(context)
-                    .changepasswordVisiability();
-              },
-              child: BlocProvider.of<SignUpCubit>(context).icon,
-            ),
-            hintText: 'Min 8 Cyfr',
-            keyboardType: TextInputType.visiblePassword,
-            controller: signupCubite.passwordController,
-            validator: (text) {
-              if (text == null || text.trim().isEmpty) {
-                return 'Please enter your password';
-              }
-              if (text.length < 8) {
-                return 'Password 8 chars at least';
-              }
-              return null;
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text(
-              'City',
-              style: AppStyle.font14lightblacksemibold,
-            ),
-          ),
-          CustomTextFormFiled(
-            obscureText: false,
-            hintText: 'City Name',
-            keyboardType: TextInputType.phone,
-            controller: signupCubite.phoneController,
-            validator: (text) {
-              if (text == null || text.trim().isEmpty) {
-                return 'Please enter your City Name';
-              }
-              return null;
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  void validateEmail(String val) {
-    if (!EmailValidator.validate(val, true) && val.isNotEmpty) {
-      setState(() {
-        errorMessage = "Invalid Email Address";
-      });
-    } else {
-      setState(() {
-        errorMessage = "";
-      });
-    }
   }
 }

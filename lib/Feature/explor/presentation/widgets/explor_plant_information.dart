@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/core/helper/extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -12,7 +14,9 @@ class ExplorPlantInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushName(Routes.explorPlantDetailsViewRoute);
+      },
       child: Container(
         width: double.infinity,
         height: 175.h,

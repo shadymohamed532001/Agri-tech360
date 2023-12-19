@@ -20,6 +20,7 @@ class LoginRepoImpl extends LoginRepo {
         'password': password,
       });
       final BagAuthModel user = BagAuthModel.fromJson(response.data);
+      print(user);
       return right(user);
     } catch (e) {
       if (e is DioException) {
