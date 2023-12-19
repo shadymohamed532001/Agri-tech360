@@ -18,6 +18,7 @@ class CustomTextFormFiled extends StatelessWidget {
     this.prefixIcon,
     this.keyboardType,
     this.validator,
+    this.decoration,
   });
 
   final Function(String)? onChanged;
@@ -33,6 +34,8 @@ class CustomTextFormFiled extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final TextInputType? keyboardType;
+  final InputDecoration? decoration;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -51,33 +54,34 @@ class CustomTextFormFiled extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted,
         onSaved: onSaved,
         validator: validator,
-        decoration: InputDecoration(
-          suffixIcon: suffixIcon,
-          suffixIconColor: const Color.fromARGB(255, 101, 98, 98),
-          prefixIcon: prefixIcon,
-          filled: true,
-          fillColor: ColorManger.lightMoreGreyColor,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-              color: ColorManger.lightMoreGreyColor,
+        decoration: decoration ??
+            InputDecoration(
+              suffixIcon: suffixIcon,
+              suffixIconColor: const Color.fromARGB(255, 101, 98, 98),
+              prefixIcon: prefixIcon,
+              filled: true,
+              fillColor: ColorManger.lightMoreGreyColor,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  color: ColorManger.lightMoreGreyColor,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(
+                  color: ColorManger.primaryColor,
+                ),
+              ),
+              errorBorder: buildOutlineInputBorder(
+                width: 2,
+              ),
+              focusedErrorBorder: buildOutlineInputBorder(
+                width: 2,
+              ),
+              hintText: hintText,
+              hintStyle: AppStyle.font13LightGreyregular,
             ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-              color: ColorManger.primaryColor,
-            ),
-          ),
-          errorBorder: buildOutlineInputBorder(
-            width: 2,
-          ),
-          focusedErrorBorder: buildOutlineInputBorder(
-            width: 2,
-          ),
-          hintText: hintText,
-          hintStyle: AppStyle.font13LightGreyregular,
-        ),
       ),
     );
   }

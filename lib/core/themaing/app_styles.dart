@@ -55,11 +55,11 @@ class AppStyle {
   //   fontWeight: FontWeightHelper.regular,
   //   color: ColorManager.greyColor,
   // );
-  // static TextStyle font16WhiteMedium = TextStyle(
-  //   fontSize: 16.sp,
-  //   fontWeight: FontWeight.w500,
-  //   color: ColorManager.whiteColor,
-  // );
+  static TextStyle font16Whitebold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.whiteColor,
+  );
   // static TextStyle font16WhiteSemiBold = TextStyle(
   //   fontSize: 16.sp,
   //   fontWeight: FontWeight.w600,

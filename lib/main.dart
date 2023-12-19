@@ -8,7 +8,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ServiceLocator().setupServiceLocator();
   ApiServices.init();
-
   await LocalServices.init();
   runApp(const MyApp());
 }
