@@ -16,6 +16,7 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   String errorMessage = '';
+  bool isPasswordShow = false;
 
   @override
   Widget build(BuildContext context) {
@@ -88,14 +89,17 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           CustomTextFormFiled(
-            obscureText: BlocProvider.of<SignUpCubit>(context).isPasswordShow,
+            obscureText: isPasswordShow,
             suffixIcon: InkWell(
               splashColor: Colors.transparent,
               onTap: () {
-                BlocProvider.of<SignUpCubit>(context)
-                    .changepasswordVisiability();
+                setState(() {
+                  isPasswordShow = !isPasswordShow;
+                });
               },
-              child: BlocProvider.of<SignUpCubit>(context).icon,
+              child: isPasswordShow
+                  ? const Icon(Icons.visibility_off)
+                  : const Icon(Icons.visibility),
             ),
             hintText: 'Min 8 Cyfr',
             keyboardType: TextInputType.visiblePassword,

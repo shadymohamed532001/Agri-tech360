@@ -79,14 +79,8 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   bool isPasswordShow = true;
 
-  Widget icon = const Icon(Icons.visibility_off);
   void changepasswordVisiability() {
     isPasswordShow = !isPasswordShow;
-
-    icon = isPasswordShow
-        ? const Icon(Icons.visibility_off)
-        : const Icon(Icons.visibility);
-
     emit(SignUpChangepasswordvisabilty());
   }
 }

@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smartsoil/core/themaing/app_styles.dart';
+import 'package:smartsoil/Feature/home/presentation/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          'Home View Coming soon  !!!!!!!',
-          textAlign: TextAlign.center,
-          style: AppStyle.font32BlackBold,
-        ),
-      ),
-    );
+    return const Scaffold(body: HomeViewBody());
   }
 }
