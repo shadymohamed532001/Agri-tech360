@@ -43,7 +43,7 @@ class _MyTabbedPageState extends State<AuthViewBody>
             automaticallyImplyLeading: false,
             title: Text(
               'Precious',
-              style: AppStyle.font20Primaryregular,
+              style: AppStyle.font20blackregular,
             )),
         body: Column(
           children: [

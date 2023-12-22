@@ -45,55 +45,59 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                widget.cubit.onBoardingRepo.onBoardingPages()[index].imagepath!,
-              ),
-              verticalSpacing(40),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    FadeInUp(
-                      child: TittleAndSubtittleText(index: index),
-                    ),
-                    verticalSpacing(81),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomDotItems(
-                          currnetIndex: index,
-                        ),
-                        FadeInRight(
-                          duration: const Duration(milliseconds: 700),
-                          child: GestureDetector(
-                            onTap: () {
-                              widget.cubit.navigateBetweenPages(
-                                context: context,
-                                pageController: pageController,
-                              );
-                            },
-                            child: Text(
-                              index ==
-                                      BlocProvider.of<OnbordingCubit>(context)
-                                              .onBoardingPages()
-                                              .length -
-                                          1
-                                  ? 'Get Started Now'
-                                  : 'Next',
-                              style: AppStyle.font15PrimaryBold,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  widget.cubit.onBoardingRepo
+                      .onBoardingPages()[index]
+                      .imagepath!,
+                ),
+                verticalSpacing(40),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      FadeInUp(
+                        child: TittleAndSubtittleText(index: index),
+                      ),
+                      verticalSpacing(81),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomDotItems(
+                            currnetIndex: index,
+                          ),
+                          FadeInRight(
+                            duration: const Duration(milliseconds: 700),
+                            child: GestureDetector(
+                              onTap: () {
+                                widget.cubit.navigateBetweenPages(
+                                  context: context,
+                                  pageController: pageController,
+                                );
+                              },
+                              child: Text(
+                                index ==
+                                        BlocProvider.of<OnbordingCubit>(context)
+                                                .onBoardingPages()
+                                                .length -
+                                            1
+                                    ? 'Get Started Now'
+                                    : 'Next',
+                                style: AppStyle.font15PrimaryBold,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         );
       },

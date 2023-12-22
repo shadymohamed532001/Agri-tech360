@@ -55,10 +55,15 @@ class AppStyle {
     fontWeight: FontWeightHelper.medium,
     color: ColorManger.primaryColor,
   );
-  static TextStyle font20Primaryregular = TextStyle(
+  static TextStyle font20blackregular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
-    color: ColorManger.primaryColor,
+    color: ColorManger.blackColor,
+  );
+  static TextStyle font24blakBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.blackColor,
   );
   // static TextStyle font13GreyRegular = TextStyle(
   //   fontSize: 13.sp,
@@ -85,11 +90,7 @@ class AppStyle {
   //   fontWeight: FontWeight.w400,
   //   color: ColorManager.moredarkBlue,
   // );
-  // static TextStyle font24blueBold = TextStyle(
-  //   fontSize: 24.sp,
-  //   fontWeight: FontWeightHelper.bold,
-  //   color: ColorManager.primaryColor,
-  // );
+
   // static TextStyle font14GreyRegular = TextStyle(
   //   fontSize: 14.sp,
   //   fontWeight: FontWeightHelper.regular,

@@ -45,5 +45,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>com.apple.security.files.user-selected.read-only</key>
+  	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Choose photo from gallary.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Take photo from camera.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Used to capture audio for image picker plugin.</string>
+
+
+
+
+
 </dict>
 </plist>

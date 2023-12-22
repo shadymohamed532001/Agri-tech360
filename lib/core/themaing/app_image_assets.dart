@@ -8,5 +8,5 @@ class ImagesAssetsManger {
   static const onBordingimage1 = '$imagePath/onboarding_1.png';
   static const onBordingimage2 = '$imagePath/onboarding_2.png';
   static const onBordingimage3 = '$imagePath/onboarding_3.png';
-  static const floweImage = '$imagePath/flower.png';
+  static const floweImage = '$imagePath/flower_shadow.png';
 }

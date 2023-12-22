@@ -30,17 +30,16 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                FadeInDown(
-                  child: Text(
-                    '   Find your Plant',
-                    style: AppStyle.font16Whitebold,
-                  ),
+                Text(
+                  '   Find your Plant',
+                  style: AppStyle.font16Whitebold,
                 ),
                 verticalSpacing(16),
-                FadeInRight(child: const AppSearchBar()),
+                const AppSearchBar(),
                 verticalSpacing(60),
                 Expanded(
                   child: FadeInDown(
+                    duration: const Duration(milliseconds: 700),
                     child: const ListOfExplorPlantInformation(),
                   ),
                 ),
