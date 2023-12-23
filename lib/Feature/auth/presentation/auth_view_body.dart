@@ -4,6 +4,7 @@ import 'package:smartsoil/Feature/auth/presentation/widgets/login/login_view_bod
 import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/sign_up_view_body.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
+import 'package:smartsoil/core/widgets/precious_app_bar.dart';
 
 class AuthViewBody extends StatefulWidget {
   static const String routeName = 'AuthViewBody';
@@ -37,21 +38,19 @@ class _MyTabbedPageState extends State<AuthViewBody>
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-            backgroundColor: ColorManger.whiteColor.withOpacity(0.2),
-            elevation: 0.0,
-            centerTitle: true,
-            automaticallyImplyLeading: false,
-            title: Text(
-              'Precious',
-              style: AppStyle.font20blackregular,
-            )),
+          backgroundColor: ColorManger.whiteColor.withOpacity(0.2),
+          elevation: 0.0,
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          title: const PreciousAppBar(),
+        ),
         body: Column(
           children: [
             SizedBox(
               height: 40.h,
             ),
             SizedBox(
-              width: 190.h,
+              width: 220.h,
               child: TabBar(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 tabs: [

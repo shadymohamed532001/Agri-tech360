@@ -4,6 +4,7 @@ import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/font_weight_helper.dart';
 
 class AppStyle {
+  // Black Color Styles
   static TextStyle font32BlackBold = TextStyle(
     fontSize: 32.sp,
     fontWeight: FontWeightHelper.bold,
@@ -24,36 +25,11 @@ class AppStyle {
     fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
-  static TextStyle font12Greyregular = TextStyle(
-    fontSize: 12.sp,
-    fontWeight: FontWeightHelper.regular,
-    color: ColorManger.greyColor,
-  );
+
   static TextStyle font14lightblacksemibold = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.semibold,
     color: ColorManger.blackColor.withOpacity(0.8),
-  );
-
-  static TextStyle font16LightGreymedium = TextStyle(
-    fontSize: 16.sp,
-    fontWeight: FontWeightHelper.medium,
-    color: ColorManger.lightGreyColor,
-  );
-  static TextStyle font13LightGreyregular = TextStyle(
-    fontSize: 13.sp,
-    fontWeight: FontWeightHelper.regular,
-    color: ColorManger.lightGreyColor,
-  );
-  static TextStyle font15PrimaryBold = TextStyle(
-    fontSize: 15.sp,
-    fontWeight: FontWeightHelper.bold,
-    color: ColorManger.primaryColor,
-  );
-  static TextStyle font13PrimaryBold = TextStyle(
-    fontSize: 13.sp,
-    fontWeight: FontWeightHelper.medium,
-    color: ColorManger.primaryColor,
   );
   static TextStyle font20blackregular = TextStyle(
     fontSize: 20.sp,
@@ -65,16 +41,61 @@ class AppStyle {
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.blackColor,
   );
-  // static TextStyle font13GreyRegular = TextStyle(
-  //   fontSize: 13.sp,
-  //   fontWeight: FontWeightHelper.regular,
-  //   color: ColorManager.greyColor,
-  // );
+
+  // Grey Color Styles
+
+  static TextStyle font12Greyregular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorManger.greyColor,
+  );
+  static TextStyle font16LightGreymedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorManger.lightGreyColor,
+  );
+  static TextStyle font13LightGreyregular = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: ColorManger.lightGreyColor,
+  );
+  // Primary Color Styles
+
+  static TextStyle font15PrimaryBold = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.primaryColor,
+  );
+  static TextStyle font13PrimaryBold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorManger.primaryColor,
+  );
+  static TextStyle font22PrimaryBold = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.primaryColor,
+  );
+
+  // White Color Styles
+
   static TextStyle font16Whitebold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.whiteColor,
   );
+  static TextStyle font14Whitesemibold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semibold,
+    color: ColorManger.whiteColor,
+  );
+
+  // static TextStyle font13GreyRegular = TextStyle(
+  //   fontSize: 13.sp,
+  //   fontWeight: FontWeightHelper.regular,
+  //   color: ColorManager.greyColor,
+  // );
+
   // static TextStyle font16WhiteSemiBold = TextStyle(
   //   fontSize: 16.sp,
   //   fontWeight: FontWeight.w600,

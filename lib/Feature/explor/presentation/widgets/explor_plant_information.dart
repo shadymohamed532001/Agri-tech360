@@ -4,6 +4,7 @@ import 'package:smartsoil/core/helper/extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
+import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class ExplorPlantInformation extends StatelessWidget {
@@ -56,7 +57,7 @@ class ExplorPlantInformation extends StatelessWidget {
             ),
             Expanded(
               child: Image.asset(
-                'assets/images/flower.png',
+                ImagesAssetsManger.flowe_2Image,
                 height: double.infinity,
               ),
             )
@@ -64,5 +65,14 @@ class ExplorPlantInformation extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ShadowContainer extends StatelessWidget {
+  const ShadowContainer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
