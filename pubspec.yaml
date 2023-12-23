@@ -51,6 +51,8 @@ dependencies:
   retrofit: ^4.0.3
   retrofit_generator: ^8.0.4
   shared_preferences: ^2.2.2
+  flutter_native_splash: ^2.3.7
+
 
 dev_dependencies:
   flutter_lints: ^2.0.0

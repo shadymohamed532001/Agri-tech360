@@ -9,7 +9,6 @@ import 'package:smartsoil/Feature/helper_view/presentation/helper_view.dart';
 import 'package:smartsoil/Feature/home/presentation/home_view.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
-import 'package:smartsoil/Feature/splash/splash_view.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -18,9 +17,6 @@ class AppRoutes {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initialRoute:
-        return MaterialPageRoute(builder: (context) => const SplashView());
-
-      case Routes.onBordingViewRoute:
         return MaterialPageRoute(
             builder: (context) => BlocProvider(
                   create: (context) => serviceLocator.get<OnbordingCubit>(),

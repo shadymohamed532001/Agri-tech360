@@ -27,7 +27,9 @@ class CustomBottom extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+          ),
           backgroundColor: backgroundColor,
           shape: StadiumBorder(
             side: BorderSide(
