@@ -9,7 +9,7 @@ import 'package:smartsoil/core/error/servier_failure.dart';
 
 class LoginRepoImpl extends LoginRepo {
   @override
-  Future<Either<Failure, BagAuthModel>> loginUser({
+  Future<Either<Failure, AuthModel>> loginUser({
     required String email,
     required String password,
     String? lang,
@@ -19,7 +19,7 @@ class LoginRepoImpl extends LoginRepo {
         'email': email,
         'password': password,
       });
-      final BagAuthModel user = BagAuthModel.fromJson(response.data);
+      final AuthModel user = AuthModel.fromJson(response.data);
       return right(user);
     } catch (e) {
       if (e is DioException) {

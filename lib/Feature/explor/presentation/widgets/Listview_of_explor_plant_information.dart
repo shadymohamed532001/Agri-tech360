@@ -10,6 +10,7 @@ class ListOfExplorPlantInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       padding: EdgeInsets.zero,
       physics: const AlwaysScrollableScrollPhysics(),
       itemCount: 22,

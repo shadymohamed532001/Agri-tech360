@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/app.dart';
 import 'package:smartsoil/bloc_observer.dart.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
+import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 
@@ -12,5 +13,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   ApiServices.init();
   await LocalServices.init();
+  fetchDataFromLocalStorage();
+
   runApp(const MyApp());
 }

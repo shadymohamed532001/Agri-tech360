@@ -38,28 +38,24 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             ),
           );
         } else if (state is SignUpSucess) {
-          if (state.bagRegisterModel.status == true) {
+          if (state.registerModel.status == true) {
             Navigator.of(context)
                 .pop(); // close the dialog if successfully logged in
             showTouster(
-              massage: state.bagRegisterModel.message!,
+              massage: state.registerModel.message!,
               state: ToustState.SUCCESS,
             );
             LocalServices.saveData(
               key: 'token',
-              value: state.bagRegisterModel.data!.token,
-            ).then((value) {
-              context.pushNamedAndRemoveUntil(
-                Routes.helperViewRoute,
-                routePredicate: (route) => false,
-              );
-            });
-          } else {
-            showTouster(
-              massage: state.bagRegisterModel.message!,
-              state: ToustState.ERROR,
+              value: state.registerModel.data!.token,
+            ).then(
+              (value) {
+                context.pushNamedAndRemoveUntil(
+                  Routes.homeViewRoute,
+                  routePredicate: (route) => false,
+                );
+              },
             );
-            Navigator.of(context).pop(); // close the dialog if login fails
           }
         } else if (state is SignUpError) {
           Navigator.of(context).pop(); // close the dialog if login fails
@@ -71,9 +67,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
       },
       builder: (context, state) {
         return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-                child: Column(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
@@ -162,16 +159,20 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   ],
                 )
               ],
-            )));
+            ),
+          ),
+        );
       },
     );
   }
 
   void registerUser(BuildContext context) {
     BlocProvider.of<SignUpCubit>(context).signUpUser(
-        email: context.read<SignUpCubit>().emailController.text,
-        password: context.read<SignUpCubit>().passwordController.text,
-        name: context.read<SignUpCubit>().nameController.text,
-        phone: context.read<SignUpCubit>().phoneController.text);
+      email: context.read<SignUpCubit>().emailController.text,
+      password: context.read<SignUpCubit>().passwordController.text,
+      name: context.read<SignUpCubit>().nameController.text,
+      phone: context.read<SignUpCubit>().phoneController.text,
+      city: 'tanta',
+    );
   }
 }

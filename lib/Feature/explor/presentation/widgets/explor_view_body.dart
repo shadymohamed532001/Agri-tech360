@@ -17,34 +17,42 @@ class ExplorViewBody extends StatefulWidget {
 class _ExplorViewBodyState extends State<ExplorViewBody> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: double.infinity,
-          height: 200.h,
-          color: ColorManger.primaryColor,
-        ),
-        SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '   Find your Plant',
-                  style: AppStyle.font16Whitebold,
-                ),
-                verticalSpacing(16),
-                const AppSearchBar(),
-                verticalSpacing(60),
-                Expanded(
-                  child: FadeInDown(
-                    duration: const Duration(milliseconds: 700),
-                    child: const ListOfExplorPlantInformation(),
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: true,
+          child: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200.h,
+                color: ColorManger.primaryColor,
+              ),
+              SafeArea(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '   Find your Plant',
+                        style: AppStyle.font16Whitebold,
+                      ),
+                      verticalSpacing(16),
+                      const AppSearchBar(),
+                      verticalSpacing(60),
+                      Expanded(
+                        child: FadeInDown(
+                          duration: const Duration(milliseconds: 700),
+                          child: const ListOfExplorPlantInformation(),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              )
+            ],
           ),
         )
       ],

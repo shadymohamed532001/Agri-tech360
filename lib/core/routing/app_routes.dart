@@ -4,12 +4,13 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/auth_view_body.dart';
 import 'package:smartsoil/Feature/explor/presentation/explor_plant_details_view.dart';
-import 'package:smartsoil/Feature/helper_view/logic/helper_view_cubite.dart';
-import 'package:smartsoil/Feature/helper_view/presentation/helper_view.dart';
+import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
+
 import 'package:smartsoil/Feature/home/presentation/home_view.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
+import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -17,11 +18,35 @@ class AppRoutes {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.initialRoute:
-        return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => serviceLocator.get<OnbordingCubit>(),
-                  child: const OnBordingView(),
-                ));
+        if (onBording != null) {
+          if (token != null) {
+            return MaterialPageRoute(
+                builder: (context) => BlocProvider(
+                      create: (context) => serviceLocator.get<HomeCubit>(),
+                      child: const HomeView(),
+                    ));
+          } else {
+            return MaterialPageRoute(
+              builder: (context) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => serviceLocator.get<LoginCubit>(),
+                  ),
+                  BlocProvider(
+                    create: (context) => serviceLocator.get<SignUpCubit>(),
+                  ),
+                ],
+                child: const AuthViewBody(),
+              ),
+            );
+          }
+        } else {
+          return MaterialPageRoute(
+              builder: (context) => BlocProvider(
+                    create: (context) => serviceLocator.get<OnbordingCubit>(),
+                    child: const OnBordingView(),
+                  ));
+        }
 
       case Routes.authViewRoute:
         return MaterialPageRoute(
@@ -38,15 +63,14 @@ class AppRoutes {
           ),
         );
 
-      case Routes.helperViewRoute:
-        return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                  create: (context) => serviceLocator.get<HelperViewCubit>(),
-                  child: const HelperView(),
-                ));
-
       case Routes.homeViewRoute:
-        return MaterialPageRoute(builder: (context) => const HomeView());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => serviceLocator.get<HomeCubit>(),
+            child: const HomeView(),
+          ),
+        );
+
       case Routes.explorPlantDetailsViewRoute:
         return MaterialPageRoute(
             builder: (context) => const ExplorPlantDetailsView());

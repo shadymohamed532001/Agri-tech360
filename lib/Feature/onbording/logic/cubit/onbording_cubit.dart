@@ -2,6 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/onbording/data/models/on_bording_model.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
+import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/core/helper/helper_const.dart';
+import 'package:smartsoil/core/routing/routes.dart';
 
 part 'onbording_state.dart';
 
@@ -39,15 +42,15 @@ class OnbordingCubit extends Cubit<OnbordingState> {
   }
 
   void navigateToLoginOrHome({required BuildContext context}) {
-    // if (onBording != null) {
-    //   if (token != null) {
-    //   } else {
-    //     context.pushNamedAndRemoveUntil(
-    //       Routes.authViewRoute,
-    //       routePredicate: (route) => false,
-    //     );
-    //   }
-    // }
+    if (onBording != null) {
+      if (token != null) {
+      } else {
+        context.pushNamedAndRemoveUntil(
+          Routes.authViewRoute,
+          routePredicate: (route) => false,
+        );
+      }
+    }
 
     onBoardingRepo.navigateToAuth(context: context);
 

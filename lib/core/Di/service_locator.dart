@@ -1,7 +1,3 @@
-// import 'package:bag/Feature/OnBordingView/data/repositories/onbording_repo_impl.dart';
-// import 'package:dio/dio.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:get_it/get_it.dart';
 import 'package:smartsoil/Feature/auth/data/login/repositories/login_repo.dart';
 import 'package:smartsoil/Feature/auth/data/login/repositories/login_repo_impl.dart';
@@ -9,9 +5,9 @@ import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.da
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
-import 'package:smartsoil/Feature/helper_view/data/repositories/helper_view.repo.dart';
-import 'package:smartsoil/Feature/helper_view/data/repositories/helper_view_repo_impl.dart';
-import 'package:smartsoil/Feature/helper_view/logic/helper_view_cubite.dart';
+import 'package:smartsoil/Feature/home/data/repositories/home_repo.dart';
+import 'package:smartsoil/Feature/home/data/repositories/home_repo_impl.dart';
+import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
@@ -59,11 +55,8 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<LoginRepo>(() => LoginRepoImpl());
     serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
 
-    serviceLocator
-        .registerLazySingleton<HelperViewRepo>(() => HelperViewRepoImpl());
+    serviceLocator.registerLazySingleton<HomeRepo>(() => HomeRepooImpl());
 
-    // serviceLocator.registerLazySingleton<SignUpRepo>(
-    //     () => SingUpRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
     // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
     //     VerificationRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
   }
@@ -77,8 +70,9 @@ class ServiceLocator {
         () => LoginCubit(loginRepo: serviceLocator.get<LoginRepo>()));
     serviceLocator.registerFactory<SignUpCubit>(
         () => SignUpCubit(signUpRepo: serviceLocator.get<SignUpRepo>()));
-    serviceLocator.registerFactory<HelperViewCubit>(() =>
-        HelperViewCubit(helperViewRepo: serviceLocator.get<HelperViewRepo>()));
+
+    serviceLocator.registerFactory<HomeCubit>(
+        () => HomeCubit(homeRepo: serviceLocator.get<HomeRepo>()));
 
     // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>
     //     ForgetPasswordCubit(

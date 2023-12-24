@@ -29,7 +29,7 @@ class ServerFailure extends Failure {
           "Unexpected Error, please try again!",
         );
       default:
-        return ServerFailure('ppStrings.opp');
+        return ServerFailure('opps  there was an error, please try again ');
     }
   }
   factory ServerFailure.fromResponse(int statusCode, dynamic response) {
@@ -39,12 +39,12 @@ class ServerFailure extends Failure {
       if (statusCode == StatusCodes.badRequest ||
           statusCode == StatusCodes.unAuthorized ||
           statusCode == StatusCodes.forbidden) {
-        return ServerFailure(parsedResponse['msgError'] ?? 'AppStrings.opps');
+        return ServerFailure(parsedResponse['message'] ?? 'badRequest');
       } else if (statusCode == StatusCodes.internalServerError) {
-        return ServerFailure(parsedResponse['error'] ?? 'AppStrings.opp');
+        return ServerFailure(parsedResponse['error'] ?? 'internalServerError');
       }
     }
 
-    return ServerFailure('AppStrings.opp');
+    return ServerFailure(parsedResponse['message']);
   }
 }

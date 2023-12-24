@@ -117,6 +117,25 @@ class _SignUpFormState extends State<SignUpForm> {
           Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: Text(
+              'Phone',
+              style: AppStyle.font14lightblacksemibold,
+            ),
+          ),
+          CustomTextFormFiled(
+            obscureText: false,
+            hintText: 'Phone',
+            keyboardType: TextInputType.phone,
+            controller: signupCubite.phoneController,
+            validator: (text) {
+              if (text == null || text.trim().isEmpty) {
+                return 'Please enter your Phone Number';
+              }
+              return null;
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Text(
               'City',
               style: AppStyle.font14lightblacksemibold,
             ),
@@ -124,8 +143,8 @@ class _SignUpFormState extends State<SignUpForm> {
           CustomTextFormFiled(
             obscureText: false,
             hintText: 'City Name',
-            keyboardType: TextInputType.phone,
-            controller: signupCubite.phoneController,
+            keyboardType: TextInputType.text,
+            controller: signupCubite.cityController,
             validator: (text) {
               if (text == null || text.trim().isEmpty) {
                 return 'Please enter your City Name';

@@ -16,14 +16,16 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String email,
     required String password,
     required String phone,
+    required String city,
   }) {
     emit(SignUpLoading());
     signUpRepo
         .signUpUser(
-      name: name,
+      fullName: name,
       email: email,
       password: password,
-      phone: phone,
+      phoneNumber: phone,
+      city: city,
     )
         .then((value) {
       value.fold(
@@ -31,7 +33,7 @@ class SignUpCubit extends Cubit<SignUpState> {
           emit(SignUpError(errorMessage: failure.errMessage));
         },
         (user) {
-          emit(SignUpSucess(bagRegisterModel: user));
+          emit(SignUpSucess(registerModel: user));
         },
       );
     });
@@ -76,6 +78,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController passwordController = TextEditingController();
 
   TextEditingController phoneController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
 
   bool isPasswordShow = true;
 

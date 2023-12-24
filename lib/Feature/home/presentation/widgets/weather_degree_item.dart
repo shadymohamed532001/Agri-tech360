@@ -52,7 +52,7 @@ class WeatherDegreeItem extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.arrow_upward,
-                        size: 17,
+                        size: 16,
                       ),
                       horizontalSpacing(2),
                       Expanded(
@@ -63,7 +63,25 @@ class WeatherDegreeItem extends StatelessWidget {
                       )
                     ],
                   ),
-                )
+                ),
+                verticalSpacing(4),
+                Expanded(
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.arrow_downward,
+                        size: 16,
+                      ),
+                      horizontalSpacing(2),
+                      Expanded(
+                        child: Text(
+                          '2°C',
+                          style: AppStyle.font12Blackregular,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

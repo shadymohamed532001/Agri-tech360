@@ -9,22 +9,23 @@ import 'package:smartsoil/core/error/servier_failure.dart';
 
 class SignUpRepoImpl extends SignUpRepo {
   @override
-  Future<Either<Failure, BagAuthModel>> signUpUser({
-    required String name,
+  Future<Either<Failure, AuthModel>> signUpUser({
+    required String fullName,
     required String email,
     required String password,
-    required String phone,
+    required String phoneNumber,
+    required String city,
   }) async {
     try {
-      var response = await ApiServices.postData(
-          endpoint: registerendPoint,
-          data: {
-            'name': name,
-            'email': email,
-            'password': password,
-            'phone': phone
-          });
-      final BagAuthModel user = BagAuthModel.fromJson(response.data);
+      var response =
+          await ApiServices.postData(endpoint: registerendPoint, data: {
+        'fullName': fullName,
+        'email': email,
+        'password': password,
+        'phoneNumber': phoneNumber,
+        'city': city
+      });
+      final AuthModel user = AuthModel.fromJson(response.data);
       return right(user);
     } catch (e) {
       if (e is DioException) {

@@ -11,6 +11,7 @@ class ListOfRecntlyViewedItem extends StatelessWidget {
         height: 100.h,
         width: double.infinity,
         child: ListView.builder(
+          shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           clipBehavior: Clip.none,
           itemCount: 22,

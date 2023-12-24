@@ -24,12 +24,12 @@ class LoginCubit extends Cubit<LoginState> {
         .then((value) {
       value.fold(
         (failure) {
-          emit(LoginErorr(error: failure.errMessage.toString()));
+          emit(LoginErorr(
+            error: failure.errMessage.toString(),
+          ));
         },
         (user) {
-          //  LocalServices.saveData(key: token,value: );
-
-          emit(LoginSucess(bagLoginModel: user));
+          emit(LoginSucess(loginModel: user));
         },
       );
     });

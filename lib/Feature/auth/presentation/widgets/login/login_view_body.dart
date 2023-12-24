@@ -34,31 +34,29 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
             ),
           );
-        } else if (state is LoginSucess) {
-          if (state.bagLoginModel.status == true) {
+        }
+        if (state is LoginSucess) {
+          if (state.loginModel.status == true) {
             Navigator.of(context)
                 .pop(); // close the dialog if successfully logged in
             showTouster(
-              massage: state.bagLoginModel.message!,
+              massage: state.loginModel.message!,
               state: ToustState.SUCCESS,
             );
             LocalServices.saveData(
               key: 'token',
-              value: state.bagLoginModel.data!.token,
-            ).then((value) {
-              context.pushNamedAndRemoveUntil(
-                Routes.helperViewRoute,
-                routePredicate: (route) => false,
-              );
-            });
-          } else {
-            showTouster(
-              massage: state.bagLoginModel.message!,
-              state: ToustState.ERROR,
+              value: state.loginModel.data!.token,
+            ).then(
+              (value) {
+                context.pushNamedAndRemoveUntil(
+                  Routes.homeViewRoute,
+                  routePredicate: (route) => false,
+                );
+              },
             );
-            Navigator.of(context).pop(); // close the dialog if login fails
           }
-        } else if (state is LoginErorr) {
+        }
+        if (state is LoginErorr) {
           Navigator.of(context).pop(); // close the dialog if login fails
           showTouster(
             massage: state.error,
@@ -71,6 +69,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         return Padding(
           padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 SizedBox(

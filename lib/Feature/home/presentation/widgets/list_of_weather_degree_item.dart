@@ -11,6 +11,7 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
       height: 115.h,
       width: double.infinity,
       child: ListView.builder(
+        shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
         itemCount: 10,
         scrollDirection: Axis.horizontal,

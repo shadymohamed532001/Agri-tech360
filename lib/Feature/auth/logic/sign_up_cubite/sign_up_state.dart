@@ -10,9 +10,11 @@ sealed class SignUpState extends Equatable {
 final class SignUpInitial extends SignUpState {}
 
 final class SignUpSucess extends SignUpState {
-  final BagAuthModel bagRegisterModel;
+  final AuthModel registerModel;
 
-  const SignUpSucess({required this.bagRegisterModel});
+  const SignUpSucess({required this.registerModel});
+
+  get loginModel => null;
 }
 
 final class SignUpLoading extends SignUpState {}
