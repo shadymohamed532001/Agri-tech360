@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
@@ -99,7 +101,9 @@ class _GuidanceUserToHealHisCropState extends State<GuidanceUserToHealHisCrop> {
             child: CustomBottom(
               backgroundColor: ColorManger.primaryColor,
               bottomtext: 'Heal Your Crops',
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<HomeCubit>(context).getWeather();
+              },
             ),
           )
         ],

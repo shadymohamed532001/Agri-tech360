@@ -66,7 +66,7 @@ class AppRoutes {
       case Routes.homeViewRoute:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => serviceLocator.get<HomeCubit>(),
+            create: (context) => serviceLocator.get<HomeCubit>()..getWeather(),
             child: const HomeView(),
           ),
         );

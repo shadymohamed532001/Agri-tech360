@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/weather_degree_item.dart';
 
 class ListOfWeatherDegreeItem extends StatelessWidget {
-  const ListOfWeatherDegreeItem({super.key});
+  const ListOfWeatherDegreeItem({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         physics: const BouncingScrollPhysics(),
-        itemCount: 10,
+        itemCount: 7,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(

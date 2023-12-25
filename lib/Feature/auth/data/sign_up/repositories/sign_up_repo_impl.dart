@@ -25,7 +25,7 @@ class SignUpRepoImpl extends SignUpRepo {
         'phoneNumber': phoneNumber,
         'city': city
       });
-      final AuthModel user = AuthModel.fromJson(response.data);
+      final AuthModel user = AuthModel.fromJson(response);
       return right(user);
     } catch (e) {
       if (e is DioException) {

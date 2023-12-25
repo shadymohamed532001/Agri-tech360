@@ -19,7 +19,7 @@ class LoginRepoImpl extends LoginRepo {
         'email': email,
         'password': password,
       });
-      final AuthModel user = AuthModel.fromJson(response.data);
+      final AuthModel user = AuthModel.fromJson(response);
       return right(user);
     } catch (e) {
       if (e is DioException) {

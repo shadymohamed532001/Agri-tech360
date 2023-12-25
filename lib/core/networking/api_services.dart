@@ -1,12 +1,11 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
 
 class ApiServices {
-  static Dio? dio;
+  static Dio? _dio;
 
   static init() {
-    dio = Dio(
+    _dio = Dio(
       BaseOptions(
         baseUrl: baseUrl,
         receiveDataWhenStatusError: true,
@@ -14,19 +13,20 @@ class ApiServices {
     );
   }
 
-  static Future<Response> postData({
+  static Future<Map<String, dynamic>> postData({
     required String endpoint,
     required Object? data,
     String? token,
   }) async {
-    dio?.options.headers = {
-      'Authorization': token,
+    _dio?.options.headers = {
+      'Authorization': 'Bearer $token',
       'Content-Type': 'application/json',
     };
-    return await dio!.post(
+    var response = await _dio!.post(
       endpoint,
       data: data,
     );
+    return response.data;
   }
 
   static Future<Map<String, dynamic>> getData({
@@ -35,16 +35,17 @@ class ApiServices {
     String? token,
     Map<String, dynamic>? queryParameters,
   }) async {
-    dio?.options.headers = {
-      'Authorization': token,
+    _dio!.options.headers = {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
     };
 
-    Response? response = await dio?.get(
+    var response = await _dio!.get(
       endpoint,
       queryParameters: queryParameters,
       data: data,
     );
-    return jsonDecode(response?.data);
+    return response.data;
   }
 }

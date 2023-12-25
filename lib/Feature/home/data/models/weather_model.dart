@@ -1,20 +1,25 @@
-class WeatherModels {
-  final String day;
-  final String minTemperature;
-  final String maxTemperature;
+class Weathermodel {
+  List<Result>? result;
 
-  WeatherModels({
-    required this.day,
-    required this.minTemperature,
-    required this.maxTemperature,
-  });
-  factory WeatherModels.fromJson(dynamic data) {
-    var jsonData = data['forecast']['forecastday'][0]['day'];
+  Weathermodel({this.result});
 
-    return WeatherModels(
-      day: data['current']['last_updated'],
-      minTemperature: jsonData['mintemp_c'],
-      maxTemperature: jsonData['maxtemp_c'],
-    );
-  }
+  factory Weathermodel.fromJson(Map<String, dynamic> json) => Weathermodel(
+        result: (json['result'] as List<dynamic>?)
+            ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+}
+
+class Result {
+  late num? maxCelsius, minCelsius;
+  late String? icon, date;
+
+  Result({this.minCelsius, this.maxCelsius, this.date, this.icon});
+
+  factory Result.fromJson(Map<String, dynamic> json) => Result(
+        minCelsius: (json['minCelsius'] as num?)?.toDouble(),
+        maxCelsius: (json['maxCelsius'] as num?)?.toDouble(),
+        date: json['date'] as String?,
+        icon: json['icon'] as String?,
+      );
 }

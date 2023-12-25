@@ -10,9 +10,14 @@ import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/precious_app_bar.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -53,7 +58,7 @@ class HomeViewBody extends StatelessWidget {
                         ),
                       ),
                       verticalSpacing(24),
-                      FadeInLeft(child: const ListOfWeatherDegreeItem()),
+                      FadeInLeft(child: ListOfWeatherDegreeItem()),
                       verticalSpacing(40),
                       Align(
                         alignment: Alignment.centerLeft,
@@ -77,29 +82,6 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:animate_do/animate_do.dart';
 // import 'package:flutter/material.dart';
@@ -125,76 +107,68 @@ class HomeViewBody extends StatelessWidget {
 // class _HomeViewBodyState extends State<HomeViewBody> {
 //   @override
 //   Widget build(BuildContext context) {
-    // return CustomScrollView(
-    //   slivers: [
-    //     SliverFillRemaining(
-    //       hasScrollBody: false,
-    //       child: Stack(
-    //         children: [
-    //           Row(
-    //             children: [
-    //               const Spacer(),
-    //               Container(
-    //                 width: 120.w,
-    //                 height: double.infinity,
-    //                 color: ColorManger.lightpinkColor,
-    //               ),
-    //             ],
-    //           ),
-    //           SafeArea(
-    //             child: Padding(
-    //               padding:
-    //                   EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w)
-    //                       .copyWith(bottom: 0),
-    //               child: Column(
-    //                 crossAxisAlignment: CrossAxisAlignment.center,
-    //                 children: [
-    //                   const PreciousAppBar(),
-    //                   verticalSpacing(40),
-    //                   const HealYourCropAndPlantText(),
-    //                   verticalSpacing(16),
-    //                   FadeInRight(child: const GuidanceUserToHealHisCrop()),
-    //                   verticalSpacing(40),
-    //                   Align(
-    //                     alignment: Alignment.centerLeft,
-    //                     child: Text(
-    //                       'Daily Forecast',
-    //                       style: AppStyle.font22BlackBold,
-    //                     ),
-    //                   ),
-    //                   verticalSpacing(24),
-    //                   FadeInLeft(child: const ListOfWeatherDegreeItem()),
-    //                   verticalSpacing(40),
-    //                   Align(
-    //                     alignment: Alignment.centerLeft,
-    //                     child: Text(
-    //                       'Recently viewed',
-    //                       style: AppStyle.font22BlackBold,
-    //                     ),
-    //                   ),
-    //                   verticalSpacing(24),
-    //                   FadeInUp(
-    //                     child: const ListOfRecntlyViewedItem(),
-    //                   )
-    //                 ],
-    //               ),
-    //             ),
-    //           )
-    //         ],
-    //       ),
-    //     )
-    //   ],
-    // );
+// return CustomScrollView(
+//   slivers: [
+//     SliverFillRemaining(
+//       hasScrollBody: false,
+//       child: Stack(
+//         children: [
+//           Row(
+//             children: [
+//               const Spacer(),
+//               Container(
+//                 width: 120.w,
+//                 height: double.infinity,
+//                 color: ColorManger.lightpinkColor,
+//               ),
+//             ],
+//           ),
+//           SafeArea(
+//             child: Padding(
+//               padding:
+//                   EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w)
+//                       .copyWith(bottom: 0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.center,
+//                 children: [
+//                   const PreciousAppBar(),
+//                   verticalSpacing(40),
+//                   const HealYourCropAndPlantText(),
+//                   verticalSpacing(16),
+//                   FadeInRight(child: const GuidanceUserToHealHisCrop()),
+//                   verticalSpacing(40),
+//                   Align(
+//                     alignment: Alignment.centerLeft,
+//                     child: Text(
+//                       'Daily Forecast',
+//                       style: AppStyle.font22BlackBold,
+//                     ),
+//                   ),
+//                   verticalSpacing(24),
+//                   FadeInLeft(child: const ListOfWeatherDegreeItem()),
+//                   verticalSpacing(40),
+//                   Align(
+//                     alignment: Alignment.centerLeft,
+//                     child: Text(
+//                       'Recently viewed',
+//                       style: AppStyle.font22BlackBold,
+//                     ),
+//                   ),
+//                   verticalSpacing(24),
+//                   FadeInUp(
+//                     child: const ListOfRecntlyViewedItem(),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           )
+//         ],
+//       ),
+//     )
+//   ],
+// );
 //   }
 // }
-
-
-
-
-
-
-
-
 
 // //Fuction of Open Gallery
 // // ----------------------------------------------------------------
