@@ -1,25 +1,29 @@
+import 'package:intl/intl.dart';
+
 class Weathermodel {
-  List<Result>? result;
+  final double minCelsius;
+  final double maxCelsius;
+  final String date;
+  final String icon;
 
-  Weathermodel({this.result});
+  Weathermodel({
+    required this.minCelsius,
+    required this.maxCelsius,
+    required this.date,
+    required this.icon,
+  });
 
-  factory Weathermodel.fromJson(Map<String, dynamic> json) => Weathermodel(
-        result: (json['result'] as List<dynamic>?)
-            ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
-}
+  factory Weathermodel.fromJson(Map<String, dynamic> json) {
+    return Weathermodel(
+      minCelsius: json['minCelsius'].toDouble(),
+      maxCelsius: json['maxCelsius'].toDouble(),
+      date: json['date'],
+      icon: _formatDate(json['date']),
+    );
+  }
 
-class Result {
-  late num? maxCelsius, minCelsius;
-  late String? icon, date;
-
-  Result({this.minCelsius, this.maxCelsius, this.date, this.icon});
-
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
-        minCelsius: (json['minCelsius'] as num?)?.toDouble(),
-        maxCelsius: (json['maxCelsius'] as num?)?.toDouble(),
-        date: json['date'] as String?,
-        icon: json['icon'] as String?,
-      );
+  static String _formatDate(String dateString) {
+    DateTime date = DateTime.parse(dateString);
+    return DateFormat.MMMM().format(date);
+  }
 }

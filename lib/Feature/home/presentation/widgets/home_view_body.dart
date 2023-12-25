@@ -20,6 +20,8 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
+  _HomeViewBodyState();
+
   @override
   void initState() {
     context.read<HomeCubit>().getWeather();
@@ -66,7 +68,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                         ),
                       ),
                       verticalSpacing(24),
-                      FadeInLeft(child: ListOfWeatherDegreeItem()),
+                      FadeInLeft(
+                          child: ListOfWeatherDegreeItem(
+                        weathermodelData:
+                            context.read<HomeCubit>().weatherResult,
+                      )),
                       verticalSpacing(40),
                       Align(
                         alignment: Alignment.centerLeft,

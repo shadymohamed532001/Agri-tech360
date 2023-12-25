@@ -21,21 +21,23 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   List<Weathermodel> weatherResult = <Weathermodel>[];
-
   Future<void> getWeather() async {
     emit(HomeGetWeatherLoading());
 
-    await homeRepo.getWeather().then((value) => value.fold(
-          (failure) {
-            emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
-          },
-          (weather) {
-            weatherResult = weather;
-            emit(
-              HomeGetWeatherSuccess(weatherModel: weather),
-            );
-          },
-        ));
+    try {
+      final weatherEither = await homeRepo.getWeather();
+      weatherEither.fold(
+        (failure) {
+          emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
+        },
+        (weather) {
+          weatherResult = weather;
+          emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
+        },
+      );
+    } catch (e) {
+      emit(HomeGetWeatherFallure(errormassage: e.toString()));
+    }
   }
 
   // Future<Weathermodel?> fetchData() async {
