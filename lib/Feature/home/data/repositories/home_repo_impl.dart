@@ -30,8 +30,11 @@ class HomeRepooImpl extends HomeRepo {
         'Authorization': 'Bearer $token',
       };
       var data = await dio.get('$baseUrl$getWeatgerendPoint');
-      var weather = getWeatherList(data.data);
-      print(weather);
+      List<Weathermodel> weather = [];
+      print(data.data);
+      for (var weatherMap in data.data['result']) {
+        weather.add(Weathermodel.fromJson(weatherMap));
+      }
       return right(weather);
     } catch (e) {
       if (e is DioException) {
@@ -55,17 +58,4 @@ class HomeRepooImpl extends HomeRepo {
       const ProfileView()
     ];
   }
-}
-
-List<Weathermodel> getWeatherList(Map<String, dynamic> date) {
-  List<Weathermodel> weather = [];
-
-  for (var weatherMap in date['result']) {
-    weather.add(Weathermodel.fromJson(weatherMap));
-    print(date['result'][0]['date']);
-    print(date['result'][0]['icon']);
-    print(date['result'][0]['minCelsius']);
-  }
-
-  return weather;
 }

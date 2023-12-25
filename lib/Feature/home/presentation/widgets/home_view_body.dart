@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/guidance_user_to_heal_his_crop.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/heal_your_crop_and_plant_text.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/list_of_recntly_viewed_item.dart';
@@ -18,6 +20,12 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
+  @override
+  void initState() {
+    context.read<HomeCubit>().getWeather();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
