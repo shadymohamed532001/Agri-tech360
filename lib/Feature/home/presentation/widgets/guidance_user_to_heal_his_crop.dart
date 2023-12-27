@@ -102,7 +102,8 @@ class _GuidanceUserToHealHisCropState extends State<GuidanceUserToHealHisCrop> {
               backgroundColor: ColorManger.primaryColor,
               bottomtext: 'Heal Your Crops',
               onPressed: () {
-                BlocProvider.of<HomeCubit>(context).getWeather();
+                BlocProvider.of<HomeCubit>(context)
+                    .navigateToCheckPlant(context);
               },
             ),
           )

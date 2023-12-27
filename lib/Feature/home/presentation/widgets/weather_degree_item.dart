@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
-import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -30,7 +29,7 @@ class WeatherDegreeItem extends StatelessWidget {
             children: [
               Container(
                 width: 89.w,
-                height: 108.h,
+                height: 110.h,
                 decoration: BoxDecoration(
                   color: ColorManger.whiteColor,
                   borderRadius: BorderRadius.circular(16),
@@ -50,19 +49,26 @@ class WeatherDegreeItem extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Text(
-                        weatherModels[index].date,
-                        style:
-                            AppStyle.font14Blackregular.copyWith(fontSize: 11),
-                      ),
-                      verticalSpacing(8),
-                      Image.asset(
-                        listicons[index],
-                        fit: BoxFit.fill,
-                        scale: 2.6,
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          weatherModels[index].date,
+                          style:
+                              AppStyle.font12Blackmedium.copyWith(fontSize: 11),
+                        ),
                       ),
                       verticalSpacing(8),
                       Expanded(
+                        flex: 2,
+                        child: Image.network(
+                          weatherModels[index].icon,
+                          fit: BoxFit.cover,
+                          scale: 1.7,
+                        ),
+                      ),
+                      verticalSpacing(8),
+                      Expanded(
+                        flex: 1,
                         child: Row(
                           children: [
                             const Icon(

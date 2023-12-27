@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 class Weathermodel {
   final double minCelsius;
   final double maxCelsius;
@@ -18,12 +16,16 @@ class Weathermodel {
       minCelsius: json['minCelsius'].toDouble(),
       maxCelsius: json['maxCelsius'].toDouble(),
       date: json['date'],
-      icon: _formatDate(json['date']),
+      icon: json['icon'],
     );
   }
 
-  static String _formatDate(String dateString) {
-    DateTime date = DateTime.parse(dateString);
-    return DateFormat.MMMM().format(date);
+  Map<String, dynamic> toJson() {
+    return {
+      'minCelsius': minCelsius,
+      'maxCelsius': maxCelsius,
+      'date': date,
+      'icon': icon,
+    };
   }
 }

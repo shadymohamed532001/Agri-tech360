@@ -24,3 +24,5 @@ final class HomeGetWeatherSuccess extends HomeState {
 
   HomeGetWeatherSuccess({required this.weatherModel});
 }
+
+final class HomeNavigtoCheckPlantView extends HomeState {}

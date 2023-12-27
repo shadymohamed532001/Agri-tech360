@@ -5,7 +5,6 @@ import 'package:smartsoil/Feature/explor/presentation/widgets/explor_plant_detai
 import 'package:smartsoil/core/helper/extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
-import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class ExplorPlantDetailsView extends StatelessWidget {
@@ -44,14 +43,14 @@ class ExplorPlantDetailsView extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: 180.h,
-                  left: 15.w,
+                  top: 160.h,
+                  left: 80.w,
                   child: FadeInRight(
                     duration: const Duration(milliseconds: 600),
                     child: Image.asset(
-                      ImagesAssetsManger.floweImage,
-                      height: 451.h,
-                      width: 451.w,
+                      'assets/images/tommeto.png',
+                      height: 430.h,
+                      width: 430.w,
                     ),
                   ),
                 ),
@@ -64,7 +63,7 @@ class ExplorPlantDetailsView extends StatelessWidget {
                       verticalSpacing(35),
                       verticalSpacing(43),
                       Text(
-                        'Ageratum',
+                        'Tommeto',
                         style: AppStyle.font24blakBold,
                       ),
                       verticalSpacing(45),
