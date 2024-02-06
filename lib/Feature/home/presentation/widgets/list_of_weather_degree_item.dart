@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,40 +18,37 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeCubit = BlocProvider.of<HomeCubit>(context);
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        return BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            if (state is HomeGetWeatherSuccess) {
-              List<Weathermodel> weatherModels = state.weatherModel;
-              return SizedBox(
-                height: 115.h,
-                width: double.infinity,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: weatherModels.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                        padding: EdgeInsets.only(
-                          right: 16.w,
-                        ),
-                        child: WeatherDegreeItem(
-                          index: index,
-                          weatherModels: weatherModels,
-                        ));
-                  },
-                ),
-              );
-            } else {
-              return Center(
-                  child: CircularProgressIndicator(
-                color: ColorManger.primaryColor,
-              ));
-            }
-          },
-        );
+        if (homeCubit.weatherResult != null) {
+          return SizedBox(
+            height: 115.h,
+            width: double.infinity,
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemCount: homeCubit.weatherResult.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                    padding: EdgeInsets.only(
+                      right: 16.w,
+                    ),
+                    child: WeatherDegreeItem(
+                      index: index,
+                      weatherModels: homeCubit.weatherResult,
+                    ));
+              },
+            ),
+          );
+        } else {
+          return Center(
+              child: CircularProgressIndicator(
+            color: ColorManger.primaryColor,
+          ));
+        }
       },
     );
   }

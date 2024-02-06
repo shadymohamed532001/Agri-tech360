@@ -29,7 +29,6 @@ class Data {
   String? email;
   String? phoneNumber;
   String? city;
-
   String? token;
 
   Data({

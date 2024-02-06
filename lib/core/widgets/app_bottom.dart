@@ -11,6 +11,7 @@ class CustomBottom extends StatelessWidget {
     required this.bottomtext,
     this.bottomWidth,
     this.bottomHeight,
+    this.textBottomStyle,
   });
 
   final void Function() onPressed;
@@ -18,6 +19,7 @@ class CustomBottom extends StatelessWidget {
   final String bottomtext;
   final double? bottomWidth;
   final double? bottomHeight;
+  final TextStyle? textBottomStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class CustomBottom extends StatelessWidget {
         ),
         child: Text(
           bottomtext,
-          style: AppStyle.font14Whitesemibold,
+          style: textBottomStyle ?? AppStyle.font14Whitesemibold,
         ),
       ),
     );

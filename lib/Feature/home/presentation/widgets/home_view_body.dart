@@ -98,13 +98,5 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 }
 // //Fuction of Open Gallery
 // // ----------------------------------------------------------------
-//   // final ImagePicker picker = ImagePicker();
-//   // File? image;
 
-//   // pickedImage() async {
-//   //   XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
-//   //   setState(() {
-//   //     image = File(pickedFile!.path);
-//   //   });
-//   // }
 //   // pickedImage();
