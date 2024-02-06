@@ -50,18 +50,15 @@ class HomeCubit extends Cubit<HomeState> {
       final localWeatherData = await loadWeatherDataFromLocal();
 
       if (localWeatherData.isNotEmpty) {
-        // Use local data
         weatherResult = localWeatherData;
         emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
       } else {
-        // Fetch data from the network
         final weatherEither = await homeRepo.getWeather();
         weatherEither.fold(
           (failure) {
             emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
           },
           (weather) async {
-            // Save fetched data to local storage
             weatherResult = weather;
             emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
             await saveWeatherDataToLocal(weather);
@@ -69,7 +66,6 @@ class HomeCubit extends Cubit<HomeState> {
         );
       }
     } catch (e) {
-      print(e.toString());
       emit(HomeGetWeatherFallure(errormassage: e.toString()));
     }
   }
