@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
+import 'package:smartsoil/Feature/explor/presentation/explor_plant_details_view.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
-import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
-import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class ExplorPlantInformation extends StatelessWidget {
   const ExplorPlantInformation({
     super.key,
+    required this.cubit,
+    required this.index,
   });
+
+  final ExplorCubit cubit;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushName(Routes.explorPlantDetailsViewRoute);
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) {
+            return ExplorPlantDetailsView(
+              index: index,
+            );
+          },
+        ));
       },
       child: Container(
         width: double.infinity,
@@ -43,21 +53,29 @@ class ExplorPlantInformation extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpacing(36),
-                  Text(
-                    'Ageratum',
-                    style: AppStyle.font22BlackBold,
+                  Flexible(
+                    child: Text(
+                      cubit.explorData()[index].plantName,
+                      style: AppStyle.font22BlackBold,
+                    ),
                   ),
                   verticalSpacing(16),
-                  Text(
-                    'Contrary to popular belief not\nsimply random It has root in a piece \nof classical Latin literature from 45\nBC, making it over 2000 years old.',
-                    style: AppStyle.font12Greyregular,
+                  SizedBox(
+                    width: 220.w,
+                    height: 80.h,
+                    child: Text(
+                      cubit.explorData()[index].plantShortDescription,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppStyle.font12Greyregular,
+                    ),
                   ),
                 ],
               ),
             ),
             Expanded(
               child: Image.asset(
-                ImagesAssetsManger.flowe_2Image,
+                cubit.explorData()[index].plantimagepath,
                 height: double.infinity,
               ),
             )
@@ -65,14 +83,5 @@ class ExplorPlantInformation extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class ShadowContainer extends StatelessWidget {
-  const ShadowContainer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
