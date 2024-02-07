@@ -105,6 +105,16 @@ class AppStyle {
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.whiteColor,
   );
+  static TextStyle font12Whitesemibold = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.semibold,
+    color: ColorManger.whiteColor,
+  );
+  static TextStyle font21Whitebold = TextStyle(
+    fontSize: 21.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.whiteColor,
+  );
 
   // static TextStyle font13GreyRegular = TextStyle(
   //   fontSize: 13.sp,

@@ -11,7 +11,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required this.homeRepo}) : super(HomeInitial());
   final HomeRepo homeRepo;
 
-  int currentIndex = 0;
+  int currentIndex = 1;
 
   Future<void> changeBottomIndex(int index, BuildContext context) async {
     homeRepo.changeBottomNavIndex(index, context);

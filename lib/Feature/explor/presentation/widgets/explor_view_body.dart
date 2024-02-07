@@ -29,8 +29,8 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                 decoration: BoxDecoration(
                     color: ColorManger.primaryColor,
                     borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
                     )),
               ),
               SafeArea(

@@ -29,10 +29,9 @@ class HomeRepooImpl extends HomeRepo {
   @override
   List<Widget> views() {
     return [
-      const HomeViewBody(),
       const ExplorView(),
+      const HomeViewBody(),
       const ProfileView(),
-      const ProfileView()
     ];
   }
 

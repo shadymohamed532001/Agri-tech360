@@ -33,13 +33,11 @@ class HomeView extends StatelessWidget {
       showSelectedLabels: true,
       showUnselectedLabels: true,
       items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explor"),
         BottomNavigationBarItem(
           icon: Icon(Icons.home_outlined),
           label: "Home",
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explor"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt_rounded), label: "Detact"),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
       ],
     );
