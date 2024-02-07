@@ -35,51 +35,46 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorManger.whiteColor.withOpacity(0.2),
-          elevation: 0.0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          title: const PreciousAppBar(),
-        ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 10.h,
-            ),
-            SizedBox(
-              width: 350.h,
-              child: TabBar(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                tabs: [
-                  Text(
-                    'Care Instructions',
-                    style: AppStyle.font14Blacksemibold,
-                  ),
-                  Text(
-                    'Description',
-                    style: AppStyle.font14Blacksemibold,
-                  ),
-                ],
-                indicatorWeight: 4,
-                indicatorColor: ColorManger.primaryColor,
-                indicatorSize: TabBarIndicatorSize.label,
-                controller: _tabController,
+        body: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10.h,
               ),
-            ),
-            Expanded(
-              child: SizedBox(
-                width: double.infinity,
-                child: TabBarView(
-                  controller: _tabController,
-                  children: const [
-                    CareInstractionViewBody(),
-                    DescriptionViewBody()
+              SizedBox(
+                width: 350.h,
+                child: TabBar(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  tabs: [
+                    Text(
+                      'Care Instructions',
+                      style: AppStyle.font14Blacksemibold,
+                    ),
+                    Text(
+                      'Description',
+                      style: AppStyle.font14Blacksemibold,
+                    ),
                   ],
+                  indicatorWeight: 4,
+                  indicatorColor: ColorManger.primaryColor,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  controller: _tabController,
                 ),
               ),
-            ),
-          ],
+              Expanded(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: const [
+                      CareInstractionViewBody(),
+                      DescriptionViewBody()
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

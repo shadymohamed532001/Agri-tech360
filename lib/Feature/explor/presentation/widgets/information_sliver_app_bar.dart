@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
-import 'package:smartsoil/core/themaing/app_image_assets.dart';
 
 class InformationSliverAppBar extends StatelessWidget {
   const InformationSliverAppBar({super.key});
@@ -10,14 +10,14 @@ class InformationSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       expandedHeight: 200.h,
-      backgroundColor: ColorManger.whiteColor,
+      backgroundColor: ColorManger.whiteColor.withOpacity(0.1),
       elevation: 0.0,
       pinned: true,
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Image.asset(
-          ImagesAssetsManger.cameraImage,
-          fit: BoxFit.contain,
+          explorationData[indexOfExploration!].plantimagepath,
+          fit: BoxFit.fill,
         ),
         stretchModes: const [
           StretchMode.blurBackground,

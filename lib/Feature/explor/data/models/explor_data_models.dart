@@ -1,15 +1,18 @@
 class ExplorDataModel {
   final String plantName;
   final String plantShortDescription;
+  final String plantMediumDescription;
   final String plantLongDescription;
   final String minimumdegrees;
   final String maxmumdegrees;
   final String stateofTemperature;
   final String numberOfWater;
-
+  final String plantCareInstruct;
   final String plantimagepath;
 
   ExplorDataModel({
+    required this.plantMediumDescription,
+    required this.plantCareInstruct,
     required this.numberOfWater,
     required this.stateofTemperature,
     required this.maxmumdegrees,
