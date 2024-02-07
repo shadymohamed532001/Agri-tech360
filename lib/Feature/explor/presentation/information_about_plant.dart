@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/explor/presentation/widgets/care_instraction_view_body.dart';
+import 'package:smartsoil/Feature/explor/presentation/widgets/descrption_view_body.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/precious_app_bar.dart';
 
 class InformationAboutPlant extends StatefulWidget {
-  const InformationAboutPlant({super.key});
+  const InformationAboutPlant({super.key, required this.index});
+  final int index;
 
   @override
   State<InformationAboutPlant> createState() => _InformationAboutPlantState();
@@ -49,9 +52,14 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
               child: TabBar(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 tabs: [
-                  Text('Care Instructions',
-                      style: AppStyle.font14Blacksemibold),
-                  Text('Description', style: AppStyle.font14Blacksemibold),
+                  Text(
+                    'Care Instructions',
+                    style: AppStyle.font14Blacksemibold,
+                  ),
+                  Text(
+                    'Description',
+                    style: AppStyle.font14Blacksemibold,
+                  ),
                 ],
                 indicatorWeight: 4,
                 indicatorColor: ColorManger.primaryColor,
@@ -65,8 +73,8 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
                 child: TabBarView(
                   controller: _tabController,
                   children: const [
-                    // const LoginViewBody(),
-                    // SignUpViewBody(),
+                    CareInstractionViewBody(),
+                    DescriptionViewBody()
                   ],
                 ),
               ),
