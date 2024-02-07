@@ -5,6 +5,9 @@ import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.da
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
+import 'package:smartsoil/Feature/explor/data/repositories/explor_repo_impl.dart';
+import 'package:smartsoil/Feature/explor/domain/repositories/explor_repo.dart';
+import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo_impl.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
@@ -56,6 +59,8 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
 
     serviceLocator.registerLazySingleton<HomeRepo>(() => HomeRepooImpl());
+        serviceLocator.registerLazySingleton<ExplorRepo>(() => ExplorRepoImpl());
+
 
     // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
     //     VerificationRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
@@ -73,6 +78,8 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<HomeCubit>(
         () => HomeCubit(homeRepo: serviceLocator.get<HomeRepo>()));
+         serviceLocator.registerFactory<ExplorCubit>(
+        () => ExplorCubit(explorRepo: serviceLocator.get<ExplorRepo>()));
 
     // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>
     //     ForgetPasswordCubit(
