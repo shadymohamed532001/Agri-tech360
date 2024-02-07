@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
+import 'package:smartsoil/Feature/explor/presentation/information_about_plant.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/explor_plant_details_squear_continer.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/helper/extentaions.dart';
@@ -122,17 +123,30 @@ class ExplorPlantDetailsView extends StatelessWidget {
                                           'About',
                                           style: AppStyle.font24blakBold,
                                         ),
-                                        Text(
-                                          'More',
-                                          style: AppStyle.font16LightGreymedium
-                                              .copyWith(
-                                                  color:
-                                                      ColorManger.primaryColor,
-                                                  fontWeight: FontWeight.bold),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) {
+                                                  return const InformationAboutPlant();
+                                                },
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            'More Information',
+                                            style: AppStyle
+                                                .font16LightGreymedium
+                                                .copyWith(
+                                              color: ColorManger.primaryColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
-                                    verticalSpacing(16),
+                                    verticalSpacing(10),
                                     Text(
                                       explorData.plantLongDescription,
                                       style: AppStyle.font12Greyregular,
