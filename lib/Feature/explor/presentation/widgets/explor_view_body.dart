@@ -26,7 +26,12 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
               Container(
                 width: double.infinity,
                 height: 200.h,
-                color: ColorManger.primaryColor,
+                decoration: BoxDecoration(
+                    color: ColorManger.primaryColor,
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(50),
+                      bottomRight: Radius.circular(50),
+                    )),
               ),
               SafeArea(
                 child: Padding(

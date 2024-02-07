@@ -17,18 +17,15 @@ class WeatherDegreeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.only(
             right: 6.w,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: 89.w,
+                width: 92.w,
                 height: 110.h,
                 decoration: BoxDecoration(
                   color: ColorManger.whiteColor,
@@ -53,11 +50,12 @@ class WeatherDegreeItem extends StatelessWidget {
                         flex: 1,
                         child: Text(
                           weatherModels[index].date,
-                          style:
-                              AppStyle.font12Blackmedium.copyWith(fontSize: 11),
+                          style: AppStyle.font12Blackmedium.copyWith(
+                            fontSize: 11,
+                          ),
                         ),
                       ),
-                      verticalSpacing(8),
+                      verticalSpacing(6),
                       Expanded(
                         flex: 2,
                         child: Image.network(
