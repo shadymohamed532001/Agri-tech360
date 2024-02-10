@@ -8,6 +8,7 @@ import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/home_view.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
+import 'package:smartsoil/Feature/search/presentation/search_view.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/routing/routes.dart';
@@ -70,6 +71,10 @@ class AppRoutes {
             create: (context) => serviceLocator.get<HomeCubit>(),
             child: const HomeView(),
           ),
+        );
+      case Routes.searchViewRoute:
+        return MaterialPageRoute(
+          builder: (context) => const SearchView(),
         );
 
       // case Routes.explorPlantDetailsViewRoute:

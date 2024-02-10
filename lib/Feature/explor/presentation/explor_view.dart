@@ -5,15 +5,13 @@ import 'package:smartsoil/Feature/explor/presentation/widgets/explor_view_body.d
 import 'package:smartsoil/core/Di/service_locator.dart';
 
 class ExplorView extends StatelessWidget {
-  const ExplorView({super.key});
+  const ExplorView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => serviceLocator.get<ExplorCubit>(),
-      child: const Scaffold(
-        body: ExplorViewBody(),
-      ),
+      child: const ExplorViewBody(),
     );
   }
 }
