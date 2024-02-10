@@ -6,4 +6,5 @@ class Routes {
   static const String explorPlantDetailsViewRoute = '/ExplorPlantDetails';
   static const String checkPlantViewRoute = '/checkPlantView';
   static const String explorViewRoute = '/explorView';
+  static const String informationAboutPlantRoute = '/informationAboutPlantView';
 }

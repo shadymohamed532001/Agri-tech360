@@ -3,13 +3,16 @@ import 'package:smartsoil/Feature/explor/presentation/widgets/information_sliver
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class DescriptionViewBody extends StatelessWidget {
-  const DescriptionViewBody({super.key});
+  const DescriptionViewBody({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        const InformationSliverAppBar(),
+        InformationSliverAppBar(
+          index: index,
+        ),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(16),

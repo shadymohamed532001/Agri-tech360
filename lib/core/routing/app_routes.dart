@@ -18,12 +18,14 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initialRoute:
         if (onBording != null) {
-          if (token != null) {
+          // Todo: !=  NULL DONT FORGET
+          if (token == null) {
             return MaterialPageRoute(
-                builder: (context) => BlocProvider(
-                      create: (context) => serviceLocator.get<HomeCubit>(),
-                      child: const HomeView(),
-                    ));
+              builder: (context) => BlocProvider(
+                create: (context) => serviceLocator.get<HomeCubit>(),
+                child: const HomeView(),
+              ),
+            );
           } else {
             return MaterialPageRoute(
               builder: (context) => MultiBlocProvider(
@@ -72,7 +74,17 @@ class AppRoutes {
 
       // case Routes.explorPlantDetailsViewRoute:
       //   return MaterialPageRoute(
-      //       builder: (context) => const ExplorPlantDetailsView());
+      //       builder: (context) => BlocProvider(
+      //             create: (context) => serviceLocator.get<ExplorCubit>(),
+      //             child: const ExplorPlantDetailsView(),
+      //           ));
+
+      // case Routes.informationAboutPlantRoute:
+      //   return MaterialPageRoute(
+      //       builder: (context) => BlocProvider(
+      //             create: (context) => serviceLocator.get<ExplorCubit>(),
+      //             child:  InformationAboutPlant(),
+      //           ));
 
       case Routes.checkPlantViewRoute:
         return MaterialPageRoute(builder: (context) => const CheckPlantView());

@@ -7,14 +7,11 @@ import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/app_search_bar.dart';
 
-class ExplorViewBody extends StatefulWidget {
-  const ExplorViewBody({super.key});
+class ExplorViewBody extends StatelessWidget {
+  const ExplorViewBody({
+    super.key,
+  });
 
-  @override
-  State<ExplorViewBody> createState() => _ExplorViewBodyState();
-}
-
-class _ExplorViewBodyState extends State<ExplorViewBody> {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(

@@ -9,9 +9,14 @@ part 'explor_state.dart';
 class ExplorCubit extends Cubit<ExplorState> {
   ExplorCubit({required this.explorRepo}) : super(ExplorInitial());
 
+  int? indexOfExploration;
+  int? x;
+
   final ExplorRepo explorRepo;
   List<ExplorDataModel> explorData() {
     explorationData = explorRepo.getExplorData();
     return explorRepo.getExplorData();
   }
+
+  void setIndex(int index) {}
 }

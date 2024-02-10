@@ -12,7 +12,6 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 class ExplorPlantDetailsView extends StatelessWidget {
   const ExplorPlantDetailsView({super.key, required this.index});
   final int index;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +46,7 @@ class ExplorPlantDetailsView extends StatelessWidget {
                 ),
                 Positioned(
                   top: 160.h,
-                  left: 30.w,
+                  left: 70.w,
                   child: FadeInRight(
                     duration: const Duration(milliseconds: 600),
                     child: Image.asset(
@@ -117,15 +116,13 @@ class ExplorPlantDetailsView extends StatelessWidget {
                                   ),
                                   TextButton(
                                     onPressed: () {
-                                      // print(explorationData[0].plantName);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) {
-                                            return InformationAboutPlant(
-                                              index: index,
-                                            );
-                                          },
+                                          builder: (context) =>
+                                              InformationAboutPlant(
+                                            index: index,
+                                          ),
                                         ),
                                       );
                                     },

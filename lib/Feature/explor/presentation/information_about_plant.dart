@@ -4,10 +4,13 @@ import 'package:smartsoil/Feature/explor/presentation/widgets/care_instraction_v
 import 'package:smartsoil/Feature/explor/presentation/widgets/descrption_view_body.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
-import 'package:smartsoil/core/widgets/precious_app_bar.dart';
 
 class InformationAboutPlant extends StatefulWidget {
-  const InformationAboutPlant({super.key, required this.index});
+  const InformationAboutPlant({
+    super.key,
+    required this.index,
+  });
+
   final int index;
 
   @override
@@ -66,9 +69,13 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
                   width: double.infinity,
                   child: TabBarView(
                     controller: _tabController,
-                    children: const [
-                      CareInstractionViewBody(),
-                      DescriptionViewBody()
+                    children: [
+                      CareInstractionViewBody(
+                        index: widget.index,
+                      ),
+                      DescriptionViewBody(
+                        index: widget.index,
+                      )
                     ],
                   ),
                 ),

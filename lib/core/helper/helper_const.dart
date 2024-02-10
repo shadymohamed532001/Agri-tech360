@@ -5,7 +5,7 @@ String? token;
 bool? onBording;
 List<ExplorDataModel> explorationData = [];
 
-int? indexOfExploration;
+int? indexOfExplorationnnnn = 0;
 
 double rw(double width) => SizeConfig.setWidth(width);
 double rh(double height) => SizeConfig.setHeight(height);

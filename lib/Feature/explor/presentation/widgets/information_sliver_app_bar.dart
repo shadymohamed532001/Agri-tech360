@@ -4,7 +4,8 @@ import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class InformationSliverAppBar extends StatelessWidget {
-  const InformationSliverAppBar({super.key});
+  const InformationSliverAppBar({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class InformationSliverAppBar extends StatelessWidget {
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Image.asset(
-          explorationData[indexOfExploration!].plantimagepath,
+          explorationData[index].plantimagepath,
           fit: BoxFit.fill,
         ),
         stretchModes: const [
@@ -24,6 +25,7 @@ class InformationSliverAppBar extends StatelessWidget {
           StretchMode.zoomBackground,
         ],
       ),
+      iconTheme: IconThemeData(color: ColorManger.blackColor),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(0),
         child: Container(

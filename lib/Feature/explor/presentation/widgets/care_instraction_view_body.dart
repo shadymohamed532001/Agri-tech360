@@ -4,13 +4,20 @@ import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class CareInstractionViewBody extends StatelessWidget {
-  const CareInstractionViewBody({super.key});
+  const CareInstractionViewBody({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
-        const InformationSliverAppBar(),
+        InformationSliverAppBar(
+          index: index,
+        ),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -19,7 +26,7 @@ class CareInstractionViewBody extends StatelessWidget {
               children: [
                 verticalSpacing(10),
                 Text(
-                  'Care Instraction',
+                  'Care Instructions',
                   style: AppStyle.font22BlackBold,
                 ),
                 verticalSpacing(10),
@@ -45,6 +52,7 @@ class CareInstractionViewBody extends StatelessWidget {
                   'Apples can also be stored in airtight containers or bags to prevent moisture loss and spoilage.\n'
                   'Enjoying Your Apples: Apples can be enjoyed in a variety of ways, including fresh eating, baking, cooking, juicing, and making cider and applesauce. '
                   'Experiment with different apple varieties and recipes to discover your favorites.',
+                  style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
