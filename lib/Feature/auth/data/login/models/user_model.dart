@@ -1,59 +1,39 @@
-// ignore_for_file: unnecessary_new
-
-class AuthModel {
-  bool? status;
-  String? message;
+class UserModel {
   Data? data;
+  String? message;
+  bool? status;
 
-  AuthModel({this.status, this.message, this.data});
+  UserModel({this.data, this.message, this.status});
 
-  AuthModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
+  UserModel.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['status'] = status;
-    data['message'] = message;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
+    status = json['status'];
   }
 }
 
 class Data {
-  String? fullName;
-  String? email;
-  String? phoneNumber;
+  int? id;
   String? city;
+  String? email;
+  String? fullName;
+  String? phoneNumber;
   String? token;
 
-  Data({
-    this.fullName,
-    this.email,
-    this.phoneNumber,
-    this.city,
-    this.token,
-  });
+  Data(
+      {this.city,
+      this.email,
+      this.fullName,
+      this.phoneNumber,
+      this.token,
+      this.id});
 
   Data.fromJson(Map<String, dynamic> json) {
-    fullName = json['fullName'];
-    email = json['email'];
-    phoneNumber = json['phone'];
     city = json['city'];
+    email = json['email'];
+    fullName = json['fullName'];
+    phoneNumber = json['phoneNumber'];
     token = json['token'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['fullName'] = fullName;
-    data['email'] = email;
-    data['city'] = city;
-    data['phoneNumber'] = phoneNumber;
-    data['token'] = token;
-    return data;
+    id = json['id'];
   }
 }

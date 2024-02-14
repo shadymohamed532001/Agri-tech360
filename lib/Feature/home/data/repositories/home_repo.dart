@@ -4,7 +4,7 @@ import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/core/error/failuer.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, List<Weathermodel>>> getWeather();
+  Future<Either<Failure, List<WeatherModel>>> getWeather();
 
   void navigationToPredictPlantView({required BuildContext context});
 

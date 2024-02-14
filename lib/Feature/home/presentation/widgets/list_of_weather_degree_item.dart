@@ -14,7 +14,7 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
     required this.weathermodelData,
   });
 
-  final List<Weathermodel> weathermodelData;
+  final List<WeatherModel> weathermodelData;
 
   @override
   Widget build(BuildContext context) {

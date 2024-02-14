@@ -16,9 +16,9 @@ class OnBoardingRepoImpl implements OnBoardingRepo {
       value: true,
     ).then((value) {
       if (value) {
-        if (token == null) {
+        if (usertoken == null) {
           context.pushNamedAndRemoveUntil(
-            Routes.homeViewRoute,
+            Routes.authViewRoute,
             routePredicate: (route) => false,
           );
         } else {

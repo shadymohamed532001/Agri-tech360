@@ -43,7 +43,7 @@ class OnbordingCubit extends Cubit<OnbordingState> {
 
   void navigateToLoginOrHome({required BuildContext context}) {
     if (onBording != null) {
-      if (token != null) {
+      if (usertoken != null) {
       } else {
         context.pushNamedAndRemoveUntil(
           Routes.authViewRoute,

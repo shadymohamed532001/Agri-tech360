@@ -3,7 +3,7 @@ import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/core/error/failuer.dart';
 
 abstract class LoginRepo {
-  Future<Either<Failure, AuthModel>> loginUser({
+  Future<Either<Failure, UserModel>> loginUser({
     required String email,
     required String password,
   });

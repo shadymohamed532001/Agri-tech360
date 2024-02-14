@@ -22,21 +22,21 @@ class HomeCubit extends Cubit<HomeState> {
     return homeRepo.views();
   }
 
-  List<Weathermodel> weatherResult = <Weathermodel>[];
+  List<WeatherModel> weatherResult = <WeatherModel>[];
 
-  Future<void> saveWeatherDataToLocal(List<Weathermodel> weatherData) async {
+  Future<void> saveWeatherDataToLocal(List<WeatherModel> weatherData) async {
     final prefs = await SharedPreferences.getInstance();
     final jsonData = weatherData.map((weather) => weather.toJson()).toList();
     prefs.setString('weatherData', json.encode(jsonData));
   }
 
-  Future<List<Weathermodel>> loadWeatherDataFromLocal() async {
+  Future<List<WeatherModel>> loadWeatherDataFromLocal() async {
     final prefs = await SharedPreferences.getInstance();
     final jsonString = prefs.getString('weatherData');
     if (jsonString != null) {
       final jsonData = json.decode(jsonString);
       return jsonData
-          .map<Weathermodel>((weather) => Weathermodel.fromJson(weather))
+          .map<WeatherModel>((weather) => WeatherModel.fromJson(weather))
           .toList();
     } else {
       return [];
@@ -57,6 +57,7 @@ class HomeCubit extends Cubit<HomeState> {
         weatherEither.fold(
           (failure) {
             emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
+            print(failure.errMessage.toString());
           },
           (weather) async {
             weatherResult = weather;

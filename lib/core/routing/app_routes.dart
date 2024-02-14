@@ -6,6 +6,8 @@ import 'package:smartsoil/Feature/auth/presentation/auth_view_body.dart';
 import 'package:smartsoil/Feature/checkplant/presentation/check_plant_vie.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/home_view.dart';
+import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
+import 'package:smartsoil/Feature/layout/presentation/views/layout_views.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/Feature/search/presentation/search_view.dart';
@@ -19,12 +21,11 @@ class AppRoutes {
     switch (routeSettings.name) {
       case Routes.initialRoute:
         if (onBording != null) {
-          // Todo: !=  NULL DONT FORGET
-          if (token == null) {
+          if (usertoken != null) {
             return MaterialPageRoute(
               builder: (context) => BlocProvider(
-                create: (context) => serviceLocator.get<HomeCubit>(),
-                child: const HomeView(),
+                create: (context) => serviceLocator.get<LayoutCubit>(),
+                child: const LayOutViews(),
               ),
             );
           } else {
@@ -64,7 +65,10 @@ class AppRoutes {
             child: const AuthViewBody(),
           ),
         );
-
+      case Routes.layOutViewsRoute:
+        return MaterialPageRoute(builder: (context) {
+          return const LayOutViews();
+        });
       case Routes.homeViewRoute:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(

@@ -1,7 +1,7 @@
 import 'package:smartsoil/Feature/explor/data/models/explor_data_models.dart';
 import 'package:smartsoil/core/helper/size_config.dart';
 
-String? token;
+String? usertoken;
 bool? onBording;
 List<ExplorDataModel> explorationData = [];
 

@@ -36,7 +36,7 @@ class HomeRepooImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<Weathermodel>>> getWeather() async {
+  Future<Either<Failure, List<WeatherModel>>> getWeather() async {
     try {
       String token = await LocalServices.getData(key: 'token');
       Dio dio = Dio();
@@ -48,9 +48,9 @@ class HomeRepooImpl extends HomeRepo {
       var response = await dio.get('$baseUrl$getWeatgerendPoint');
 
       if (response.statusCode == 200) {
-        List<Weathermodel> weather = [];
-        for (var weatherMap in response.data['result']) {
-          weather.add(Weathermodel.fromJson(weatherMap));
+        List<WeatherModel> weather = [];
+        for (var weatherMap in response.data['data']) {
+          weather.add(WeatherModel.fromJson(weatherMap));
         }
         return right(weather);
       } else {

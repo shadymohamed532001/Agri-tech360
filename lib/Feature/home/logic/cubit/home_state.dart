@@ -20,7 +20,7 @@ final class HomeGetWeatherFallure extends HomeState {
 }
 
 final class HomeGetWeatherSuccess extends HomeState {
-  final List<Weathermodel> weatherModel;
+  final List<WeatherModel> weatherModel;
 
   HomeGetWeatherSuccess({required this.weatherModel});
 }

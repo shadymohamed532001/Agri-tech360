@@ -11,6 +11,11 @@ import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo_impl.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
+import 'package:smartsoil/Feature/layout/data/datasources/layout_datasource.dart';
+import 'package:smartsoil/Feature/layout/data/datasources/layout_datasource_impl.dart';
+import 'package:smartsoil/Feature/layout/data/repositories/layout_repo_impl.dart';
+import 'package:smartsoil/Feature/layout/domain/repositories/layout_repo.dart';
+import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
@@ -22,6 +27,7 @@ class ServiceLocator {
     // await _setupForExternal();
 
     // _setupForCore();
+    _setupForDataSources();
 
     _setupForRepos();
 
@@ -59,11 +65,18 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
 
     serviceLocator.registerLazySingleton<HomeRepo>(() => HomeRepooImpl());
-        serviceLocator.registerLazySingleton<ExplorRepo>(() => ExplorRepoImpl());
+    serviceLocator.registerLazySingleton<ExplorRepo>(() => ExplorRepoImpl());
 
-
+    serviceLocator.registerLazySingleton<LayOutRepo>(() => LayoutRepoImpl(
+        layoutDataSource: serviceLocator.get<LayoutDataSource>()));
     // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
     //     VerificationRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
+  }
+
+  void _setupForDataSources() {
+    serviceLocator.registerLazySingleton<LayoutDataSource>(
+      () => LayoutDataSourceImpl(),
+    );
   }
 
   void _setupForCubits() {
@@ -75,10 +88,11 @@ class ServiceLocator {
         () => LoginCubit(loginRepo: serviceLocator.get<LoginRepo>()));
     serviceLocator.registerFactory<SignUpCubit>(
         () => SignUpCubit(signUpRepo: serviceLocator.get<SignUpRepo>()));
-
+    serviceLocator.registerFactory<LayoutCubit>(
+        () => LayoutCubit(layOutRepo: serviceLocator.get<LayOutRepo>()));
     serviceLocator.registerFactory<HomeCubit>(
         () => HomeCubit(homeRepo: serviceLocator.get<HomeRepo>()));
-         serviceLocator.registerFactory<ExplorCubit>(
+    serviceLocator.registerFactory<ExplorCubit>(
         () => ExplorCubit(explorRepo: serviceLocator.get<ExplorRepo>()));
 
     // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>

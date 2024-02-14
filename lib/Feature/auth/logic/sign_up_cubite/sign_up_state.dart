@@ -10,7 +10,7 @@ sealed class SignUpState extends Equatable {
 final class SignUpInitial extends SignUpState {}
 
 final class SignUpSucess extends SignUpState {
-  final AuthModel registerModel;
+  final UserModel registerModel;
 
   const SignUpSucess({required this.registerModel});
 

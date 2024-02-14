@@ -11,7 +11,7 @@ class WeatherDegreeItem extends StatelessWidget {
     required this.weatherModels,
     required this.index,
   });
-  final List<Weathermodel> weatherModels;
+  final List<WeatherModel> weatherModels;
   final int index;
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class WeatherDegreeItem extends StatelessWidget {
                             horizontalSpacing(2),
                             Expanded(
                               child: Text(
-                                '${weatherModels[index].maxCelsius}',
+                                '${weatherModels[index].maxTemp}',
                                 style: AppStyle.font12Blackregular,
                               ),
                             )
@@ -94,7 +94,7 @@ class WeatherDegreeItem extends StatelessWidget {
                             horizontalSpacing(2),
                             Expanded(
                               child: Text(
-                                '${weatherModels[index].minCelsius}',
+                                '${weatherModels[index].minTemp}',
                                 style: AppStyle.font12Blackregular,
                               ),
                             )

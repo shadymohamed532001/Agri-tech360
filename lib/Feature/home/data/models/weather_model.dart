@@ -1,20 +1,20 @@
-class Weathermodel {
-  final double minCelsius;
-  final double maxCelsius;
+class WeatherModel {
+  final double minTemp;
+  final double maxTemp;
   final String date;
   final String icon;
 
-  Weathermodel({
-    required this.minCelsius,
-    required this.maxCelsius,
+  WeatherModel({
+    required this.minTemp,
+    required this.maxTemp,
     required this.date,
     required this.icon,
   });
 
-  factory Weathermodel.fromJson(Map<String, dynamic> json) {
-    return Weathermodel(
-      minCelsius: json['minCelsius'].toDouble(),
-      maxCelsius: json['maxCelsius'].toDouble(),
+  factory WeatherModel.fromJson(Map<String, dynamic> json) {
+    return WeatherModel(
+      minTemp: json['min_temp'].toDouble(),
+      maxTemp: json['max_temp'].toDouble(),
       date: json['date'],
       icon: json['icon'],
     );
@@ -22,8 +22,8 @@ class Weathermodel {
 
   Map<String, dynamic> toJson() {
     return {
-      'minCelsius': minCelsius,
-      'maxCelsius': maxCelsius,
+      'min_temp': minTemp,
+      'max_temp': maxTemp,
       'date': date,
       'icon': icon,
     };

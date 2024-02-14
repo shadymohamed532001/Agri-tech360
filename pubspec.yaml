@@ -41,6 +41,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   fluttertoast: ^8.2.4
   get_it: ^7.6.4
+  iconsax: ^0.0.8
   image_picker: ^1.0.5
   intl: ^0.19.0
   shared_preferences: ^2.2.2
@@ -65,8 +66,6 @@ flutter:
     - assets/images/
     - assets/images/onboarding_image/
     - assets/images/explor_image/
-
-
     # - assets/images/explor_image
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
