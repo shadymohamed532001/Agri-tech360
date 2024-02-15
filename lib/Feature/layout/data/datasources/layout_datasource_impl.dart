@@ -53,7 +53,7 @@ class LayoutDataSourceImpl extends LayoutDataSource {
       ];
 
   @override
-  Future<List<WeatherModel>> getWeatherModels() async {
+  Future<List<WeatherModel>> getWeatherData() async {
     String token = await LocalServices.getData(key: 'token');
     Dio dio = Dio();
     dio.options.headers = {

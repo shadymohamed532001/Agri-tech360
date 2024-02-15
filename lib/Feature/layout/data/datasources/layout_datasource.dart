@@ -11,5 +11,5 @@ abstract class LayoutDataSource {
 
   List<BottomNavigationBarItem> getBottomNavItems();
 
-  Future<List<WeatherModel>> getWeatherModels();
+  Future<List<WeatherModel>> getWeatherData();
 }

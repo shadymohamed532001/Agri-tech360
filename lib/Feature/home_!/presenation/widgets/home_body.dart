@@ -11,11 +11,11 @@ class HomeBody extends StatelessWidget {
       builder: (context, state) {
         // LayoutCubit cubit = LayoutCubit.getObject(context);
 
-        if (state is HomeGetWeatherLoading) {
+        if (state is GetweatherDataLoadingState) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is HomeGetWeatherSuccess) {
+        } else if (state is GetweatherDataSuccessState) {
           return const Scaffold(
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,9 +27,7 @@ class HomeBody extends StatelessWidget {
               ],
             ),
           );
-        } else if (state is HomeGetWeatherFallure) {
-          print(state.errormassage);
-
+        } else if (state is GetweatherDataErrorState) {
           return const CircleAvatar();
         } else {
           return const Text('ssssssssssssssssssssssssssssssssss');

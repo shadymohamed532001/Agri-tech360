@@ -14,5 +14,4 @@ abstract class LayOutRepo {
   List<BottomNavigationBarItem> getBottomNavItems();
 
   Future<Either<Failure, List<WeatherModel>>> getWeather();
-  Future<Either<Failure, List<WeatherModel>>> getWeatherModel();
 }

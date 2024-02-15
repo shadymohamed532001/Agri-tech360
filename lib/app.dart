@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-                serviceLocator.get<LayoutCubit>()..getWeatherData(),
+                serviceLocator.get<LayoutCubit>()..getWeather(),
           ),
         ],
         child: const MaterialApp(

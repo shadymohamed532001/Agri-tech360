@@ -65,7 +65,11 @@ class AppRoutes {
         );
       case Routes.layOutViewsRoute:
         return MaterialPageRoute(builder: (context) {
-          return const LayOutViews();
+          return BlocProvider(
+            create: (context) =>
+                serviceLocator.get<LayoutCubit>()..getWeather(),
+            child: const LayOutViews(),
+          );
         });
       // case Routes.homeViewRoute:
       //   return MaterialPageRoute(

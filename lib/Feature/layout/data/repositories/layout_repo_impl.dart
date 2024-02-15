@@ -7,6 +7,8 @@ import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart'
 import 'package:smartsoil/Feature/layout/domain/repositories/layout_repo.dart';
 import 'package:smartsoil/core/error/failuer.dart';
 import 'package:smartsoil/core/error/servier_failure.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
+import 'package:smartsoil/core/networking/local_services.dart';
 
 class LayoutRepoImpl extends LayOutRepo {
   final LayoutDataSource layoutDataSource;
@@ -33,10 +35,27 @@ class LayoutRepoImpl extends LayOutRepo {
       layoutDataSource.getBottomNavItems();
 
   @override
-  Future<Either<Failure, List<WeatherModel>>> getWeatherModel() async {
+  Future<Either<Failure, List<WeatherModel>>> getWeather() async {
     try {
-      List<WeatherModel> weather = await layoutDataSource.getWeatherData();
-      return right(weather);
+      String token = await LocalServices.getData(key: 'token');
+      Dio dio = Dio();
+      dio.options.headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+      var response = await dio.get('$baseUrl$weatherendPoint');
+      List<WeatherModel> weather = [];
+
+      if (response.statusCode == 200) {
+        for (var weatherMap in response.data['data']) {
+          weather.add(WeatherModel.fromJson(weatherMap));
+        }
+        return right(weather);
+      } else {
+        return left(
+            ServerFailure('Non-200 status code: ${response.statusCode}'));
+      }
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));

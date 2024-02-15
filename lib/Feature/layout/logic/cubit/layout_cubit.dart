@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +36,7 @@ class LayoutCubit extends Cubit<LayoutState> {
     );
 
     if (currentIndex == 0) {
-      getWeatherData();
+      getWeather();
     }
     //  When Navigation to favorites scarean
 
@@ -55,50 +54,50 @@ class LayoutCubit extends Cubit<LayoutState> {
     emit(const ChangeBottomNavToHome());
   }
 
-  Future<void> getWeatherData() async {
-    emit(HomeGetWeatherLoading());
+  List<WeatherModel> weatherResult = <WeatherModel>[];
+  Future<void> saveWeatherDataToLocal(List<WeatherModel> weatherData) async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonData = weatherData.map((weather) => weather.toJson()).toList();
+    prefs.setString('weatherData', json.encode(jsonData));
+  }
+
+  Future<List<WeatherModel>> loadWeatherDataFromLocal() async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('weatherData');
+    if (jsonString != null) {
+      final jsonData = json.decode(jsonString);
+      return jsonData
+          .map<WeatherModel>((weather) => WeatherModel.fromJson(weather))
+          .toList();
+    } else {
+      return [];
+    }
+  }
+
+  Future<void> getWeather() async {
+    emit(GetweatherDataLoadingState());
 
     try {
       final localWeatherData = await loadWeatherDataFromLocal();
 
       if (localWeatherData.isNotEmpty) {
         weatherResult = localWeatherData;
-        emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
+        emit(GetweatherDataSuccessState(weatherModel: weatherResult));
       } else {
-        final weatherEither = await layOutRepo.getWeatherModel();
+        final weatherEither = await layOutRepo.getWeather();
         weatherEither.fold(
           (failure) {
-            emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
+            emit(GetweatherDataErrorState(errormassage: failure.errMessage));
           },
           (weather) async {
             weatherResult = weather;
-            emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
+            emit(GetweatherDataSuccessState(weatherModel: weatherResult));
             await saveWeatherDataToLocal(weather);
           },
         );
       }
     } catch (e) {
-      emit(HomeGetWeatherFallure(errormassage: e.toString()));
+      emit(GetweatherDataErrorState(errormassage: e.toString()));
     }
-  }
-}
-
-List<WeatherModel> weatherResult = <WeatherModel>[];
-Future<void> saveWeatherDataToLocal(List<WeatherModel> weatherData) async {
-  final prefs = await SharedPreferences.getInstance();
-  final jsonData = weatherData.map((weather) => weather.toJson()).toList();
-  prefs.setString('weatherData', json.encode(jsonData));
-}
-
-Future<List<WeatherModel>> loadWeatherDataFromLocal() async {
-  final prefs = await SharedPreferences.getInstance();
-  final jsonString = prefs.getString('weatherData');
-  if (jsonString != null) {
-    final jsonData = json.decode(jsonString);
-    return jsonData
-        .map<WeatherModel>((weather) => WeatherModel.fromJson(weather))
-        .toList();
-  } else {
-    return [];
   }
 }
