@@ -5,8 +5,8 @@ import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_item.
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
-class ListOfRecntlyViewedItem extends StatelessWidget {
-  const ListOfRecntlyViewedItem({super.key});
+class RecntlyViewedListView extends StatelessWidget {
+  const RecntlyViewedListView({super.key});
 
   @override
   Widget build(BuildContext context) {

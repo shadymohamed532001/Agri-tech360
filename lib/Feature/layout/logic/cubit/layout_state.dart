@@ -21,19 +21,3 @@ class ChangeBottomNavState extends LayoutState {
 class ChangeBottomNavToHome extends LayoutState {
   const ChangeBottomNavToHome();
 }
-
-final class GetweatherDataLoadingState extends LayoutState {}
-
-final class GetweatherDataErrorState extends LayoutState {
-  final String errormassage;
-
-  const GetweatherDataErrorState({
-    required this.errormassage,
-  });
-}
-
-final class GetweatherDataSuccessState extends LayoutState {
-  final List<WeatherModel> weatherModel;
-
-  const GetweatherDataSuccessState({required this.weatherModel});
-}

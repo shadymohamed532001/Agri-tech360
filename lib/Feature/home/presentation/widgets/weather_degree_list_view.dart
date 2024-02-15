@@ -3,28 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
+import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/weather_degree_item.dart';
-import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
+import 'package:smartsoil/core/widgets/custom_error_widget.dart';
 
-class ListOfWeatherDegreeItem extends StatelessWidget {
-  const ListOfWeatherDegreeItem({
+class WeatherDegreeListView extends StatelessWidget {
+  const WeatherDegreeListView({
     super.key,
-    required this.weathermodelData,
   });
-
-  final List<WeatherModel> weathermodelData;
 
   @override
   Widget build(BuildContext context) {
-    LayoutCubit cubit = LayoutCubit.getObject(context);
+    HomeCubit cubit = HomeCubit.getObject(context);
 
-    return BlocBuilder<LayoutCubit, LayoutState>(
+    return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (cubit.weatherResult != null) {
+        if (state is GetweatherDataLoadingState) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: ColorManger.primaryColor,
+            ),
+          );
+        } else if (cubit.weatherResult != null) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,11 +57,17 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
               ),
             ],
           );
+        } else if (state is GetweatherDataErrorState) {
+          return CustomErrorWidget(
+            error: state.errormassage,
+            onPressed: () => cubit.getWeather(),
+          );
         } else {
           return Center(
-              child: CircularProgressIndicator(
-            color: ColorManger.primaryColor,
-          ));
+            child: CircularProgressIndicator(
+              color: ColorManger.primaryColor,
+            ),
+          );
         }
       },
     );

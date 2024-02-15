@@ -2,21 +2,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
-import 'package:smartsoil/Feature/home/data/repositories/home_repo.dart';
+import 'package:smartsoil/Feature/home/domain/repositories/home_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit({required this.homeRepo}) : super(HomeInitial());
+
+  static HomeCubit getObject(context) => BlocProvider.of<HomeCubit>(context);
+
   final HomeRepo homeRepo;
-
-  int currentIndex = 1;
-
-  // Future<void> changeBottomIndex(int index, BuildContext context) async {
-  //   homeRepo.changeBottomNavIndex(index, context);
-  //   emit(ChangeBottomNavState(index));
-  // }
 
   List<WeatherModel> weatherResult = <WeatherModel>[];
 
@@ -39,8 +34,30 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  // Future<void> navigateToCheckPlant(BuildContext context) async {
-  //   homeRepo.navigationToPredictPlantView(context: context);
-  //   emit(HomeNavigtoCheckPlantView());
-  // }
+  Future<void> getWeather() async {
+    emit(GetweatherDataLoadingState());
+
+    try {
+      final localWeatherData = await loadWeatherDataFromLocal();
+
+      if (localWeatherData.isNotEmpty) {
+        weatherResult = localWeatherData;
+        emit(GetweatherDataSuccessState(weatherModel: weatherResult));
+      } else {
+        final weatherEither = await homeRepo.getWeather();
+        weatherEither.fold(
+          (failure) {
+            emit(GetweatherDataErrorState(errormassage: failure.errMessage));
+          },
+          (weather) async {
+            weatherResult = weather;
+            emit(GetweatherDataSuccessState(weatherModel: weatherResult));
+            await saveWeatherDataToLocal(weather);
+          },
+        );
+      }
+    } catch (e) {
+      emit(GetweatherDataErrorState(errormassage: e.toString()));
+    }
+  }
 }

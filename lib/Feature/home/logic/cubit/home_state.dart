@@ -11,18 +11,18 @@ class ChangeBottomNavState extends HomeState {
   ChangeBottomNavState(this.index);
 }
 
-final class HomeGetWeatherLoading extends HomeState {}
+final class GetweatherDataLoadingState extends HomeState {}
 
-final class HomeGetWeatherFallure extends HomeState {
+final class GetweatherDataErrorState extends HomeState {
   final String errormassage;
 
-  HomeGetWeatherFallure({required this.errormassage});
+  GetweatherDataErrorState({required this.errormassage});
 }
 
-final class HomeGetWeatherSuccess extends HomeState {
+final class GetweatherDataSuccessState extends HomeState {
   final List<WeatherModel> weatherModel;
 
-  HomeGetWeatherSuccess({required this.weatherModel});
+  GetweatherDataSuccessState({required this.weatherModel});
 }
 
 final class HomeNavigtoCheckPlantView extends HomeState {}

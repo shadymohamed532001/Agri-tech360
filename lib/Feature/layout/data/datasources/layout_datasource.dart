@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
 
 abstract class LayoutDataSource {
@@ -10,6 +9,4 @@ abstract class LayoutDataSource {
   List<Widget> getBody();
 
   List<BottomNavigationBarItem> getBottomNavItems();
-
-  Future<List<WeatherModel>> getWeatherData();
 }
