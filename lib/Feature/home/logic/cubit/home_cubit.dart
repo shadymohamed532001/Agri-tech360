@@ -13,14 +13,10 @@ class HomeCubit extends Cubit<HomeState> {
 
   int currentIndex = 1;
 
-  Future<void> changeBottomIndex(int index, BuildContext context) async {
-    homeRepo.changeBottomNavIndex(index, context);
-    emit(ChangeBottomNavState(index));
-  }
-
-  List<Widget> views() {
-    return homeRepo.views();
-  }
+  // Future<void> changeBottomIndex(int index, BuildContext context) async {
+  //   homeRepo.changeBottomNavIndex(index, context);
+  //   emit(ChangeBottomNavState(index));
+  // }
 
   List<WeatherModel> weatherResult = <WeatherModel>[];
 
@@ -43,35 +39,8 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> getWeather() async {
-    emit(HomeGetWeatherLoading());
-
-    try {
-      final localWeatherData = await loadWeatherDataFromLocal();
-
-      if (localWeatherData.isNotEmpty) {
-        weatherResult = localWeatherData;
-        emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
-      } else {
-        final weatherEither = await homeRepo.getWeather();
-        weatherEither.fold(
-          (failure) {
-            emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
-          },
-          (weather) async {
-            weatherResult = weather;
-            emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
-            await saveWeatherDataToLocal(weather);
-          },
-        );
-      }
-    } catch (e) {
-      emit(HomeGetWeatherFallure(errormassage: e.toString()));
-    }
-  }
-
-  Future<void> navigateToCheckPlant(BuildContext context) async {
-    homeRepo.navigationToPredictPlantView(context: context);
-    emit(HomeNavigtoCheckPlantView());
-  }
+  // Future<void> navigateToCheckPlant(BuildContext context) async {
+  //   homeRepo.navigationToPredictPlantView(context: context);
+  //   emit(HomeNavigtoCheckPlantView());
+  // }
 }

@@ -84,7 +84,7 @@ class LayoutCubit extends Cubit<LayoutState> {
         weatherResult = localWeatherData;
         emit(GetweatherDataSuccessState(weatherModel: weatherResult));
       } else {
-        final weatherEither = await layOutRepo.getWeather();
+        final weatherEither = await layOutRepo.getWeather_2();
         weatherEither.fold(
           (failure) {
             emit(GetweatherDataErrorState(errormassage: failure.errMessage));

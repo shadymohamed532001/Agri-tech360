@@ -28,7 +28,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpLoading) {
-          // show the CircularProgressIndicator widget
           showDialog(
             context: context,
             builder: (_) => Center(
@@ -37,17 +36,17 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
             ),
           );
-        } else if (state is SignUpSucess) {
-          if (state.registerModel.status == true) {
-            Navigator.of(context)
-                .pop(); // close the dialog if successfully logged in
+        }
+        if (state is SignUpSucess) {
+          if (state.loginModel.status == true) {
+            Navigator.of(context).pop();
             showTouster(
-              massage: state.registerModel.message!,
+              massage: state.loginModel.message!,
               state: ToustState.SUCCESS,
             );
             LocalServices.saveData(
               key: 'token',
-              value: state.registerModel.data!.token,
+              value: state.loginModel.data!.token,
             ).then(
               (value) {
                 context.pushNamedAndRemoveUntil(
@@ -57,8 +56,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               },
             );
           }
-        } else if (state is SignUpError) {
-          Navigator.of(context).pop(); // close the dialog if login fails
+        }
+        if (state is SignUpError) {
+          Navigator.of(context).pop();
           showTouster(
             massage: state.errorMessage,
             state: ToustState.ERROR,

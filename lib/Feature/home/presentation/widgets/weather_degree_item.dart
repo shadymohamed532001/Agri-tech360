@@ -9,10 +9,8 @@ class WeatherDegreeItem extends StatelessWidget {
   const WeatherDegreeItem({
     super.key,
     required this.weatherModels,
-    required this.index,
   });
-  final List<WeatherModel> weatherModels;
-  final int index;
+  final WeatherModel weatherModels;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,7 +47,7 @@ class WeatherDegreeItem extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Text(
-                          weatherModels[index].date,
+                          weatherModels.date,
                           style: AppStyle.font12Blackmedium.copyWith(
                             fontSize: 11,
                           ),
@@ -59,7 +57,7 @@ class WeatherDegreeItem extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Image.network(
-                          weatherModels[index].icon,
+                          weatherModels.icon,
                           fit: BoxFit.cover,
                           scale: 1.7,
                         ),
@@ -76,7 +74,7 @@ class WeatherDegreeItem extends StatelessWidget {
                             horizontalSpacing(2),
                             Expanded(
                               child: Text(
-                                '${weatherModels[index].maxTemp}',
+                                '${weatherModels.maxTemp}',
                                 style: AppStyle.font12Blackregular,
                               ),
                             )
@@ -94,7 +92,7 @@ class WeatherDegreeItem extends StatelessWidget {
                             horizontalSpacing(2),
                             Expanded(
                               child: Text(
-                                '${weatherModels[index].minTemp}',
+                                '${weatherModels.minTemp}',
                                 style: AppStyle.font12Blackregular,
                               ),
                             )

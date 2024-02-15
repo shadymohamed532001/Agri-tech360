@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
-import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/weather_degree_item.dart';
+import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class ListOfWeatherDegreeItem extends StatelessWidget {
@@ -18,18 +18,18 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeCubit = BlocProvider.of<HomeCubit>(context);
+    LayoutCubit cubit = LayoutCubit.getObject(context);
 
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<LayoutCubit, LayoutState>(
       builder: (context, state) {
-        if (homeCubit.weatherResult != null) {
+        if (cubit.weatherResult != null) {
           return SizedBox(
             height: 115.h,
             width: double.infinity,
             child: ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              itemCount: homeCubit.weatherResult.length,
+              itemCount: cubit.weatherResult.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
@@ -37,8 +37,7 @@ class ListOfWeatherDegreeItem extends StatelessWidget {
                       right: 16.w,
                     ),
                     child: WeatherDegreeItem(
-                      index: index,
-                      weatherModels: homeCubit.weatherResult,
+                      weatherModels: cubit.weatherResult[index],
                     ));
               },
             ),

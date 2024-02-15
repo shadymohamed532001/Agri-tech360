@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
-import 'package:smartsoil/Feature/auth/presentation/auth_view_body.dart';
+import 'package:smartsoil/Feature/auth/presentation/views/auth_view_body.dart';
 import 'package:smartsoil/Feature/checkplant/presentation/check_plant_vie.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/layout/presentation/views/layout_views.dart';
@@ -64,13 +64,11 @@ class AppRoutes {
           ),
         );
       case Routes.layOutViewsRoute:
-        return MaterialPageRoute(builder: (context) {
-          return BlocProvider(
-            create: (context) =>
-                serviceLocator.get<LayoutCubit>()..getWeather(),
-            child: const LayOutViews(),
-          );
-        });
+        return MaterialPageRoute(
+          builder: (context) {
+            return const LayOutViews();
+          },
+        );
       // case Routes.homeViewRoute:
       //   return MaterialPageRoute(
       //     builder: (context) => BlocProvider(

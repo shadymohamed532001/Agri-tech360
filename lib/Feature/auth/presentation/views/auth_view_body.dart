@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/auth/presentation/widgets/login/login_view_body.dart';
-import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/sign_up_view_body.dart';
+import 'package:smartsoil/Feature/auth/presentation/widgets/login/views/login_view_body.dart';
+import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/views/sign_up_view_body.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/precious_app_bar.dart';

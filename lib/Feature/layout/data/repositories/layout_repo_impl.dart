@@ -64,4 +64,18 @@ class LayoutRepoImpl extends LayOutRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<WeatherModel>>> getWeather_2() async {
+    try {
+      List<WeatherModel> weather = await layoutDataSource.getWeatherData();
+      return right(weather);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }
