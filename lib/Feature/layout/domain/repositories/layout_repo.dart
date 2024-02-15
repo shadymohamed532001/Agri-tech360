@@ -7,12 +7,12 @@ import 'package:smartsoil/core/error/failuer.dart';
 abstract class LayOutRepo {
   void changeBottomNavIndex({required ChangeIndexParams changeIndexParams});
 
-  void changeBottomNavToHome(
-      {required ChangeIndexParams changeIndexParams}); //???
+  void changeBottomNavToHome({required ChangeIndexParams changeIndexParams});
 
   List<Widget> getBody();
 
   List<BottomNavigationBarItem> getBottomNavItems();
 
-  Future<Either<Failure, WeatherModel>> getUserData();
+  Future<Either<Failure, List<WeatherModel>>> getWeather();
+  Future<Either<Failure, List<WeatherModel>>> getWeatherModel();
 }

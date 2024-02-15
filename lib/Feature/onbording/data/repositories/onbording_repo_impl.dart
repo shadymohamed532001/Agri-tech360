@@ -23,7 +23,7 @@ class OnBoardingRepoImpl implements OnBoardingRepo {
           );
         } else {
           context.pushNamedAndRemoveUntil(
-            Routes.homeViewRoute,
+            Routes.layOutViewsRoute,
             routePredicate: (route) => false,
           );
         }

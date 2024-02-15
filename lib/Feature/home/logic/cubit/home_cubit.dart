@@ -57,7 +57,6 @@ class HomeCubit extends Cubit<HomeState> {
         weatherEither.fold(
           (failure) {
             emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
-            print(failure.errMessage.toString());
           },
           (weather) async {
             weatherResult = weather;

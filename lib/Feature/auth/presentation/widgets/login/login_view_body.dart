@@ -49,7 +49,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             ).then(
               (value) {
                 context.pushNamedAndRemoveUntil(
-                  Routes.homeViewRoute,
+                  Routes.layOutViewsRoute,
                   routePredicate: (route) => false,
                 );
               },

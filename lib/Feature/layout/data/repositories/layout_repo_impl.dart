@@ -33,15 +33,16 @@ class LayoutRepoImpl extends LayOutRepo {
       layoutDataSource.getBottomNavItems();
 
   @override
-  Future<Either<Failure, WeatherModel>> getUserData() async {
+  Future<Either<Failure, List<WeatherModel>>> getWeatherModel() async {
     try {
-      final response = await layoutDataSource.getUserData();
-      return Right(response);
+      List<WeatherModel> weather = await layoutDataSource.getWeatherData();
+      return right(weather);
     } catch (e) {
       if (e is DioException) {
-        return Left(ServerFailure.fromDioException(e));
+        return left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(e.toString()));
       }
-      return Left(ServerFailure(e.toString()));
     }
   }
 }

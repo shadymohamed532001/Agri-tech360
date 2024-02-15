@@ -51,7 +51,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             ).then(
               (value) {
                 context.pushNamedAndRemoveUntil(
-                  Routes.homeViewRoute,
+                  Routes.layOutViewsRoute,
                   routePredicate: (route) => false,
                 );
               },

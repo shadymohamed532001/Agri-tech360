@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
 import 'package:smartsoil/Feature/layout/domain/repositories/layout_repo.dart';
 part 'layout_state.dart';
@@ -33,7 +37,7 @@ class LayoutCubit extends Cubit<LayoutState> {
     );
 
     if (currentIndex == 0) {
-      // getUserData();
+      getWeatherData();
     }
     //  When Navigation to favorites scarean
 
@@ -51,21 +55,50 @@ class LayoutCubit extends Cubit<LayoutState> {
     emit(const ChangeBottomNavToHome());
   }
 
-  // // HomeModel? homeModel;
+  Future<void> getWeatherData() async {
+    emit(HomeGetWeatherLoading());
 
-  // void getUserData() {
-  //   emit(const GetUserDataLoadingState());
+    try {
+      final localWeatherData = await loadWeatherDataFromLocal();
 
-  //   layOutRepo.getUserData().then((value) {
-  //     value.fold(
-  //       (failure) {
-  //         emit(GetUserDataErrorState(error: failure.errMessage.toString()));
-  //       },
-  //       (userData) {
-  //         homeModel = userData;
-  //         emit(GetUserDataSuccessState(homeModel: userData));
-  //       },
-  //     );
-  //   });
-  // }
+      if (localWeatherData.isNotEmpty) {
+        weatherResult = localWeatherData;
+        emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
+      } else {
+        final weatherEither = await layOutRepo.getWeatherModel();
+        weatherEither.fold(
+          (failure) {
+            emit(HomeGetWeatherFallure(errormassage: failure.errMessage));
+          },
+          (weather) async {
+            weatherResult = weather;
+            emit(HomeGetWeatherSuccess(weatherModel: weatherResult));
+            await saveWeatherDataToLocal(weather);
+          },
+        );
+      }
+    } catch (e) {
+      emit(HomeGetWeatherFallure(errormassage: e.toString()));
+    }
+  }
+}
+
+List<WeatherModel> weatherResult = <WeatherModel>[];
+Future<void> saveWeatherDataToLocal(List<WeatherModel> weatherData) async {
+  final prefs = await SharedPreferences.getInstance();
+  final jsonData = weatherData.map((weather) => weather.toJson()).toList();
+  prefs.setString('weatherData', json.encode(jsonData));
+}
+
+Future<List<WeatherModel>> loadWeatherDataFromLocal() async {
+  final prefs = await SharedPreferences.getInstance();
+  final jsonString = prefs.getString('weatherData');
+  if (jsonString != null) {
+    final jsonData = json.decode(jsonString);
+    return jsonData
+        .map<WeatherModel>((weather) => WeatherModel.fromJson(weather))
+        .toList();
+  } else {
+    return [];
+  }
 }

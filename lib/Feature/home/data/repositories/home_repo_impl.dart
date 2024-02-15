@@ -45,10 +45,10 @@ class HomeRepooImpl extends HomeRepo {
         'Accept': 'application/json',
         'Authorization': 'Bearer $token',
       };
-      var response = await dio.get('$baseUrl$getWeatgerendPoint');
+      var response = await dio.get('$baseUrl$weatherendPoint');
+      List<WeatherModel> weather = [];
 
       if (response.statusCode == 200) {
-        List<WeatherModel> weather = [];
         for (var weatherMap in response.data['data']) {
           weather.add(WeatherModel.fromJson(weatherMap));
         }

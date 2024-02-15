@@ -22,24 +22,16 @@ class ChangeBottomNavToHome extends LayoutState {
   const ChangeBottomNavToHome();
 }
 
-class GetUserDataLoadingState extends LayoutState {
-  const GetUserDataLoadingState();
+final class HomeGetWeatherLoading extends LayoutState {}
+
+final class HomeGetWeatherFallure extends LayoutState {
+  final String errormassage;
+
+  const HomeGetWeatherFallure({required this.errormassage});
 }
 
-// class GetUserDataSuccessState extends LayoutState {
-//   // final HomeModel homeModel;
+final class HomeGetWeatherSuccess extends LayoutState {
+  final List<WeatherModel> weatherModel;
 
-//   const GetUserDataSuccessState({required this.homeModel});
-
-//   @override
-//   List<Object> get props => [homeModel];
-// }
-
-class GetUserDataErrorState extends LayoutState {
-  final String error;
-
-  const GetUserDataErrorState({required this.error});
-
-  @override
-  List<Object> get props => [error];
+  const HomeGetWeatherSuccess({required this.weatherModel});
 }
