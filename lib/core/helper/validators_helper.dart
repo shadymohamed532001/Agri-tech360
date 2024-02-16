@@ -6,8 +6,7 @@ class MyValidatorsHelper {
     if (displayName.length < 3 || displayName.length > 20) {
       return 'Display name must be between 3 and 20 characters';
     }
-
-    return null; // Return null if display name is valid
+    return null;
   }
 
   static String? emailValidator(String? value) {
@@ -46,7 +45,7 @@ class MyValidatorsHelper {
       return 'Please enter a phone number';
     }
     if (value.length < 6) {
-      return 'phone number must be at least 11 number';
+      return 'phone number must be at least 6 numbers';
     }
     return null;
   }
