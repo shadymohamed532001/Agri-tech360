@@ -28,6 +28,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpLoading) {
+          // show the CircularProgressIndicator widget
           showDialog(
             context: context,
             builder: (_) => Center(
@@ -36,17 +37,17 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               ),
             ),
           );
-        }
-        if (state is SignUpSucess) {
-          if (state.loginModel.status == true) {
-            Navigator.of(context).pop();
+        } else if (state is SignUpSucess) {
+          if (state.registerModel.status == true) {
+            Navigator.of(context)
+                .pop(); // close the dialog if successfully logged in
             showTouster(
-              massage: state.loginModel.message!,
+              massage: state.registerModel.message!,
               state: ToustState.SUCCESS,
             );
             LocalServices.saveData(
               key: 'token',
-              value: state.loginModel.data!.token,
+              value: state.registerModel.data!.token,
             ).then(
               (value) {
                 context.pushNamedAndRemoveUntil(
@@ -56,9 +57,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
               },
             );
           }
-        }
-        if (state is SignUpError) {
-          Navigator.of(context).pop();
+        } else if (state is SignUpError) {
+          Navigator.of(context).pop(); // close the dialog if login fails
           showTouster(
             massage: state.errorMessage,
             state: ToustState.ERROR,
@@ -168,11 +168,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   void registerUser(BuildContext context) {
     BlocProvider.of<SignUpCubit>(context).signUpUser(
-      email: context.read<SignUpCubit>().emailController.text,
-      password: context.read<SignUpCubit>().passwordController.text,
-      name: context.read<SignUpCubit>().nameController.text,
-      phone: context.read<SignUpCubit>().phoneController.text,
-      city: 'tanta',
-    );
+        email: context.read<SignUpCubit>().emailController.text,
+        password: context.read<SignUpCubit>().passwordController.text,
+        name: context.read<SignUpCubit>().nameController.text,
+        phone: context.read<SignUpCubit>().phoneController.text,
+        city: 'tanta',
+        profileImage: 'null');
   }
 }

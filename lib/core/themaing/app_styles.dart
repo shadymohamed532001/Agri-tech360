@@ -31,6 +31,11 @@ class AppStyle {
     fontWeight: FontWeightHelper.regular,
     color: Colors.black,
   );
+  static TextStyle font13Blackregular = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.black,
+  );
 
   static TextStyle font14lightblacksemibold = TextStyle(
     fontSize: 14.sp,

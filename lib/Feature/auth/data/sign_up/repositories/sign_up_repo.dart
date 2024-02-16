@@ -9,5 +9,6 @@ abstract class SignUpRepo {
     required String password,
     required String phoneNumber,
     required String city,
+    required String profileImage,
   });
 }

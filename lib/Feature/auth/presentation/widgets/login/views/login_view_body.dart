@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/donot_have_acound_and_sign_up.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/login_form.dart';
@@ -43,6 +46,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               massage: state.loginModel.message!,
               state: ToustState.SUCCESS,
             );
+            saveUserData(state.loginModel.data!);
+
             LocalServices.saveData(
               key: 'token',
               value: state.loginModel.data!.token,
@@ -111,5 +116,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       email: context.read<LoginCubit>().emailController.text,
       password: context.read<LoginCubit>().passwordController.text,
     );
+  }
+
+  void saveUserData(Data data) {
+    UserModel userModel = UserModel(data: data);
+    String userJson = jsonEncode(userModel.toJson());
+    LocalServices.saveData(key: 'userData', value: userJson);
   }
 }

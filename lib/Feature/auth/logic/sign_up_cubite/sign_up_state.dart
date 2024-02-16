@@ -13,8 +13,6 @@ final class SignUpSucess extends SignUpState {
   final UserModel registerModel;
 
   const SignUpSucess({required this.registerModel});
-
-  get loginModel => null;
 }
 
 final class SignUpLoading extends SignUpState {}

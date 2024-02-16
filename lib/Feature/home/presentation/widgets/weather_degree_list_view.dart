@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,34 +29,36 @@ class WeatherDegreeListView extends StatelessWidget {
             ),
           );
         } else if (cubit.weatherResult != null) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Daily Forecast',
-                style: AppStyle.font22BlackBold,
-              ),
-              verticalSpacing(24),
-              SizedBox(
-                height: 115.h,
-                width: double.infinity,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: cubit.weatherResult.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                        padding: EdgeInsets.only(
-                          right: 16.w,
-                        ),
-                        child: WeatherDegreeItem(
-                          weatherModels: cubit.weatherResult[index],
-                        ));
-                  },
+          return FadeInLeft(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Daily Forecast',
+                  style: AppStyle.font22BlackBold,
                 ),
-              ),
-            ],
+                verticalSpacing(24),
+                SizedBox(
+                  height: 115.h,
+                  width: double.infinity,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: cubit.weatherResult.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                          padding: EdgeInsets.only(
+                            right: 16.w,
+                          ),
+                          child: WeatherDegreeItem(
+                            weatherModels: cubit.weatherResult[index],
+                          ));
+                    },
+                  ),
+                ),
+              ],
+            ),
           );
         } else if (state is GetweatherDataErrorState) {
           return CustomErrorWidget(

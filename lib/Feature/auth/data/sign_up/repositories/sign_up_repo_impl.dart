@@ -15,16 +15,23 @@ class SignUpRepoImpl extends SignUpRepo {
     required String password,
     required String phoneNumber,
     required String city,
+    required String profileImage,
   }) async {
     try {
-      var response =
-          await ApiServices.postData(endpoint: registerendPoint, data: {
-        'fullName': fullName,
+      FormData formData = FormData.fromMap({
         'email': email,
         'password': password,
+        'fullName': fullName,
         'phoneNumber': phoneNumber,
-        'city': city
+        'city': city,
+        'profilePic': profileImage,
       });
+
+      var response = await ApiServices.postFormData(
+        endpoint: registerendPoint,
+        formData: formData,
+      );
+
       final UserModel user = UserModel.fromJson(response);
       return right(user);
     } catch (e) {

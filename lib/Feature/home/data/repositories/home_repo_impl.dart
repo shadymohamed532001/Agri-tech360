@@ -24,4 +24,10 @@ class HomeRepooImpl extends HomeRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List>> getExplorData() {
+    // TODO: implement getExplorData
+    throw UnimplementedError();
+  }
 }

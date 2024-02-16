@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:smartsoil/Feature/home/presentation/views/home_body.dart';
+import 'package:smartsoil/Feature/home/presentation/widgets/home_body.dart';
 import 'package:smartsoil/Feature/layout/data/datasources/layout_datasource.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';

@@ -15,10 +15,14 @@ class LoginRepoImpl extends LoginRepo {
     String? lang,
   }) async {
     try {
-      var response = await ApiServices.postData(endpoint: loginendpoint, data: {
+      FormData formData = FormData.fromMap({
         'email': email,
         'password': password,
       });
+      var response = await ApiServices.postFormData(
+        endpoint: loginendpoint,
+        formData: formData,
+      );
       final UserModel user = UserModel.fromJson(response);
       return right(user);
     } catch (e) {

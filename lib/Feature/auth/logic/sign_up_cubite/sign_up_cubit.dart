@@ -17,6 +17,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required String phone,
     required String city,
+    required String profileImage,
   }) {
     emit(SignUpLoading());
     signUpRepo
@@ -26,6 +27,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       password: password,
       phoneNumber: phone,
       city: city,
+      profileImage: profileImage,
     )
         .then((value) {
       value.fold(

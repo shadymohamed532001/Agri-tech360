@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/heal_your_crop_and_plant_text.dart';
@@ -32,13 +31,9 @@ class HomeBody extends StatelessWidget {
                         verticalSpacing(40),
                         const HealYourCropAndPlantText(),
                         verticalSpacing(40),
-                        FadeInLeft(
-                          child: const WeatherDegreeListView(),
-                        ),
+                        const WeatherDegreeListView(),
                         verticalSpacing(35),
-                        FadeInUp(
-                          child: const RecntlyViewedListView(),
-                        )
+                        const RecntlyViewedListView()
                       ],
                     ),
                   ),

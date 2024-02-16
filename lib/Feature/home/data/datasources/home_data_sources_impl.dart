@@ -8,6 +8,7 @@ class HomeDatSourceImpl extends HomeDataSource {
   @override
   Future<List<WeatherModel>> getWeatherData() async {
     String token = await LocalServices.getData(key: 'token');
+
     Map<String, dynamic> response = await ApiServices.getData(
       endpoint: '$baseUrl$weatherendPoint',
       token: token,
@@ -21,5 +22,11 @@ class HomeDatSourceImpl extends HomeDataSource {
       }
     }
     return weather;
+  }
+
+  @override
+  Future<List<WeatherModel>> getExplorData() {
+    // TODO: implement getExplorData
+    throw UnimplementedError();
   }
 }

@@ -4,6 +4,8 @@ class Routes {
   static const String layOutViewsRoute = '/layOutViews';
 
   // static const String homeViewRoute = '/HomeView';
+  static const String recentlySeeAllViewViewRoute = '/RecentlySeeAllView';
+
   static const String explorPlantDetailsViewRoute = '/ExplorPlantDetails';
   static const String checkPlantViewRoute = '/checkPlantView';
   static const String explorViewRoute = '/explorView';

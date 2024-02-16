@@ -5,6 +5,16 @@ class UserModel {
 
   UserModel({this.data, this.message, this.status});
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    data['message'] = message;
+    data['status'] = status;
+    return data;
+  }
+
   UserModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
@@ -19,14 +29,30 @@ class Data {
   String? fullName;
   String? phoneNumber;
   String? token;
+  String? profilePic;
 
-  Data(
-      {this.city,
-      this.email,
-      this.fullName,
-      this.phoneNumber,
-      this.token,
-      this.id});
+  Data({
+    this.city,
+    this.email,
+    this.fullName,
+    this.phoneNumber,
+    this.token,
+    this.id,
+    this.profilePic,
+  });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    data['city'] = city;
+    data['email'] = email;
+    data['fullName'] = fullName;
+    data['phoneNumber'] = phoneNumber;
+    data['token'] = token;
+    data['id'] = id;
+    data['profilePic'] = id;
+
+    return data;
+  }
 
   Data.fromJson(Map<String, dynamic> json) {
     city = json['city'];

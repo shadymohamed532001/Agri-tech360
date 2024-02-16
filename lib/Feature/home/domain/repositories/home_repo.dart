@@ -4,4 +4,7 @@ import 'package:smartsoil/core/error/failuer.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<WeatherModel>>> getWeather();
+
+// Returns the list of ExplorModel models
+  Future<Either<Failure, List<dynamic>>> getExplorData();
 }

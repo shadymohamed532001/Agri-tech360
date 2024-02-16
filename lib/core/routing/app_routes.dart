@@ -4,6 +4,7 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
 import 'package:smartsoil/Feature/checkplant/presentation/check_plant_vie.dart';
+import 'package:smartsoil/Feature/home/presentation/views/recentaly_see_all_view.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/layout/presentation/views/layout_views.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
@@ -63,12 +64,24 @@ class AppRoutes {
             child: const AuthViewBody(),
           ),
         );
+
       case Routes.layOutViewsRoute:
         return MaterialPageRoute(
           builder: (context) {
             return const LayOutViews();
           },
         );
+
+      case Routes.searchViewRoute:
+        return MaterialPageRoute(
+          builder: (context) => const SearchView(),
+        );
+
+      case Routes.recentlySeeAllViewViewRoute:
+        return MaterialPageRoute(
+          builder: (context) => const RecentlySeeAllView(),
+        );
+
       // case Routes.homeViewRoute:
       //   return MaterialPageRoute(
       //     builder: (context) => BlocProvider(
@@ -76,11 +89,6 @@ class AppRoutes {
       //       child: const HomeView(),
       //     ),
       //   );
-      case Routes.searchViewRoute:
-        return MaterialPageRoute(
-          builder: (context) => const SearchView(),
-        );
-
       // case Routes.explorPlantDetailsViewRoute:
       //   return MaterialPageRoute(
       //       builder: (context) => BlocProvider(

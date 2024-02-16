@@ -39,7 +39,7 @@ class ServerFailure extends Failure {
       if (statusCode == StatusCodes.badRequest ||
           statusCode == StatusCodes.unAuthorized ||
           statusCode == StatusCodes.forbidden) {
-        return ServerFailure(parsedResponse['message'] ?? 'badRequest');
+        return ServerFailure(parsedResponse['massage'] ?? 'badRequest');
       } else if (statusCode == StatusCodes.internalServerError) {
         return ServerFailure(parsedResponse['error'] ?? 'internalServerError');
       }

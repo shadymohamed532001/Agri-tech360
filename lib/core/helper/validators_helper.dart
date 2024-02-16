@@ -35,8 +35,8 @@ class MyValidatorsHelper {
     if (value!.isEmpty) {
       return 'Please enter a City name';
     }
-    if (value.length < 6) {
-      return 'City must be at least 4 characters long';
+    if (value.length < 3) {
+      return 'City must be at least 3 characters long';
     }
     return null;
   }
