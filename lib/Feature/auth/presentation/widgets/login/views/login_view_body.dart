@@ -7,7 +7,7 @@ import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/donot_have_acound_and_sign_up.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/login_form.dart';
-import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -53,9 +53,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               value: state.loginModel.data!.token,
             ).then(
               (value) {
-                context.pushNamedAndRemoveUntil(
-                  Routes.layOutViewsRoute,
-                  routePredicate: (route) => false,
+                context.navigateAndRemoveUntil(
+                  newRoute: Routes.layOutViewsRoute,
                 );
               },
             );

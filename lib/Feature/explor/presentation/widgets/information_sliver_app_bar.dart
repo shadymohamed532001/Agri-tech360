@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/core/helper/helper_const.dart';
+import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
+import 'package:smartsoil/core/themaing/app_image_assets.dart';
 
 class InformationSliverAppBar extends StatelessWidget {
-  const InformationSliverAppBar({super.key, required this.index});
-  final int index;
+  const InformationSliverAppBar({super.key, required this.plant});
+  final PlantModle plant;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class InformationSliverAppBar extends StatelessWidget {
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Image.asset(
-          explorationData[index].plantimagepath,
+          ImagesAssetsManger.floweImage,
           fit: BoxFit.fill,
         ),
         stretchModes: const [

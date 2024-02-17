@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class GetBackArrow extends StatelessWidget {

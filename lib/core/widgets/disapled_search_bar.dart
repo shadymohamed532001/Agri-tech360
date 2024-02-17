@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -16,7 +16,7 @@ class DisabledSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pushName(Routes.searchViewRoute),
+      onTap: () => context.navigateTo(routeName: Routes.searchViewRoute),
       child: Container(
         width: double.infinity,
         height: 45.h,

@@ -3,20 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
-class ExplorPlantDetailsSquearContiner extends StatelessWidget {
-  const ExplorPlantDetailsSquearContiner({
+class SquearDetailsContiner extends StatelessWidget {
+  const SquearDetailsContiner({
     super.key,
     required this.explorPlantDetailsSquearText,
     required this.explorPlantDetailsSquearIcon,
   });
   final String explorPlantDetailsSquearText;
-  final Icon explorPlantDetailsSquearIcon;
+  final Widget explorPlantDetailsSquearIcon;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 122.w,
       height: 118.h,
+      padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
@@ -31,7 +32,8 @@ class ExplorPlantDetailsSquearContiner extends StatelessWidget {
           verticalSpacing(16),
           Text(
             explorPlantDetailsSquearText,
-            style: AppStyle.font14Blacksemibold,
+            style: AppStyle.font12Blackregular,
+            textAlign: TextAlign.center,
           )
         ],
       ),

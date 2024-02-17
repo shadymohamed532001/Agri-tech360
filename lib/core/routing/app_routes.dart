@@ -4,6 +4,7 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
 import 'package:smartsoil/Feature/checkplant/presentation/check_plant_vie.dart';
+import 'package:smartsoil/Feature/details/view/details_view.dart';
 import 'package:smartsoil/Feature/home/presentation/views/recentaly_see_all_view.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/layout/presentation/views/layout_views.dart';
@@ -12,6 +13,7 @@ import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/Feature/search/presentation/search_view.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
+import 'package:smartsoil/core/models/planr_model_class.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -81,7 +83,13 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const RecentlySeeAllView(),
         );
-
+      case Routes.detailsViewRoute:
+        final args = routeSettings.arguments as PlantModelClass;
+        return MaterialPageRoute(
+          builder: (context) => DetailsView(
+            plant: args.plantModle,
+          ),
+        );
       // case Routes.homeViewRoute:
       //   return MaterialPageRoute(
       //     builder: (context) => BlocProvider(

@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:smartsoil/Feature/explor/presentation/widgets/information_sliver_app_bar.dart';
+import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/themaing/app_styles.dart';
+
+class CareInstractionViewBody extends StatelessWidget {
+  const CareInstractionViewBody({
+    super.key,
+    required this.plant,
+  });
+
+  final PlantModle plant;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: <Widget>[
+        InformationSliverAppBar(
+          plant: plant,
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpacing(10),
+                Text(
+                  'Care Instructions',
+                  style: AppStyle.font22BlackBold,
+                ),
+                verticalSpacing(10),
+                Text(
+                  plant.careInstructions,
+                  style: AppStyle.font14lightblackmdeium,
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}

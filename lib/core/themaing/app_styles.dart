@@ -42,6 +42,15 @@ class AppStyle {
     fontWeight: FontWeightHelper.semibold,
     color: ColorManger.blackColor.withOpacity(0.8),
   );
+  static TextStyle font14lightblackmdeium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    height: 1.3,
+    wordSpacing: 0.44,
+    letterSpacing: .2,
+    color: ColorManger.blackColor.withOpacity(0.8),
+  );
+
   static TextStyle font20blackregular = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,

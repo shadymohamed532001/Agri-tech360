@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartsoil/Feature/onbording/data/models/on_bording_model.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
-import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 import 'package:smartsoil/core/routing/routes.dart';
@@ -17,14 +17,12 @@ class OnBoardingRepoImpl implements OnBoardingRepo {
     ).then((value) {
       if (value) {
         if (usertoken == null) {
-          context.pushNamedAndRemoveUntil(
-            Routes.authViewRoute,
-            routePredicate: (route) => false,
+          context.navigateAndRemoveUntil(
+            newRoute: Routes.authViewRoute,
           );
         } else {
-          context.pushNamedAndRemoveUntil(
-            Routes.layOutViewsRoute,
-            routePredicate: (route) => false,
+          context.navigateAndRemoveUntil(
+            newRoute: Routes.layOutViewsRoute,
           );
         }
       }

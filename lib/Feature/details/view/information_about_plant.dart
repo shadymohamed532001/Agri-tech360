@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/explor/presentation/widgets/care_instraction_view_body.dart';
-import 'package:smartsoil/Feature/explor/presentation/widgets/descrption_view_body.dart';
+import 'package:smartsoil/Feature/details/widgets/care_instraction_view_body.dart';
+import 'package:smartsoil/Feature/details/widgets/descrption_view_body.dart';
+import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class InformationAboutPlant extends StatefulWidget {
   const InformationAboutPlant({
     super.key,
-    required this.index,
+    required this.plant,
   });
 
-  final int index;
-
+  final PlantModle plant;
   @override
   State<InformationAboutPlant> createState() => _InformationAboutPlantState();
 }
@@ -71,10 +71,10 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
                     controller: _tabController,
                     children: [
                       CareInstractionViewBody(
-                        index: widget.index,
+                        plant: widget.plant,
                       ),
                       DescriptionViewBody(
-                        index: widget.index,
+                        plant: widget.plant,
                       )
                     ],
                   ),

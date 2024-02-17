@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_item.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/see_all_text_button.dart';
-import 'package:smartsoil/core/helper/extentaions.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -41,7 +41,8 @@ class RecntlyViewedListView extends StatelessWidget {
                     const Spacer(),
                     SeeAllTextButton(
                       onTap: () {
-                        context.pushName(Routes.recentlySeeAllViewViewRoute);
+                        context.navigateTo(
+                            routeName: Routes.recentlySeeAllViewViewRoute);
                       },
                     )
                   ],
