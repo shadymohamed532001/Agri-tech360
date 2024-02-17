@@ -35,6 +35,7 @@ class LayoutCubit extends Cubit<LayoutState> {
 
     if (currentIndex == 0) {
       BlocProvider.of<HomeCubit>(context).getWeather();
+      BlocProvider.of<HomeCubit>(context).getPlants();
     }
     //  When Navigation to favorites scarean
 

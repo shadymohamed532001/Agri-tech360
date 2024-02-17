@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart'
     as animations;
+import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_item.dart';
 
 class SeeAllItems extends StatelessWidget {
   const SeeAllItems({
     Key? key,
+    required this.plants,
   }) : super(key: key);
+
+  final List<PlantModle> plants;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +31,10 @@ class SeeAllItems extends StatelessWidget {
         child: animations.SlideAnimation(
           horizontalOffset: -150.w,
           curve: Curves.fastLinearToSlowEaseIn,
-          child: const animations.FadeInAnimation(
-            child: RecntlyViewedItem(),
+          child: animations.FadeInAnimation(
+            child: RecntlyViewedItem(
+              plant: plants[index],
+            ),
           ),
         ),
       ),

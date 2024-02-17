@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
@@ -8,8 +9,9 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 class RecntlyViewedItem extends StatelessWidget {
   const RecntlyViewedItem({
     super.key,
+    required this.plant,
   });
-
+  final PlantModle plant;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,12 +48,12 @@ class RecntlyViewedItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Ageratum',
+                    plant.name,
                     style: AppStyle.font14Blacksemibold,
                   ),
                   verticalSpacing(8),
                   Text(
-                    'Contrary to popular belief not simply random It has root in a piece.',
+                    plant.shortDescription,
                     style: AppStyle.font10Greyregular,
                   ),
                 ],

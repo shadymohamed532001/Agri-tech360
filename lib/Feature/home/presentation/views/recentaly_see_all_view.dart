@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/see_all_items.dart';
 import 'package:smartsoil/core/widgets/custom_sliver_app_bar.dart';
 
@@ -7,17 +9,19 @@ class RecentlySeeAllView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           slivers: <Widget>[
-            CustomSliverAppBar(
+            const CustomSliverAppBar(
               titleText: 'Recently Viewed',
               centerTitle: false,
             ),
             SliverToBoxAdapter(
-              child: SeeAllItems(),
+              child: SeeAllItems(
+                plants: BlocProvider.of<HomeCubit>(context).plantsresult,
+              ),
             ),
           ],
         ),

@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
             create: (context) => serviceLocator.get<LayoutCubit>(),
           ),
           BlocProvider(
-            create: (context) => serviceLocator.get<HomeCubit>()..getWeather(),
+            create: (context) => serviceLocator.get<HomeCubit>()
+              ..getWeather()
+              ..getPlants(),
           ),
         ],
         child: const MaterialApp(

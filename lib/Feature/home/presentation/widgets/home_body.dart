@@ -23,16 +23,16 @@ class HomeBody extends StatelessWidget {
                 SafeArea(
                   child: Padding(
                     padding:
-                        EdgeInsets.only(top: 12.h, left: 20.w, right: 20.w),
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const PreciousAppBar(),
-                        verticalSpacing(40),
+                        verticalSpacing(20),
                         const HealYourCropAndPlantText(),
-                        verticalSpacing(40),
+                        verticalSpacing(25),
                         const WeatherDegreeListView(),
-                        verticalSpacing(35),
+                        verticalSpacing(20),
                         const RecntlyViewedListView()
                       ],
                     ),
