@@ -1,23 +1,30 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smartsoil/Feature/checkplant/presentation/widgets/check_plant_clip_paht.dart';
+import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/check_plant_clip_paht.dart';
+import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
+import 'package:http/http.dart' as http;
 
-class CheckPlantViewBody extends StatefulWidget {
-  const CheckPlantViewBody({super.key});
+class PlantClassficationViewBody extends StatefulWidget {
+  const PlantClassficationViewBody({super.key});
 
   @override
-  State<CheckPlantViewBody> createState() => _CheckPlantViewBodyState();
+  State<PlantClassficationViewBody> createState() =>
+      _PlantClassficationViewBodyState();
 }
 
-class _CheckPlantViewBodyState extends State<CheckPlantViewBody> {
+class _PlantClassficationViewBodyState
+    extends State<PlantClassficationViewBody> {
   final ImagePicker picker = ImagePicker();
   File? image;
 
@@ -28,6 +35,86 @@ class _CheckPlantViewBodyState extends State<CheckPlantViewBody> {
         pickedFile!.path,
       );
     });
+  }
+
+  String? result;
+  upload2() async {
+    final request = http.MultipartRequest(
+      "POST",
+      Uri.parse('$baseUrl$classifyendPoint'),
+    );
+    final header = {"Content_type": "multipart/form-data"};
+
+    // Add your bearer token to the headers
+    request.headers.addAll({
+      ...header,
+      "Authorization": "Bearer $usertoken",
+    });
+
+    request.files.add(http.MultipartFile(
+      'file',
+      image!.readAsBytes().asStream(),
+      image!.lengthSync(),
+      filename: image!.path.split('/').last,
+    ));
+
+    final myRequest = await request.send();
+    final res = await http.Response.fromStream(myRequest);
+
+    if (myRequest.statusCode == 200) {
+      final resJson = jsonDecode(res.body);
+      print("response here: $resJson");
+      result = resJson['data'];
+    } else {
+      print("Error ${myRequest.statusCode}");
+    }
+
+    setState(() {});
+  }
+
+  upload() async {
+    final dio = Dio();
+    final imageData = image!.readAsBytesSync();
+
+    // Encode the image data to base64
+    final imageDataBase64 = base64Encode(imageData);
+
+    final requestData = {
+      'file': imageDataBase64,
+    };
+
+    final headers = {
+      "Content-Type": "application/json", // Set content type to JSON
+      "Authorization":
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoYWR5c3RlaGE1M0BnbWFpbC5jb20iLCJleHAiOjE3MDgyOTIxODV9.cbFbUpLTD4wx9KoYUQFGCPFupWr6IvIOOHedbM648AA",
+    };
+
+    try {
+      final response = await dio.post(
+        '$baseUrl/classify',
+        data: requestData,
+        options: Options(
+          headers: headers,
+        ),
+      );
+
+      if (response.statusCode == 200) {
+        final resJson = response.data;
+        print("response here: $resJson");
+        result = resJson['data'];
+      } else {
+        print("Error ${response.statusCode}");
+      }
+    } on DioError catch (e) {
+      if (e.response?.statusCode == 401) {
+        print("Authentication error: ${e.message}");
+        // Handle authentication error here
+      } else {
+        print("Error: ${e.message}");
+      }
+    }
+
+    setState(() {});
   }
 
   @override
@@ -82,6 +169,16 @@ class _CheckPlantViewBodyState extends State<CheckPlantViewBody> {
                     pickedImage();
                   },
                   bottomtext: 'Select From Gallary',
+                  textBottomStyle: AppStyle.font12Whitebold,
+                ),
+                verticalSpacing(20),
+                CustomBottom(
+                  backgroundColor: ColorManger.primaryColor,
+                  bottomWidth: 150.w,
+                  onPressed: () {
+                    upload2();
+                  },
+                  bottomtext: 'upload data',
                   textBottomStyle: AppStyle.font12Whitebold,
                 ),
                 verticalSpacing(200),

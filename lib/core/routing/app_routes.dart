@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
-import 'package:smartsoil/Feature/checkplant/presentation/check_plant_vie.dart';
+import 'package:smartsoil/Feature/plantClassifiction/presentation/views/plant_classsfiction_view.dart';
 import 'package:smartsoil/Feature/details/view/details_view.dart';
 import 'package:smartsoil/Feature/home/presentation/views/recentaly_see_all_view.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
@@ -90,29 +90,10 @@ class AppRoutes {
             plant: args.plantModle,
           ),
         );
-      // case Routes.homeViewRoute:
-      //   return MaterialPageRoute(
-      //     builder: (context) => BlocProvider(
-      //       create: (context) => serviceLocator.get<HomeCubit>(),
-      //       child: const HomeView(),
-      //     ),
-      //   );
-      // case Routes.explorPlantDetailsViewRoute:
-      //   return MaterialPageRoute(
-      //       builder: (context) => BlocProvider(
-      //             create: (context) => serviceLocator.get<ExplorCubit>(),
-      //             child: const ExplorPlantDetailsView(),
-      //           ));
 
-      // case Routes.informationAboutPlantRoute:
-      //   return MaterialPageRoute(
-      //       builder: (context) => BlocProvider(
-      //             create: (context) => serviceLocator.get<ExplorCubit>(),
-      //             child:  InformationAboutPlant(),
-      //           ));
-
-      case Routes.checkPlantViewRoute:
-        return MaterialPageRoute(builder: (context) => const CheckPlantView());
+      case Routes.plantClassficationViewRoute:
+        return MaterialPageRoute(
+            builder: (context) => const PlantClassficationView());
 
       default:
         return _unFoundRoute();

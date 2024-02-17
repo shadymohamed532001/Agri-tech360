@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -110,8 +112,8 @@ class HealYourCropAndPlantText extends StatelessWidget {
                   backgroundColor: ColorManger.primaryColor,
                   bottomtext: 'Heal Your Crops',
                   onPressed: () {
-                    // BlocProvider.of<HomeCubit>(context)
-                    //     .navigateToCheckPlant(context);
+                    context.navigateTo(
+                        routeName: Routes.plantClassficationViewRoute);
                   },
                 ),
               )

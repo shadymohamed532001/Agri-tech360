@@ -5,7 +5,7 @@ class Routes {
   static const String recentlySeeAllViewViewRoute = '/RecentlySeeAllView';
   static const String detailsViewRoute = '/detailsView';
   static const String explorPlantDetailsViewRoute = '/ExplorPlantDetails';
-  static const String checkPlantViewRoute = '/checkPlantView';
+  static const String plantClassficationViewRoute = '/PlantClassficationView';
   static const String explorViewRoute = '/explorView';
   static const String informationAboutPlantRoute = '/informationAboutPlantView';
   static const String searchViewRoute = '/searchView';
