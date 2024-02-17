@@ -1,4 +1,5 @@
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources.dart';
+import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
@@ -25,8 +26,19 @@ class HomeDatSourceImpl extends HomeDataSource {
   }
 
   @override
-  Future<List<WeatherModel>> getExplorData() {
-    // TODO: implement getExplorData
-    throw UnimplementedError();
+  Future<List<PlantModle>> getPlantsData() async {
+    String token = await LocalServices.getData(key: 'token');
+    Map<String, dynamic> response = await ApiServices.getData(
+      endpoint: '$baseUrl$plantsendPoint',
+      token: token,
+    );
+    List<PlantModle> plants = [];
+
+    if (response.containsKey('data')) {
+      for (var plant in response['data']) {
+        plants.add(PlantModle.fromJson(plant));
+      }
+    }
+    return plants;
   }
 }

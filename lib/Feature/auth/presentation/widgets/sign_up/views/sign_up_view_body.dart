@@ -172,7 +172,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         password: context.read<SignUpCubit>().passwordController.text,
         name: context.read<SignUpCubit>().nameController.text,
         phone: context.read<SignUpCubit>().phoneController.text,
-        city: 'tanta',
+        city: context.read<SignUpCubit>().cityController.text,
         profileImage: 'null');
   }
 }

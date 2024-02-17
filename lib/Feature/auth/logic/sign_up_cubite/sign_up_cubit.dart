@@ -41,34 +41,6 @@ class SignUpCubit extends Cubit<SignUpState> {
     });
   }
 
-  // BagAuthModel? bagAuthModel;
-
-  // void registerUser({
-  //   required String name,
-  //   required String email,
-  //   required String password,
-  //   required String phone,
-  //   String? lang,
-  // }) async {
-  //   emit(SignUpLoading());
-  //   await ApiServices.postData(
-  //     endpoint: registerendPoint,
-  //     lang: lang ?? 'en',
-  //     data: {
-  //       'name': name,
-  //       'email': email,
-  //       'password': password,
-  //       'phone': phone,
-  //     },
-  //   ).then((value) {
-  //     bagAuthModel = BagAuthModel.fromJson(value.data);
-  //     emit(SignUpSucess(bagRegisterModel: bagAuthModel!));
-  //   }).catchError((error) {
-  //     // print(error.toString());
-  //     emit(SignUpError(errorMessage: error.toString()));
-  //   });
-  // }
-
   var formKey = GlobalKey<FormState>();
 
   AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
@@ -80,6 +52,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController passwordController = TextEditingController();
 
   TextEditingController phoneController = TextEditingController();
+
   TextEditingController cityController = TextEditingController();
 
   bool isPasswordShow = true;
