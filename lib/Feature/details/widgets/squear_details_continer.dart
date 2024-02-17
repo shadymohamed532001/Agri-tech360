@@ -17,7 +17,7 @@ class SquearDetailsContiner extends StatelessWidget {
     return Container(
       width: 122.w,
       height: 118.h,
-      padding: const EdgeInsets.all(2),
+      padding: const EdgeInsets.all(3),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(

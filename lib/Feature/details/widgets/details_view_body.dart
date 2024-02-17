@@ -38,7 +38,7 @@ class DetailsViewBody extends StatelessWidget {
               ),
               Positioned(
                 top: 160.h,
-                left: 70.w,
+                left: 50.w,
                 child: FadeInRight(
                   duration: const Duration(milliseconds: 600),
                   child: Image.asset(
