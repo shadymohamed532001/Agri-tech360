@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
+import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/see_all_items.dart';
 import 'package:smartsoil/core/widgets/custom_sliver_app_bar.dart';
 
@@ -20,7 +20,7 @@ class RecentlySeeAllView extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: SeeAllItems(
-                plants: BlocProvider.of<HomeCubit>(context).plantsresult,
+                plants: BlocProvider.of<ExplorCubit>(context).plantsresult,
               ),
             ),
           ],

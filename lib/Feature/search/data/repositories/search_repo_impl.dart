@@ -1,17 +1,6 @@
-import 'package:dartz/dartz.dart';
-import 'package:smartsoil/Feature/explor/data/models/explor_data_models.dart';
 import 'package:smartsoil/Feature/search/domain/repositories/search_repo.dart';
-import 'package:smartsoil/core/error/failuer.dart';
 
 class SearchRepoImpl implements SearchRepo {
-  @override
-  Future<Either<Failure, List<ExplorDataModel>>> searchPlants({
-    required String plantName,
-  }) {
-    // TODO: implement searchPlants
-    throw UnimplementedError();
-  }
-
   // Future<Either<Failure, List<Hotel>>> searchHotels({
   //   required String hotelName,
   // }) async {

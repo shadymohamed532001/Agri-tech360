@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart'
     as animations;
-import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
-import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_item.dart';
+import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
+import 'package:smartsoil/core/widgets/popular_card.dart';
 
 class SeeAllItems extends StatelessWidget {
   const SeeAllItems({
@@ -32,7 +32,7 @@ class SeeAllItems extends StatelessWidget {
           horizontalOffset: -150.w,
           curve: Curves.fastLinearToSlowEaseIn,
           child: animations.FadeInAnimation(
-            child: RecntlyViewedItem(
+            child: PopularCard(
               plant: plants[index],
             ),
           ),

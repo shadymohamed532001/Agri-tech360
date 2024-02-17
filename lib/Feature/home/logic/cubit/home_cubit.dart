@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/Feature/home/domain/repositories/home_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,53 +53,6 @@ class HomeCubit extends Cubit<HomeState> {
             weatherResult = weather;
             emit(GetweatherDataSuccessState(weatherModel: weatherResult));
             await saveWeatherDataToLocal(weather);
-          },
-        );
-      }
-    } catch (e) {
-      emit(GetweatherDataErrorState(errormassage: e.toString()));
-    }
-  }
-
-  List<PlantModle> plantsresult = <PlantModle>[];
-
-  Future<void> savePlantDataToLocal(List<PlantModle> plants) async {
-    final prefs = await SharedPreferences.getInstance();
-    final jsonData = plants.map((plant) => plant.toJson()).toList();
-    prefs.setString('plantsData', json.encode(jsonData));
-  }
-
-  Future<List<PlantModle>> loadPlantsDataFromLocal() async {
-    final prefs = await SharedPreferences.getInstance();
-    final jsonString = prefs.getString('plantsData');
-    if (jsonString != null) {
-      final jsonData = json.decode(jsonString);
-      return jsonData
-          .map<PlantModle>((plant) => PlantModle.fromJson(plant))
-          .toList();
-    } else {
-      return [];
-    }
-  }
-
-  Future<void> getPlants() async {
-    emit(GetPlantDataLoadingState());
-    try {
-      final localPlantData = await loadPlantsDataFromLocal();
-
-      if (localPlantData.isNotEmpty) {
-        plantsresult = localPlantData;
-        emit(GetPlantDataSuccessState(plants: plantsresult));
-      } else {
-        final plantEither = await homeRepo.getPlantsData();
-        plantEither.fold(
-          (failure) {
-            emit(GetPlantDataErrorState(errormassage: failure.errMessage));
-          },
-          (plant) async {
-            plantsresult = plant;
-            emit(GetPlantDataSuccessState(plants: plantsresult));
-            await savePlantDataToLocal(plant);
           },
         );
       }

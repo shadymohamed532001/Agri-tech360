@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources.dart';
-import 'package:smartsoil/Feature/home/data/models/plant_model.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/Feature/home/domain/repositories/home_repo.dart';
 import 'package:smartsoil/core/error/failuer.dart';
@@ -17,20 +16,6 @@ class HomeRepooImpl extends HomeRepo {
     try {
       List<WeatherModel> weather = await homeDataSource.getWeatherData();
       return right(weather);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
-      } else {
-        return left(ServerFailure(e.toString()));
-      }
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<PlantModle>>> getPlantsData() async {
-    try {
-      List<PlantModle> plant = await homeDataSource.getPlantsData();
-      return right(plant);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));

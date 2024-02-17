@@ -2,8 +2,8 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
-import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_item.dart';
+import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
+import 'package:smartsoil/core/widgets/popular_card.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/see_all_text_button.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
@@ -17,9 +17,9 @@ class RecntlyViewedListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<ExplorCubit, ExplorState>(
       builder: (context, state) {
-        HomeCubit cubit = HomeCubit.getObject(context);
+        ExplorCubit cubit = ExplorCubit.getObject(context);
 
         if (state is GetPlantDataLoadingState) {
           return Center(
@@ -60,7 +60,7 @@ class RecntlyViewedListView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 16),
-                        child: RecntlyViewedItem(
+                        child: PopularCard(
                           plant: cubit.plantsresult[index],
                         ),
                       );

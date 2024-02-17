@@ -5,6 +5,8 @@ import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.da
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
+import 'package:smartsoil/Feature/explor/data/datasources/explor_data_sources.dart';
+import 'package:smartsoil/Feature/explor/data/datasources/explor_data_sources_impl.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo_impl.dart';
 import 'package:smartsoil/Feature/explor/domain/repositories/explor_repo.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
@@ -69,7 +71,8 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<HomeRepo>(() =>
         HomeRepooImpl(homeDataSource: serviceLocator.get<HomeDataSource>()));
 
-    serviceLocator.registerLazySingleton<ExplorRepo>(() => ExplorRepoImpl());
+    serviceLocator.registerLazySingleton<ExplorRepo>(() => ExplorRepoImpl(
+        explorDataSources: serviceLocator.get<ExplorDataSources>()));
 
     serviceLocator.registerLazySingleton<LayOutRepo>(() => LayoutRepoImpl(
         layoutDataSource: serviceLocator.get<LayoutDataSource>()));
@@ -80,6 +83,10 @@ class ServiceLocator {
   void _setupForDataSources() {
     serviceLocator.registerLazySingleton<LayoutDataSource>(
       () => LayoutDataSourceImpl(),
+    );
+
+    serviceLocator.registerLazySingleton<ExplorDataSources>(
+      () => ExplorDataSourcesImpl(),
     );
 
     serviceLocator.registerLazySingleton<HomeDataSource>(

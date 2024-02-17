@@ -25,18 +25,4 @@ final class GetweatherDataSuccessState extends HomeState {
   GetweatherDataSuccessState({required this.weatherModel});
 }
 
-final class GetPlantDataLoadingState extends HomeState {}
-
-final class GetPlantDataErrorState extends HomeState {
-  final String errormassage;
-
-  GetPlantDataErrorState({required this.errormassage});
-}
-
-final class GetPlantDataSuccessState extends HomeState {
-  final List<PlantModle> plants;
-
-  GetPlantDataSuccessState({required this.plants});
-}
-
 final class HomeNavigtoCheckPlantView extends HomeState {}
