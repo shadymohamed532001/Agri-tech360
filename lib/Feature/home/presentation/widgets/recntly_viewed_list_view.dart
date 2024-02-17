@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/core/widgets/popular_card.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/see_all_text_button.dart';
@@ -20,6 +23,8 @@ class RecntlyViewedListView extends StatelessWidget {
     return BlocBuilder<ExplorCubit, ExplorState>(
       builder: (context, state) {
         ExplorCubit cubit = ExplorCubit.getObject(context);
+        final List<PlantModle> shuffledPlants = List.of(cubit.plantsresult)
+          ..shuffle(); // show the list Random
 
         if (state is GetPlantDataLoadingState) {
           return Center(
@@ -55,13 +60,14 @@ class RecntlyViewedListView extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const BouncingScrollPhysics(),
                     clipBehavior: Clip.none,
-                    itemCount: 22,
+                    itemCount:
+                        min(8, shuffledPlants.length), // Limiting to 10 items
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(right: 16),
                         child: PopularCard(
-                          plant: cubit.plantsresult[index],
+                          plant: shuffledPlants[index],
                         ),
                       );
                     },

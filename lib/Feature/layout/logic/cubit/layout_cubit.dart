@@ -40,9 +40,9 @@ class LayoutCubit extends Cubit<LayoutState> {
     }
     //  When Navigation to favorites scarean
 
-    // if (currentIndex == 2) {
-    //   BlocProvider.of<FavoriteCubit>(context).getFavorites();
-    // }
+    if (currentIndex == 1) {
+      BlocProvider.of<ExplorCubit>(context).getPlants();
+    }
 
     emit(ChangeBottomNavState(index: index));
   }

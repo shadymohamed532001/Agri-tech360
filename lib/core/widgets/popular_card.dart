@@ -58,6 +58,8 @@ class PopularCard extends StatelessWidget {
                   children: [
                     Text(
                       plant.name,
+                      maxLines: 4,
+                      overflow: TextOverflow.ellipsis,
                       style: AppStyle.font14Blacksemibold,
                     ),
                     verticalSpacing(8),

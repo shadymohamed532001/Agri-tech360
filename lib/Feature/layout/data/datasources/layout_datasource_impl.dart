@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smartsoil/Feature/explor/presentation/widgets/explor_view_body.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/home_body.dart';
 import 'package:smartsoil/Feature/layout/data/datasources/layout_datasource.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
@@ -22,7 +23,7 @@ class LayoutDataSourceImpl extends LayoutDataSource {
   List<Widget> getBody() {
     return const <Widget>[
       HomeBody(),
-      SearchView(),
+      ExplorViewBody(),
       SearchView(),
       SearchView(),
     ];

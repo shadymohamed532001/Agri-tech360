@@ -41,7 +41,7 @@ class SeeAllItems extends StatelessWidget {
       separatorBuilder: (context, index) => Divider(
         height: 20.h,
       ),
-      itemCount: 10,
+      itemCount: plants.length,
     );
   }
 }
