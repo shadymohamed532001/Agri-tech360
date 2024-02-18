@@ -13,19 +13,16 @@ class ApiServices {
     );
   }
 
-  static Future<Map<String, dynamic>> postData({
-    required String endpoint,
-    required Object? data,
-    String? token,
-  }) async {
+  static Future<Map<String, dynamic>> postData(
+      {required String endpoint,
+      required Object? data,
+      String? token,
+      Options? options}) async {
     _dio?.options.headers = {
       'Authorization': 'Bearer $token',
       'Content-Type': 'application/json',
     };
-    var response = await _dio!.post(
-      endpoint,
-      data: data,
-    );
+    var response = await _dio!.post(endpoint, data: data, options: options);
     return response.data;
   }
 

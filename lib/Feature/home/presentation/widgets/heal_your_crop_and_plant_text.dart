@@ -112,8 +112,7 @@ class HealYourCropAndPlantText extends StatelessWidget {
                   backgroundColor: ColorManger.primaryColor,
                   bottomtext: 'Heal Your Crops',
                   onPressed: () {
-                    context.navigateTo(
-                        routeName: Routes.plantClassficationViewRoute);
+                    context.navigateTo(routeName: Routes.plantCareViewRoute);
                   },
                 ),
               )

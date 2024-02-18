@@ -23,6 +23,11 @@ import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_care_data_sources.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_care_data_sources_impl.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_care_repo_impl.dart';
+import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_care_repo.dart';
+import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_care_cubit.dart';
 
 final GetIt serviceLocator = GetIt.instance;
 
@@ -76,6 +81,9 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<LayOutRepo>(() => LayoutRepoImpl(
         layoutDataSource: serviceLocator.get<LayoutDataSource>()));
+
+    serviceLocator.registerLazySingleton<PlantCareRepo>(() => PlantCareRepoImpl(
+        plantCareDataSource: serviceLocator.get<PlantCareDataSource>()));
     // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
     //     VerificationRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
   }
@@ -91,6 +99,9 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<HomeDataSource>(
       () => HomeDatSourceImpl(),
+    );
+    serviceLocator.registerLazySingleton<PlantCareDataSource>(
+      () => PlantCareDataSourceImpl(),
     );
   }
 
@@ -109,6 +120,9 @@ class ServiceLocator {
         () => HomeCubit(homeRepo: serviceLocator.get<HomeRepo>()));
     serviceLocator.registerFactory<ExplorCubit>(
         () => ExplorCubit(explorRepo: serviceLocator.get<ExplorRepo>()));
+
+    serviceLocator.registerFactory<PlantCareCubite>(() =>
+        PlantCareCubite(plantCareRepo: serviceLocator.get<PlantCareRepo>()));
 
     // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>
     //     ForgetPasswordCubit(

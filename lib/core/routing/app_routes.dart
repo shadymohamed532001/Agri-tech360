@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
+import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_care_cubit.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/views/plant_classsfiction_view.dart';
 import 'package:smartsoil/Feature/details/view/details_view.dart';
 import 'package:smartsoil/Feature/home/presentation/views/recentaly_see_all_view.dart';
@@ -46,10 +47,11 @@ class AppRoutes {
           }
         } else {
           return MaterialPageRoute(
-              builder: (context) => BlocProvider(
-                    create: (context) => serviceLocator.get<OnbordingCubit>(),
-                    child: const OnBordingView(),
-                  ));
+            builder: (context) => BlocProvider(
+              create: (context) => serviceLocator.get<OnbordingCubit>(),
+              child: const OnBordingView(),
+            ),
+          );
         }
 
       case Routes.authViewRoute:
@@ -83,6 +85,7 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const RecentlySeeAllView(),
         );
+
       case Routes.detailsViewRoute:
         final args = routeSettings.arguments as PlantModelClass;
         return MaterialPageRoute(
@@ -91,9 +94,13 @@ class AppRoutes {
           ),
         );
 
-      case Routes.plantClassficationViewRoute:
-        return MaterialPageRoute(
-            builder: (context) => const PlantClassficationView());
+      case Routes.plantCareViewRoute:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: (context) => serviceLocator.get<PlantCareCubite>(),
+            child: const PlantCareView(),
+          );
+        });
 
       default:
         return _unFoundRoute();

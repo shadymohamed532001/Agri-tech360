@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
-import 'package:smartsoil/core/themaing/app_image_assets.dart';
 
 class InformationSliverAppBar extends StatelessWidget {
   const InformationSliverAppBar({super.key, required this.plant});
@@ -18,8 +17,8 @@ class InformationSliverAppBar extends StatelessWidget {
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Image.asset(
-          ImagesAssetsManger.floweImage,
-          fit: BoxFit.fill,
+          'assets/images/Almonds2.jpeg',
+          fit: BoxFit.cover,
         ),
         stretchModes: const [
           StretchMode.blurBackground,
