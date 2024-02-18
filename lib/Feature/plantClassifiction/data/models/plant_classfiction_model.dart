@@ -1,16 +1,16 @@
-class PlantClassficationMModel {
+class PlantCareModle {
   final Data data;
   final String message;
   final bool status;
 
-  PlantClassficationMModel({
+  PlantCareModle({
     required this.data,
     required this.message,
     required this.status,
   });
 
-  factory PlantClassficationMModel.fromJson(Map<String, dynamic> json) {
-    return PlantClassficationMModel(
+  factory PlantCareModle.fromJson(Map<String, dynamic> json) {
+    return PlantCareModle(
       data: Data.fromJson(json['data']),
       message: json['message'],
       status: json['status'],

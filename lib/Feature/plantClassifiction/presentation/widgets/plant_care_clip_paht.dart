@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ChekPlantClipper extends CustomClipper<Path> {
+class PlantCareClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path_0 = Path();
