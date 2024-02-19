@@ -16,9 +16,17 @@ class InformationSliverAppBar extends StatelessWidget {
       pinned: true,
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.asset(
-          'assets/images/Almonds2.jpeg',
-          fit: BoxFit.cover,
+        background: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(32),
+            topRight: Radius.circular(32),
+            bottomLeft: Radius.circular(32),
+            bottomRight: Radius.circular(32),
+          ),
+          child: Image.asset(
+            'assets/images/Almonds2.jpeg',
+            fit: BoxFit.cover,
+          ),
         ),
         stretchModes: const [
           StretchMode.blurBackground,

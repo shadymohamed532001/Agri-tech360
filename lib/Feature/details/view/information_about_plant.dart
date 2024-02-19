@@ -50,11 +50,11 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   tabs: [
                     Text(
-                      'Care Instructions',
+                      'Description',
                       style: AppStyle.font14Blacksemibold,
                     ),
                     Text(
-                      'Description',
+                      'Care Instructions',
                       style: AppStyle.font14Blacksemibold,
                     ),
                   ],
@@ -70,12 +70,12 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
+                      DescriptionViewBody(
+                        plant: widget.plant,
+                      ),
                       CareInstractionViewBody(
                         plant: widget.plant,
                       ),
-                      DescriptionViewBody(
-                        plant: widget.plant,
-                      )
                     ],
                   ),
                 ),

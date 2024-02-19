@@ -6,7 +6,8 @@ class PlantCareView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: Color.fromARGB(243, 241, 240, 240),
       body: PlantCareViewBody(),
     );
   }

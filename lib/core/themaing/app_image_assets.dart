@@ -15,6 +15,8 @@ class ImagesAssetsManger {
   static const phoneImage = '$imagePath/phone.png';
   static const diagnosisImage = '$imagePath/diagnosis.png';
   static const degreeiconImage = '$imagePath/Degree_icon.png';
+
+  static const menuiconImage = '$imagePath/menu.png';
 }
 
 class ExplrImagePaths {}
