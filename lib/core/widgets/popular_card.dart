@@ -41,7 +41,7 @@ class PopularCard extends StatelessWidget {
                     top: -35,
                     left: -20,
                     child: Image.asset(
-                      ImagesAssetsManger.flowe_2Image,
+                      ExplrImagePaths.bananas,
                       height: 130.h,
                       width: 100.w,
                     ),

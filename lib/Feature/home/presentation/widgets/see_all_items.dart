@@ -20,8 +20,8 @@ class SeeAllItems extends StatelessWidget {
       padding: EdgeInsets.only(
         right: 27.w,
         left: 14.w,
-        top: 20.h,
-        bottom: 15.h,
+        top: 10.h,
+        bottom: 10.h,
       ),
       shrinkWrap: true,
       itemBuilder: (context, index) =>
@@ -39,7 +39,7 @@ class SeeAllItems extends StatelessWidget {
         ),
       ),
       separatorBuilder: (context, index) => Divider(
-        height: 20.h,
+        height: 30.h,
       ),
       itemCount: plants.length,
     );

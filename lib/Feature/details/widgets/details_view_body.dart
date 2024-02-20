@@ -37,28 +37,16 @@ class DetailsViewBody extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 160.h,
-                right: -2,
+                top: 190.h,
+                right: -45.w,
                 child: FadeInRight(
-                    duration: const Duration(milliseconds: 600),
-                    child: SizedBox(
-                      height: 440.h,
-                      width: 240.w,
-                      child: AspectRatio(
-                        aspectRatio: 4 / 2,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            // color: Color.fromARGB(255, 20, 17, 17),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                ImagesAssetsManger.floweImage,
-                              ),
-                              fit: BoxFit.fitHeight,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )),
+                  duration: const Duration(milliseconds: 600),
+                  child: Image.asset(
+                    ExplrImagePaths.mangoes,
+                    height: 400.h,
+                    width: 250.w,
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),

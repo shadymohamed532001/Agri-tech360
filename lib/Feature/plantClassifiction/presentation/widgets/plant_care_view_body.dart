@@ -145,7 +145,8 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                                           child: ListView.separated(
                                             itemCount: 10,
                                             separatorBuilder:
-                                                (context, index) => Divider(
+                                                (context, index) =>
+                                                    const Divider(
                                               height: 10,
                                             ),
                                             itemBuilder: (context, index) {
