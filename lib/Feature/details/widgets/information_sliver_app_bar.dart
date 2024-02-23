@@ -17,7 +17,7 @@ class InformationSliverAppBar extends StatelessWidget {
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         background: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(32),
             topRight: Radius.circular(32),
             bottomLeft: Radius.circular(32),
