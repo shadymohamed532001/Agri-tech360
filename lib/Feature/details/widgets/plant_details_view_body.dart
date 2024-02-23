@@ -10,8 +10,8 @@ import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/line_back_ground.dart';
 
-class DetailsViewBody extends StatelessWidget {
-  const DetailsViewBody({super.key, required this.plant});
+class PlantDetailsViewBody extends StatelessWidget {
+  const PlantDetailsViewBody({super.key, required this.plant});
 
   final PlantModle plant;
   @override

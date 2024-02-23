@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/traidment_card.dart';
 
-class ExplorTraidmentBody extends StatelessWidget {
-  const ExplorTraidmentBody({super.key, required this.cubit});
+class ExplorTraidmentProductBody extends StatelessWidget {
+  const ExplorTraidmentProductBody({super.key, required this.cubit});
   final ExplorCubit cubit;
 
   @override
@@ -25,7 +25,7 @@ class ExplorTraidmentBody extends StatelessWidget {
           children: List.generate(
             10,
             (index) {
-              return const TraidmentCard();
+              return const TraidmentProductCard();
             },
           ),
         ),

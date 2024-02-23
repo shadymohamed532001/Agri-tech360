@@ -45,15 +45,19 @@ class PlantCareCubite extends Cubit<PlantCareState> {
     final responsEither =
         await plantCareRepo.getClassficationData(image: image);
     responsEither.fold((failure) {
+      log(failure.errMessage.toString());
+
       emit(
         UploadAndGetResponseToModelErrorState(
           errorMessage: failure.errMessage.toString(),
         ),
       );
+
+      log(failure.errMessage.toString());
     }, (calssficationResponse) {
       plantCareModle = calssficationResponse;
-      log(plantCareModle!.data.predictions);
-      log(plantCareModle!.data.confidence as String);
+      print(plantCareModle!.data.predictions);
+      print(plantCareModle!.data.confidence);
 
       emit(
         UploadAndGetResponseToModelSucsesState(

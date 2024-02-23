@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
-import 'package:smartsoil/Feature/explor/presentation/views/explor_traidment_view_body.dart';
+import 'package:smartsoil/Feature/explor/presentation/views/explor_traidment_product_view_body.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/app_bar_widget.dart';
 import 'package:smartsoil/Feature/explor/presentation/views/explor_plant_info_body.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/plant_type_selector.dart';
@@ -75,7 +75,7 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                               ),
                               verticalSpacing(20),
                               isTreatmentSelected
-                                  ? ExplorTraidmentBody(cubit: cubit)
+                                  ? ExplorTraidmentProductBody(cubit: cubit)
                                   : ExplorPlantInfoBody(cubit: cubit),
                             ],
                           ),

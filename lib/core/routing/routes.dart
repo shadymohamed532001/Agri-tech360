@@ -3,7 +3,10 @@ class Routes {
   static const String authViewRoute = '/AuthView';
   static const String layOutViewsRoute = '/layOutViews';
   static const String recentlySeeAllViewViewRoute = '/RecentlySeeAllView';
-  static const String detailsViewRoute = '/detailsView';
+  static const String plantDetailsViewRoute = '/plantDetailsView';
+  static const String traidmentProductDetailsViewRoute =
+      '/traidmentProductDetailsView';
+
   static const String explorPlantDetailsViewRoute = '/ExplorPlantDetails';
   static const String plantCareViewRoute = '/PlantCareView';
   static const String explorViewRoute = '/explorView';

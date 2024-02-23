@@ -19,7 +19,7 @@ class PopularCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.navigateTo(
-        routeName: Routes.detailsViewRoute,
+        routeName: Routes.plantDetailsViewRoute,
         arguments:
             PlantModelClass(plantModle: plant), // pass data to another screan
       ),
