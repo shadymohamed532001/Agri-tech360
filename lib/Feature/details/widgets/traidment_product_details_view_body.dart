@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/details/widgets/product_details_app_bar.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class TradmentProductDetailsViewBody extends StatelessWidget {
   const TradmentProductDetailsViewBody({super.key});
@@ -7,17 +9,37 @@ class TradmentProductDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.h,
+      slivers: <Widget>[
+        const ProductDetailsAppBar(),
+        // SliverPadding(
+        //   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        //   sliver: InformationSliverAppBar(
+        //     plant: plant,
+        //   ),
+        // ),
+
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 18,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpacing(10),
+                Text(
+                  'Care Instructions',
+                  style: AppStyle.font22BlackBold,
+                ),
+                verticalSpacing(10),
+                Text(
+                  ' plant.careInstruction',
+                  style: AppStyle.font14lightblackmdeium,
+                ),
+              ],
+            ),
           ),
-          sliver: const SliverToBoxAdapter(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [],
-          )),
-        ),
+        )
       ],
     );
   }

@@ -13,7 +13,7 @@ class ColorManger {
   static Color darkWhiteColor = const Color(0xffE5E7E6);
 
   static Color lightpinkColor = const Color(0xffF2E3DB);
-
+  static Color scaffoldColor = const Color(0xffFAFAFA);
   static Color blackColor = const Color(0xff1E1E1E);
   static Color whiteColor = const Color(0xffFFFFFF);
   static Color greyColor = const Color.fromARGB(255, 172, 167, 163);

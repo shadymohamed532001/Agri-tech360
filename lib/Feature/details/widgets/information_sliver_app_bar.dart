@@ -16,16 +16,19 @@ class InformationSliverAppBar extends StatelessWidget {
       pinned: true,
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
-        background: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(32),
-            topRight: Radius.circular(32),
-            bottomLeft: Radius.circular(32),
-            bottomRight: Radius.circular(32),
-          ),
-          child: Image.asset(
-            'assets/images/Almonds2.jpeg',
-            fit: BoxFit.cover,
+        background: Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(32),
+              topRight: Radius.circular(32),
+              bottomLeft: Radius.circular(32),
+              bottomRight: Radius.circular(32),
+            ),
+            child: Image.asset(
+              'assets/images/Almonds2.jpeg',
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         stretchModes: const [
@@ -37,6 +40,8 @@ class InformationSliverAppBar extends StatelessWidget {
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(0),
         child: Container(
+          height: 5,
+          alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             color: ColorManger.whiteColor,
             borderRadius: const BorderRadius.only(
@@ -45,7 +50,7 @@ class InformationSliverAppBar extends StatelessWidget {
             ),
           ),
           child: Container(
-            height: 4.h,
+            height: 5.h,
             width: 50.w,
             decoration: BoxDecoration(
               color: ColorManger.greyColor.withOpacity(0.5),
