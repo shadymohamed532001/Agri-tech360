@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,8 +52,8 @@ class PlantCareCubite extends Cubit<PlantCareState> {
       );
     }, (calssficationResponse) {
       plantCareModle = calssficationResponse;
-      print(plantCareModle!.data.predictions);
-      print(plantCareModle!.data.confidence);
+      log(plantCareModle!.data.predictions);
+      log(plantCareModle!.data.confidence as String);
 
       emit(
         UploadAndGetResponseToModelSucsesState(

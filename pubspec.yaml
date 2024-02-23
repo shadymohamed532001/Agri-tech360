@@ -34,6 +34,7 @@ dependencies:
   dio: ^5.4.0
   email_validator: ^2.1.17
   equatable: ^2.0.5
+  fancy_shimmer_image: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
