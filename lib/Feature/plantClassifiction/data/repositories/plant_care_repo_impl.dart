@@ -42,7 +42,7 @@ class PlantCareRepoImpl extends PlantCareRepo {
   }
 
   @override
-  Future<Either<Failure, PlantCareModle>> getClassficationData(
+  Future<Either<Failure, PlantCareModel>> getClassficationData(
       {required File image}) async {
     try {
       final plantResponseModel =

@@ -37,12 +37,9 @@ class _MyTabbedPageState extends State<AuthViewBody>
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: ColorManger.whiteColor.withOpacity(0.2),
-          elevation: 0.0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          title: const PreciousAppBar(),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: PreciousAppBar(),
         ),
         body: Column(
           children: [

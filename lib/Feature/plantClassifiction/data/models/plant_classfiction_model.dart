@@ -1,36 +1,48 @@
-class PlantCareModle {
-  final Data data;
-  final String message;
-  final bool status;
+class PlantCareModel {
+  Data? data;
+  String? message;
+  bool? status;
 
-  PlantCareModle({
-    required this.data,
-    required this.message,
-    required this.status,
-  });
+  PlantCareModel({this.data, this.message, this.status});
 
-  factory PlantCareModle.fromJson(Map<String, dynamic> json) {
-    return PlantCareModle(
-      data: Data.fromJson(json['data']),
-      message: json['message'],
-      status: json['status'],
-    );
+  PlantCareModel.fromJson(Map<String, dynamic> json) {
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    message = json['message'];
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    data['message'] = message;
+    data['status'] = status;
+    return data;
   }
 }
 
 class Data {
-  final double confidence;
-  final String predictions;
+  int? confidence;
+  String? image;
+  String? predictions;
+  List<dynamic>? products;
 
-  Data({
-    required this.confidence,
-    required this.predictions,
-  });
+  Data({this.confidence, this.image, this.predictions, this.products});
 
-  factory Data.fromJson(Map<String, dynamic> json) {
-    return Data(
-      confidence: json['confidence'],
-      predictions: json['predictions'],
-    );
+  Data.fromJson(Map<String, dynamic> json) {
+    confidence = json['confidence'];
+    image = json['image'];
+    predictions = json['predictions'];
+    products = json['products'] != null ? List<dynamic>.from(json['products']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    data['confidence'] = confidence;
+    data['image'] = image;
+    data['predictions'] = predictions;
+    data['products'] = products;
+    return data;
   }
 }

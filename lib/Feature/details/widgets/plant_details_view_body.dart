@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/details/widgets/more_information_text_bottom.dart';
@@ -6,6 +7,7 @@ import 'package:smartsoil/Feature/details/widgets/squear_details_continer.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/line_back_ground.dart';
@@ -41,8 +43,8 @@ class PlantDetailsViewBody extends StatelessWidget {
                 right: -45.w,
                 child: FadeInRight(
                   duration: const Duration(milliseconds: 600),
-                  child: Image.asset(
-                    ExplrImagePaths.mangoes,
+                  child: CachedNetworkImage(
+                    imageUrl: '$baseUrl${plant.plantImage_1}',
                     height: 400.h,
                     width: 250.w,
                   ),

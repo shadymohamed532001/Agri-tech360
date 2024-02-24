@@ -20,6 +20,11 @@ class AppStyle {
     fontWeight: FontWeightHelper.semibold,
     color: Colors.black,
   );
+  static TextStyle font13Blacksemibold = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeightHelper.semibold,
+    color: Colors.black,
+  );
   static TextStyle font17Blacksemibold = TextStyle(
     fontSize: 17.sp,
     fontWeight: FontWeightHelper.semibold,

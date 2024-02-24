@@ -11,13 +11,6 @@ class TradmentProductDetailsViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         const ProductDetailsAppBar(),
-        // SliverPadding(
-        //   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        //   sliver: InformationSliverAppBar(
-        //     plant: plant,
-        //   ),
-        // ),
-
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(

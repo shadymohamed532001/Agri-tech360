@@ -18,9 +18,9 @@ class SeeAllItems extends StatelessWidget {
     return ListView.separated(
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.only(
-        right: 27.w,
-        left: 14.w,
-        top: 10.h,
+        right: 20.w,
+        left: 20.w,
+        top: 27.h,
         bottom: 10.h,
       ),
       shrinkWrap: true,
@@ -39,7 +39,7 @@ class SeeAllItems extends StatelessWidget {
         ),
       ),
       separatorBuilder: (context, index) => Divider(
-        height: 30.h,
+        height: 35.h,
       ),
       itemCount: plants.length,
     );

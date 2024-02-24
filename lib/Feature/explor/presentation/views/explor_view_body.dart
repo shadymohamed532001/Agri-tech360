@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
-import 'package:smartsoil/Feature/explor/presentation/views/explor_traidment_product_view_body.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/app_bar_widget.dart';
-import 'package:smartsoil/Feature/explor/presentation/views/explor_plant_info_body.dart';
-import 'package:smartsoil/Feature/explor/presentation/widgets/plant_type_selector.dart';
+import 'package:smartsoil/Feature/explor/presentation/widgets/explor_plant_info_body.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/custom_error_widget.dart';
@@ -61,22 +59,15 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              verticalSpacing(10),
                               const AppBarWidget(title: 'Find your Plant'),
                               verticalSpacing(16),
                               const DisabledSearchField(),
-                              verticalSpacing(20),
-                              PlantTypeSelector(
-                                isTreatmentSelected: isTreatmentSelected,
-                                onPlantTypeSelected: (isSelected) {
-                                  setState(() {
-                                    isTreatmentSelected = isSelected;
-                                  });
-                                },
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.07,
                               ),
-                              verticalSpacing(20),
-                              isTreatmentSelected
-                                  ? ExplorTraidmentProductBody(cubit: cubit)
-                                  : ExplorPlantInfoBody(cubit: cubit),
+                              ExplorPlantInfoBody(cubit: cubit),
                             ],
                           ),
                         ),

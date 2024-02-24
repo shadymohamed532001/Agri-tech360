@@ -8,8 +8,12 @@ class PlantModle {
   final String minimumDegrees;
   final String waterRequirement;
   final String sunlightRequirement;
+  final String plantImage_1;
+  final String plantImage_2;
 
   PlantModle({
+    required this.plantImage_1,
+    required this.plantImage_2,
     required this.id,
     required this.name,
     required this.shortDescription,
@@ -32,6 +36,8 @@ class PlantModle {
       minimumDegrees: json['minimumdegrees'] as String,
       waterRequirement: json['numberOfWater'] as String,
       sunlightRequirement: json['stateofTemperature'] as String,
+      plantImage_1: json['plantImage1'] as String,
+      plantImage_2: json['plantImage2'] as String,
     );
   }
   Map<String, dynamic> toJson() {
@@ -45,6 +51,8 @@ class PlantModle {
       'minimumdegrees': minimumDegrees,
       'numberOfWater': waterRequirement,
       'stateofTemperature': sunlightRequirement,
+      'plantImage1': plantImage_1,
+      'plantImage2': plantImage_2,
     };
   }
 }

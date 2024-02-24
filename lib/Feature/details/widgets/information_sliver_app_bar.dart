@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class InformationSliverAppBar extends StatelessWidget {
@@ -25,8 +27,8 @@ class InformationSliverAppBar extends StatelessWidget {
               bottomLeft: Radius.circular(32),
               bottomRight: Radius.circular(32),
             ),
-            child: Image.asset(
-              'assets/images/Almonds2.jpeg',
+            child: CachedNetworkImage(
+              imageUrl: '$baseUrl${plant.plantImage_2}',
               fit: BoxFit.cover,
             ),
           ),

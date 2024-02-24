@@ -38,7 +38,7 @@ class PlantCareCubite extends Cubit<PlantCareState> {
     }
   }
 
-  PlantCareModle? plantCareModle;
+  PlantCareModel? plantCareModle;
 
   Future<void> uploadImageToModel({required File image}) async {
     emit(UploadAndGetResponseToModelLoadingState());
@@ -56,8 +56,8 @@ class PlantCareCubite extends Cubit<PlantCareState> {
       log(failure.errMessage.toString());
     }, (calssficationResponse) {
       plantCareModle = calssficationResponse;
-      print(plantCareModle!.data.predictions);
-      print(plantCareModle!.data.confidence);
+      print(plantCareModle!.data!.confidence);
+      print(plantCareModle!.data!.confidence);
 
       emit(
         UploadAndGetResponseToModelSucsesState(

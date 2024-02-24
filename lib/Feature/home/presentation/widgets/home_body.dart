@@ -4,8 +4,8 @@ import 'package:smartsoil/Feature/home/presentation/widgets/heal_your_crop_and_p
 import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_list_view.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/weather_degree_list_view.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/line_back_ground.dart';
-import 'package:smartsoil/core/widgets/precious_app_bar.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -27,7 +27,10 @@ class HomeBody extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const PreciousAppBar(),
+                        Text(
+                          'Precious',
+                          style: AppStyle.font22PrimaryBold,
+                        ),
                         verticalSpacing(20),
                         const HealYourCropAndPlantText(),
                         verticalSpacing(25),

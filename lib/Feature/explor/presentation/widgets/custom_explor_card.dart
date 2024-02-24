@@ -1,12 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/models/planr_model_class.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
-import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class CustomExplorCard extends StatelessWidget {
@@ -66,8 +67,8 @@ class CustomExplorCard extends StatelessWidget {
                     Positioned(
                       top: 0,
                       left: 5,
-                      child: Image.asset(
-                        ExplrImagePaths.hazelnuts,
+                      child: CachedNetworkImage(
+                        imageUrl: '$baseUrl${plant.plantImage_1}',
                         height: 150.h,
                         width: 80.w,
                       ),

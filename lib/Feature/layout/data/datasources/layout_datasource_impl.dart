@@ -7,6 +7,7 @@ import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart'
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/profile/presentation/profile_view.dart';
 import 'package:smartsoil/Feature/search/presentation/search_view.dart';
+import 'package:smartsoil/Feature/store/presentation/views/store_view_body.dart';
 
 class LayoutDataSourceImpl extends LayoutDataSource {
   @override
@@ -17,14 +18,15 @@ class LayoutDataSourceImpl extends LayoutDataSource {
 
   @override
   void changeBottomNavToHome({required ChangeIndexParams changeIndexParams}) {
-    LayoutCubit.getObject(changeIndexParams.context).currentIndex = 0;
+    LayoutCubit.getObject(changeIndexParams.context).currentIndex = 2;
   }
 
   @override
   List<Widget> getBody() {
     return const <Widget>[
-      HomeBody(),
       ExplorViewBody(),
+      StorViewBody(),
+      HomeBody(),
       SearchView(),
       ProfileView(),
     ];
@@ -34,12 +36,16 @@ class LayoutDataSourceImpl extends LayoutDataSource {
   List<BottomNavigationBarItem> getBottomNavItems() =>
       const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Iconsax.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
           icon: Icon(Icons.explore),
           label: 'Explor',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Iconsax.shop),
+          label: 'store',
+        ),
+        BottomNavigationBarItem(
+          label: 'Home',
+          icon: Icon(Iconsax.home),
         ),
         BottomNavigationBarItem(
           label: 'Favorite',

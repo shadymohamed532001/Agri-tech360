@@ -28,7 +28,7 @@ final class UploadImageFromCameraSucsessState extends PlantCareState {
 }
 
 final class UploadAndGetResponseToModelSucsesState extends PlantCareState {
-  final PlantCareModle plantCareModle;
+  final PlantCareModel plantCareModle;
 
   const UploadAndGetResponseToModelSucsesState({required this.plantCareModle});
 }

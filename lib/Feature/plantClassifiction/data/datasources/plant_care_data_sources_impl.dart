@@ -8,7 +8,7 @@ import 'package:smartsoil/core/networking/end_boint.dart';
 
 class PlantCareDataSourceImpl extends PlantCareDataSource {
   @override
-  Future<PlantCareModle> getClassficationData({required File image}) async {
+  Future<PlantCareModel> getClassficationData({required File image}) async {
     final formData = FormData.fromMap({
       'file': await MultipartFile.fromFile(
         image.path,
@@ -27,7 +27,7 @@ class PlantCareDataSourceImpl extends PlantCareDataSource {
         headers: headers,
       ),
     );
-    final plantCareResponse = PlantCareModle.fromJson(response);
+    final plantCareResponse = PlantCareModel.fromJson(response);
     return plantCareResponse;
   }
 }

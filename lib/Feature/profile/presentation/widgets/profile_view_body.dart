@@ -3,7 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/Custom_list_tittle.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/general_profile_components.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/setting_profile_components.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/networking/local_services.dart';
+import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -162,7 +165,12 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     ),
                     verticalSpacing(8),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        LocalServices.removeData(key: 'token');
+                        context.navigateAndRemoveUntil(
+                          newRoute: Routes.authViewRoute,
+                        );
+                      },
                       child: Text(
                         'Close Acount',
                         style: AppStyle.font13PrimaryBold
