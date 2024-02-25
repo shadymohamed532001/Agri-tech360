@@ -1,48 +1,111 @@
-class PlantCareModel {
-  Data? data;
-  String? message;
-  bool? status;
+class ClassfictionModel {
+  final Data data;
+  final String message;
+  final bool status;
 
-  PlantCareModel({this.data, this.message, this.status});
+  ClassfictionModel(
+      {required this.data, required this.message, required this.status});
 
-  PlantCareModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    message = json['message'];
-    status = json['status'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    data['message'] = message;
-    data['status'] = status;
-    return data;
+  factory ClassfictionModel.fromJson(Map<String, dynamic> json) {
+    return ClassfictionModel(
+      data: Data.fromJson(json['data']),
+      message: json['message'],
+      status: json['status'],
+    );
   }
 }
 
 class Data {
-  int? confidence;
-  String? image;
-  String? predictions;
-  List<dynamic>? products;
+  final double confidence;
+  final String image;
+  final String predictions;
+  final List<Product> products;
 
-  Data({this.confidence, this.image, this.predictions, this.products});
+  Data({
+    required this.confidence,
+    required this.image,
+    required this.predictions,
+    required this.products,
+  });
 
-  Data.fromJson(Map<String, dynamic> json) {
-    confidence = json['confidence'];
-    image = json['image'];
-    predictions = json['predictions'];
-    products = json['products'] != null ? List<dynamic>.from(json['products']) : null;
+  factory Data.fromJson(Map<String, dynamic> json) {
+    // Check if 'products' key exists and is not null
+    final List<Product> products = json['products'] != null
+        ? (json['products'] as List)
+            .map((productJson) => Product.fromJson(productJson))
+            .toList()
+        : []; // If 'products' key is null, assign an empty list
+
+    return Data(
+      confidence: json['confidence'],
+      image: json['image'],
+      predictions: json['predictions'],
+      products: products,
+    );
   }
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['confidence'] = confidence;
-    data['image'] = image;
-    data['predictions'] = predictions;
-    data['products'] = products;
-    return data;
+class Product {
+  final int id;
+  final String description;
+  final String image;
+  final List<String> images;
+  final String name;
+  final double price;
+  final Seller seller;
+  final String tags;
+
+  Product({
+    required this.id,
+    required this.description,
+    required this.image,
+    required this.images,
+    required this.name,
+    required this.price,
+    required this.seller,
+    required this.tags,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      description: json['description'],
+      image: json['image'],
+      images:
+          (json['images'] as List).map((image) => image.toString()).toList(),
+      name: json['name'],
+      price: json['price'].toDouble(),
+      seller: Seller.fromJson(json['seller']),
+      tags: json['tags'],
+    );
+  }
+}
+
+class Seller {
+  final int id;
+  final String fullName;
+  final String email;
+  final String phoneNumber;
+  final String city;
+  final String profilePic;
+
+  Seller({
+    required this.id,
+    required this.fullName,
+    required this.email,
+    required this.phoneNumber,
+    required this.city,
+    required this.profilePic,
+  });
+
+  factory Seller.fromJson(Map<String, dynamic> json) {
+    return Seller(
+      id: json['id'],
+      fullName: json['fullName'],
+      email: json['email'],
+      phoneNumber: json['phoneNumber'],
+      city: json['city'],
+      profilePic: json['profilePic'],
+    );
   }
 }

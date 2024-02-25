@@ -9,7 +9,7 @@ abstract class PlantCareRepo {
   Future<File?> pickedImageFromGallary(ImagePicker picker);
   Future<File?> pickedImageFromCamira(ImagePicker picker);
 
-  Future<Either<Failure, PlantCareModel>> getClassficationData({
+  Future<Either<Failure, ClassfictionModel>> getClassficationData({
     required File image,
   });
 }

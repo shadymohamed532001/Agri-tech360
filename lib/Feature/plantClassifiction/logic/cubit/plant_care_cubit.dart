@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,26 +37,26 @@ class PlantCareCubite extends Cubit<PlantCareState> {
     }
   }
 
-  PlantCareModel? plantCareModle;
+  ClassfictionModel? plantCareModle;
 
   Future<void> uploadImageToModel({required File image}) async {
     emit(UploadAndGetResponseToModelLoadingState());
     final responsEither =
         await plantCareRepo.getClassficationData(image: image);
     responsEither.fold((failure) {
-      log(failure.errMessage.toString());
+      print(failure.errMessage.toString());
 
       emit(
         UploadAndGetResponseToModelErrorState(
           errorMessage: failure.errMessage.toString(),
         ),
       );
-
-      log(failure.errMessage.toString());
     }, (calssficationResponse) {
       plantCareModle = calssficationResponse;
-      print(plantCareModle!.data!.confidence);
-      print(plantCareModle!.data!.confidence);
+      print(plantCareModle!.data.confidence);
+      print(plantCareModle!.data.image);
+      print(plantCareModle!.data.predictions);
+      print(plantCareModle!.data.products);
 
       emit(
         UploadAndGetResponseToModelSucsesState(

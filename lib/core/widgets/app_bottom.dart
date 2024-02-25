@@ -12,6 +12,7 @@ class CustomBottom extends StatelessWidget {
     this.bottomWidth,
     this.bottomHeight,
     this.textBottomStyle,
+    this.borderColor,
   });
 
   final void Function() onPressed;
@@ -20,6 +21,7 @@ class CustomBottom extends StatelessWidget {
   final double? bottomWidth;
   final double? bottomHeight;
   final TextStyle? textBottomStyle;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class CustomBottom extends StatelessWidget {
           backgroundColor: backgroundColor,
           shape: StadiumBorder(
             side: BorderSide(
-              color: ColorManger.primaryColor,
+              color: borderColor ?? ColorManger.primaryColor,
             ),
           ),
         ),

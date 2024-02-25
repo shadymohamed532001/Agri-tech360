@@ -36,7 +36,7 @@ class ProductDetailsAppBar extends StatelessWidget {
         ],
       ),
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(0.0),
+        preferredSize: const Size.fromHeight(0),
         child: Container(
           height: 32.0,
           alignment: Alignment.center,
@@ -49,7 +49,7 @@ class ProductDetailsAppBar extends StatelessWidget {
           ),
           child: Container(
             width: 60.0,
-            height: 5.0,
+            height: 40.0,
             decoration: BoxDecoration(
               color: ColorManger.greyColor,
               borderRadius: BorderRadius.circular(100.0),
