@@ -9,6 +9,7 @@ import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
+import 'package:smartsoil/core/widgets/shows_toust_color.dart';
 
 class PlantCareViewBody extends StatefulWidget {
   const PlantCareViewBody({super.key});
@@ -22,9 +23,38 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PlantCareCubite, PlantCareState>(
+    return BlocConsumer<PlantCareCubite, PlantCareState>(
+      listener: (BuildContext context, PlantCareState state) {
+        if (state is UploadAndGetResponseToModelLoadingState) {
+          showDialog(
+            context: context,
+            builder: (_) => Center(
+              child: CircularProgressIndicator(
+                color: ColorManger.whiteColor,
+              ),
+            ),
+          );
+        } else if (state is UploadAndGetResponseToModelSucsesState) {
+          if (state.plantCareModle.status == true) {
+            Navigator.of(context)
+                .pop(); // close the dialog if successfully logged in
+            showTouster(
+              massage: state.plantCareModle.message,
+              state: ToustState.SUCCESS,
+            );
+          }
+        }
+        if (state is UploadAndGetResponseToModelErrorState) {
+          Navigator.of(context).pop(); // close the dialog if login fails
+          showTouster(
+            massage: state.errorMessage,
+            state: ToustState.ERROR,
+          );
+        }
+      },
       builder: (context, state) {
         PlantCareCubite cubit = PlantCareCubite.getObject(context);
+
         return Stack(
           children: [
             ClipPath(
@@ -86,7 +116,9 @@ class PlantClassfictionResultBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * .8,
+      height: cubit.classfictionModel?.data.products.isEmpty ?? true
+          ? MediaQuery.of(context).size.height * .3
+          : MediaQuery.of(context).size.height * .8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
         color: ColorManger.whiteColor,
@@ -137,9 +169,14 @@ class PlantClassfictionResultBody extends StatelessWidget {
                             'Plant Name : ',
                             style: AppStyle.font14Blacksemibold,
                           ),
-                          Text(
-                            'Apple',
-                            style: AppStyle.font14Blacksemibold,
+                          Expanded(
+                            child: Text(
+                              cubit.classfictionModel?.data.predictions
+                                      .split(' ')
+                                      .first ??
+                                  '',
+                              style: AppStyle.font14Blacksemibold,
+                            ),
                           ),
                         ],
                       ),
@@ -151,9 +188,11 @@ class PlantClassfictionResultBody extends StatelessWidget {
                             'Plant disease : ',
                             style: AppStyle.font14Blacksemibold,
                           ),
-                          Text(
-                            'Apple leaf black rot',
-                            style: AppStyle.font14Blacksemibold,
+                          Expanded(
+                            child: Text(
+                              cubit.classfictionModel?.data.predictions ?? '',
+                              style: AppStyle.font14Blacksemibold,
+                            ),
                           ),
                         ],
                       ),
@@ -176,13 +215,28 @@ class PlantClassfictionResultBody extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned.fill(
-            top: 160,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: ClassfictionProductListView(),
-          )
+          cubit.classfictionModel?.data.products.isEmpty ?? true
+              ? Positioned.fill(
+                  top: 140.h,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Center(
+                    child: Text(
+                      'No Product Related To this Plant',
+                      style: AppStyle.font17Blacksemibold,
+                    ),
+                  ),
+                )
+              : Positioned.fill(
+                  top: 160,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: ClassfictionProductListView(
+                    cubit: cubit,
+                  ),
+                ),
         ],
       ),
     );
@@ -245,31 +299,11 @@ class EmptyPlantClassfiction extends StatelessWidget {
                 child: Column(
                   children: [
                     Expanded(
-                      child: Row(
-                        children: [
-                          Text(
-                            'Please Upload Image : ',
-                            style: AppStyle.font14Blacksemibold,
-                          ),
-                          Text(
-                            '..........',
-                            style: AppStyle.font14Blacksemibold,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Text(
-                            'Plant disease : ',
-                            style: AppStyle.font14Blacksemibold,
-                          ),
-                          Text(
-                            '...........',
-                            style: AppStyle.font14Blacksemibold,
-                          ),
-                        ],
+                      child: Center(
+                        child: Text(
+                          'Please Upload Image ',
+                          style: AppStyle.font22BlackBold,
+                        ),
                       ),
                     ),
                   ],

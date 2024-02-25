@@ -30,11 +30,12 @@ class Data {
 
   factory Data.fromJson(Map<String, dynamic> json) {
     // Check if 'products' key exists and is not null
-    final List<Product> products = json['products'] != null
+    final List<Product> products = json['products'] != null &&
+            json['products'] is List
         ? (json['products'] as List)
             .map((productJson) => Product.fromJson(productJson))
             .toList()
-        : []; // If 'products' key is null, assign an empty list
+        : []; // If 'products' key is null or not a list, assign an empty list
 
     return Data(
       confidence: json['confidence'],

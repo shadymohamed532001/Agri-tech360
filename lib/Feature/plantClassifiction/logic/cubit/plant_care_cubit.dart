@@ -37,7 +37,7 @@ class PlantCareCubite extends Cubit<PlantCareState> {
     }
   }
 
-  ClassfictionModel? plantCareModle;
+  ClassfictionModel? classfictionModel;
 
   Future<void> uploadImageToModel({required File image}) async {
     emit(UploadAndGetResponseToModelLoadingState());
@@ -52,11 +52,12 @@ class PlantCareCubite extends Cubit<PlantCareState> {
         ),
       );
     }, (calssficationResponse) {
-      plantCareModle = calssficationResponse;
-      print(plantCareModle!.data.confidence);
-      print(plantCareModle!.data.image);
-      print(plantCareModle!.data.predictions);
-      print(plantCareModle!.data.products);
+      classfictionModel = calssficationResponse;
+
+      print(classfictionModel!.data.confidence);
+      print(classfictionModel!.data.image);
+      print(classfictionModel!.data.predictions);
+      print(classfictionModel!.data.products);
 
       emit(
         UploadAndGetResponseToModelSucsesState(
