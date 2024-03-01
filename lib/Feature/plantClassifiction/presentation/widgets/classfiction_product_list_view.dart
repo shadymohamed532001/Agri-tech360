@@ -27,7 +27,7 @@ class ClassfictionProductListView extends StatelessWidget {
             mainAxisSpacing: 20,
             physics: const NeverScrollableScrollPhysics(),
             children: List.generate(
-              cubit.classfictionModel?.data.products.length ?? 0,
+              cubit.classfictionModel?.products.length ?? 0,
               (index) {
                 return const ClassfictionProductItem();
               },

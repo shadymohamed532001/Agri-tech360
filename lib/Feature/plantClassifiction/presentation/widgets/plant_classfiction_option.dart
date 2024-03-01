@@ -43,14 +43,14 @@ class _PlantCareOptionsState extends State<PlantClassfictionOptions> {
               child: CustomBottom(
                 bottomHeight: 40.h,
                 onPressed: () async {
-                  setState(() {
-                    isTabSelected = true;
-                  });
                   var cubit = BlocProvider.of<PlantCareCubite>(context);
                   await cubit.uploadImageFromGalleryModel(
                     picke: ImagePicker(),
                   );
                   await cubit.uploadImageToModel(image: cubit.image!);
+                  setState(() {
+                    isTabSelected = true;
+                  });
                 },
                 bottomtext: 'Open Gallary',
                 textBottomStyle: isTabSelected

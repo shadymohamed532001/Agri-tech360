@@ -116,7 +116,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: cubit.classfictionModel?.data.products.isEmpty ?? true
+      height: cubit.classfictionModel?.products.isEmpty ?? true
           ? MediaQuery.of(context).size.height * .3
           : MediaQuery.of(context).size.height * .8,
       decoration: BoxDecoration(
@@ -171,7 +171,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              cubit.classfictionModel?.data.predictions
+                              cubit.classfictionModel?.predictions
                                       .split(' ')
                                       .first ??
                                   '',
@@ -190,7 +190,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              cubit.classfictionModel?.data.predictions ?? '',
+                              cubit.classfictionModel?.predictions ?? '',
                               style: AppStyle.font14Blacksemibold,
                             ),
                           ),
@@ -215,7 +215,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
               ),
             ),
           ),
-          cubit.classfictionModel?.data.products.isEmpty ?? true
+          cubit.classfictionModel?.products.isEmpty ?? true
               ? Positioned.fill(
                   top: 140.h,
                   bottom: 0,

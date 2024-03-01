@@ -49,7 +49,7 @@ class WeatherDegreeItem extends StatelessWidget {
                         child: Text(
                           weatherModels.date,
                           style: AppStyle.font12Blackmedium.copyWith(
-                            fontSize: 11,
+                            fontSize: 10,
                           ),
                         ),
                       ),

@@ -54,10 +54,10 @@ class PlantCareCubite extends Cubit<PlantCareState> {
     }, (calssficationResponse) {
       classfictionModel = calssficationResponse;
 
-      print(classfictionModel!.data.confidence);
-      print(classfictionModel!.data.image);
-      print(classfictionModel!.data.predictions);
-      print(classfictionModel!.data.products);
+      print(classfictionModel!.confidence);
+      print(classfictionModel!.image);
+      print(classfictionModel!.predictions);
+      print(classfictionModel!.products);
 
       emit(
         UploadAndGetResponseToModelSucsesState(
