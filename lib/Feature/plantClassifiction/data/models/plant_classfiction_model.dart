@@ -30,8 +30,7 @@ class Seller {
 class Product {
   final int id;
   final String description;
-  final String image;
-  // final List<String> images;
+  final List<String> images; // Modified to store list of image URLs
   final String name;
   final double price;
   final Seller seller;
@@ -40,8 +39,7 @@ class Product {
   Product({
     required this.id,
     required this.description,
-    required this.image,
-    // required this.images,
+    required this.images, // Modified parameter
     required this.name,
     required this.price,
     required this.seller,
@@ -49,11 +47,21 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
+    // Parse images string into a list of URLs
+    List<String> parsedImages = [];
+    if (json['images'] != null) {
+      // Extracting the URLs from the JSON string using regular expression
+      RegExp regExp = RegExp(r"'(.*?)'");
+      Iterable<Match> matches = regExp.allMatches(json['images']);
+      for (Match match in matches) {
+        parsedImages.add(match.group(1)!);
+      }
+    }
+
     return Product(
       id: json['id'],
       description: json['description'],
-      image: json['image'],
-      // images: json['images'] != null ? List<String>.from(json['images']) : [],
+      images: parsedImages, // Store parsed images
       name: json['name'],
       price: json['price'].toDouble(),
       seller: Seller.fromJson(json['seller']),
