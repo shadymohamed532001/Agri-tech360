@@ -31,7 +31,7 @@ class Product {
   final int id;
   final String description;
   final String image;
-  final List<String> images;
+  // final List<String> images;
   final String name;
   final double price;
   final Seller seller;
@@ -41,7 +41,7 @@ class Product {
     required this.id,
     required this.description,
     required this.image,
-    required this.images,
+    // required this.images,
     required this.name,
     required this.price,
     required this.seller,
@@ -53,7 +53,7 @@ class Product {
       id: json['id'],
       description: json['description'],
       image: json['image'],
-      images: json['images'] != null ? List<String>.from(json['images']) : [],
+      // images: json['images'] != null ? List<String>.from(json['images']) : [],
       name: json['name'],
       price: json['price'].toDouble(),
       seller: Seller.fromJson(json['seller']),
