@@ -76,9 +76,12 @@ class ClassfictionResponseBody extends StatelessWidget {
                   SizedBox(
                     height: 5.h,
                   ),
-                  Text(
-                    classfictionModel.description,
-                    style: AppStyle.font12Greymedium,
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      classfictionModel.description ?? 'No Description',
+                      style: AppStyle.font12Greymedium,
+                    ),
                   ),
                   SizedBox(
                     height: 5.h,

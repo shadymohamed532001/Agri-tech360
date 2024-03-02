@@ -6,7 +6,6 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class HellowRow extends StatelessWidget {
   const HellowRow({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

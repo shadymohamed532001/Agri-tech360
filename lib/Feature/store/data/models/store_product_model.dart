@@ -35,8 +35,10 @@ class StoreProductModel {
   final double price;
   final Seller seller;
   final String tags;
+  final String image;
 
   StoreProductModel({
+    required this.image,
     required this.id,
     required this.description,
     required this.images, // Modified parameter
@@ -60,6 +62,7 @@ class StoreProductModel {
 
     return StoreProductModel(
       id: json['id'],
+      image: json['image'],
       description: json['description'],
       images: parsedImages, // Store parsed images
       name: json['name'],

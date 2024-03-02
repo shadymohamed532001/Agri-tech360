@@ -92,22 +92,15 @@ class ClassfictionProductItem extends StatelessWidget {
                     ],
                   ),
                   verticalSpacing(3),
-                  // Text(
-                  //   productModel.name,
-                  //   style: AppStyle.font12Blackmedium,
-                  // ),
-
                   Text(
                     'Seller : ${productModel.seller.fullName}',
                     style: AppStyle.font12Blackmedium,
                   ),
                   verticalSpacing(3),
-
                   Text(
                     productModel.name,
                     style: AppStyle.font12Blackmedium,
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

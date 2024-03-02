@@ -91,7 +91,7 @@ class ClassfictionModel {
 
   factory ClassfictionModel.fromJson(Map<String, dynamic> json) {
     return ClassfictionModel(
-      description: json['data']['information'],
+      description: json['data']['information'] ?? 'No description',
       status: json['status'],
       message: json['message'],
       confidence: json['data']['confidence'],

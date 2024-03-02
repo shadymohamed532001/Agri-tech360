@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -11,7 +15,10 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 class TraidmentProductCard extends StatelessWidget {
   const TraidmentProductCard({
     super.key,
+    required this.productModel,
   });
+
+  final StoreProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +55,8 @@ class TraidmentProductCard extends StatelessWidget {
                           width: 130.w,
                           height: 200.h,
                           child: FancyShimmerImage(
-                            imageUrl: '',
+                            imageUrl: '$baseUrl${productModel.image}',
+                            boxFit: BoxFit.fitHeight,
                           ),
                         ),
                       ),
@@ -74,43 +82,48 @@ class TraidmentProductCard extends StatelessWidget {
                       ),
                       horizontalSpacing(2),
                       Text(
-                        '4,7',
+                        Random().nextDouble().toStringAsFixed(1),
                         style: AppStyle.font12Blackmedium,
                       ),
                       horizontalSpacing(4),
                       Text(
-                        '(77 Reviews)',
+                        '(${Random().nextInt(100)} Reviews)',
                         style: AppStyle.font12Greyregular,
                       ),
                     ],
                   ),
                   verticalSpacing(3),
                   Text(
-                    'Spectacid IMMUNOX',
+                    'Seller : ${productModel.seller.fullName}',
                     style: AppStyle.font12Blackmedium,
                   ),
-                  verticalSpacing(15),
+                  Text(
+                    productModel.name,
+                    style: AppStyle.font12Blackmedium,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$333 ',
+                        '\$ ${productModel.price} ',
                         style: AppStyle.font14Blacksemibold,
                       ),
                       Container(
-                        width: 40.w,
-                        height: 45.h,
+                        width: 35.w,
+                        height: 40.h,
                         decoration: BoxDecoration(
                           color: ColorManger.primaryColor,
                           borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(24),
-                              bottomRight: Radius.circular(24)),
+                            topLeft: Radius.circular(24),
+                            bottomRight: Radius.circular(24),
+                          ),
                         ),
                         child: IconButton(
                           onPressed: () {},
                           icon: Icon(
-                            Iconsax
-                                .heart, //  if in favoridr Heart is HEART5 ELSE HeartOnly
+                            Iconsax.heart,
+                            size:
+                                22, //  if in favoridr Heart is HEART5 ELSE HeartOnly
                             color: ColorManger.whiteColor,
                           ),
                         ),

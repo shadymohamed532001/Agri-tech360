@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class CardIconBottom extends StatelessWidget {
@@ -10,7 +12,9 @@ class CardIconBottom extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Badge(
-        label: const Text('5'),
+        label: Text(
+          BlocProvider.of<StoreCubit>(context).productResult.length.toString(),
+        ),
         child: Icon(
           Iconsax.shopping_bag,
           color: ColorManger.whiteColor,
