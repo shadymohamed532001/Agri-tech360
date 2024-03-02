@@ -1,15 +1,16 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_care_cubit.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/models/product_model.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/classfication_product_item.dart';
 
 class ClassfictionProductListView extends StatelessWidget {
   const ClassfictionProductListView({
     Key? key,
-    required this.cubit,
+    required this.products,
   }) : super(key: key);
-  final PlantCareCubite cubit;
+
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,11 @@ class ClassfictionProductListView extends StatelessWidget {
             mainAxisSpacing: 20,
             physics: const NeverScrollableScrollPhysics(),
             children: List.generate(
-              cubit.classfictionModel?.products.length ?? 0,
+              products.length,
               (index) {
-                return const ClassfictionProductItem();
+                return ClassfictionProductItem(
+                  productModel: products[index],
+                );
               },
             ),
           ),

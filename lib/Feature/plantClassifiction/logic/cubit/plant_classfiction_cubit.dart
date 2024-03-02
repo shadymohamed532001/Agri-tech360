@@ -2,10 +2,11 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smartsoil/Feature/plantClassifiction/data/models/plant_classfiction_model.dart';
-import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_care_repo.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/models/classfiction_model.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/models/product_model.dart';
+import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_classfictaion_repo.dart';
 
-part 'plant_care_state.dart';
+part 'plant_classfiction_state.dart';
 
 class PlantCareCubite extends Cubit<PlantCareState> {
   PlantCareCubite({required this.plantCareRepo})
@@ -38,33 +39,35 @@ class PlantCareCubite extends Cubit<PlantCareState> {
   }
 
   ClassfictionModel? classfictionModel;
+  List<ProductModel> productsInfo = [];
 
   Future<void> uploadImageToModel({required File image}) async {
     emit(UploadAndGetResponseToModelLoadingState());
     final responsEither =
         await plantCareRepo.getClassficationData(image: image);
-    responsEither.fold((failure) {
-      print(failure.errMessage.toString());
+    responsEither.fold(
+      (failure) {
+        emit(UploadAndGetResponseToModelErrorState(
+            errorMessage: failure.errMessage.toString()));
+      },
+      (classificationResponse) {
+        classfictionModel = classificationResponse;
 
-      emit(
-        UploadAndGetResponseToModelErrorState(
-          errorMessage: failure.errMessage.toString(),
-        ),
-      );
-    }, (calssficationResponse) {
-      classfictionModel = calssficationResponse;
+        // Iterate over the list of lists of products and save each product into a separate model
+        for (var productList in classfictionModel!.products) {
+          for (var product in productList) {
+            final productModel = ProductModel.fromProduct(product);
+            productsInfo.add(productModel);
+          }
+        }
 
-      print(classfictionModel!.confidence);
-      print(classfictionModel!.image);
-      print(classfictionModel!.predictions);
-      print(classfictionModel!.products[0][0].images[0]);
-      print(classfictionModel!.products[0][0].images[1]);
+        print(productsInfo[0].id);
+        print(productsInfo[0].images.length);
+        print(productsInfo[0].description);
 
-      emit(
-        UploadAndGetResponseToModelSucsesState(
-          plantCareModle: calssficationResponse,
-        ),
-      );
-    });
+        emit(UploadAndGetResponseToModelSucsesState(
+            plantCareModle: classificationResponse));
+      },
+    );
   }
 }

@@ -23,11 +23,11 @@ import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dart';
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
-import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_care_data_sources.dart';
-import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_care_data_sources_impl.dart';
-import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_care_repo_impl.dart';
-import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_care_repo.dart';
-import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_care_cubit.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_classfiction_data_sources.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_classfiction_data_sources_impl.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_classfiction_repo_impl.dart';
+import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_classfictaion_repo.dart';
+import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
 
 final GetIt serviceLocator = GetIt.instance;
 
@@ -83,7 +83,8 @@ class ServiceLocator {
         layoutDataSource: serviceLocator.get<LayoutDataSource>()));
 
     serviceLocator.registerLazySingleton<PlantCareRepo>(() => PlantCareRepoImpl(
-        plantCareDataSource: serviceLocator.get<PlantCareDataSource>()));
+        plantClassficationDataSource:
+            serviceLocator.get<PlantClassficationDataSource>()));
     // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
     //     VerificationRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
   }
@@ -100,8 +101,8 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<HomeDataSource>(
       () => HomeDatSourceImpl(),
     );
-    serviceLocator.registerLazySingleton<PlantCareDataSource>(
-      () => PlantCareDataSourceImpl(),
+    serviceLocator.registerLazySingleton<PlantClassficationDataSource>(
+      () => PlantClassfictionDataSourceImpl(),
     );
   }
 

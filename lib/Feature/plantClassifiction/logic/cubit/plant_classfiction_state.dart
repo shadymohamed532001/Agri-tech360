@@ -1,4 +1,4 @@
-part of 'plant_care_cubit.dart';
+part of 'plant_classfiction_cubit.dart';
 
 sealed class PlantCareState extends Equatable {
   const PlantCareState();

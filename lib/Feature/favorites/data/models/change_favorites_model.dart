@@ -6,18 +6,18 @@ class AddOrRemoveFavorite {
   AddOrRemoveFavorite({this.data, this.message, this.status});
 
   AddOrRemoveFavorite.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
     message = json['message'];
     status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['message'] = this.message;
-    data['status'] = this.status;
+    data['message'] = message;
+    data['status'] = status;
     return data;
   }
 }
@@ -30,17 +30,17 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     product =
-        json['product'] != null ? new Product.fromJson(json['product']) : null;
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
+        json['product'] != null ? Product.fromJson(json['product']) : null;
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.product != null) {
-      data['product'] = this.product!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (product != null) {
+      data['product'] = product!.toJson();
     }
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }
@@ -73,23 +73,22 @@ class Product {
     images = json['images'];
     name = json['name'];
     price = json['price'];
-    seller =
-        json['seller'] != null ? new Seller.fromJson(json['seller']) : null;
+    seller = json['seller'] != null ? Seller.fromJson(json['seller']) : null;
     tags = json['tags'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['description'] = this.description;
-    data['id'] = this.id;
-    data['image'] = this.image;
-    data['images'] = this.images;
-    data['name'] = this.name;
-    data['price'] = this.price;
-    if (this.seller != null) {
-      data['seller'] = this.seller!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['description'] = description;
+    data['id'] = id;
+    data['image'] = image;
+    data['images'] = images;
+    data['name'] = name;
+    data['price'] = price;
+    if (seller != null) {
+      data['seller'] = seller!.toJson();
     }
-    data['tags'] = this.tags;
+    data['tags'] = tags;
     return data;
   }
 }
@@ -120,13 +119,13 @@ class Seller {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['city'] = this.city;
-    data['email'] = this.email;
-    data['fullName'] = this.fullName;
-    data['id'] = this.id;
-    data['phoneNumber'] = this.phoneNumber;
-    data['profilePic'] = this.profilePic;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['city'] = city;
+    data['email'] = email;
+    data['fullName'] = fullName;
+    data['id'] = id;
+    data['phoneNumber'] = phoneNumber;
+    data['profilePic'] = profilePic;
     return data;
   }
 }
@@ -154,12 +153,12 @@ class User {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['city'] = this.city;
-    data['email'] = this.email;
-    data['fullName'] = this.fullName;
-    data['phoneNumber'] = this.phoneNumber;
-    data['profilePic'] = this.profilePic;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['city'] = city;
+    data['email'] = email;
+    data['fullName'] = fullName;
+    data['phoneNumber'] = phoneNumber;
+    data['profilePic'] = profilePic;
     return data;
   }
 }

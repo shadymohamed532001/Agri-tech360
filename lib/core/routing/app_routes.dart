@@ -4,7 +4,7 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
 import 'package:smartsoil/Feature/details/view/traidment_product_details_view.dart';
-import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_care_cubit.dart';
+import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/views/plant_classsfiction_view.dart';
 import 'package:smartsoil/Feature/details/view/plant_details_view.dart';
 import 'package:smartsoil/Feature/home/presentation/views/recentaly_see_all_view.dart';

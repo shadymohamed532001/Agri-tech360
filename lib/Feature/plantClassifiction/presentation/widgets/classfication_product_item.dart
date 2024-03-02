@@ -2,8 +2,10 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smartsoil/Feature/plantClassifiction/data/models/product_model.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -11,7 +13,10 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 class ClassfictionProductItem extends StatelessWidget {
   const ClassfictionProductItem({
     super.key,
+    required this.productModel,
   });
+
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class ClassfictionProductItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
+          borderRadius: BorderRadius.circular(16),
           color: ColorManger.whiteColor,
           boxShadow: [
             BoxShadow(
@@ -43,12 +48,12 @@ class ClassfictionProductItem extends StatelessWidget {
                   children: [
                     Center(
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(40),
+                        borderRadius: BorderRadius.circular(18),
                         child: SizedBox(
                           width: 130.w,
                           height: 200.h,
                           child: FancyShimmerImage(
-                            imageUrl: '',
+                            imageUrl: '$baseUrl${productModel.images[0]}',
                           ),
                         ),
                       ),
@@ -86,7 +91,7 @@ class ClassfictionProductItem extends StatelessWidget {
                   ),
                   verticalSpacing(3),
                   Text(
-                    'Spectacid IMMUNOX',
+                    productModel.name,
                     style: AppStyle.font12Blackmedium,
                   ),
                   verticalSpacing(15),
