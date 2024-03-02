@@ -1,38 +1,3 @@
-class StoreProductModel {
-  final int id;
-  final String description;
-  final String image;
-  final List<String> images;
-  final String name;
-  final double price;
-  final Seller seller;
-  final String tags;
-
-  StoreProductModel({
-    required this.id,
-    required this.description,
-    required this.image,
-    required this.images,
-    required this.name,
-    required this.price,
-    required this.seller,
-    required this.tags,
-  });
-
-  factory StoreProductModel.fromJson(Map<String, dynamic> json) {
-    return StoreProductModel(
-      id: json['id'],
-      description: json['description'],
-      image: json['image'],
-      images: List<String>.from(json['images']),
-      name: json['name'],
-      price: json['price'].toDouble(),
-      seller: Seller.fromJson(json['seller']),
-      tags: json['tags'],
-    );
-  }
-}
-
 class Seller {
   final int id;
   final String city;
@@ -58,6 +23,49 @@ class Seller {
       fullName: json['fullName'],
       phoneNumber: json['phoneNumber'],
       profilePic: json['profilePic'],
+    );
+  }
+}
+
+class StoreProductModel {
+  final int id;
+  final String description;
+  final List<String> images; // Modified to store list of image URLs
+  final String name;
+  final double price;
+  final Seller seller;
+  final String tags;
+
+  StoreProductModel({
+    required this.id,
+    required this.description,
+    required this.images, // Modified parameter
+    required this.name,
+    required this.price,
+    required this.seller,
+    required this.tags,
+  });
+
+  factory StoreProductModel.fromJson(Map<String, dynamic> json) {
+    // Parse images string into a list of URLs
+    List<String> parsedImages = [];
+    if (json['images'] != null) {
+      // Extracting the URLs from the JSON string using regular expression
+      RegExp regExp = RegExp(r"'(.*?)'");
+      Iterable<Match> matches = regExp.allMatches(json['images']);
+      for (Match match in matches) {
+        parsedImages.add(match.group(1)!);
+      }
+    }
+
+    return StoreProductModel(
+      id: json['id'],
+      description: json['description'],
+      images: parsedImages, // Store parsed images
+      name: json['name'],
+      price: json['price'].toDouble(),
+      seller: Seller.fromJson(json['seller']),
+      tags: json['tags'],
     );
   }
 }

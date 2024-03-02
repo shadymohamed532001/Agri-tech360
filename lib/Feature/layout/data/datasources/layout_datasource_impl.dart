@@ -25,7 +25,7 @@ class LayoutDataSourceImpl extends LayoutDataSource {
   List<Widget> getBody() {
     return const <Widget>[
       ExplorViewBody(),
-      StoreView(),
+      StoreViewBody(),
       HomeBody(),
       SearchView(),
       ProfileView(),

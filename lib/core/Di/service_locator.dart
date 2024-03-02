@@ -28,6 +28,11 @@ import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_clas
 import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_classfiction_repo_impl.dart';
 import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_classfictaion_repo.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
+import 'package:smartsoil/Feature/store/data/datasources/store_dara_sources_impl.dart';
+import 'package:smartsoil/Feature/store/data/datasources/store_data_sources.dart';
+import 'package:smartsoil/Feature/store/data/repositories/store_repo_impl.dart';
+import 'package:smartsoil/Feature/store/domain/repositories/store_repo.dart';
+import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
 
 final GetIt serviceLocator = GetIt.instance;
 
@@ -85,6 +90,9 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<PlantCareRepo>(() => PlantCareRepoImpl(
         plantClassficationDataSource:
             serviceLocator.get<PlantClassficationDataSource>()));
+
+    serviceLocator.registerLazySingleton<StoreRepo>(() => StoreRepoImpl(
+        storeDataSources: serviceLocator.get<StoreDataSources>()));
   }
 
   void _setupForDataSources() {
@@ -101,6 +109,10 @@ class ServiceLocator {
     );
     serviceLocator.registerLazySingleton<PlantClassficationDataSource>(
       () => PlantClassfictionDataSourceImpl(),
+    );
+
+    serviceLocator.registerLazySingleton<StoreDataSources>(
+      () => StoreDataSourcesImpl(),
     );
   }
 
@@ -123,5 +135,8 @@ class ServiceLocator {
     serviceLocator.registerFactory<PlantClassfictionCubite>(() =>
         PlantClassfictionCubite(
             plantCareRepo: serviceLocator.get<PlantCareRepo>()));
+
+    serviceLocator.registerFactory<StoreCubit>(
+        () => StoreCubit(storeRepo: serviceLocator.get<StoreRepo>()));
   }
 }

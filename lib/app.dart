@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
+import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/routing/app_routes.dart';
 
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => serviceLocator.get<ExplorCubit>()..getPlants(),
+          ),
+          BlocProvider(
+            create: (context) =>
+                serviceLocator.get<StoreCubit>()..getProducts(),
           ),
         ],
         child: const MaterialApp(

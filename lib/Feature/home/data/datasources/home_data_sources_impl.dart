@@ -8,7 +8,6 @@ class HomeDatSourceImpl extends HomeDataSource {
   @override
   Future<List<WeatherModel>> getWeatherData() async {
     String token = await LocalServices.getData(key: 'token');
-
     Map<String, dynamic> response = await ApiServices.getData(
       endpoint: '$baseUrl$weatherendPoint',
       token: token,
