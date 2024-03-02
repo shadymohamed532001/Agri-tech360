@@ -43,6 +43,7 @@ class PlantCareCubite extends Cubit<PlantCareState> {
 
   Future<void> uploadImageToModel({required File image}) async {
     emit(UploadAndGetResponseToModelLoadingState());
+    productsInfo = [];
     final responsEither =
         await plantCareRepo.getClassficationData(image: image);
     responsEither.fold(
@@ -60,10 +61,6 @@ class PlantCareCubite extends Cubit<PlantCareState> {
             productsInfo.add(productModel);
           }
         }
-
-        print(productsInfo[0].id);
-        print(productsInfo[0].images.length);
-        print(productsInfo[0].description);
 
         emit(UploadAndGetResponseToModelSucsesState(
             plantCareModle: classificationResponse));

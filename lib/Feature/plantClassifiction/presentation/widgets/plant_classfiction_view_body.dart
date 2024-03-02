@@ -93,7 +93,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       cubit.classfictionModel == null
                           ? const EmptyPlantClassfiction()
                           : PlantClassfictionResultBody(
-                              classfictionModel: cubit.classfictionModel,
+                              classfictionModel: cubit.classfictionModel!,
                             ),
                     ],
                   ),

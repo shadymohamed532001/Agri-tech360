@@ -9,16 +9,18 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class PlantClassfictionResultBody extends StatelessWidget {
   const PlantClassfictionResultBody({
-    super.key,
+    Key? key,
     required this.classfictionModel,
-  });
+  }) : super(key: key);
 
-  final ClassfictionModel? classfictionModel;
+  final ClassfictionModel classfictionModel;
+
   @override
   Widget build(BuildContext context) {
+    final image = BlocProvider.of<PlantCareCubite>(context).image;
     return Container(
       width: double.infinity,
-      height: classfictionModel!.products.isEmpty
+      height: classfictionModel.products.isEmpty
           ? MediaQuery.of(context).size.height * .3
           : MediaQuery.of(context).size.height * .8,
       decoration: BoxDecoration(
@@ -37,8 +39,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
               backgroundColor: ColorManger.whiteColor,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage:
-                    FileImage(BlocProvider.of<PlantCareCubite>(context).image!),
+                backgroundImage: image != null ? FileImage(image) : null,
               ),
             ),
           ),
@@ -74,7 +75,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              classfictionModel!.predictions.split(' ').first,
+                              classfictionModel.predictions.split(' ').first,
                               style: AppStyle.font14Blacksemibold,
                             ),
                           ),
@@ -90,7 +91,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              classfictionModel!.predictions,
+                              classfictionModel.predictions,
                               style: AppStyle.font14Blacksemibold,
                             ),
                           ),
@@ -115,7 +116,7 @@ class PlantClassfictionResultBody extends StatelessWidget {
               ),
             ),
           ),
-          classfictionModel?.products.isEmpty ?? true
+          classfictionModel.products.isEmpty
               ? Positioned.fill(
                   top: 140.h,
                   bottom: 0,

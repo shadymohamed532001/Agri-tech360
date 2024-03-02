@@ -85,8 +85,6 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<PlantCareRepo>(() => PlantCareRepoImpl(
         plantClassficationDataSource:
             serviceLocator.get<PlantClassficationDataSource>()));
-    // serviceLocator.registerLazySingleton<VerificationRepo>(() =>
-    //     VerificationRepoImpl(dioConsumer: serviceLocator.get<DioConsumer>()));
   }
 
   void _setupForDataSources() {
@@ -124,14 +122,5 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<PlantCareCubite>(() =>
         PlantCareCubite(plantCareRepo: serviceLocator.get<PlantCareRepo>()));
-
-    // serviceLocator.registerFactory<ForgetPasswordCubit>(() =>
-    //     ForgetPasswordCubit(
-    //         forgetPasswordRepo: serviceLocator.get<ForgetPasswordRepo>()));
-
-    // serviceLocator.registerFactory<SignUpCubit>(
-    //     () => SignUpCubit(registerRepo: serviceLocator.get<SignUpRepo>()));
-    // serviceLocator.registerFactory<VerificationCubit>(() => VerificationCubit(
-    //     verificationRepo: serviceLocator.get<VerificationRepo>()));
   }
 }
