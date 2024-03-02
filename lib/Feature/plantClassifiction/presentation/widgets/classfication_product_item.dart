@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,8 +23,8 @@ class ClassfictionProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.navigateTo(
-          routeName: Routes
-              .traidmentProductDetailsViewRoute), // i well push with argument to push product Model
+        routeName: Routes.traidmentProductDetailsViewRoute,
+      ), // i well push with argument to push product Model
       child: Container(
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
@@ -43,7 +44,7 @@ class ClassfictionProductItem extends StatelessWidget {
             verticalSpacing(15),
             Flexible(
               child: SizedBox(
-                height: 120.h,
+                height: 100.h,
                 child: Stack(
                   children: [
                     Center(
@@ -54,6 +55,7 @@ class ClassfictionProductItem extends StatelessWidget {
                           height: 200.h,
                           child: FancyShimmerImage(
                             imageUrl: '$baseUrl${productModel.images[0]}',
+                            boxFit: BoxFit.fitHeight,
                           ),
                         ),
                       ),
@@ -79,32 +81,43 @@ class ClassfictionProductItem extends StatelessWidget {
                       ),
                       horizontalSpacing(2),
                       Text(
-                        '4,7',
+                        Random().nextDouble().toStringAsFixed(1),
                         style: AppStyle.font12Blackmedium,
                       ),
                       horizontalSpacing(4),
                       Text(
-                        '(77 Reviews)',
+                        '(${Random().nextInt(100)} Reviews)',
                         style: AppStyle.font12Greyregular,
                       ),
                     ],
                   ),
                   verticalSpacing(3),
+                  // Text(
+                  //   productModel.name,
+                  //   style: AppStyle.font12Blackmedium,
+                  // ),
+
+                  Text(
+                    'Seller : ${productModel.seller.fullName}',
+                    style: AppStyle.font12Blackmedium,
+                  ),
+                  verticalSpacing(3),
+
                   Text(
                     productModel.name,
                     style: AppStyle.font12Blackmedium,
                   ),
-                  verticalSpacing(15),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$333 ',
-                        style: AppStyle.font14Blacksemibold,
+                        '\$ ${productModel.price}',
+                        style: AppStyle.font14Blackregular,
                       ),
                       Container(
-                        width: 40.w,
-                        height: 45.h,
+                        width: 35.w,
+                        height: 40.h,
                         decoration: BoxDecoration(
                           color: ColorManger.primaryColor,
                           borderRadius: const BorderRadius.only(
@@ -114,8 +127,9 @@ class ClassfictionProductItem extends StatelessWidget {
                         child: IconButton(
                           onPressed: () {},
                           icon: Icon(
-                            Iconsax
-                                .heart, //  if in favoridr Heart is HEART5 ELSE HeartOnly
+                            Iconsax.heart,
+                            size:
+                                22, //  if in favoridr Heart is HEART5 ELSE HeartOnly
                             color: ColorManger.whiteColor,
                           ),
                         ),

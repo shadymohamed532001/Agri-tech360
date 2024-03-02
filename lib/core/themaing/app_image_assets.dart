@@ -17,17 +17,7 @@ class ImagesAssetsManger {
   static const degreeiconImage = '$imagePath/Degree_icon.png';
 
   static const menuiconImage = '$imagePath/menu.png';
-}
+  static const appLogo = '$imagePath/logo.png';
 
-class ExplrImagePaths {
-  static const almonds = '$imagePath/explor_image/Almonds.png';
-  static const apple = '$imagePath/explor_image/Apple.png';
-  static const bananas = '$imagePath/explor_image/Bananas.png';
-  static const cherry = '$imagePath/explor_image/Cherry.png';
-  static const corn = '$imagePath/explor_image/Corn.png';
-  static const cotton = '$imagePath/explor_image/Cotton.png';
-  static const grapes = '$imagePath/explor_image/Grapes.png';
-  static const hazelnuts = '$imagePath/explor_image/Hazelnuts.png';
-  static const mangoes = '$imagePath/explor_image/Mangoes.png';
-  static const oranges = '$imagePath/explor_image/Oranges.png';
+  static const uploadImage = '$imagePath/upload.png';
 }

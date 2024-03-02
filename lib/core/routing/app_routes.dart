@@ -104,7 +104,7 @@ class AppRoutes {
       case Routes.plantCareViewRoute:
         return MaterialPageRoute(builder: (context) {
           return BlocProvider(
-            create: (context) => serviceLocator.get<PlantCareCubite>(),
+            create: (context) => serviceLocator.get<PlantClassfictionCubite>(),
             child: const PlantCareView(),
           );
         });

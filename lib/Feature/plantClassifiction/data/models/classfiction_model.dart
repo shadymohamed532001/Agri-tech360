@@ -74,11 +74,13 @@ class ClassfictionModel {
   final bool status;
   final String message;
   final double confidence;
+  final String description;
   final String image;
   final String predictions;
   final List<List<Product>> products;
 
   ClassfictionModel({
+    required this.description,
     required this.status,
     required this.message,
     required this.confidence,
@@ -89,6 +91,7 @@ class ClassfictionModel {
 
   factory ClassfictionModel.fromJson(Map<String, dynamic> json) {
     return ClassfictionModel(
+      description: json['data']['information'],
       status: json['status'],
       message: json['message'],
       confidence: json['data']['confidence'],

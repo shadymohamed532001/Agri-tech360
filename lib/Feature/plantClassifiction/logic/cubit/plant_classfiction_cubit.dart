@@ -8,14 +8,14 @@ import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_c
 
 part 'plant_classfiction_state.dart';
 
-class PlantCareCubite extends Cubit<PlantCareState> {
-  PlantCareCubite({required this.plantCareRepo})
+class PlantClassfictionCubite extends Cubit<PlantClasfictionState> {
+  PlantClassfictionCubite({required this.plantCareRepo})
       : super(PlantClassfictionInitial());
 
   final PlantCareRepo plantCareRepo;
 
-  static PlantCareCubite getObject(context) =>
-      BlocProvider.of<PlantCareCubite>(context);
+  static PlantClassfictionCubite getObject(context) =>
+      BlocProvider.of<PlantClassfictionCubite>(context);
   File? image;
 
   Future<void> uploadImageFromGalleryModel({required ImagePicker picke}) async {

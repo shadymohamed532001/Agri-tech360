@@ -3,4 +3,4 @@ bool? onBording;
 int? indexOfExplorationnnnn = 0;
 
 const plantCareDescription =
-    'With PlantSnap, discovering the name of any plant is as easy as taking a photo. Ouradvanced Deep Learning technology quickly analyzes your snapshots, providing instant identification along with tailored care advice.';
+    'Smart Soil: Capture leaf images for instant classification and disease diagnosis. Identify leaf types, detect diseases, and receive medication recommendations for preserving plant health. Empowering users with quick and accurate solutions to safeguard their plants.';

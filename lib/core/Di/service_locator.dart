@@ -120,7 +120,8 @@ class ServiceLocator {
     serviceLocator.registerFactory<ExplorCubit>(
         () => ExplorCubit(explorRepo: serviceLocator.get<ExplorRepo>()));
 
-    serviceLocator.registerFactory<PlantCareCubite>(() =>
-        PlantCareCubite(plantCareRepo: serviceLocator.get<PlantCareRepo>()));
+    serviceLocator.registerFactory<PlantClassfictionCubite>(() =>
+        PlantClassfictionCubite(
+            plantCareRepo: serviceLocator.get<PlantCareRepo>()));
   }
 }

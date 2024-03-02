@@ -5,25 +5,53 @@ import 'package:smartsoil/core/themaing/font_weight_helper.dart';
 
 class AppStyle {
   // Black Color Styles
+  static TextStyle font32blacksemibold = TextStyle(
+      fontSize: 32.sp,
+      fontWeight: FontWeightHelper.semibold,
+      color: Colors.black,
+      fontFamily: 'Raleway');
+
+  static TextStyle font20blacksemibold = TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+      fontFamily: 'Raleway');
+
+  static TextStyle font16blacksemibold = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.semibold,
+      color: Colors.black,
+      fontFamily: 'Raleway');
+  static TextStyle font16blackmedium = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.medium,
+      color: Colors.black,
+      fontFamily: 'Raleway');
+  static TextStyle font14blackmedium = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeightHelper.medium,
+      color: Colors.black,
+      fontFamily: 'Raleway');
   static TextStyle font32BlackBold = TextStyle(
-    fontSize: 32.sp,
-    fontWeight: FontWeightHelper.bold,
-    color: Colors.black,
-  );
+      fontSize: 32.sp,
+      fontWeight: FontWeightHelper.bold,
+      color: Colors.black,
+      fontFamily: 'Raleway');
   static TextStyle font22BlackBold = TextStyle(
     fontSize: 22.sp,
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
   );
   static TextStyle font14Blacksemibold = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeightHelper.semibold,
-    color: Colors.black,
-  );
+      fontSize: 14.sp,
+      fontWeight: FontWeightHelper.semibold,
+      color: Colors.black,
+      fontFamily: 'Raleway');
   static TextStyle font13Blacksemibold = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeightHelper.semibold,
     color: Colors.black,
+    fontFamily: 'Raleway',
   );
   static TextStyle font17Blacksemibold = TextStyle(
     fontSize: 17.sp,
@@ -101,8 +129,32 @@ class AppStyle {
     fontWeight: FontWeightHelper.regular,
     color: ColorManger.lightGreyColor,
   );
+  static TextStyle font14Greyregular = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w400,
+      color: const Color(0xffA7A6A5),
+      fontFamily: 'Raleway');
+  static TextStyle font16Greyregular = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w400,
+      color: const Color(0xffA7A6A5),
+      fontFamily: 'Raleway');
+  static TextStyle font13Greymedium = TextStyle(
+      fontSize: 13.sp,
+      fontWeight: FontWeight.w500,
+      color: const Color.fromARGB(255, 146, 144, 143),
+      fontFamily: 'Raleway');
+  static TextStyle font12Greymedium = TextStyle(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w500,
+      color: const Color(0xff909090),
+      fontFamily: 'Raleway');
   // Primary Color Styles
-
+  static TextStyle font14Primarysemibold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorManger.primaryColor,
+  );
   static TextStyle font15PrimaryBold = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontWeightHelper.bold,
@@ -119,22 +171,22 @@ class AppStyle {
     color: ColorManger.primaryColor,
   );
   static TextStyle font11PrimarySemiBold = TextStyle(
-    fontSize: 11.sp,
-    fontWeight: FontWeightHelper.semibold,
-    color: ColorManger.primaryColor,
-  );
+      fontSize: 11.sp,
+      fontWeight: FontWeightHelper.semibold,
+      color: ColorManger.primaryColor,
+      fontFamily: 'Raleway');
 
   // White Color Styles
   static TextStyle font11WhiteSemiBold = TextStyle(
-    fontSize: 11.sp,
-    fontWeight: FontWeightHelper.semibold,
-    color: ColorManger.whiteColor,
-  );
+      fontSize: 11.sp,
+      fontWeight: FontWeightHelper.semibold,
+      color: ColorManger.whiteColor,
+      fontFamily: 'Raleway');
   static TextStyle font16Whitebold = TextStyle(
-    fontSize: 16.sp,
-    fontWeight: FontWeightHelper.bold,
-    color: ColorManger.whiteColor,
-  );
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.bold,
+      color: ColorManger.whiteColor,
+      fontFamily: 'Raleway');
   static TextStyle font14Whitesemibold = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.semibold,
@@ -166,6 +218,27 @@ class AppStyle {
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.whiteColor,
   );
+
+  static TextStyle font14Whitesemiboldralewayey = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      fontFamily: 'Raleway');
+  static TextStyle font14Whiteregular = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+      fontFamily: 'Raleway');
+  static TextStyle font16Whitesemibold = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      fontFamily: 'Raleway');
+  static TextStyle font18Whitesemibold = TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      fontFamily: 'Raleway');
   // static TextStyle font13GreyRegular = TextStyle(
   //   fontSize: 13.sp,
   //   fontWeight: FontWeightHelper.regular,
