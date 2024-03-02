@@ -15,3 +15,5 @@ const classifyendPoint = 'classify';
 const favoritesendpoint = 'favorites';
 
 const addOrRemoveFavoriteendpoint = 'favorites';
+
+const productsesendpoint = 'products';

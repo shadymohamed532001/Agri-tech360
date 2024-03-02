@@ -183,10 +183,12 @@ class AppStyle {
       color: ColorManger.whiteColor,
       fontFamily: 'Raleway');
   static TextStyle font16Whitebold = TextStyle(
-      fontSize: 16.sp,
-      fontWeight: FontWeightHelper.bold,
-      color: ColorManger.whiteColor,
-      fontFamily: 'Raleway');
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorManger.whiteColor,
+    fontFamily: 'Raleway',
+  );
+
   static TextStyle font14Whitesemibold = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.semibold,
@@ -217,6 +219,12 @@ class AppStyle {
     fontSize: 22.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.whiteColor,
+  );
+  static TextStyle font22Whitesmedium = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorManger.whiteColor,
+    fontFamily: 'Poppins',
   );
 
   static TextStyle font14Whitesemiboldralewayey = TextStyle(
