@@ -3,6 +3,7 @@ import 'package:smartsoil/Feature/checkout/presenation/widgets/custom_check_icon
 import 'package:smartsoil/Feature/checkout/presenation/widgets/custom_dashed_line.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/thank_you_card.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
+import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class ThankYouViewBody extends StatelessWidget {
   const ThankYouViewBody({super.key, required this.storeProductModel});
@@ -32,15 +33,15 @@ class ThankYouViewBody extends StatelessWidget {
           Positioned(
             left: -20,
             top: MediaQuery.of(context).size.height * .55,
-            child: const CircleAvatar(
-              backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: ColorManger.scaffoldColor,
             ),
           ),
           Positioned(
             right: -20,
             top: MediaQuery.of(context).size.height * .55,
-            child: const CircleAvatar(
-              backgroundColor: Colors.white,
+            child: CircleAvatar(
+              backgroundColor: ColorManger.scaffoldColor,
             ),
           ),
           const Positioned(

@@ -109,12 +109,12 @@ class ThankYouCard extends StatelessWidget {
                   ),
                 ),
                 CustomBottom(
-                  bottomHeight: 60,
-                  bottomWidth: 120,
+                  bottomHeight: 46,
+                  bottomWidth: 100,
                   onPressed: () {
                     context.navigateTo(routeName: Routes.layOutViewsRoute);
                   },
-                  bottomtext: 'Pay',
+                  bottomtext: 'Home',
                   textBottomStyle: const TextStyle(
                     fontSize: 18,
                     color: Colors.black,
