@@ -2,12 +2,14 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:readmore/readmore.dart';
 import 'package:smartsoil/Feature/details/widgets/more_information_text_bottom.dart';
 import 'package:smartsoil/Feature/details/widgets/squear_details_continer.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
+import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/line_back_ground.dart';
@@ -112,10 +114,19 @@ class PlantDetailsViewBody extends StatelessWidget {
                               ],
                             ),
                             verticalSpacing(10),
-                            Text(
-                              plant.longDescription,
-                              maxLines: 10,
-                              style: AppStyle.font12Greyregular,
+                            SizedBox(
+                              height: 200.h,
+                              child: Expanded(
+                                child: ReadMoreText(
+                                  plant.mediumDescription,
+                                  style: AppStyle.font12Greyregular,
+                                  trimLines: 3,
+                                  trimMode: TrimMode.Line,
+                                  trimExpandedText: 'show less',
+                                  trimCollapsedText: 'show more',
+                                  colorClickableText: ColorManger.primaryColor,
+                                ),
+                              ),
                             ),
                           ],
                         ),

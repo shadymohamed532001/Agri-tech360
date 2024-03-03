@@ -54,7 +54,7 @@ class CustomBottomSheetConsummer extends StatelessWidget {
           }));
         }
         if (state is CheckOutError) {
-          print(state.error.toString());
+          // print(state.error.toString());
           Navigator.pop(context);
           // Handle the error, such as displaying an error message
         }

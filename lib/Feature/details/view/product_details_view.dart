@@ -69,11 +69,12 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       horizontalSpacing(20),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
                               Text(
-                                'price',
+                                'price:',
                                 style: AppStyle.font12Blackmedium,
                               ),
                               horizontalSpacing(5),
@@ -90,7 +91,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                                 'saller:',
                                 style: AppStyle.font12Blackmedium,
                               ),
-                              horizontalSpacing(3),
+                              horizontalSpacing(5),
                               Text(
                                 widget.productModel.seller.fullName.toString(),
                                 style: AppStyle.font14Blacksemibold,

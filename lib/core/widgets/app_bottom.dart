@@ -45,7 +45,9 @@ class CustomBottom extends StatelessWidget {
         ),
         child: isLoading
             ? const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
               )
             : Text(
                 bottomtext,

@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -25,11 +25,14 @@ class ReviewAllComment extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '(${Random().nextInt(100)} Reviews)',
+                  'Reviews',
                   style: AppStyle.font16Blackmedium,
                 ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.navigateTo(
+                          routeName: Routes.ratingAndReviewBodyRoute);
+                    },
                     icon: const Icon(
                       Icons.arrow_forward_ios,
                       size: 16,
