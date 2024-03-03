@@ -55,5 +55,10 @@
 		<string>Used to capture audio for image picker plugin.</string>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>NSCameraUsageDescription</key>
+		<string>Scan your card to add it automatically</string>
+		<key>NSCameraUsageDescription
+		&lt;string&gt;To scan cards&lt;/string&gt;</key>
+		<string>To scan cards</string>
 	</dict>
 </plist>

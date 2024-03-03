@@ -13,6 +13,22 @@ class ApiServices {
     );
   }
 
+  static Future<Response> post(
+      {required body,
+      required String url,
+      required String token,
+      Map<String, String>? headers,
+      String? contentType}) async {
+    var response = await _dio!.post(url,
+        data: body,
+        options: Options(
+          contentType: contentType,
+          headers: headers ?? {'Authorization': "Bearer $token"},
+        ));
+
+    return response;
+  }
+
   static Future<Map<String, dynamic>> postData(
       {required String endpoint,
       required Object? data,
@@ -60,5 +76,25 @@ class ApiServices {
       data: data,
     );
     return response.data;
+  }
+}
+
+class ApiService {
+  final Dio dio = Dio();
+
+  Future<Response> post(
+      {required body,
+      required String url,
+      required String token,
+      Map<String, String>? headers,
+      String? contentType}) async {
+    var response = await dio.post(url,
+        data: body,
+        options: Options(
+          contentType: contentType,
+          headers: headers ?? {'Authorization': "Bearer $token"},
+        ));
+
+    return response;
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/checkout/presenation/views/my_card_view.dart';
 import 'package:smartsoil/Feature/details/widgets/product_image_slider.dart';
 import 'package:smartsoil/Feature/details/widgets/rating_and_description.dart';
 import 'package:smartsoil/Feature/details/widgets/review_all_comment.dart';
@@ -108,7 +109,18 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: CustomBottom(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MyCardView(
+                          storeProductModel: widget.productModel,
+                        );
+                      },
+                    ),
+                  );
+                },
                 bottomtext: 'Checkout',
                 backgroundColor: ColorManger.primaryColor,
               ),

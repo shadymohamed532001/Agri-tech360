@@ -42,6 +42,7 @@ dependencies:
   flutter_native_splash: ^2.3.7
   flutter_screenutil: ^5.9.0
   flutter_staggered_animations: ^1.1.1
+  flutter_stripe: ^9.5.0+1
   fluttertoast: ^8.2.4
   get_it: ^7.6.4
   http: ^1.1.0
@@ -87,8 +88,5 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
-
-
-  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
