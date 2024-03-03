@@ -72,29 +72,25 @@ class StoreViewBody extends StatelessWidget {
               showModalBottomSheet(
                 context: context,
                 builder: (context) {
-                  return ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
-                    ),
-                    child: Container(
-                      height: 400.h,
-                      decoration: BoxDecoration(
-                        color: ColorManger.whiteColor,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          topRight: Radius.circular(32),
-                        ),
+                  return Container(
+                    height: 400.h,
+                    decoration: BoxDecoration(
+                      color: ColorManger.whiteColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(32),
+                        topRight: Radius.circular(32),
                       ),
-                      child: Center(
-                        child: Text(
+                    ),
+                    child: const Column(
+                      children: [
+                        Text(
                           'Your content here',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   );
                 },

@@ -40,6 +40,7 @@ class ClassfictionResponseBody extends StatelessWidget {
                 radius: 62,
                 backgroundColor: ColorManger.whiteColor,
                 child: CircleAvatar(
+                  // Make it in chased network image
                   backgroundImage: image != null
                       ? NetworkImage('$baseUrl${classfictionModel.image}')
                       : null,
@@ -79,7 +80,7 @@ class ClassfictionResponseBody extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      classfictionModel.description ?? 'No Description',
+                      classfictionModel.description,
                       style: AppStyle.font12Greymedium,
                     ),
                   ),

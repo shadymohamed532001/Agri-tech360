@@ -4,11 +4,10 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
-import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
-import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -23,9 +22,16 @@ class TraidmentProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.navigateTo(
-          routeName: Routes
-              .traidmentProductDetailsViewRoute), // i well push with argument to push product Model
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsView(
+              productModel: productModel,
+            ),
+          ),
+        );
+      }, // i well push with argument to push product Model
       child: Container(
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
@@ -76,7 +82,7 @@ class TraidmentProductCard extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.star,
+                        Iconsax.star5,
                         color: ColorManger.yellowColor,
                         size: 20,
                       ),

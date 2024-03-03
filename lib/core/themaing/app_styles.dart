@@ -64,6 +64,16 @@ class AppStyle {
     fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
+  static TextStyle font14Blackmedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.black,
+  );
+  static TextStyle font16Blackmedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.black,
+  );
   static TextStyle font12Blackregular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
