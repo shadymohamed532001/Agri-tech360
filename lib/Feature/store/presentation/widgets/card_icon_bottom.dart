@@ -9,17 +9,42 @@ class CardIconBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Badge(
-        label: Text(
-          BlocProvider.of<StoreCubit>(context).productResult.length.toString(),
-        ),
-        child: Icon(
-          Iconsax.shopping_bag,
-          color: ColorManger.whiteColor,
-        ),
-      ),
+    return BlocBuilder<StoreCubit, StoreState>(
+      builder: (context, state) {
+        if (state is StoreGetProductsSuccess) {
+          return InkWell(
+            onTap: () {},
+            child: Badge(
+              label: Text(
+                BlocProvider.of<StoreCubit>(context)
+                    .productResult
+                    .length
+                    .toString(),
+              ),
+              child: Icon(
+                Iconsax.shopping_bag,
+                color: ColorManger.whiteColor,
+              ),
+            ),
+          );
+        } else {
+          return InkWell(
+            onTap: () {},
+            child: Badge(
+              label: Text(
+                BlocProvider.of<StoreCubit>(context)
+                    .productResult
+                    .length
+                    .toString(),
+              ),
+              child: Icon(
+                Iconsax.shopping_bag,
+                color: ColorManger.whiteColor,
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }

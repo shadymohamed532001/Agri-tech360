@@ -1,4 +1,4 @@
-const baseUrl = 'https://4298-156-203-162-217.ngrok-free.app/';
+const baseUrl = 'https://9521-156-203-175-151.ngrok-free.app/';
 
 const loginendpoint = 'login';
 
@@ -17,3 +17,5 @@ const favoritesendpoint = 'favorites';
 const addOrRemoveFavoriteendpoint = 'favorites';
 
 const productsesendpoint = 'products';
+
+const addproductsesendpoint = 'add-product';

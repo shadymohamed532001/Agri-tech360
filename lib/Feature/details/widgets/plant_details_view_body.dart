@@ -2,7 +2,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:readmore/readmore.dart';
 import 'package:smartsoil/Feature/details/widgets/more_information_text_bottom.dart';
 import 'package:smartsoil/Feature/details/widgets/squear_details_continer.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';

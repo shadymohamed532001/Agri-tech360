@@ -45,7 +45,7 @@ class CustomTextFormFiled extends StatelessWidget {
         onTapOutside: (event) {
           FocusManager.instance.primaryFocus?.unfocus();
         },
-        maxLines: maxLine,
+        maxLines: maxLine ?? 1,
         obscureText: obscureText,
         keyboardType: keyboardType,
         style: const TextStyle(fontSize: 16),

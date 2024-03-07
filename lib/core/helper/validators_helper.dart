@@ -9,6 +9,54 @@ class MyValidatorsHelper {
     return null;
   }
 
+  static String? displayProductNamevalidator(String? displayName) {
+    if (displayName == null || displayName.isEmpty) {
+      return 'Display Porduct name cannot be empty';
+    }
+    if (displayName.length < 3 || displayName.length > 20) {
+      return 'Display Product name must be between 3 and 20 characters';
+    }
+    return null;
+  }
+
+  static String? displayProductPricevalidator(String? displayName) {
+    if (displayName == null || displayName.isEmpty) {
+      return 'Display Porduct Price cannot be empty';
+    }
+    if (displayName.length < 3 || displayName.length > 20) {
+      return 'Display Product price must be between 3 and 20 characters';
+    }
+    return null;
+  }
+
+  static String? displayProductDescribtionevalidator(String? displayName) {
+    if (displayName == null || displayName.isEmpty) {
+      return 'Display Porduct Description cannot be empty';
+    }
+
+    return null;
+  }
+
+  static String? displayProductTagsvalidator(String? displayName) {
+    if (displayName == null || displayName.isEmpty) {
+      return 'Display Porduct Tags cannot be empty';
+    }
+    if (displayName.length < 3 || displayName.length > 20) {
+      return 'Display Product Tags must be between 3 and 20 characters';
+    }
+    return null;
+  }
+
+  static String? displayProductSallervalidator(String? displayName) {
+    if (displayName == null || displayName.isEmpty) {
+      return 'Display Porduct Saller cannot be empty';
+    }
+    if (displayName.length < 3 || displayName.length > 20) {
+      return 'Display Product Saller must be between 3 and 20 characters';
+    }
+    return null;
+  }
+
   static String? emailValidator(String? value) {
     if (value!.isEmpty) {
       return 'Please enter an email';

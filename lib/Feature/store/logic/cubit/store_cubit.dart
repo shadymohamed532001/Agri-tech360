@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/Feature/store/domain/repositories/store_repo.dart';
 
@@ -14,15 +18,72 @@ class StoreCubit extends Cubit<StoreState> {
 
   List<StoreProductModel> productResult = <StoreProductModel>[];
 
+  // Get the products
   Future<void> getProducts() async {
     emit(StoreGetProductsLoading());
-    final porductEither = await storeRepo.getStoreData();
+    final productEither = await storeRepo.getStoreData();
 
-    porductEither.fold((falier) {
-      return emit(StoreGetProductsError(error: falier.toString()));
-    }, (products) {
-      productResult = products;
-      return emit(StoreGetProductsSuccess(products: products));
-    });
+    productEither.fold(
+      (failure) {
+        print(failure.errMessage.toString());
+        emit(StoreGetProductsError(error: failure.errMessage.toString()));
+      },
+      (products) {
+        productResult = products;
+        emit(StoreGetProductsSuccess(products: products));
+      },
+    );
   }
+
+  // Add Images to Add product
+  List<File> imageList = [];
+  Future<void> selectImages(ImagePicker picker) async {
+    imageList = await storeRepo.pickedImagesFromGallary(picker);
+    print(imageList);
+    emit(StoreImageAdded());
+  }
+
+  // Remove Images from List of Images
+  void removeImage(int index) {
+    storeRepo.removeImageFromList(
+      imageList: imageList,
+      index: index,
+    );
+    emit(StoreImageRemoved());
+  }
+
+  // Add Product Method
+  Future<void> addProduct(BuildContext context) async {
+    emit(StoreAddProductLoading());
+
+    final addProductEither = await storeRepo.addProductData(
+      images: imageList,
+      image: imageList[0],
+      name: productNameController.text,
+      tags: productTagsController.text,
+      seller: productSellerController.text,
+      price: productPriceController.text,
+      description: productDescriptionController.text,
+    );
+    addProductEither.fold(
+      (failure) {
+        print(failure.errMessage);
+        emit(StoreAddProductError(error: failure.toString()));
+      },
+      (storeProductModel) async {
+        emit(StoreAddProductSuccess());
+        Navigator.pop(context);
+        await getProducts();
+        emit(StoreGetProductsSuccess(products: productResult));
+      },
+    );
+  }
+
+  TextEditingController productNameController = TextEditingController();
+  TextEditingController productPriceController = TextEditingController();
+  TextEditingController productDescriptionController = TextEditingController();
+  TextEditingController productTagsController = TextEditingController();
+  TextEditingController productSellerController = TextEditingController();
+  var formKey = GlobalKey<FormState>();
+  AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
 }

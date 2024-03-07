@@ -22,3 +22,16 @@ final class StoreGetProductsError extends StoreState {
 
   const StoreGetProductsError({required this.error});
 }
+
+class StoreImageRemoved extends StoreState {}
+
+class StoreImageAdded extends StoreState {}
+
+class StoreAddProductLoading extends StoreState {}
+
+class StoreAddProductSuccess extends StoreState {}
+
+class StoreAddProductError extends StoreState {
+  final String error;
+  const StoreAddProductError({required this.error});
+}

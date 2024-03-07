@@ -51,7 +51,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 width: double.infinity,
                 height: 65.h,
                 decoration: BoxDecoration(
-                  color: const Color(0xffE5E5E5),
+                  color: const Color(0xffE5E5E5).withOpacity(0.5),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Padding(

@@ -25,7 +25,7 @@ class ReviewAllComment extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Reviews',
+                  'Comments',
                   style: AppStyle.font16Blackmedium,
                 ),
                 IconButton(

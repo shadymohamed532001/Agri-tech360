@@ -9,12 +9,14 @@ import 'package:smartsoil/core/networking/end_boint.dart';
 class PlantClassfictionDataSourceImpl extends PlantClassficationDataSource {
   @override
   Future<ClassfictionModel> getClassficationData({required File image}) async {
-    final formData = FormData.fromMap({
-      'file': await MultipartFile.fromFile(
-        image.path,
-        filename: image.path.split('/').last,
-      ),
-    });
+    final formData = FormData.fromMap(
+      {
+        'file': await MultipartFile.fromFile(
+          image.path,
+          filename: image.path.split('/').last,
+        ),
+      },
+    );
     final headers = {
       "Authorization": "Bearer $usertoken",
       "Content-Type": "multipart/form-data",
