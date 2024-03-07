@@ -30,6 +30,7 @@ class StoreCubit extends Cubit<StoreState> {
       },
       (products) {
         productResult = products;
+        print(products);
         emit(StoreGetProductsSuccess(products: products));
       },
     );

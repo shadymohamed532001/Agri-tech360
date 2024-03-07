@@ -22,38 +22,29 @@ class StoreListOfProduct extends StatelessWidget {
         StoreCubit cubit = BlocProvider.of<StoreCubit>(context);
         if (state is StoreGetProductsSuccess ||
             cubit.productResult.isNotEmpty) {
-          return cubit.productResult.isNotEmpty
-              ? FadeInUp(
-                  duration: const Duration(milliseconds: 700),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 14.w, vertical: 16.h),
-                        child: GridView.count(
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 15,
-                          childAspectRatio: 1 / 1.5,
-                          mainAxisSpacing: 20,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: List.generate(
-                            cubit.productResult.length,
-                            (index) {
-                              return TraidmentProductCard(
-                                productModel: cubit.productResult[index],
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              : const Center(
-                  child: Text('No Products Found Please Upload Products'),
-                );
+          return FadeInUp(
+            duration: const Duration(milliseconds: 700),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+              child: GridView.count(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                crossAxisSpacing: 15,
+                childAspectRatio: 1 / 1.5,
+                mainAxisSpacing: 20,
+                physics: const NeverScrollableScrollPhysics(),
+                children: List.generate(
+                  cubit.productResult.length,
+                  (index) {
+                    return TraidmentProductCard(
+                      productModel: cubit.productResult[index],
+                    );
+                  },
+                ),
+              ),
+            ),
+          );
         } else if (state is StoreGetProductsLoading) {
           return Center(
             child: CircularProgressIndicator(
