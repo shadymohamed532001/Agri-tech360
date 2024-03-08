@@ -25,14 +25,7 @@ class RecntlyViewedListView extends StatelessWidget {
         ExplorCubit cubit = ExplorCubit.getObject(context);
         final List<PlantModle> shuffledPlants = List.of(cubit.plantsresult)
           ..shuffle(); // show the list Random
-
-        if (state is GetPlantDataLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: ColorManger.primaryColor,
-            ),
-          );
-        } else if (state is GetPlantDataSuccessState) {
+        if (state is GetPlantDataSuccessState) {
           return FadeInUp(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

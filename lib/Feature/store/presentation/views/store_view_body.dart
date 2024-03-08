@@ -9,6 +9,7 @@ import 'package:smartsoil/Feature/store/presentation/widgets/hellow_row.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/store_list_of_product.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
+import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/primary_header_continer.dart';
 
 class StoreViewBody extends StatelessWidget {
@@ -32,7 +33,45 @@ class StoreViewBody extends StatelessWidget {
                 ],
               ),
             ),
-            StoreListOfProduct(cubit: BlocProvider.of<StoreCubit>(context)),
+            BlocBuilder<StoreCubit, StoreState>(
+              builder: (context, state) {
+                final cubit = BlocProvider.of<StoreCubit>(context);
+                if (state is StoreGetProductsSuccess) {
+                  return StoreListOfProduct(cubit: cubit);
+                } else if (state is StoreGetProductsLoading) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: ColorManger.greyColor,
+                    ),
+                  );
+                } else if (state is StoreGetProductsError) {
+                  return Center(
+                    child: Column(
+                      children: [
+                        verticalSpacing(200),
+                        const Icon(
+                          Iconsax.card_add,
+                          size: 75,
+                        ),
+                        verticalSpacing(5),
+                        Text(
+                          'No Product Here Please Add Your Product',
+                          style: AppStyle.font14Blacksemibold.copyWith(
+                            fontFamily: 'Raleway',
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: ColorManger.greyColor,
+                    ),
+                  );
+                }
+              },
+            ),
           ],
         ),
       ),
@@ -40,17 +79,18 @@ class StoreViewBody extends StatelessWidget {
         backgroundColor: ColorManger.primaryColor,
         onPressed: () {
           showModalBottomSheet(
-              isScrollControlled: true,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(34),
-                  topRight: Radius.circular(34),
-                ),
+            isScrollControlled: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(34),
+                topRight: Radius.circular(34),
               ),
-              context: context,
-              builder: (context) {
-                return const AddProductBottomSheet();
-              });
+            ),
+            context: context,
+            builder: (context) {
+              return const AddProductBottomSheet();
+            },
+          );
         },
         child: const Icon(Iconsax.add),
       ),

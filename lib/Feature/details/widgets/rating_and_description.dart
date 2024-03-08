@@ -84,7 +84,7 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
               },
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: widget.productModel.images.length,
+              itemCount: widget.productModel.images.length - 1,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {

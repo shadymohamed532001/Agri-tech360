@@ -24,8 +24,11 @@ class ExplorPlantInfoBody extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           itemCount: cubit.plantsresult.length,
           itemBuilder: (context, index) {
-            return CustomExplorCard(
-              plant: cubit.plantsresult[index],
+            return Padding(
+              padding: EdgeInsets.only(top: 8.h),
+              child: CustomExplorCard(
+                plant: cubit.plantsresult[index],
+              ),
             );
           },
         ),

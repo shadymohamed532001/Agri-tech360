@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
@@ -25,12 +26,11 @@ class StoreCubit extends Cubit<StoreState> {
 
     productEither.fold(
       (failure) {
-        print(failure.errMessage.toString());
+        log(failure.errMessage.toString());
         emit(StoreGetProductsError(error: failure.errMessage.toString()));
       },
       (products) {
         productResult = products;
-        print(products);
         emit(StoreGetProductsSuccess(products: products));
       },
     );
@@ -40,7 +40,6 @@ class StoreCubit extends Cubit<StoreState> {
   List<File> imageList = [];
   Future<void> selectImages(ImagePicker picker) async {
     imageList = await storeRepo.pickedImagesFromGallary(picker);
-    print(imageList);
     emit(StoreImageAdded());
   }
 
@@ -68,7 +67,7 @@ class StoreCubit extends Cubit<StoreState> {
     );
     addProductEither.fold(
       (failure) {
-        print(failure.errMessage);
+        log(failure.errMessage);
         emit(StoreAddProductError(error: failure.toString()));
       },
       (storeProductModel) async {

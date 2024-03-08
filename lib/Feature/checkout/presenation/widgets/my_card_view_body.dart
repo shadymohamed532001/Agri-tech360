@@ -32,7 +32,7 @@ class MyCardViewBody extends StatelessWidget {
                 children: [
                   Image.asset('assets/images/empty card.png'),
                   ...List.generate(
-                    storeProductModel.images.length,
+                    storeProductModel.images.length - 1,
                     (index) {
                       final random = Random();
                       final screenWidth = MediaQuery.of(context).size.width;

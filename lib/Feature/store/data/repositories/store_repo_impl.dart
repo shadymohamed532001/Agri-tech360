@@ -67,26 +67,21 @@ class StoreRepoImpl extends StoreRepo {
 
   @override
   Future<List<File>> pickedImagesFromGallary(ImagePicker picker) async {
-    try {
-      List<File> imageList = [];
+    List<File> imageList = [];
 
-      final List<XFile> selectedImages = await picker.pickMultiImage();
-      if (selectedImages.isNotEmpty) {
-        // Convert XFile to File
-        for (var xFile in selectedImages) {
-          // Create a File instance using the path
-          File file = File(xFile.path);
+    final List<XFile> selectedImages = await picker.pickMultiImage();
+    if (selectedImages.isNotEmpty) {
+      // Convert XFile to File
+      for (var xFile in selectedImages) {
+        // Create a File instance using the path
+        File file = File(xFile.path);
 
-          // Ensure the file exists before adding it to the list
-          if (await file.exists()) {
-            imageList.add(file);
-          }
+        // Ensure the file exists before adding it to the list
+        if (await file.exists()) {
+          imageList.add(file);
         }
       }
-      return imageList;
-    } catch (e) {
-      print('Error picking images: $e');
-      return []; // Return an empty list on error
     }
+    return imageList;
   }
 }

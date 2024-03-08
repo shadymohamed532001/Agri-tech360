@@ -68,16 +68,11 @@ class StoreDataSourcesImpl extends StoreDataSources {
           .sublist(1), // Exclude the primary image from additional images
     });
 
-    try {
-      // Make the POST request using provided postFormData method
-      await ApiServices.postFormData(
-        endpoint: addproductsesendpoint,
-        formData: formData,
-        token: token,
-      );
-    } catch (e) {
-      // Handle error
-      print('Error adding product: $e');
-    }
+    // Make the POST request using provided postFormData method
+    await ApiServices.postFormData(
+      endpoint: addproductsesendpoint,
+      formData: formData,
+      token: token,
+    );
   }
 }
