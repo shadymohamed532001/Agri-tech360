@@ -31,6 +31,7 @@ class StoreListOfProduct extends StatelessWidget {
             (index) {
               return TraidmentProductCard(
                 productModel: cubit.productResult[index],
+                
               );
             },
           ),

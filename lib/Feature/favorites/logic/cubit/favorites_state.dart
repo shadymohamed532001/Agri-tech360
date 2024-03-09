@@ -30,3 +30,13 @@ class GetFavoritesErrorState extends FavoritesState {
   @override
   List<Object> get props => [error];
 }
+
+class AddOrRemoveFavorItemsSuccessState extends FavoritesState {}
+
+class AddOrRemoveFavorItemsErrorState extends FavoritesState {
+  final String error;
+
+  const AddOrRemoveFavorItemsErrorState({required this.error});
+  }
+
+  

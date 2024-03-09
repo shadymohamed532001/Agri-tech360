@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soureces.dart';
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
@@ -8,7 +9,7 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
   @override
   Future<List<FavoriteData>> getFavorites() async {
     String token = await LocalServices.getData(key: 'token');
-    Map<String, dynamic> response = await ApiServices.getData(
+    var response = await ApiServices.getData(
       endpoint: '$baseUrl$favoritesendpoint',
       token: token,
     );
@@ -29,5 +30,20 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
     }
 
     return favoriteResult;
+  }
+  
+  @override
+  Future<void> addOrRemoveFavorite({required int productId}) async{
+
+      FormData formData = FormData.fromMap({
+        'product': productId,
+      });
+
+      String token = await LocalServices.getData(key: 'token');
+   await ApiServices.postFormData(
+      endpoint: '$baseUrl$favoritesendpoint',
+      token: token,
+      formData: formData
+    );
   }
 }

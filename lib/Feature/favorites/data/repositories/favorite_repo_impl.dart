@@ -23,4 +23,20 @@ class FavoritesRepoImpl extends FavoritesRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> addOrRemoveFavorite(
+      {required int productId}) async {
+    try {
+      await favoriteDataSource.addOrRemoveFavorite(
+        productId: productId,
+      );
+      return const Right(null);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

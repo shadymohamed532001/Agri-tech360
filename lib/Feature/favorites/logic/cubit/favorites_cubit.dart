@@ -8,8 +8,8 @@ class FavoritesCubit extends Cubit<FavoritesState> {
   FavoritesCubit({required this.favoritesRepo}) : super(FavoritesInitial());
 
   final FavoritesRepo favoritesRepo;
-
   List<FavoriteData> favoritesResult = [];
+  Set<int> favoritId = {}; // Define favoritId at the class level
 
   void getFavorites() async {
     emit(const GetFavoritesLoadingState());
@@ -23,9 +23,30 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       },
       (favorites) {
         favoritesResult = favorites;
-        print(favorites[0]);
+        for (var element in favorites) {
+          favoritId.add(element.id);
+        }
         emit(GetFavoritesSuccessState(favorites: favorites));
       },
     );
+  }
+
+  void addOrRemoveFavorites({required int productId}) {
+    favoritesRepo.addOrRemoveFavorite(productId: productId).then((value) {
+      value.fold((failure) {
+        emit(AddOrRemoveFavorItemsErrorState(
+          error: failure.errMessage.toString(),
+        ));
+      }, (response) async {
+        if (favoritId.contains(productId)) {
+          favoritId.remove(productId);
+        } else {
+          favoritId.add(productId);
+        }
+
+        getFavorites();
+        emit(AddOrRemoveFavorItemsSuccessState());
+      });
+    });
   }
 }
