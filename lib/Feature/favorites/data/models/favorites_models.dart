@@ -1,90 +1,104 @@
-class FavoriteModel {
-  List<DataItem>? data;
-  String? message;
-  bool? status;
+class FavoriteModle {
+  final List<FavoriteData> data;
+  final String message;
+  final bool status;
 
-  FavoriteModel({this.data, this.message, this.status});
-
-  FavoriteModel.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <DataItem>[];
-      json['data'].forEach((v) {
-        data!.add(DataItem.fromJson(v['product']));
-      });
-    }
-    message = json['message'];
-    status = json['status'];
-  }
-}
-
-class DataItem {
-  Product? product;
-
-  DataItem({this.product});
-
-  DataItem.fromJson(Map<String, dynamic> json) {
-    product =
-        json['product'] != null ? Product.fromJson(json['product']) : null;
-  }
-}
-
-class Product {
-  String? description;
-  int? id;
-  String? image;
-  List<String>? images;
-  String? name;
-  double? price;
-  Seller? seller;
-  String? tags;
-
-  Product(
-      {this.description,
-      this.id,
-      this.image,
-      this.images,
-      this.name,
-      this.price,
-      this.seller,
-      this.tags});
-
-  Product.fromJson(Map<String, dynamic> json) {
-    description = json['description'];
-    id = json['id'];
-    image = json['image'];
-    if (json['images'] != null) {
-      images = List<String>.from(json['images']);
-    }
-    name = json['name'];
-    price = json['price'];
-    seller = json['seller'] != null ? Seller.fromJson(json['seller']) : null;
-    tags = json['tags'];
-  }
-}
-
-class Seller {
-  String? city;
-  String? email;
-  String? fullName;
-  int? id;
-  String? phoneNumber;
-  String? profilePic;
-
-  Seller({
-    this.city,
-    this.email,
-    this.fullName,
-    this.id,
-    this.phoneNumber,
-    this.profilePic,
+  FavoriteModle({
+    required this.data,
+    required this.message,
+    required this.status,
   });
 
-  Seller.fromJson(Map<String, dynamic> json) {
-    city = json['city'];
-    email = json['email'];
-    fullName = json['fullName'];
-    id = json['id'];
-    phoneNumber = json['phoneNumber'];
-    profilePic = json['profilePic'];
+  factory FavoriteModle.fromJson(Map<String, dynamic> json) {
+    List<FavoriteData> favoriteDataList = [];
+    if (json['data'] != null) {
+      if (json['data'] is List) {
+        favoriteDataList = List<FavoriteData>.from(
+          json['data'].map((item) => FavoriteData.fromJson(item['product'])),
+        );
+      } else {
+        favoriteDataList.add(FavoriteData.fromJson(json['data']['product']));
+      }
+    }
+
+    return FavoriteModle(
+      data: favoriteDataList,
+      message: json['message'] ?? '',
+      status: json['status'] ?? false,
+    );
   }
+}
+
+class FavoriteData {
+  final String description;
+  final int id;
+  final String image;
+  final List<String> images;
+  final String name;
+  final double price;
+  final Seller seller;
+  final String tags;
+
+  FavoriteData({
+    required this.description,
+    required this.id,
+    required this.image,
+    required this.images,
+    required this.name,
+    required this.price,
+    required this.seller,
+    required this.tags,
+  });
+
+  factory FavoriteData.fromJson(Map<String, dynamic> json) {
+    // Parse images string into a list of URLs
+    List<String> parsedImages = [];
+    if (json['images'] != null) {
+      // Extracting the URLs from the JSON string using regular expression
+      RegExp regExp = RegExp(r"'(.*?)'");
+      Iterable<Match> matches = regExp.allMatches(json['images']);
+      for (Match match in matches) {
+        parsedImages.add(match.group(1)!);
+      }
+    }
+    return FavoriteData(
+      description: json['description'] ?? '',
+      id: json['id'] ,
+      image: json['image'] ,
+      images: parsedImages,
+      name: json['name'] ,
+      price: json['price'] .toDouble(),
+      seller: Seller.fromJson(json['seller'] ),
+      tags: json['tags'] ,
+    );
+
+}}
+class Seller {
+  final int id;
+  final String city;
+  final String email;
+  final String fullName;
+  final String phoneNumber;
+  final String profilePic;
+
+  Seller({
+    required this.id,
+    required this.city,
+    required this.email,
+    required this.fullName,
+    required this.phoneNumber,
+    required this.profilePic,
+  });
+
+  factory Seller.fromJson(Map<String, dynamic> json) {
+    return Seller(
+      id: json['id'],
+      city: json['city'],
+      email: json['email'],
+      fullName: json['fullName'],
+      phoneNumber: json['phoneNumber'],
+      profilePic: json['profilePic'],
+    );
+  }
+
 }

@@ -152,14 +152,6 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
   }
 }
 
-
-
-
-
-
-
-
-
 // /*
 //   Visibility(
 //                         visible: false,
@@ -263,8 +255,6 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
 //                                 ),
 //                         ),
 //                       )*/
-
-
 
 // //  cubit.image == null
 // //                             ? const Text('gcghcgchcgchg')

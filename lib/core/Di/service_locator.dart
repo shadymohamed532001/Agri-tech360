@@ -10,6 +10,11 @@ import 'package:smartsoil/Feature/explor/data/datasources/explor_data_sources_im
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo_impl.dart';
 import 'package:smartsoil/Feature/explor/domain/repositories/explor_repo.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
+import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soureces.dart';
+import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soureces_impl.dart';
+import 'package:smartsoil/Feature/favorites/data/repositories/favorite_repo_impl.dart';
+import 'package:smartsoil/Feature/favorites/domain/repositories/favorites_repo.dart';
+import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources.dart';
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources_impl.dart';
 import 'package:smartsoil/Feature/home/domain/repositories/home_repo.dart';
@@ -93,6 +98,9 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<StoreRepo>(() => StoreRepoImpl(
         storeDataSources: serviceLocator.get<StoreDataSources>()));
+
+    serviceLocator.registerLazySingleton<FavoritesRepo>(() => FavoritesRepoImpl(
+        favoriteDataSource: serviceLocator.get<FavoriteDataSource>()));
   }
 
   void _setupForDataSources() {
@@ -113,6 +121,10 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<StoreDataSources>(
       () => StoreDataSourcesImpl(),
+    );
+
+    serviceLocator.registerLazySingleton<FavoriteDataSource>(
+      () => FavoritesDataSoureceImpl(),
     );
   }
 
@@ -138,5 +150,8 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<StoreCubit>(
         () => StoreCubit(storeRepo: serviceLocator.get<StoreRepo>()));
+
+    serviceLocator.registerFactory<FavoritesCubit>(() =>
+        FavoritesCubit(favoritesRepo: serviceLocator.get<FavoritesRepo>()));
   }
 }

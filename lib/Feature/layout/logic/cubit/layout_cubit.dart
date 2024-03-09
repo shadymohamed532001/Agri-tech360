@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
+import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
 import 'package:smartsoil/Feature/layout/domain/repositories/layout_repo.dart';
@@ -43,6 +44,9 @@ class LayoutCubit extends Cubit<LayoutState> {
 
     if (currentIndex == 1) {
       BlocProvider.of<StoreCubit>(context).getProducts();
+    }
+    if (currentIndex == 3) {
+      BlocProvider.of<FavoritesCubit>(context).getFavorites();
     }
 
     emit(ChangeBottomNavState(index: index));

@@ -19,4 +19,3 @@ class PaymentIntentInputModel {
   }
 }
 // Create User Id When Login or signup
-
