@@ -5,9 +5,11 @@ import 'package:smartsoil/core/error/failuer.dart';
 abstract class FavoritesRepo {
   Future<Either<Failure, List<FavoriteData>>> getFavorites();
 
-   Future<Either<Failure, void>> addOrRemoveFavorite({
+   Future<Either<Failure, void>> addFavorite({
     required int productId,
   });
 
- 
+   Future<Either<Failure, void>> removeFavorite({
+    required int productId,
+  });
 }

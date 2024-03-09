@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/favorites/presentaion/widgets/favorite_card.dart';
-import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -110,8 +109,8 @@ class _FavBottomSheetState extends State<FavBottomSheet>
                         child: CustomBottom(
                           onPressed: () {
                             BlocProvider.of<FavoritesCubit>(context)
-                                .addOrRemoveFavorites(
-                              productId: genrallProductModel![0].id,
+                                .removeFavorites(
+                              productId: widget.favoriteModle.id,
                             );
                             context.pop();
                           },

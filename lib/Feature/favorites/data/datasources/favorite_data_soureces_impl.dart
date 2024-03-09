@@ -33,7 +33,7 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
   }
   
   @override
-  Future<void> addOrRemoveFavorite({required int productId}) async{
+  Future<void> addFavorite({required int productId}) async{
 
       FormData formData = FormData.fromMap({
         'product': productId,
@@ -41,7 +41,23 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
 
       String token = await LocalServices.getData(key: 'token');
    await ApiServices.postFormData(
-      endpoint: '$baseUrl$favoritesendpoint',
+      endpoint: '$baseUrl$addFavoriteendpoint',
+      token: token,
+      formData: formData
+    );
+  }
+
+
+  @override
+  Future<void> removeFavorite({required int productId}) async{
+
+      FormData formData = FormData.fromMap({
+        'product': productId,
+      });
+
+      String token = await LocalServices.getData(key: 'token');
+   await ApiServices.deletFormData(
+      endpoint: '$baseUrl$removeFavoriteendpoint',
       token: token,
       formData: formData
     );

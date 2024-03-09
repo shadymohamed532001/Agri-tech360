@@ -20,6 +20,7 @@ class TraidmentProductCard extends StatelessWidget {
 
   final StoreProductModel productModel;
 
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,9 +35,8 @@ class TraidmentProductCard extends StatelessWidget {
         );
       }, // i well push with argument to push product Model
       child: BlocBuilder<FavoritesCubit, FavoritesState>(
-        
         builder: (context, state) {
-                                          var favoriteCubite = BlocProvider.of<FavoritesCubit>(context);
+          var favoriteCubite = BlocProvider.of<FavoritesCubit>(context);
 
           return Container(
             padding: const EdgeInsets.all(1),
@@ -132,13 +132,23 @@ class TraidmentProductCard extends StatelessWidget {
                             ),
                             child: IconButton(
                               onPressed: () {
-                                favoriteCubite.addOrRemoveFavorites(productId: productModel.id);
+                                if(favoriteCubite.favoritId.contains(productModel.id)
+                                )
+                                {
+                                  favoriteCubite.removeFavorites(productId: productModel.id);
+                                }else{
+                                  favoriteCubite.addFavorites(productId: productModel.id);
+                                }
                               },
                               icon: Icon(
-                              favoriteCubite.favoritId.contains(productModel.id) ? Iconsax.heart5 :  Iconsax.heart,
-                                size:
-                                    22, 
-                                color:favoriteCubite.favoritId.contains(productModel.id) ? ColorManger.whiteColor : ColorManger.redColor,
+                                 favoriteCubite.favoritId.contains(productModel.id)
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                                size: 22,
+                                color: favoriteCubite.favoritId
+                                        .contains(productModel.id)
+                                    ? ColorManger.whiteColor
+                                    : ColorManger.whiteColor,
                               ),
                             ),
                           )

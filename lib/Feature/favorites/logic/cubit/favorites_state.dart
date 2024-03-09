@@ -31,12 +31,29 @@ class GetFavoritesErrorState extends FavoritesState {
   List<Object> get props => [error];
 }
 
-class AddOrRemoveFavorItemsSuccessState extends FavoritesState {}
+class AddToFavLoadingState extends FavoritesState {}
 
-class AddOrRemoveFavorItemsErrorState extends FavoritesState {
+class AddToFavErrorState extends FavoritesState {
   final String error;
 
-  const AddOrRemoveFavorItemsErrorState({required this.error});
+  const AddToFavErrorState({required this.error});
   }
 
-  
+
+class AddToFavSuccessState extends FavoritesState {
+  const AddToFavSuccessState();
+}
+
+
+class RemoveFromFavLoadingState extends FavoritesState {}
+
+class RemoveFromFavErrorState extends FavoritesState {
+  final String error;
+
+  const RemoveFromFavErrorState({required this.error}); 
+  }
+
+
+class RemoveFromFavSuccessState extends FavoritesState {
+  const RemoveFromFavSuccessState();
+}

@@ -16,13 +16,17 @@ class StoreDataSourcesImpl extends StoreDataSources {
       token: token,
     );
 
+    
     List<StoreProductModel> products = [];
 
     if (response.containsKey('data')) {
       for (var product in response['data']) {
+
         products.add(StoreProductModel.fromJson(product));
       }
+
     }
+
     return products;
   }
 

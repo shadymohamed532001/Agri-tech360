@@ -1,7 +1,8 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/Feature/favorites/domain/repositories/favorites_repo.dart';
+import 'package:equatable/equatable.dart';
+
 part 'favorites_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
@@ -23,6 +24,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       },
       (favorites) {
         favoritesResult = favorites;
+        favoritId.clear(); // Clear existing ids before adding new ones
         for (var element in favorites) {
           favoritId.add(element.id);
         }
@@ -31,21 +33,33 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     );
   }
 
-  void addOrRemoveFavorites({required int productId}) {
-    favoritesRepo.addOrRemoveFavorite(productId: productId).then((value) {
+  void addFavorites({required int productId}) {
+    emit(AddToFavLoadingState());
+    favoritesRepo.addFavorite(productId: productId).then((value) {
       value.fold((failure) {
-        emit(AddOrRemoveFavorItemsErrorState(
+        emit(AddToFavErrorState(
           error: failure.errMessage.toString(),
         ));
       }, (response) async {
-        if (favoritId.contains(productId)) {
-          favoritId.remove(productId);
-        } else {
-          favoritId.add(productId);
-        }
-
+        favoritId.add(productId); // Add the product to favorites
         getFavorites();
-        emit(AddOrRemoveFavorItemsSuccessState());
+        emit(const AddToFavSuccessState());
+      });
+    });
+  }
+
+  void removeFavorites( {required int productId}) {
+    emit(RemoveFromFavLoadingState());
+    favoritesRepo.removeFavorite(productId: productId).then((value) {
+      value.fold((failure) {
+        print(failure.errMessage.toString());
+        emit(RemoveFromFavErrorState(
+          error: failure.errMessage.toString(),
+        ));
+      }, (response) async {
+        favoritId.remove(productId); // Remove the product from favorites
+        getFavorites();
+        emit(const RemoveFromFavSuccessState());
       });
     });
   }

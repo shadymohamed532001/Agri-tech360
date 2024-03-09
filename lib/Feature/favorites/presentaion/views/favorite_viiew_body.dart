@@ -4,12 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
+import 'package:smartsoil/Feature/favorites/presentaion/widgets/empty_favorite.dart';
 import 'package:smartsoil/Feature/favorites/presentaion/widgets/favorite_card.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
-import 'package:smartsoil/core/widgets/custom_error_widget.dart';
 import 'package:smartsoil/core/widgets/custom_sliver_app_bar.dart';
 
 class FavoriteViewBody extends StatelessWidget {
@@ -49,7 +49,7 @@ class FavoriteViewBody extends StatelessWidget {
                         sliver: SliverList(
                           delegate: SliverChildBuilderDelegate(
                             (context, index) => Padding(
-                              padding:  EdgeInsets.only(top: 10.h),
+                              padding: EdgeInsets.only(top: 10.h),
                               child: FavoriteCard(
                                 favoriteModle: cubit.favoritesResult[index],
                                 onTap: () => {
@@ -58,8 +58,9 @@ class FavoriteViewBody extends StatelessWidget {
                                     MaterialPageRoute(
                                       builder: (context) {
                                         return ProductDetailsView(
-                                            productModel:
-                                                genrallProductModel![index]);
+                                          productModel:
+                                              genrallListProductModel![index],
+                                        );
                                       },
                                     ),
                                   ),
@@ -89,10 +90,10 @@ class FavoriteViewBody extends StatelessWidget {
                   ),
                 );
         } else if (state is GetFavoritesErrorState) {
-          return CustomErrorWidget(
-            error: state.error,
-            onPressed: () => cubit.getFavorites(),
-          );
+          return FadeInDown(
+              child: const EmptyView(
+        
+          ));
         } else {
           return Center(
             child: CircularProgressIndicator(
