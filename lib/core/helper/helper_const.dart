@@ -1,3 +1,5 @@
+import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
+
 String? usertoken;
 bool? onBording;
 int? indexOfExplorationnnnn = 0;
@@ -12,3 +14,5 @@ class ApiKeys {
   static const String stripePublishableKey =
       'pk_test_51Ome20FLFusKB7U8gTPKMgKTxImyqsmJxDUABNBK9wf6x2urBEsVXCvmczY7JtCb7OT6XcpfXeWofEHN5nc5v60L00buJ5J2jd';
 }
+
+ List<StoreProductModel>  ?genrallProductModel;

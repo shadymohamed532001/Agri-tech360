@@ -2,8 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/favorites/presentaion/widgets/favorite_card.dart';
+import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
+import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/widgets/custom_error_widget.dart';
@@ -33,9 +36,8 @@ class FavoriteViewBody extends StatelessWidget {
                       CustomSliverAppBar(
                         titleText: 'Favorite',
                         arrowBackOnTap: () {
-                          // BlocProvider.of<RoomeCubit>(context)
-                          //     .changeBottomNavToHome(context);
-                          // BlocProvider.of<RoomeCubit>(context).getUserData();
+                          BlocProvider.of<LayoutCubit>(context)
+                              .changeBottomNavToHome(context);
                         },
                       ),
                       SliverPadding(
@@ -46,8 +48,23 @@ class FavoriteViewBody extends StatelessWidget {
                         ),
                         sliver: SliverList(
                           delegate: SliverChildBuilderDelegate(
-                            (context, index) => FavoriteCard(
-                              favoriteModle: cubit.favoritesResult[index],
+                            (context, index) => Padding(
+                              padding:  EdgeInsets.only(top: 10.h),
+                              child: FavoriteCard(
+                                favoriteModle: cubit.favoritesResult[index],
+                                onTap: () => {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ProductDetailsView(
+                                            productModel:
+                                                genrallProductModel![index]);
+                                      },
+                                    ),
+                                  ),
+                                },
+                              ),
                             ),
                             childCount: state.favorites.length,
                             addAutomaticKeepAlives: false,
