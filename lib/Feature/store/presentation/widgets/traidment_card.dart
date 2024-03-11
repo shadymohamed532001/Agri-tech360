@@ -20,7 +20,6 @@ class TraidmentProductCard extends StatelessWidget {
 
   final StoreProductModel productModel;
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -124,7 +123,7 @@ class TraidmentProductCard extends StatelessWidget {
                             width: 38.w,
                             height: 45.h,
                             decoration: const BoxDecoration(
-                              color: ColorManger.primaryColor,
+                              color: ColorManger.whiteColor,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(24),
                                 bottomRight: Radius.circular(24),
@@ -132,23 +131,25 @@ class TraidmentProductCard extends StatelessWidget {
                             ),
                             child: IconButton(
                               onPressed: () {
-                                if(favoriteCubite.favoritId.contains(productModel.id)
-                                )
-                                {
-                                  favoriteCubite.removeFavorites(productId: productModel.id);
-                                }else{
-                                  favoriteCubite.addFavorites(productId: productModel.id);
+                                if (favoriteCubite.favoritId
+                                    .contains(productModel.id)) {
+                                  favoriteCubite.removeFavorites(
+                                      productId: productModel.id);
+                                } else {
+                                  favoriteCubite.addFavorites(
+                                      productId: productModel.id);
                                 }
                               },
                               icon: Icon(
-                                 favoriteCubite.favoritId.contains(productModel.id)
-                              ? Icons.favorite
-                              : Icons.favorite_border,
+                                favoriteCubite.favoritId
+                                        .contains(productModel.id)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
                                 size: 22,
                                 color: favoriteCubite.favoritId
                                         .contains(productModel.id)
-                                    ? ColorManger.whiteColor
-                                    : ColorManger.whiteColor,
+                                    ? ColorManger.redColor
+                                    : ColorManger.redColor,
                               ),
                             ),
                           )
