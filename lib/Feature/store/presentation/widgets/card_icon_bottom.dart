@@ -21,7 +21,7 @@ class CardIconBottom extends StatelessWidget {
                     .length
                     .toString(),
               ),
-              child: Icon(
+              child: const Icon(
                 Iconsax.shopping_bag,
                 color: ColorManger.whiteColor,
               ),
@@ -37,7 +37,7 @@ class CardIconBottom extends StatelessWidget {
                     .length
                     .toString(),
               ),
-              child: Icon(
+              child: const Icon(
                 Iconsax.shopping_bag,
                 color: ColorManger.whiteColor,
               ),

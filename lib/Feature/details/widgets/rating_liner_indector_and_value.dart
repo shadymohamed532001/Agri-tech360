@@ -27,7 +27,7 @@ class RatingLinerIndectorAndValue extends StatelessWidget {
               minHeight: 11,
               backgroundColor: ColorManger.greyColor,
               borderRadius: BorderRadius.circular(8),
-              valueColor: AlwaysStoppedAnimation(
+              valueColor: const AlwaysStoppedAnimation(
                 ColorManger.primaryColor,
               ),
             ))

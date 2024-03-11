@@ -20,9 +20,9 @@ class CustomBottomSheet extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 200.h,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: ColorManger.whiteColor,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             topLeft: Radius.circular(32),
             topRight: Radius.circular(32),
           )),

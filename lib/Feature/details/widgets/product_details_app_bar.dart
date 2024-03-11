@@ -40,9 +40,9 @@ class ProductDetailsAppBar extends StatelessWidget {
         child: Container(
           height: 32.0,
           alignment: Alignment.center,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: ColorManger.scaffoldColor,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(100.0),
               topRight: Radius.circular(100.0),
             ),
@@ -74,7 +74,7 @@ class ProductDetailsAppBar extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: () => context.pop(),
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back,
                   color: ColorManger.blackColor,
                 ),

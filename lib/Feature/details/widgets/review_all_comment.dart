@@ -16,7 +16,7 @@ class ReviewAllComment extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
         children: [
-          Divider(thickness: 0.5, height: 5, color: ColorManger.greyColor),
+          const Divider(thickness: 0.5, height: 5, color: ColorManger.greyColor),
           Padding(
             padding: EdgeInsets.only(
               top: 8.h,

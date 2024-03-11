@@ -23,7 +23,7 @@ class WeatherDegreeListView extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is GetweatherDataLoadingState) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: ColorManger.primaryColor,
             ),
@@ -66,7 +66,7 @@ class WeatherDegreeListView extends StatelessWidget {
             onPressed: () => cubit.getWeather(),
           );
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: ColorManger.primaryColor,
             ),

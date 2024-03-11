@@ -20,7 +20,7 @@ class FavoriteViewBody extends StatelessWidget {
     return BlocBuilder<FavoritesCubit, FavoritesState>(
       builder: (context, state) {
         if (state is GetFavoritesLoadingState) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: ColorManger.primaryColor,
             ),
@@ -81,7 +81,7 @@ class FavoriteViewBody extends StatelessWidget {
         
           ));
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: ColorManger.primaryColor,
             ),

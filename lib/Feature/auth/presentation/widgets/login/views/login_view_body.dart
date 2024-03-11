@@ -30,7 +30,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           // show the CircularProgressIndicator widget
           showDialog(
             context: context,
-            builder: (_) => Center(
+            builder: (_) => const Center(
               child: CircularProgressIndicator(
                 color: ColorManger.whiteColor,
               ),

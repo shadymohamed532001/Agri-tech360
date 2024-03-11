@@ -34,7 +34,7 @@ class AppSearchBar extends StatelessWidget {
           child: Row(
             children: [
               horizontalSpacing(15),
-              Icon(
+              const Icon(
                 Iconsax.search_normal,
                 color: ColorManger.greyColor,
                 size: 22,
@@ -51,7 +51,7 @@ class AppSearchBar extends StatelessWidget {
                     },
                     decoration: InputDecoration(
                       hintText: 'Search in Store',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         fontFamily: 'Poppins',
                         color: ColorManger.greyColor,
                       ),

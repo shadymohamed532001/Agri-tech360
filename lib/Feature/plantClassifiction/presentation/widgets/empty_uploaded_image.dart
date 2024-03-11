@@ -21,14 +21,14 @@ class EmptyUploadedImage extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Positioned(
+          const Positioned(
             left: 0,
             right: 0,
             top: -50,
             child: CircleAvatar(
               radius: 50,
               backgroundColor: ColorManger.whiteColor,
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 backgroundImage: AssetImage(
                   ImagesAssetsManger.uploadImage,
                 ),

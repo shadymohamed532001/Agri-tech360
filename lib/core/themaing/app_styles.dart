@@ -21,7 +21,7 @@ class AppStyle {
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.semibold,
       color: Colors.black,
-      fontFamily: 'Raleway');
+   );
   static TextStyle font16blackmedium = TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.medium,

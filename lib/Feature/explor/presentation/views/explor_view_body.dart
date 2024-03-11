@@ -24,7 +24,7 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
     return BlocBuilder<ExplorCubit, ExplorState>(builder: (context, state) {
       ExplorCubit cubit = ExplorCubit.getObject(context);
       if (state is GetPlantDataLoadingState) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(
             color: ColorManger.primaryColor,
           ),
@@ -42,9 +42,9 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                       Container(
                         width: double.infinity,
                         height: 200.h,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: ColorManger.primaryColor,
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(30),
                             bottomRight: Radius.circular(30),
                           ),
@@ -85,7 +85,7 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
           onPressed: () => cubit.getPlants(),
         );
       } else {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(
             color: ColorManger.primaryColor,
           ),

@@ -28,7 +28,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
         if (state is UploadAndGetResponseToModelLoadingState) {
           showDialog(
             context: context,
-            builder: (_) => Center(
+            builder: (_) => const Center(
               child: CircularProgressIndicator(
                 color: ColorManger.whiteColor,
               ),

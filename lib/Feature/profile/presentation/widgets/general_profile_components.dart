@@ -49,7 +49,7 @@ class GeneralProfileComponents extends StatelessWidget {
           trailing: const Icon(Icons.arrow_right),
         ),
         verticalSpacing(8),
-        Divider(
+        const Divider(
           color: ColorManger.greyColor,
           height: 1,
         ),

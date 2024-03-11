@@ -39,7 +39,7 @@ class StoreViewBody extends StatelessWidget {
                 if (state is StoreGetProductsSuccess) {
                   return StoreListOfProduct(cubit: cubit);
                 } else if (state is StoreGetProductsLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(
                       color: ColorManger.greyColor,
                     ),
@@ -64,7 +64,7 @@ class StoreViewBody extends StatelessWidget {
                     ),
                   );
                 } else {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(
                       color: ColorManger.greyColor,
                     ),

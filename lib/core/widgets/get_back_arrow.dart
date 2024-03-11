@@ -11,7 +11,7 @@ class GetBackArrow extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap ?? () => context.pop(),
-      child: Icon(
+      child: const Icon(
         Icons.arrow_back_ios_new,
         color: ColorManger.blackColor,
         size: 20,

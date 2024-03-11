@@ -49,7 +49,7 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Iconsax.star5,
                     color: ColorManger.yellowColor,
                     size: 20,

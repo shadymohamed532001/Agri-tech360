@@ -67,7 +67,7 @@ class ClassfictionProductItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: ColorManger.yellowColor,
                       size: 20,

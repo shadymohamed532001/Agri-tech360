@@ -63,13 +63,13 @@ class CustomTextFormFiled extends StatelessWidget {
               fillColor: ColorManger.lightMoreGreyColor,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: ColorManger.lightMoreGreyColor,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: ColorManger.primaryColor,
                 ),
               ),

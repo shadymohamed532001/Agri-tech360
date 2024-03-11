@@ -75,7 +75,7 @@ class RecntlyViewedListView extends StatelessWidget {
             onPressed: () => cubit.getPlants(),
           );
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: ColorManger.primaryColor,
             ),

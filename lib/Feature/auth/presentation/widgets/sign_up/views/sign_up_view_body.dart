@@ -31,7 +31,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
           // show the CircularProgressIndicator widget
           showDialog(
             context: context,
-            builder: (_) => Center(
+            builder: (_) => const Center(
               child: CircularProgressIndicator(
                 color: ColorManger.whiteColor,
               ),
@@ -93,7 +93,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                         activeColor: ColorManger.primaryColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5),
-                            side: BorderSide(
+                            side: const BorderSide(
                               color: ColorManger.primaryColor,
                               style: BorderStyle.none,
                             )),

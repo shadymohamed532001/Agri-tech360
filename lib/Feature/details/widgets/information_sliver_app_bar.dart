@@ -38,15 +38,15 @@ class InformationSliverAppBar extends StatelessWidget {
           StretchMode.zoomBackground,
         ],
       ),
-      iconTheme: IconThemeData(color: ColorManger.blackColor),
+      iconTheme: const IconThemeData(color: ColorManger.blackColor),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(0),
         child: Container(
           height: 5,
           alignment: Alignment.bottomCenter,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: ColorManger.whiteColor,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24),
               topRight: Radius.circular(24),
             ),

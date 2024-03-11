@@ -33,14 +33,14 @@ class ThankYouViewBody extends StatelessWidget {
           Positioned(
             left: -20,
             top: MediaQuery.of(context).size.height * .55,
-            child: CircleAvatar(
+            child: const CircleAvatar(
               backgroundColor: ColorManger.scaffoldColor,
             ),
           ),
           Positioned(
             right: -20,
             top: MediaQuery.of(context).size.height * .55,
-            child: CircleAvatar(
+            child: const CircleAvatar(
               backgroundColor: ColorManger.scaffoldColor,
             ),
           ),

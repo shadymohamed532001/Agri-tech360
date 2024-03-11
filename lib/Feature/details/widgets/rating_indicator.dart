@@ -16,7 +16,7 @@ class RatingIndicator extends StatelessWidget {
       rating: rating,
       itemSize: 20,
       itemBuilder: (context, __) {
-        return Icon(
+        return const Icon(
           Iconsax.star1,
           color: ColorManger.primaryColor,
         );

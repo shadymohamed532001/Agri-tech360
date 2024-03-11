@@ -87,7 +87,7 @@ class TraidmentProductCard extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Iconsax.star5,
                             color: ColorManger.yellowColor,
                             size: 20,
@@ -123,9 +123,9 @@ class TraidmentProductCard extends StatelessWidget {
                           Container(
                             width: 38.w,
                             height: 45.h,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: ColorManger.primaryColor,
-                              borderRadius: const BorderRadius.only(
+                              borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(24),
                                 bottomRight: Radius.circular(24),
                               ),

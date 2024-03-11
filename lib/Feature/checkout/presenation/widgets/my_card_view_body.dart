@@ -1,99 +1,231 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:smartsoil/Feature/checkout/data/repo/checkout_repo_impl.dart';
 import 'package:smartsoil/Feature/checkout/logic/cubit/check_out_cubit.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/card_Info_item.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/payment_method_bottom_sheet.dart';
+import 'package:smartsoil/Feature/checkout/presenation/widgets/product_card.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/total_price_info.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
+import 'package:smartsoil/core/themaing/app_styles.dart';
+import 'package:smartsoil/core/themaing/font_weight_helper.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
+import 'package:smartsoil/core/widgets/primary_header_continer.dart';
 
-class MyCardViewBody extends StatelessWidget {
+class MyCardViewBody extends StatefulWidget {
   const MyCardViewBody({Key? key, required this.storeProductModel})
       : super(key: key);
   final StoreProductModel storeProductModel;
 
   @override
+  _MyCardViewBodyState createState() => _MyCardViewBodyState();
+}
+
+class _MyCardViewBodyState extends State<MyCardViewBody> {
+  bool payWithCash = true;
+
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 18),
-          Expanded(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height / 2,
-              child: Stack(
+          PrimaryHeaderContiner(
+            height: 120.h,
+            child: SafeArea(
+              child: Row(
                 children: [
-                  Image.asset('assets/images/empty card.png'),
-                  ...List.generate(
-                    storeProductModel.images.length - 1,
-                    (index) {
-                      final random = Random();
-                      final screenWidth = MediaQuery.of(context).size.width;
-                      final screenHeight = MediaQuery.of(context).size.height;
-                      // Ensure random positions are within the card area
-                      final left = double.parse(
-                          max(0, random.nextDouble() * (screenWidth - 200.w))
-                              .toString());
-                      final top = double.parse(
-                          max(0, random.nextDouble() * (screenHeight - 500.h))
-                              .toString());
-                      return Positioned(
-                        left: left,
-                        top: top,
-                        child: Image.network(
-                          '$baseUrl${storeProductModel.images[index]}',
-                          width: 100.w,
-                          height: 100.h,
-                        ),
-                      );
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
                     },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: ColorManger.whiteColor,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 25),
-          CardInfoItem(
-              title: 'Order Subtotal', value: '\$ ${storeProductModel.price}'),
-          const SizedBox(height: 5),
-          const CardInfoItem(title: 'Discount', value: '\$0'),
-          const SizedBox(height: 5),
-          const CardInfoItem(title: 'Shipping', value: '\$8.97'),
-          const Divider(thickness: 2, color: Color(0xffC7C7C7), height: 34),
-          TotalPrice(
-              title: 'Total', value: '\$ ${storeProductModel.price} + \$8.97'),
-          const SizedBox(height: 50),
-          CustomBottom(
-            bottomHeight: 60,
-            bottomtext: 'Complete Payment',
-            backgroundColor: ColorManger.primaryColor,
-            onPressed: () {
-              showModalBottomSheet(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpacing(40),
+                ProductCard(
+                  storeProductModel: widget.storeProductModel,
+                ),
+                verticalSpacing(16),
+                Text(
+                  'Pay with',
+                  style: AppStyle.font16Blackmedium.copyWith(
+                    fontFamily: 'Raleway',
+                    fontWeight: FontWeightHelper.semibold,
                   ),
                 ),
-                context: context,
-                builder: (context) {
-                  return BlocProvider(
-                    create: (context) => CheckOutCubit(CheckOutRepoImpl()),
-                    child: PayMentMethodBottomSheet(
-                        storeProductModel: storeProductModel),
-                  );
-                },
-              );
-            },
-          ),
-          const SizedBox(height: 50),
+                verticalSpacing(8),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      payWithCash = true;
+                    });
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: payWithCash
+                          ? ColorManger.primaryColor
+                          : Colors.transparent,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: ColorManger.primaryColor,
+                        width: 2,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Checkbox(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          value: payWithCash,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              payWithCash = value ?? true;
+                            });
+                          },
+                        ),
+                        Icon(
+                          Iconsax.money_add,
+                          size: 26,
+                          color: payWithCash
+                              ? Colors.white
+                              : ColorManger.blackColor,
+                        ),
+                        horizontalSpacing(12),
+                        Text(
+                          'Cash',
+                          style: AppStyle.font14Whitesemibold.copyWith(
+                            fontFamily: 'Releway',
+                            color: payWithCash
+                                ? Colors.white
+                                : ColorManger.blackColor,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                verticalSpacing(16),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      payWithCash = false;
+                    });
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: payWithCash
+                          ? Colors.transparent
+                          : ColorManger.primaryColor, // Updated color here
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: payWithCash
+                            ? ColorManger.primaryColor
+                            : Colors.transparent,
+                        width: 2,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Checkbox(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          value: !payWithCash,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              payWithCash = !(value ?? false);
+                            });
+                          },
+                        ),
+                        Icon(
+                          Icons.credit_card,
+                          size: 33,
+                          color: payWithCash
+                              ? Colors.black
+                              : ColorManger.whiteColor,
+                        ),
+                        horizontalSpacing(12),
+                        Text(
+                          'Credit Card',
+                          style: AppStyle.font14Whitesemibold.copyWith(
+                            fontFamily: 'Releway',
+                            color: payWithCash
+                                ? Colors.black
+                                : ColorManger.whiteColor,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                verticalSpacing(32),
+                CardInfoItem(
+                  title: 'Order Subtotal',
+                  value: '\$ ${widget.storeProductModel.price}',
+                ),
+                const SizedBox(height: 5),
+                const CardInfoItem(title: 'Discount', value: '\$0'),
+                const SizedBox(height: 5),
+                const CardInfoItem(title: 'Shipping', value: '\$8.97'),
+                const Divider(
+                  thickness: 2,
+                  color: Color(0xffC7C7C7),
+                  height: 34,
+                ),
+                TotalPrice(
+                  title: 'Total',
+                  value: '\$ ${widget.storeProductModel.price} + \$8.97',
+                ),
+                const SizedBox(height: 50),
+                CustomBottom(
+                  bottomHeight: 60,
+                  bottomtext: 'Complete Payment',
+                  backgroundColor: ColorManger.primaryColor,
+                  onPressed: () {
+                    showModalBottomSheet(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(32),
+                          topRight: Radius.circular(32),
+                        ),
+                      ),
+                      context: context,
+                      builder: (context) {
+                        return BlocProvider(
+                          create: (context) =>
+                              CheckOutCubit(CheckOutRepoImpl()),
+                          child: PayMentMethodBottomSheet(
+                            storeProductModel: widget.storeProductModel,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+                const SizedBox(height: 50),
+              ],
+            ),
+          )
         ],
       ),
     );

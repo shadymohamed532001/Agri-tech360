@@ -28,9 +28,9 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
             children: [
               Container(
                 height: 200,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: ColorManger.primaryColor,
-                  borderRadius: const BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30),
                   ),
@@ -89,7 +89,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                               ),
                               IconButton(
                                 onPressed: () {},
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                   color: ColorManger.whiteColor,
                                 ),
@@ -130,7 +130,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                     verticalSpacing(8),
                     const SettingProfileComponents(),
                     verticalSpacing(8),
-                    Divider(
+                    const Divider(
                       color: ColorManger.greyColor,
                       height: 1,
                     ),
@@ -159,7 +159,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                       ],
                     ),
                     verticalSpacing(8),
-                    Divider(
+                    const Divider(
                       color: ColorManger.greyColor,
                       height: 1,
                     ),

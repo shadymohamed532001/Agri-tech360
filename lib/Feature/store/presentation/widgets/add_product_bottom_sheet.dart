@@ -24,7 +24,7 @@ class _AddProductBottomSheetState extends State<AddProductBottomSheet> {
         if (state is StoreAddProductLoading) {
           showDialog(
             context: context,
-            builder: (_) => Center(
+            builder: (_) => const Center(
               child: CircularProgressIndicator(
                 color: ColorManger.primaryColor,
               ),
@@ -44,9 +44,9 @@ class _AddProductBottomSheetState extends State<AddProductBottomSheet> {
       builder: (context, state) {
         return Container(
           height: 700.h,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: ColorManger.whiteColor,
-            borderRadius: const BorderRadius.only(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(32),
               topRight: Radius.circular(32),
             ),

@@ -126,7 +126,7 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
                                           color: ColorManger.greyColor
                                               .withOpacity(0.7),
                                         ),
-                                        child: Center(
+                                        child: const Center(
                                           child: Icon(
                                             Icons.close,
                                             size: 18,
