@@ -135,7 +135,7 @@ class _MyCardViewBodyState extends State<MyCardViewBody> {
                     decoration: BoxDecoration(
                       color: payWithCash
                           ? Colors.transparent
-                          : ColorManger.primaryColor, // Updated color here
+                          : ColorManger.primaryColor,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
                         color: payWithCash
@@ -202,24 +202,44 @@ class _MyCardViewBodyState extends State<MyCardViewBody> {
                   bottomtext: 'Complete Payment',
                   backgroundColor: ColorManger.primaryColor,
                   onPressed: () {
-                    showModalBottomSheet(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          topRight: Radius.circular(32),
+                    if (payWithCash) {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text('Cash Payment'),
+                          content:
+                              const Text('You have chosen to pay with cash.'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
                         ),
-                      ),
-                      context: context,
-                      builder: (context) {
-                        return BlocProvider(
-                          create: (context) =>
-                              CheckOutCubit(CheckOutRepoImpl()),
-                          child: PayMentMethodBottomSheet(
-                            storeProductModel: widget.storeProductModel,
+                      );
+                    } else {
+                      // If payment method is credit card, show bottom sheet
+                      showModalBottomSheet(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32),
                           ),
-                        );
-                      },
-                    );
+                        ),
+                        context: context,
+                        builder: (context) {
+                          return BlocProvider(
+                            create: (context) =>
+                                CheckOutCubit(CheckOutRepoImpl()),
+                            child: PayMentMethodBottomSheet(
+                              storeProductModel: widget.storeProductModel,
+                            ),
+                          );
+                        },
+                      );
+                    }
                   },
                 ),
                 const SizedBox(height: 50),
