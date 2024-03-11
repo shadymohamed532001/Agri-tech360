@@ -45,85 +45,48 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               },
             ),
             verticalSpacing(30),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Container(
-                width: double.infinity,
-                height: 65.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xffE5E5E5).withOpacity(0.5),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Valration: ',
-                        style: AppStyle.font22BlackBold.copyWith(
-                          fontSize: 19.sp,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                      horizontalSpacing(20),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                'price:',
-                                style: AppStyle.font12Blackmedium,
-                              ),
-                              horizontalSpacing(5),
-                              Text(
-                                '${widget.productModel.price}\$ ',
-                                style: AppStyle.font14Blacksemibold,
-                              )
-                            ],
-                          ),
-                          verticalSpacing(5),
-                          Row(
-                            children: [
-                              Text(
-                                'saller:',
-                                style: AppStyle.font12Blackmedium,
-                              ),
-                              horizontalSpacing(5),
-                              Text(
-                                widget.productModel.seller.fullName.toString(),
-                                style: AppStyle.font14Blacksemibold,
-                              )
-                            ],
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            verticalSpacing(20),
+
             const ReviewAllComment(),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: CustomBottom(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MyCardView(
-                          storeProductModel: widget.productModel,
-                        );
-                      },
-                    ),
-                  );
-                },
-                bottomtext: 'Checkout',
-                backgroundColor: ColorManger.primaryColor,
+              padding:  EdgeInsets.symmetric(horizontal: 16.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+            
+                      Text('Price',
+                      style:AppStyle.font16blacksemibold.copyWith(
+                          fontFamily: 'Raleway',
+                        ) ,
+                      ),
+                      verticalSpacing(5),
+                      Text(
+                        '\$${widget.productModel.price.toInt().toString()}',
+                        style: AppStyle.font24blakBold,
+                      )
+                                      ],
+                  ),
+                  CustomBottom(
+                    bottomHeight: 50,
+                    bottomWidth: 180,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MyCardView(
+                              storeProductModel: widget.productModel,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    bottomtext: 'Buy Now',
+                    backgroundColor: ColorManger.primaryColor,
+                  ),
+                ],
               ),
             )
           ],

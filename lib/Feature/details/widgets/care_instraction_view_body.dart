@@ -18,7 +18,7 @@ class CareInstractionViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: EdgeInsets.only(left: 10.w, right: 10.w, top: 16.w),
           sliver: InformationSliverAppBar(
             plant: plant,
           ),
@@ -26,17 +26,17 @@ class CareInstractionViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 18,
+              horizontal: 16,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                verticalSpacing(10),
+                verticalSpacing(6),
                 Text(
                   'Care Instructions',
                   style: AppStyle.font22BlackBold,
                 ),
-                verticalSpacing(10),
+                verticalSpacing(6),
                 Text(
                   plant.careInstructions,
                   style: AppStyle.font14lightblackmdeium,

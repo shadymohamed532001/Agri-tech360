@@ -13,19 +13,19 @@ class InformationSliverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       expandedHeight: 200.h,
-      backgroundColor: ColorManger.whiteColor.withOpacity(0.1),
+      backgroundColor: ColorManger.whiteColor,
       elevation: 0.0,
       pinned: true,
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.only(bottom: 15),
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(32),
-              topRight: Radius.circular(32),
-              bottomLeft: Radius.circular(32),
-              bottomRight: Radius.circular(32),
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
+              bottomLeft: Radius.circular(24),
+              bottomRight: Radius.circular(24),
             ),
             child: CachedNetworkImage(
               imageUrl: '$baseUrl${plant.plantImage_2}',
@@ -47,8 +47,8 @@ class InformationSliverAppBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: ColorManger.whiteColor,
             borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(32),
-              topRight: Radius.circular(32),
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
             ),
           ),
           child: Container(

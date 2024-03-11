@@ -31,10 +31,19 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 8.w),
+      padding: EdgeInsets.only(left: 16.w, right: 16.w, top: 12.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+          Text(
+            widget.productModel.name,
+            style: AppStyle.font20blacksemibold.
+            copyWith(
+              fontFamily: 'Raleway',
+            ),
+          ),
+          verticalSpacing(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -57,23 +66,31 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
                   ),
                 ],
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.share,
-                  size: 22,
-                ),
-              )
+         
             ],
           ),
-          Text(
-            widget.productModel.name,
+          verticalSpacing(16),
+           Text(
+            'Product details',
+            style: AppStyle.font16blacksemibold.
+            copyWith(
+              fontFamily: 'Raleway',
+            ),
           ),
-          Text(
-            widget.productModel.description,
-            style: AppStyle.font13Greymedium,
+          verticalSpacing(8),
+             Text(
+              widget.productModel.description,
+            style: AppStyle.font14Greyregular.
+            copyWith(
+              fontFamily: 'Raleway',
+            ),
           ),
-          verticalSpacing(30),
+
+        
+
+          
+          
+          verticalSpacing(25),
           SizedBox(
             height: 80,
             child: ListView.separated(

@@ -2,12 +2,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/favorites/presentaion/widgets/empty_favorite.dart';
 import 'package:smartsoil/Feature/favorites/presentaion/widgets/favorite_card.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
-import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/widgets/custom_sliver_app_bar.dart';
@@ -52,19 +50,7 @@ class FavoriteViewBody extends StatelessWidget {
                               padding: EdgeInsets.only(top: 10.h),
                               child: FavoriteCard(
                                 favoriteModle: cubit.favoritesResult[index],
-                                onTap: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return ProductDetailsView(
-                                          productModel:
-                                              genrallListProductModel![index],
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                },
+                                
                               ),
                             ),
                             childCount: state.favorites.length,

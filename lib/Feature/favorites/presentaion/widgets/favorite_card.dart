@@ -41,9 +41,13 @@ class FavoriteCard extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(19.r)),
-                  child: CachedNetworkImage(
-                    imageUrl: '$baseUrl${favoriteModle.image}',
-                    fit: BoxFit.contain,
+                  child: SizedBox(
+                    width: 120.w,
+                    height: 75.h,
+                    child: CachedNetworkImage(
+                      imageUrl: '$baseUrl${favoriteModle.image}',
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -90,8 +94,10 @@ class FavoriteCard extends StatelessWidget {
                     verticalSpacing(5),
                     Expanded(
                       child: Text(
-                        favoriteModle.description * 5,
+                        favoriteModle.description,
                         style: AppStyle.font13Greymedium,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Row(
