@@ -12,16 +12,16 @@ class AppStyle {
       fontFamily: 'Raleway');
 
   static TextStyle font20blacksemibold = TextStyle(
-      fontSize: 20.sp,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-      fontFamily: 'Raleway');
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+  );
 
   static TextStyle font16blacksemibold = TextStyle(
-      fontSize: 16.sp,
-      fontWeight: FontWeightHelper.semibold,
-      color: Colors.black,
-   );
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semibold,
+    color: Colors.black,
+  );
   static TextStyle font16blackmedium = TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.medium,
@@ -179,8 +179,8 @@ class AppStyle {
     fontWeight: FontWeightHelper.medium,
     color: ColorManger.primaryColor,
   );
-  static TextStyle font22PrimaryBold = TextStyle(
-    fontSize: 22.sp,
+  static TextStyle font21PrimaryBold = TextStyle(
+    fontSize: 21.sp,
     fontWeight: FontWeightHelper.bold,
     color: ColorManger.primaryColor,
   );

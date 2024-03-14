@@ -45,28 +45,30 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
               },
             ),
             verticalSpacing(30),
-
-            const ReviewAllComment(),
+            ReviewAllComment(
+              productModel: widget.productModel,
+            ),
+            verticalSpacing(15),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-            
-                      Text('Price',
-                      style:AppStyle.font16blacksemibold.copyWith(
+                      Text(
+                        'Price',
+                        style: AppStyle.font16blacksemibold.copyWith(
                           fontFamily: 'Raleway',
-                        ) ,
+                        ),
                       ),
                       verticalSpacing(5),
                       Text(
                         '\$${widget.productModel.price.toInt().toString()}',
                         style: AppStyle.font24blakBold,
                       )
-                                      ],
+                    ],
                   ),
                   CustomBottom(
                     bottomHeight: 50,

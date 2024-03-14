@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
@@ -28,20 +29,22 @@ class CareInstractionViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                verticalSpacing(6),
-                Text(
-                  'Care Instructions',
-                  style: AppStyle.font22BlackBold,
-                ),
-                verticalSpacing(6),
-                Text(
-                  plant.careInstructions,
-                  style: AppStyle.font14lightblackmdeium,
-                ),
-              ],
+            child: FadeInUp(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpacing(6),
+                  Text(
+                    'Care Instructions',
+                    style: AppStyle.font22BlackBold,
+                  ),
+                  verticalSpacing(6),
+                  Text(
+                    plant.careInstructions,
+                    style: AppStyle.font14lightblackmdeium,
+                  ),
+                ],
+              ),
             ),
           ),
         )

@@ -5,6 +5,11 @@ import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.da
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
+import 'package:smartsoil/Feature/comments/data/datasources/comment_data_sources.dart';
+import 'package:smartsoil/Feature/comments/data/datasources/comment_data_sources_impl.dart';
+import 'package:smartsoil/Feature/comments/data/repositories/comment_repo_impl.dart';
+import 'package:smartsoil/Feature/comments/domain/repositories/comment_repo.dart';
+import 'package:smartsoil/Feature/comments/logic/comment_cubite/comment_cubit.dart';
 import 'package:smartsoil/Feature/explor/data/datasources/explor_data_sources.dart';
 import 'package:smartsoil/Feature/explor/data/datasources/explor_data_sources_impl.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo_impl.dart';
@@ -101,6 +106,9 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<FavoritesRepo>(() => FavoritesRepoImpl(
         favoriteDataSource: serviceLocator.get<FavoriteDataSource>()));
+
+    serviceLocator.registerLazySingleton<CommentRepo>(() => CommentRepoImpl(
+        commentDataSources: serviceLocator.get<CommentDataSources>()));
   }
 
   void _setupForDataSources() {
@@ -125,6 +133,10 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<FavoriteDataSource>(
       () => FavoritesDataSoureceImpl(),
+    );
+
+    serviceLocator.registerLazySingleton<CommentDataSources>(
+      () => CommentDataSourcesImpl(),
     );
   }
 
@@ -153,5 +165,8 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<FavoritesCubit>(() =>
         FavoritesCubit(favoritesRepo: serviceLocator.get<FavoritesRepo>()));
+
+    serviceLocator.registerFactory<CommentCubit>(
+        () => CommentCubit(commentRepo: serviceLocator.get<CommentRepo>()));
   }
 }

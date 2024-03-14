@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/store/data/datasources/store_data_sources.dart';
+import 'package:smartsoil/Feature/comments/data/models/comment_model.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
@@ -16,15 +17,12 @@ class StoreDataSourcesImpl extends StoreDataSources {
       token: token,
     );
 
-    
     List<StoreProductModel> products = [];
 
     if (response.containsKey('data')) {
       for (var product in response['data']) {
-
         products.add(StoreProductModel.fromJson(product));
       }
-
     }
 
     return products;
@@ -78,5 +76,32 @@ class StoreDataSourcesImpl extends StoreDataSources {
       formData: formData,
       token: token,
     );
+  }
+
+  @override
+  Future<List<CommentModel>> addComment({
+    required String comment,
+    required int productId,
+  }) async {
+    String token = await LocalServices.getData(key: 'token');
+    FormData formData = FormData.fromMap({
+      'comment': comment,
+      'product': productId,
+    });
+
+    var response = await ApiServices.postFormData(
+      formData: formData,
+      endpoint: '$baseUrl$addcommentendpoint', // Corrected endpoint
+      token: token,
+    );
+
+    List<CommentModel> comments = [];
+
+    if (response.containsKey('comment')) {
+      // Check for 'comment' key instead of 'data'
+      comments.add(CommentModel.fromJson(response['comment']));
+      return comments;
+    }
+    return comments; // Return empty list if 'comment' key is not present in response
   }
 }

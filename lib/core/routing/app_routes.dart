@@ -4,7 +4,6 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
 import 'package:smartsoil/Feature/details/view/product_details_view.dart';
-import 'package:smartsoil/Feature/details/view/review_and_rating_view_body.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/views/plant_classsfiction_view.dart';
 import 'package:smartsoil/Feature/details/view/plant_details_view.dart';
@@ -109,11 +108,6 @@ class AppRoutes {
             create: (context) => serviceLocator.get<PlantClassfictionCubite>(),
             child: const PlantCareView(),
           );
-        });
-
-      case Routes.ratingAndReviewBodyRoute:
-        return MaterialPageRoute(builder: (context) {
-          return const RatingAndReviewBody();
         });
 
       default:

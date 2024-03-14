@@ -17,15 +17,14 @@ import 'package:smartsoil/core/widgets/app_bottom.dart';
 import 'package:smartsoil/core/widgets/primary_header_continer.dart';
 
 class MyCardViewBody extends StatefulWidget {
-  const MyCardViewBody({Key? key, required this.storeProductModel})
-      : super(key: key);
+  const MyCardViewBody({super.key, required this.storeProductModel});
   final StoreProductModel storeProductModel;
 
   @override
-  _MyCardViewBodyState createState() => _MyCardViewBodyState();
+  State<MyCardViewBody> createState() => _MyWidgetState();
 }
 
-class _MyCardViewBodyState extends State<MyCardViewBody> {
+class _MyWidgetState extends State<MyCardViewBody> {
   bool payWithCash = true;
 
   @override

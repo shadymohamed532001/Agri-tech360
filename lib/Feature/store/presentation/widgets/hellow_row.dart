@@ -25,7 +25,7 @@ class HellowRow extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Bag Store',
+                  'Agritech Store',
                   style: AppStyle.font22Whitesmedium,
                 ),
               ],

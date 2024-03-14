@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/comments/logic/comment_cubite/comment_cubit.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => serviceLocator.get<FavoritesCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => serviceLocator.get<CommentCubit>(),
           ),
         ],
         child: const MaterialApp(

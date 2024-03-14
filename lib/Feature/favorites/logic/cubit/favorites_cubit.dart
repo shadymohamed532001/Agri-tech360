@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/Feature/favorites/domain/repositories/favorites_repo.dart';
@@ -19,7 +21,6 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
     favoriteEither.fold(
       (failure) {
-        print(failure.errMessage.toString());
         emit(GetFavoritesErrorState(error: failure.errMessage.toString()));
       },
       (favorites) {
@@ -48,11 +49,11 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     });
   }
 
-  void removeFavorites( {required int productId}) {
+  void removeFavorites({required int productId}) {
     emit(RemoveFromFavLoadingState());
     favoritesRepo.removeFavorite(productId: productId).then((value) {
       value.fold((failure) {
-        print(failure.errMessage.toString());
+        log(failure.errMessage.toString());
         emit(RemoveFromFavErrorState(
           error: failure.errMessage.toString(),
         ));

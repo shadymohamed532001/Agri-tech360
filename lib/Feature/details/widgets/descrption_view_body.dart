@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
@@ -14,7 +15,7 @@ class DescriptionViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverPadding(
-          padding: EdgeInsets.only(left: 10.w,right: 10.w,top: 16.w),
+          padding: EdgeInsets.only(left: 10.w, right: 10.w, top: 16.w),
           sliver: InformationSliverAppBar(
             plant: plant,
           ),
@@ -24,19 +25,21 @@ class DescriptionViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 16,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Description',
-                  style: AppStyle.font22BlackBold,
-                ),
-                verticalSpacing(6),
-                Text(
-                  plant.longDescription,
-                  style: AppStyle.font14lightblackmdeium,
-                ),
-              ],
+            child: FadeInUp(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Description',
+                    style: AppStyle.font22BlackBold,
+                  ),
+                  verticalSpacing(6),
+                  Text(
+                    plant.longDescription,
+                    style: AppStyle.font14lightblackmdeium,
+                  ),
+                ],
+              ),
             ),
           ),
         )

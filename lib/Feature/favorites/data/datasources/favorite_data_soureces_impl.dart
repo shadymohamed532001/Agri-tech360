@@ -14,14 +14,14 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
       token: token,
     );
 
-    print(response);
     List<FavoriteData> favoriteResult = [];
 
     if (response.containsKey('data')) {
       if (response['data'] is List) {
         // Iterate over each item in the 'data' list and parse it into FavoriteData
         favoriteResult = List<FavoriteData>.from(
-          response['data'].map((item) => FavoriteData.fromJson(item['product'])),
+          response['data']
+              .map((item) => FavoriteData.fromJson(item['product'])),
         );
       } else {
         // If 'data' is not a list, parse it as a single FavoriteData item
@@ -31,35 +31,30 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
 
     return favoriteResult;
   }
-  
+
   @override
-  Future<void> addFavorite({required int productId}) async{
+  Future<void> addFavorite({required int productId}) async {
+    FormData formData = FormData.fromMap({
+      'product': productId,
+    });
 
-      FormData formData = FormData.fromMap({
-        'product': productId,
-      });
-
-      String token = await LocalServices.getData(key: 'token');
-   await ApiServices.postFormData(
-      endpoint: '$baseUrl$addFavoriteendpoint',
-      token: token,
-      formData: formData
-    );
+    String token = await LocalServices.getData(key: 'token');
+    await ApiServices.postFormData(
+        endpoint: '$baseUrl$addFavoriteendpoint',
+        token: token,
+        formData: formData);
   }
 
-
   @override
-  Future<void> removeFavorite({required int productId}) async{
+  Future<void> removeFavorite({required int productId}) async {
+    FormData formData = FormData.fromMap({
+      'product': productId,
+    });
 
-      FormData formData = FormData.fromMap({
-        'product': productId,
-      });
-
-      String token = await LocalServices.getData(key: 'token');
-   await ApiServices.deletFormData(
-      endpoint: '$baseUrl$removeFavoriteendpoint',
-      token: token,
-      formData: formData
-    );
+    String token = await LocalServices.getData(key: 'token');
+    await ApiServices.deletFormData(
+        endpoint: '$baseUrl$removeFavoriteendpoint',
+        token: token,
+        formData: formData);
   }
 }

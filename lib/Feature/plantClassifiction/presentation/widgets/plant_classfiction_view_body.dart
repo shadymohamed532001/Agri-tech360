@@ -20,7 +20,6 @@ class PlantCareViewBody extends StatefulWidget {
 }
 
 class _PlantCareViewBodyState extends State<PlantCareViewBody> {
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PlantClassfictionCubite, PlantClasfictionState>(
@@ -121,7 +120,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       height: 10.h,
                     ),
                     Text(
-                      'Smart Soil',
+                      'Agritech360',
                       style: AppStyle.font20blacksemibold,
                     ),
                     SizedBox(

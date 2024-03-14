@@ -24,7 +24,7 @@ class HealYourCropAndPlantText extends StatelessWidget {
         ),
         verticalSpacing(8),
         Text(
-          'Contrary to popular belief not simply random It has root in a piece of classical Latin literature from 45BC, making it over ',
+          'it leaf classification app uses cutting-edge technology to identify various types of leaves accurately. It\'s perfect for botanists and nature enthusiasts',
           style: AppStyle.font12Greyregular,
         ),
         verticalSpacing(16),

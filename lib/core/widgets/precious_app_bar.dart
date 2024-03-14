@@ -15,8 +15,8 @@ class PreciousAppBar extends StatelessWidget {
       centerTitle: true,
       automaticallyImplyLeading: false,
       title: Text(
-        'Precious',
-        style: AppStyle.font22PrimaryBold,
+        'Agritech360',
+        style: AppStyle.font21PrimaryBold,
       ),
     );
   }

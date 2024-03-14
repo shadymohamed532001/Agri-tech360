@@ -38,7 +38,7 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-      backgroundColor: ColorManger.whiteColor,
+        backgroundColor: ColorManger.whiteColor,
         body: SafeArea(
           child: Column(
             children: [

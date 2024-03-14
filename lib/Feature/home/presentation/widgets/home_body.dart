@@ -28,8 +28,8 @@ class HomeBody extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Precious',
-                          style: AppStyle.font22PrimaryBold,
+                          'Agritech360',
+                          style: AppStyle.font21PrimaryBold,
                         ),
                         verticalSpacing(20),
                         const HealYourCropAndPlantText(),

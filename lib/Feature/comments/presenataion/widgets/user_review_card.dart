@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:smartsoil/Feature/details/widgets/rating_indicator.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
@@ -30,19 +29,10 @@ class UserReviewCard extends StatelessWidget {
                 ),
               ],
             ),
-            const Icon(Icons.more_vert)
-          ],
-        ),
-        verticalSpacing(15),
-        Row(
-          children: [
-            const RatingIndicator(
-              rating: 2,
-            ), // Assuming RatingIndicator is your custom widget for displaying ratings
-            const SizedBox(width: 5), // horizontalSpacing(3) equivalent
-            Text(
-              '${DateTime.now().day.toString().padLeft(2, '0')} ${_getMonth(DateTime.now().month)} ${DateTime.now().year}',
-              style: AppStyle.font12Blackmedium,
+            const Icon(
+              Icons.check_circle,
+              color: ColorManger.primaryColor,
+              size: 20,
             ),
           ],
         ),
@@ -59,10 +49,7 @@ class UserReviewCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Corn',
-                    style: AppStyle.font12Blackregular,
-                  ),
+                  const Spacer(),
                   Text(
                     '${DateTime.now().day.toString().padLeft(2, '0')} ${_getMonth(DateTime.now().month)} ${DateTime.now().year}',
                     style: AppStyle.font12Blackmedium,
