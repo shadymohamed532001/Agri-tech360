@@ -1,10 +1,8 @@
 import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/Feature/favorites/domain/repositories/favorites_repo.dart';
 import 'package:equatable/equatable.dart';
-
 part 'favorites_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
@@ -12,7 +10,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   final FavoritesRepo favoritesRepo;
   List<FavoriteData> favoritesResult = [];
-  Set<int> favoritId = {}; // Define favoritId at the class level
+  Set<int> favoritId = {};
 
   void getFavorites() async {
     emit(const GetFavoritesLoadingState());
@@ -25,7 +23,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       },
       (favorites) {
         favoritesResult = favorites;
-        favoritId.clear(); // Clear existing ids before adding new ones
+        favoritId.clear();
         for (var element in favorites) {
           favoritId.add(element.id);
         }
@@ -42,7 +40,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
           error: failure.errMessage.toString(),
         ));
       }, (response) async {
-        favoritId.add(productId); // Add the product to favorites
+        favoritId.add(productId);
         getFavorites();
         emit(const AddToFavSuccessState());
       });
@@ -58,7 +56,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
           error: failure.errMessage.toString(),
         ));
       }, (response) async {
-        favoritId.remove(productId); // Remove the product from favorites
+        favoritId.remove(productId);
         getFavorites();
         emit(const RemoveFromFavSuccessState());
       });

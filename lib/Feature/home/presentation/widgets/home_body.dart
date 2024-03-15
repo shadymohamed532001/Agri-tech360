@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/heal_your_crop_and_plant_text.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_list_view.dart';
+import 'package:smartsoil/Feature/home/presentation/widgets/recommed_next_crop_text.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/weather_degree_list_view.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -33,12 +34,8 @@ class HomeBody extends StatelessWidget {
                         ),
                         verticalSpacing(20),
                         const HealYourCropAndPlantText(),
-                        // verticalSpacing(20),
-                        // Align(
-                        //   alignment: Alignment.bottomLeft,
-                        //   child: Text('Recommend next crop',
-                        //       style: AppStyle.font22BlackBold),
-                        // ),
+                        verticalSpacing(20),
+                        const RecommedNextCropText(),
                         verticalSpacing(25),
                         const WeatherDegreeListView(),
                         verticalSpacing(20),

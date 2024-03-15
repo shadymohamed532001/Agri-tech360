@@ -9,6 +9,7 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
   @override
   Future<List<FavoriteData>> getFavorites() async {
     String token = await LocalServices.getData(key: 'token');
+
     var response = await ApiServices.getData(
       endpoint: '$baseUrl$favoritesendpoint',
       token: token,
@@ -18,14 +19,19 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
 
     if (response.containsKey('data')) {
       if (response['data'] is List) {
-        // Iterate over each item in the 'data' list and parse it into FavoriteData
         favoriteResult = List<FavoriteData>.from(
-          response['data']
-              .map((item) => FavoriteData.fromJson(item['product'])),
+          response['data'].map(
+            (item) => FavoriteData.fromJson(
+              item['product'],
+            ),
+          ),
         );
       } else {
-        // If 'data' is not a list, parse it as a single FavoriteData item
-        favoriteResult.add(FavoriteData.fromJson(response['data']['product']));
+        favoriteResult.add(
+          FavoriteData.fromJson(
+            response['data']['product'],
+          ),
+        );
       }
     }
 
@@ -40,9 +46,10 @@ class FavoritesDataSoureceImpl extends FavoriteDataSource {
 
     String token = await LocalServices.getData(key: 'token');
     await ApiServices.postFormData(
-        endpoint: '$baseUrl$addFavoriteendpoint',
-        token: token,
-        formData: formData);
+      endpoint: '$baseUrl$addFavoriteendpoint',
+      token: token,
+      formData: formData,
+    );
   }
 
   @override

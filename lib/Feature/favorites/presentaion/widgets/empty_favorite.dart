@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
@@ -6,9 +5,8 @@ import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class EmptyView extends StatelessWidget {
-  const EmptyView(
-      {super.key,
-      
+  const EmptyView({
+    super.key,
   });
 
   @override
@@ -20,8 +18,7 @@ class EmptyView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-                        verticalSpacing(100),
-
+            verticalSpacing(100),
             Image.asset(
               'assets/images/bag_wish.png',
               height: 350.h,
@@ -35,9 +32,7 @@ class EmptyView extends StatelessWidget {
             verticalSpacing(20),
             Text(
               'Your favorite list is empty',
-              style: AppStyle.font14Blacksemibold.copyWith(
-                fontSize: 15.sp
-              ),
+              style: AppStyle.font14Blacksemibold.copyWith(fontSize: 15.sp),
             ),
             verticalSpacing(5),
             Text(
@@ -48,7 +43,6 @@ class EmptyView extends StatelessWidget {
               ),
             ),
             verticalSpacing(100),
-         
           ],
         ),
       ),

@@ -15,4 +15,6 @@ class Routes {
   static const String ratingAndReviewBodyRoute = '/ratingAndReviewBody';
 
   static const String myCardViewRoute = '/myCardView';
+  static const String recommedNextCropsViewRoute =
+      '/recommedNextCropsViewRoute';
 }

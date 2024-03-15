@@ -51,10 +51,8 @@ class FavoriteData {
   });
 
   factory FavoriteData.fromJson(Map<String, dynamic> json) {
-    // Parse images string into a list of URLs
     List<String> parsedImages = [];
     if (json['images'] != null) {
-      // Extracting the URLs from the JSON string using regular expression
       RegExp regExp = RegExp(r"'(.*?)'");
       Iterable<Match> matches = regExp.allMatches(json['images']);
       for (Match match in matches) {
@@ -63,16 +61,17 @@ class FavoriteData {
     }
     return FavoriteData(
       description: json['description'] ?? '',
-      id: json['id'] ,
-      image: json['image'] ,
+      id: json['id'],
+      image: json['image'],
       images: parsedImages,
-      name: json['name'] ,
-      price: json['price'] .toDouble(),
-      seller: Seller.fromJson(json['seller'] ),
-      tags: json['tags'] ,
+      name: json['name'],
+      price: json['price'].toDouble(),
+      seller: Seller.fromJson(json['seller']),
+      tags: json['tags'],
     );
+  }
+}
 
-}}
 class Seller {
   final int id;
   final String city;
@@ -100,5 +99,4 @@ class Seller {
       profilePic: json['profilePic'],
     );
   }
-
 }

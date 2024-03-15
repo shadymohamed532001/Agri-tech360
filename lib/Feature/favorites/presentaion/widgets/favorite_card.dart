@@ -25,7 +25,7 @@ class FavoriteCard extends StatelessWidget {
       child: Container(
         height: 110.h,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: ColorManger.whiteColor,
           borderRadius: BorderRadius.all(Radius.circular(20.r)),
         ),
         child: Row(
@@ -104,12 +104,12 @@ class FavoriteCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          '${favoriteModle.seller.fullName} ', // or use a proper formatting for price
-                          style: AppStyle.font14Blacksemibold,
+                          'Seller : ${favoriteModle.seller.fullName} ',
+                          style: AppStyle.font13Blacksemibold,
                         ),
                         const SizedBox(width: 7),
                         Text(
-                          '${favoriteModle.price.toInt().toString()} \$  ', // or use a proper formatting for price
+                          '${favoriteModle.price.toInt().toString()} \$ ',
                           style: AppStyle.font14Blacksemibold,
                         ),
                       ],

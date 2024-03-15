@@ -47,7 +47,7 @@ class FavoriteViewBody extends StatelessWidget {
                         sliver: SliverList(
                           delegate: SliverChildBuilderDelegate(
                             (context, index) => Padding(
-                              padding: EdgeInsets.only(top: 10.h),
+                              padding: EdgeInsets.only(top: 12.h),
                               child: FavoriteCard(
                                 favoriteModle: cubit.favoritesResult[index],
                               ),
