@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
-class PreciousAppBar extends StatelessWidget {
-  const PreciousAppBar({
+class Agritech360AppBar extends StatelessWidget {
+  const Agritech360AppBar({
     super.key,
   });
 

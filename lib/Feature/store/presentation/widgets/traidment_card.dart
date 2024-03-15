@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
+import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -24,15 +25,11 @@ class TraidmentProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductDetailsView(
-              productModel: productModel,
-            ),
-          ),
+        context.navigateTo(
+          routeName: Routes.traidmentProductDetailsViewRoute,
+          arguments: productModel,
         );
-      }, // i well push with argument to push product Model
+      },
       child: BlocBuilder<FavoritesCubit, FavoritesState>(
         builder: (context, state) {
           var favoriteCubite = BlocProvider.of<FavoritesCubit>(context);

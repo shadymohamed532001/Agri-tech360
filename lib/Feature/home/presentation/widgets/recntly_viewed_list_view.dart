@@ -40,7 +40,8 @@ class RecntlyViewedListView extends StatelessWidget {
                     SeeAllTextButton(
                       onTap: () {
                         context.navigateTo(
-                            routeName: Routes.recentlySeeAllViewViewRoute);
+                          routeName: Routes.recentlySeeAllViewViewRoute,
+                        );
                       },
                     )
                   ],

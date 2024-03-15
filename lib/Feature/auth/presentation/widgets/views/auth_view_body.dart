@@ -4,7 +4,7 @@ import 'package:smartsoil/Feature/auth/presentation/widgets/login/views/login_vi
 import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/views/sign_up_view_body.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
-import 'package:smartsoil/core/widgets/precious_app_bar.dart';
+import 'package:smartsoil/core/widgets/agritech_app_bar.dart';
 
 class AuthViewBody extends StatefulWidget {
   static const String routeName = 'AuthViewBody';
@@ -39,7 +39,7 @@ class _MyTabbedPageState extends State<AuthViewBody>
       child: Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kToolbarHeight),
-          child: PreciousAppBar(),
+          child: Agritech360AppBar(),
         ),
         body: Column(
           children: [

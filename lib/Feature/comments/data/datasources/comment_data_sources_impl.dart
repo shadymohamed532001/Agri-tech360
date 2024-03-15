@@ -26,28 +26,21 @@ class CommentDataSourcesImpl extends CommentDataSources {
 
   @override
   Future<List<CommentModel>> getComments({required int productId}) async {
-    try {
-      String token = await LocalServices.getData(key: 'token');
-      FormData formData = FormData.fromMap({
-        'product': productId,
-      });
-      var response = await ApiServices.getFormData(
-        formData: formData,
-        endpoint: '$baseUrl$getcommentendpoint',
-        token: token,
-      );
+    String token = await LocalServices.getData(key: 'token');
 
-      List<CommentModel> comments = [];
+    var response = await ApiServices.getData(
+      endpoint: '$baseUrl$getcommentendpoint/$productId',
+      token: token,
+    );
 
-      if (response.containsKey('data')) {
-        for (var product in response['data']) {
-          comments.add(CommentModel.fromJson(product));
-        }
+    List<CommentModel> comments = [];
+
+    if (response.containsKey('data')) {
+      for (var product in response['data']) {
+        comments.add(CommentModel.fromJson(product));
       }
-
-      return comments;
-    } catch (error) {
-      rethrow;
     }
+
+    return comments;
   }
 }

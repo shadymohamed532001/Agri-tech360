@@ -50,7 +50,6 @@ class FavoriteViewBody extends StatelessWidget {
                               padding: EdgeInsets.only(top: 10.h),
                               child: FavoriteCard(
                                 favoriteModle: cubit.favoritesResult[index],
-                                
                               ),
                             ),
                             childCount: state.favorites.length,
@@ -76,10 +75,7 @@ class FavoriteViewBody extends StatelessWidget {
                   ),
                 );
         } else if (state is GetFavoritesErrorState) {
-          return FadeInDown(
-              child: const EmptyView(
-        
-          ));
+          return FadeInDown(child: const EmptyView());
         } else {
           return const Center(
             child: CircularProgressIndicator(

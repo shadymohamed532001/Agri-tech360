@@ -28,7 +28,6 @@ class StoreCubit extends Cubit<StoreState> {
         emit(StoreGetProductsError(error: failure.errMessage.toString()));
       },
       (products) {
-        // genrallListProductModel = products;
         productResult = products;
         emit(StoreGetProductsSuccess(products: products));
       },

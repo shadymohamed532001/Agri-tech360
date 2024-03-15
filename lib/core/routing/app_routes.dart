@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
+import 'package:smartsoil/Feature/checkout/presenation/views/my_card_view.dart';
 import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/views/plant_classsfiction_view.dart';
@@ -13,10 +14,10 @@ import 'package:smartsoil/Feature/layout/presentation/views/layout_views.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/Feature/search/presentation/search_view.dart';
+import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/models/planr_model_class.dart';
-import 'package:smartsoil/core/models/product_model_classs.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -94,14 +95,21 @@ class AppRoutes {
           builder: (context) => PlantDetailsView(
             plant: args.plantModle,
           ),
-        ); // save the product model later
+        );
+
       case Routes.traidmentProductDetailsViewRoute:
-        final args = routeSettings.arguments as ProductModelClass;
         return MaterialPageRoute(
           builder: (context) => ProductDetailsView(
-            productModel: args.productModel, // later
+            productModel: routeSettings.arguments as StoreProductModel,
           ),
         );
+      case Routes.myCardViewRoute:
+        return MaterialPageRoute(
+          builder: (context) => MyCardView(
+            storeProductModel: routeSettings.arguments as StoreProductModel,
+          ),
+        );
+
       case Routes.plantCareViewRoute:
         return MaterialPageRoute(builder: (context) {
           return BlocProvider(

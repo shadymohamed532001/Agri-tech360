@@ -48,39 +48,12 @@ final GetIt serviceLocator = GetIt.instance;
 
 class ServiceLocator {
   Future<void> setupServiceLocator() async {
-    // await _setupForExternal();
-
-    // _setupForCore();
     _setupForDataSources();
 
     _setupForRepos();
 
     _setupForCubits();
   }
-
-  // Future<void> _setupForExternal() async {
-  //   serviceLocator.registerLazySingleton<InternetConnectionChecker>(
-  //     () => InternetConnectionChecker(),
-  //   );
-  //   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  //   serviceLocator
-  //       .registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-  //   serviceLocator.registerLazySingleton<Dio>(() => Dio());
-  // }
-
-  // void _setupForCore() {
-  //   // serviceLocator.registerLazySingleton<NetworkInfo>(
-  //   //   () => NetworkInfoImpl(
-  //   //     connectionChecker: serviceLocator.get<InternetConnectionChecker>(),
-  //   //   ),
-  //   // );
-
-  //   serviceLocator.registerLazySingleton<CacheHelper>(
-  //     () => CacheHelper(serviceLocator<SharedPreferences>()),
-  //   );
-
-  //   // serviceLocator.registerLazySingleton<ApiServices>(() => );
-  // }
 
   void _setupForRepos() {
     serviceLocator

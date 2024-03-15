@@ -33,6 +33,12 @@ class HomeBody extends StatelessWidget {
                         ),
                         verticalSpacing(20),
                         const HealYourCropAndPlantText(),
+                        // verticalSpacing(20),
+                        // Align(
+                        //   alignment: Alignment.bottomLeft,
+                        //   child: Text('Recommend next crop',
+                        //       style: AppStyle.font22BlackBold),
+                        // ),
                         verticalSpacing(25),
                         const WeatherDegreeListView(),
                         verticalSpacing(20),
