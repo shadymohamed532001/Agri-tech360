@@ -12,12 +12,23 @@ final class CommentInitial extends CommentState {}
 class AddCommentLoading extends CommentState {}
 
 class AddCommentSuccess extends CommentState {
-  final List<CommentModel> comments;
-
-  const AddCommentSuccess({required this.comments});
+  const AddCommentSuccess();
 }
 
 class AddCommentError extends CommentState {
   final String error;
   const AddCommentError({required this.error});
+}
+
+class GetCommentsLoading extends CommentState {}
+
+class GetCommentsSuccess extends CommentState {
+  final List<CommentModel> comments;
+
+  const GetCommentsSuccess({required this.comments});
+}
+
+class GetCommentsError extends CommentState {
+  final String error;
+  const GetCommentsError({required this.error});
 }

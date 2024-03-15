@@ -44,11 +44,11 @@ class LayoutCubit extends Cubit<LayoutState> {
 
     if (currentIndex == 1) {
       BlocProvider.of<StoreCubit>(context).getProducts();
+      BlocProvider.of<FavoritesCubit>(context).getFavorites();
     }
     if (currentIndex == 3) {
       BlocProvider.of<FavoritesCubit>(context).getFavorites();
-            BlocProvider.of<StoreCubit>(context).getProducts();
-
+      BlocProvider.of<StoreCubit>(context).getProducts();
     }
 
     emit(ChangeBottomNavState(index: index));

@@ -13,14 +13,31 @@ class CommentRepoImpl extends CommentRepo {
   CommentRepoImpl({required this.commentDataSources});
 
   @override
-  Future<Either<Failure, List<CommentModel>>> addComment(
+  Future<Either<Failure, void>> addComment(
       {required String comment, required int productId}) async {
     try {
-      final commentModel = await commentDataSources.addComment(
+      await commentDataSources.addComment(
         comment: comment,
         productId: productId,
       );
-      return right(commentModel);
+      return right(null);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CommentModel>>> getCommernts(
+      {required int productId}) async {
+    try {
+      List<CommentModel> products = await commentDataSources.getComments(
+        productId: productId,
+      );
+      return right(products);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));

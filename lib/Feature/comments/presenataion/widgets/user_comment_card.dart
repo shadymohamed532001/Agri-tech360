@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
+import 'package:smartsoil/Feature/comments/data/models/comment_model.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
-import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
-class UserReviewCard extends StatelessWidget {
-  const UserReviewCard({super.key});
+class UserCommentCard extends StatelessWidget {
+  const UserCommentCard({super.key, required this.commentModel});
+  final CommentModel commentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +18,19 @@ class UserReviewCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage(
-                    ImagesAssetsManger.profilePerson,
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 16,
+                  backgroundImage: NetworkImage(
+                    commentModel.commenter.profilePic,
                   ),
                 ),
                 horizontalSpacing(10),
                 Text(
-                  'shady steha',
+                  commentModel.commenter.fullName,
                   style: AppStyle.font14Blacksemibold,
                 ),
               ],
-            ),
-            const Icon(
-              Icons.check_circle,
-              color: ColorManger.primaryColor,
-              size: 20,
             ),
           ],
         ),
@@ -45,6 +43,7 @@ class UserReviewCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,8 +57,8 @@ class UserReviewCard extends StatelessWidget {
               ),
               verticalSpacing(5),
               ReadMoreText(
-                'Plants are not just green decorations adorning our homes and offices; they are powerful contributors to our well-being in numerous ways. From purifying the air we breathe to boosting our mental health, the benefits of having plants around us are manifold.',
-                trimLines: 3,
+                commentModel.comment,
+                trimLines: 2,
                 trimMode: TrimMode.Line,
                 trimExpandedText: 'show less',
                 trimCollapsedText: 'show more',

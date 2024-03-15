@@ -39,8 +39,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         }
         if (state is LoginSucess) {
           if (state.loginModel.status == true) {
-            Navigator.of(context)
-                .pop(); // close the dialog if successfully logged in
+            Navigator.of(context).pop();
             showTouster(
               massage: state.loginModel.message!,
               state: ToustState.SUCCESS,

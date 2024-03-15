@@ -1,7 +1,7 @@
 class StoreProductModel {
   final int id;
   final String description;
-  final List<String> images; // Modified to store list of image URLs
+  final List<String> images;
   final String name;
   final double price;
   final Seller seller;
@@ -12,7 +12,7 @@ class StoreProductModel {
     required this.image,
     required this.id,
     required this.description,
-    required this.images, // Modified parameter
+    required this.images,
     required this.name,
     required this.price,
     required this.seller,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/comments/presenataion/views/comments_view.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
-import 'package:smartsoil/Feature/comments/presenataion/views/review_and_rating_view_body.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -35,7 +35,7 @@ class ReviewAllComment extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return RatingAndReviewBody(productModel: productModel);
+                        return CommentsView(productModel: productModel);
                       }));
                     },
                     icon: const Icon(

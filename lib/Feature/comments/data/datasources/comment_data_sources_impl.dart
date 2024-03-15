@@ -7,7 +7,7 @@ import 'package:smartsoil/core/networking/local_services.dart';
 
 class CommentDataSourcesImpl extends CommentDataSources {
   @override
-  Future<List<CommentModel>> addComment({
+  Future<void> addComment({
     required String comment,
     required int productId,
   }) async {
@@ -17,19 +17,37 @@ class CommentDataSourcesImpl extends CommentDataSources {
       'product': productId,
     });
 
-    var response = await ApiServices.postFormData(
+    await ApiServices.postFormData(
       formData: formData,
-      endpoint: '$baseUrl$addcommentendpoint', // Corrected endpoint
+      endpoint: '$baseUrl$addcommentendpoint',
       token: token,
     );
+  }
 
-    List<CommentModel> comments = [];
+  @override
+  Future<List<CommentModel>> getComments({required int productId}) async {
+    try {
+      String token = await LocalServices.getData(key: 'token');
+      FormData formData = FormData.fromMap({
+        'product': productId,
+      });
+      var response = await ApiServices.getFormData(
+        formData: formData,
+        endpoint: '$baseUrl$getcommentendpoint',
+        token: token,
+      );
 
-    if (response.containsKey('comment')) {
-      // Check for 'comment' key instead of 'data'
-      comments.add(CommentModel.fromJson(response['comment']));
+      List<CommentModel> comments = [];
+
+      if (response.containsKey('data')) {
+        for (var product in response['data']) {
+          comments.add(CommentModel.fromJson(product));
+        }
+      }
+
       return comments;
+    } catch (error) {
+      rethrow;
     }
-    return comments; // Return empty list if 'comment' key is not present in response
   }
 }

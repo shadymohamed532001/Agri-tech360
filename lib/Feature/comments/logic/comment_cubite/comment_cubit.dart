@@ -25,7 +25,30 @@ class CommentCubit extends Cubit<CommentState> {
         emit(AddCommentError(error: failure.toString()));
       },
       (comments) async {
-        emit(AddCommentSuccess(comments: comments));
+        emit(const AddCommentSuccess());
+        getComments(productId: productId);
+      },
+    );
+  }
+
+  List<CommentModel> commentsList = [];
+  Future<void> getComments({required int productId}) async {
+    emit(GetCommentsLoading());
+    final productEither = await commentRepo.getCommernts(
+      productId: productId,
+    );
+
+    productEither.fold(
+      (failure) {
+        log(failure.errMessage.toString());
+        emit(GetCommentsError(error: failure.errMessage.toString()));
+      },
+      (comments) {
+        commentsList = comments;
+        // print(commentsList[0].comment);
+        // print(commentsList[0].commenter.fullName);
+
+        emit(GetCommentsSuccess(comments: comments));
       },
     );
   }

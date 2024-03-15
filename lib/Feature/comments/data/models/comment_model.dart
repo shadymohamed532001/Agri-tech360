@@ -1,139 +1,112 @@
 class CommentModel {
-  Data? data;
-  String? message;
-  bool? status;
+  final String comment;
+  final Commenter commenter;
+  final String prediction;
+  final Product product;
 
-  CommentModel({this.data, this.message, this.status});
+  CommentModel({
+    required this.comment,
+    required this.commenter,
+    required this.prediction,
+    required this.product,
+  });
 
-  CommentModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    message = json['message'];
-    status = json['status'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    data['message'] = message;
-    data['status'] = status;
-    return data;
-  }
-}
-
-class Data {
-  String? comment;
-  Commenter? commenter;
-  String? prediction;
-  Product? product;
-
-  Data({this.comment, this.commenter, this.prediction, this.product});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    comment = json['comment'];
-    commenter = json['commenter'] != null
-        ? Commenter.fromJson(json['commenter'])
-        : null;
-    prediction = json['prediction'];
-    product =
-        json['product'] != null ? Product.fromJson(json['product']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['comment'] = comment;
-    if (commenter != null) {
-      data['commenter'] = commenter!.toJson();
-    }
-    data['prediction'] = prediction;
-    if (product != null) {
-      data['product'] = product!.toJson();
-    }
-    return data;
+  factory CommentModel.fromJson(Map<String, dynamic> json) {
+    return CommentModel(
+      comment: json['comment'],
+      commenter: Commenter.fromJson(json['commenter']),
+      prediction: json['prediction'],
+      product: Product.fromJson(json['product']),
+    );
   }
 }
 
 class Commenter {
-  String? city;
-  String? email;
-  String? fullName;
-  int? id;
-  String? phoneNumber;
-  String? profilePic;
+  final int id;
+  final String city;
+  final String email;
+  final String fullName;
+  final String phoneNumber;
+  final String profilePic;
 
-  Commenter(
-      {this.city,
-      this.email,
-      this.fullName,
-      this.id,
-      this.phoneNumber,
-      this.profilePic});
+  Commenter({
+    required this.id,
+    required this.city,
+    required this.email,
+    required this.fullName,
+    required this.phoneNumber,
+    required this.profilePic,
+  });
 
-  Commenter.fromJson(Map<String, dynamic> json) {
-    city = json['city'];
-    email = json['email'];
-    fullName = json['fullName'];
-    id = json['id'];
-    phoneNumber = json['phoneNumber'];
-    profilePic = json['profilePic'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['city'] = city;
-    data['email'] = email;
-    data['fullName'] = fullName;
-    data['id'] = id;
-    data['phoneNumber'] = phoneNumber;
-    data['profilePic'] = profilePic;
-    return data;
+  factory Commenter.fromJson(Map<String, dynamic> json) {
+    return Commenter(
+      id: json['id'],
+      city: json['city'],
+      email: json['email'],
+      fullName: json['fullName'],
+      phoneNumber: json['phoneNumber'],
+      profilePic: json['profilePic'],
+    );
   }
 }
 
 class Product {
-  String? description;
-  int? id;
-  String? image;
-  String? images;
-  String? name;
-  int? price;
-  Commenter? seller;
-  String? tags;
+  final int id;
+  final String description;
+  final String image;
+  final String name;
+  final double price;
+  final Seller seller;
+  final String tags;
 
-  Product(
-      {this.description,
-      this.id,
-      this.image,
-      this.images,
-      this.name,
-      this.price,
-      this.seller,
-      this.tags});
+  Product({
+    required this.id,
+    required this.description,
+    required this.image,
+    required this.name,
+    required this.price,
+    required this.seller,
+    required this.tags,
+  });
 
-  Product.fromJson(Map<String, dynamic> json) {
-    description = json['description'];
-    id = json['id'];
-    image = json['image'];
-    images = json['images'];
-    name = json['name'];
-    price = json['price'];
-    seller = json['seller'] != null ? Commenter.fromJson(json['seller']) : null;
-    tags = json['tags'];
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      description: json['description'],
+      image: json['image'],
+      name: json['name'],
+      price: json['price'].toDouble(),
+      seller: Seller.fromJson(json['seller']),
+      tags: json['tags'],
+    );
   }
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['description'] = description;
-    data['id'] = id;
-    data['image'] = image;
-    data['images'] = images;
-    data['name'] = name;
-    data['price'] = price;
-    if (seller != null) {
-      data['seller'] = seller!.toJson();
-    }
-    data['tags'] = tags;
-    return data;
+class Seller {
+  final int id;
+  final String city;
+  final String email;
+  final String fullName;
+  final String phoneNumber;
+  final String profilePic;
+
+  Seller({
+    required this.id,
+    required this.city,
+    required this.email,
+    required this.fullName,
+    required this.phoneNumber,
+    required this.profilePic,
+  });
+
+  factory Seller.fromJson(Map<String, dynamic> json) {
+    return Seller(
+      id: json['id'],
+      city: json['city'],
+      email: json['email'],
+      fullName: json['fullName'],
+      phoneNumber: json['phoneNumber'],
+      profilePic: json['profilePic'],
+    );
   }
 }
