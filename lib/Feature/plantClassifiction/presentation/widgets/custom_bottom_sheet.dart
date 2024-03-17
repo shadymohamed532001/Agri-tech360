@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
+import 'package:smartsoil/core/widgets/app_bottom.dart';
 
 class CustomBottomSheet extends StatelessWidget {
   const CustomBottomSheet({
@@ -26,37 +28,41 @@ class CustomBottomSheet extends StatelessWidget {
             topLeft: Radius.circular(32),
             topRight: Radius.circular(32),
           )),
-      child: Column(
-        children: [
-          Expanded(
-            child: TextButton(
-              onPressed: () async {
-                await cubit.uploadImageFromGalleryModel(
-                  picke: ImagePicker(),
-                );
-                context.pop();
-                await cubit.uploadImageToModel(image: cubit.image!);
-              },
-              child: const Text(
-                'Select From Gallary',
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 32.h),
+        child: Column(
+          children: [
+            Expanded(
+              child: CustomBottom(
+                bottomWidth: 330.w,
+                onPressed: () async {
+                  await cubit.uploadImageFromGalleryModel(
+                    picke: ImagePicker(),
+                  );
+                  context.pop();
+                  await cubit.uploadImageToModel(image: cubit.image!);
+                },
+                bottomtext: 'Select From Gallary',
+                backgroundColor: ColorManger.primaryColor,
               ),
             ),
-          ),
-          Expanded(
-            child: TextButton(
-              onPressed: () async {
-                await cubit.uploadImageFromCameraModel(
-                  picke: ImagePicker(),
-                );
-                context.pop();
-                await cubit.uploadImageToModel(image: cubit.image!);
-              },
-              child: const Text(
-                'Select From Gallary',
+            verticalSpacing(20),
+            Expanded(
+              child: CustomBottom(
+                bottomWidth: 330.w,
+                onPressed: () async {
+                  await cubit.uploadImageFromCameraModel(
+                    picke: ImagePicker(),
+                  );
+                  context.pop();
+                  await cubit.uploadImageToModel(image: cubit.image!);
+                },
+                bottomtext: 'Open Camera',
+                backgroundColor: ColorManger.primaryColor,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
