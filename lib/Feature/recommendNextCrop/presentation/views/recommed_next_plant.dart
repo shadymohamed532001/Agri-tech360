@@ -7,6 +7,7 @@ class RecommedNextCrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Color.fromARGB(243, 241, 240, 240),
       body: RecommedNextCropBody(),
     );
   }
