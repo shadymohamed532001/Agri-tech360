@@ -6,8 +6,8 @@ import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/app_text_formfield.dart';
 
-class RecommendNextCropContent extends StatelessWidget {
-  const RecommendNextCropContent({
+class EmptyRecommedNextCrop extends StatelessWidget {
+  const EmptyRecommedNextCrop({
     super.key,
   });
 

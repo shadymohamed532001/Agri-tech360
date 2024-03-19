@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/presentation/widgets/recommedn_next_crpo_content.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/presentation/widgets/empty_recommedn_next_crpo.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/primary_header_continer.dart';
+
+import 'custom_plant_recommend_bottom_sheet.dart';
+import 'recommend_next_crop_content.dart';
 
 class RecommedNextCropBody extends StatefulWidget {
   const RecommedNextCropBody({super.key});
@@ -47,13 +50,13 @@ class _RecommedNextCropBodyState extends State<RecommedNextCropBody> {
                         ),
                         InkWell(
                           onTap: () {
-                            // showModalBottomSheet(
-                            //     backgroundColor: Colors.transparent,
-                            //     isScrollControlled: true,
-                            //     context: context,
-                            //     builder: (context) {
-                            //       return CustomBottomSheet(cubit: cubit);
-                            //     });
+                            showModalBottomSheet(
+                                backgroundColor: Colors.transparent,
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (context) {
+                                  return const CustomRecommendBottomSheet();
+                                });
                           },
                           child: Image.asset(
                             'assets/images/menu_1.png',
@@ -94,7 +97,11 @@ class _RecommedNextCropBodyState extends State<RecommedNextCropBody> {
                 const SizedBox(
                   height: 66,
                 ),
-                const RecommendNextCropContent()
+                const Visibility(
+                  visible: false,
+                  child: EmptyRecommedNextCrop(),
+                ),
+                const RecommendNextCropContent(),
               ],
             ),
           )
