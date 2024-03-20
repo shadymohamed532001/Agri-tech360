@@ -1,5 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
@@ -7,7 +12,10 @@ import 'package:smartsoil/core/widgets/app_bottom.dart';
 class CustomRecommendBottomSheet extends StatelessWidget {
   const CustomRecommendBottomSheet({
     super.key,
+    required this.cubit,
   });
+
+  final RecommendNextCropCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +36,13 @@ class CustomRecommendBottomSheet extends StatelessWidget {
               child: CustomBottom(
                 bottomWidth: 330.w,
                 onPressed: () async {
-                  // await cubit.uploadImageFromGalleryModel(
-                  //   picke: ImagePicker(),
-                  // );
-                  // context.pop();
-                  // await cubit.uploadImageToModel(image: cubit.image!);
+                  await cubit.uploadImageFromGalleryModel(
+                    picke: ImagePicker(),
+                  );
+                  context.pop();
+                  await cubit.uploadImageToModel(
+                      image: cubit.image!,
+                      previousCrop: cubit.previousCropController.text);
                 },
                 bottomtext: 'Select From Gallary',
                 backgroundColor: ColorManger.primaryColor,

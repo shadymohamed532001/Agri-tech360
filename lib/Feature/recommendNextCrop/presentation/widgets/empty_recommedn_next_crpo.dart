@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/presentation/widgets/custom_plant_recommend_bottom_sheet.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
@@ -9,7 +11,9 @@ import 'package:smartsoil/core/widgets/app_text_formfield.dart';
 class EmptyRecommedNextCrop extends StatelessWidget {
   const EmptyRecommedNextCrop({
     super.key,
+    required this.cubit,
   });
+  final RecommendNextCropCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +27,31 @@ class EmptyRecommedNextCrop extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          const Positioned(
+          Positioned(
             right: 50,
             top: -50,
-            child: CircleAvatar(
-              radius: 50,
-              backgroundColor: ColorManger.whiteColor,
-              child: CircleAvatar(
-                backgroundImage: AssetImage(
-                  ImagesAssetsManger.uploadImage,
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) {
+                      return CustomRecommendBottomSheet(
+                        cubit: cubit,
+                      );
+                    });
+              },
+              child: const CircleAvatar(
+                radius: 50,
+                backgroundColor: ColorManger.whiteColor,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage(
+                    ImagesAssetsManger.uploadImage,
+                  ),
+                  backgroundColor: Colors.transparent,
+                  radius: 30,
                 ),
-                backgroundColor: Colors.transparent,
-                radius: 30,
               ),
             ),
           ),
@@ -51,9 +68,10 @@ class EmptyRecommedNextCrop extends StatelessWidget {
                   style: AppStyle.font16blacksemibold,
                 ),
                 verticalSpacing(5),
-                const CustomTextFormFiled(
+                CustomTextFormFiled(
                   hintText: 'Previous Crop',
                   obscureText: false,
+                  controller: cubit.previousCropController,
                 ),
                 verticalSpacing(20),
                 Expanded(
