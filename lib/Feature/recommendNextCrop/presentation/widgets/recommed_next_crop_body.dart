@@ -109,7 +109,7 @@ class _RecommedNextCropBodyState extends State<RecommedNextCropBody> {
                       height: 10.h,
                     ),
                     Text(
-                      plantCareDescription,
+                      recommendNextCropDescription,
                       style: AppStyle.font13Greymedium,
                       textAlign: TextAlign.center,
                     ),
