@@ -6,7 +6,7 @@ import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
 import 'package:smartsoil/Feature/layout/domain/repositories/layout_repo.dart';
-import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
+import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 part 'layout_state.dart';
 
 class LayoutCubit extends Cubit<LayoutState> {

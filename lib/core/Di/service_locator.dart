@@ -42,12 +42,12 @@ import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_n
 import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources_impl.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/repositories/recommend_next_crop_repo_impl.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/domain/repositories/recommend_next_crop_repo.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/Feature/store/data/datasources/store_dara_sources_impl.dart';
 import 'package:smartsoil/Feature/store/data/datasources/store_data_sources.dart';
 import 'package:smartsoil/Feature/store/data/repositories/store_repo_impl.dart';
 import 'package:smartsoil/Feature/store/domain/repositories/store_repo.dart';
-import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
+import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 
 final GetIt serviceLocator = GetIt.instance;
 
