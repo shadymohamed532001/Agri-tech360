@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
+import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/add_product_bottom_sheet_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';

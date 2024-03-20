@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smartsoil/Feature/store/logic/cubit/store_cubit.dart';
+import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/helper/validators_helper.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
