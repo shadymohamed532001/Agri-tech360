@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';

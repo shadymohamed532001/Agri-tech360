@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/presentation/widgets/custom_plant_recommend_bottom_sheet.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';

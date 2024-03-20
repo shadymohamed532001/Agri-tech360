@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/models/next_crop_model.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
