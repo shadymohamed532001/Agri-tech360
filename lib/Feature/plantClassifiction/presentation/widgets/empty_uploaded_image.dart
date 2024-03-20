@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
+import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -7,7 +9,9 @@ import 'package:smartsoil/core/themaing/app_styles.dart';
 class EmptyUploadedImage extends StatelessWidget {
   const EmptyUploadedImage({
     super.key,
+    required this.cubit,
   });
+  final PlantClassfictionCubite cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +25,30 @@ class EmptyUploadedImage extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          const Positioned(
+          Positioned(
             left: 0,
             right: 0,
             top: -50,
-            child: CircleAvatar(
-              radius: 50,
-              backgroundColor: ColorManger.whiteColor,
-              child: CircleAvatar(
-                backgroundImage: AssetImage(
-                  ImagesAssetsManger.uploadImage,
+            child: GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) {
+                      return CustomBottomSheet(cubit: cubit);
+                    });
+              },
+              child: const CircleAvatar(
+                radius: 50,
+                backgroundColor: ColorManger.whiteColor,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage(
+                    ImagesAssetsManger.uploadImage,
+                  ),
+                  backgroundColor: Colors.transparent,
+                  radius: 30,
                 ),
-                backgroundColor: Colors.transparent,
-                radius: 30,
               ),
             ),
           ),

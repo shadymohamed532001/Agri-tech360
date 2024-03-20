@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/classfiction_response_body.dart';
-import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/empty_uploaded_image.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -85,22 +84,6 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                                 ),
                               ],
                             ),
-                            InkWell(
-                              onTap: () {
-                                showModalBottomSheet(
-                                    backgroundColor: Colors.transparent,
-                                    isScrollControlled: true,
-                                    context: context,
-                                    builder: (context) {
-                                      return CustomBottomSheet(cubit: cubit);
-                                    });
-                              },
-                              child: Image.asset(
-                                'assets/images/menu_1.png',
-                                height: 30.h,
-                                width: 27.w,
-                              ),
-                            )
                           ],
                         )
                       ],
@@ -138,7 +121,9 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                         ? ClassfictionResponseBody(
                             classfictionModel: cubit.classfictionModel!,
                           )
-                        : const EmptyUploadedImage()
+                        : EmptyUploadedImage(
+                            cubit: cubit,
+                          )
                   ],
                 ),
               )

@@ -38,6 +38,11 @@ import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_clas
 import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_classfiction_repo_impl.dart';
 import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_classfictaion_repo.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources_impl.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/data/repositories/recommend_next_crop_repo_impl.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/domain/repositories/recommend_next_crop_repo.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/Feature/store/data/datasources/store_dara_sources_impl.dart';
 import 'package:smartsoil/Feature/store/data/datasources/store_data_sources.dart';
 import 'package:smartsoil/Feature/store/data/repositories/store_repo_impl.dart';
@@ -82,6 +87,11 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<CommentRepo>(() => CommentRepoImpl(
         commentDataSources: serviceLocator.get<CommentDataSources>()));
+
+    serviceLocator.registerLazySingleton<RecommendNextCropRepo>(() =>
+        RecommendNextCropRepoImpl(
+            recommendNextCropDataSources:
+                serviceLocator.get<RecommendNextCropDataSources>()));
   }
 
   void _setupForDataSources() {
@@ -110,6 +120,10 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<CommentDataSources>(
       () => CommentDataSourcesImpl(),
+    );
+
+    serviceLocator.registerLazySingleton<RecommendNextCropDataSources>(
+      () => RecommendNextCropDataSourcesImpl(),
     );
   }
 
@@ -141,5 +155,10 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<CommentCubit>(
         () => CommentCubit(commentRepo: serviceLocator.get<CommentRepo>()));
+
+    serviceLocator.registerFactory<RecommendNextCropCubit>(() =>
+        RecommendNextCropCubit(
+            recommendNextCropRepo:
+                serviceLocator.get<RecommendNextCropRepo>()));
   }
 }

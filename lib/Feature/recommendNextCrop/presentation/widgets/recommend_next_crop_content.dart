@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/data/models/next_crop_model.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/logic/cubit/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
 class RecommendNextCropContent extends StatelessWidget {
   const RecommendNextCropContent({
     Key? key,
+    required this.nextCropModel,
   }) : super(key: key);
+  final NextCropModel nextCropModel;
 
   @override
   Widget build(BuildContext context) {
+    final image = BlocProvider.of<RecommendNextCropCubit>(context).image;
+
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Container(
@@ -22,7 +30,7 @@ class RecommendNextCropContent extends StatelessWidget {
         child: Stack(
           clipBehavior: Clip.none,
           children: [
-            const Positioned(
+            Positioned(
               left: 0,
               right: 0,
               top: -50,
@@ -30,10 +38,9 @@ class RecommendNextCropContent extends StatelessWidget {
                 radius: 62,
                 backgroundColor: ColorManger.whiteColor,
                 child: CircleAvatar(
-                  // Make it in chased network image
-                  // backgroundImage: image != null
-                  //     ? NetworkImage('$baseUrl${classfictionModel.image}')
-                  //     : null,
+                  backgroundImage: image != null
+                      ? NetworkImage('$baseUrl${nextCropModel.data!.image}')
+                      : null,
                   backgroundColor: Colors.transparent,
                   radius: 44,
                 ),
@@ -48,7 +55,7 @@ class RecommendNextCropContent extends StatelessWidget {
                     height: 60.h,
                   ),
                   Text(
-                    'classfictionModel.predictions',
+                    nextCropModel.data!.soilType!,
                     style: AppStyle.font16blacksemibold,
                   ),
                   SizedBox(
@@ -57,7 +64,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      'About this plant:',
+                      'Previous Crop:',
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
@@ -67,7 +74,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      '  classfictionModel.description',
+                      nextCropModel.data!.previousCrop!,
                       style: AppStyle.font12Greymedium,
                     ),
                   ),
@@ -84,7 +91,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      'About this plant:',
+                      'Recommended Crop:',
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
@@ -94,7 +101,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      '  classfictionModel.description',
+                      nextCropModel.data!.recommendedCrop!,
                       style: AppStyle.font12Greymedium,
                     ),
                   ),
@@ -108,7 +115,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      'About this plant:',
+                      'Season:',
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
@@ -118,7 +125,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      '  classfictionModel.description',
+                      nextCropModel.data!.season!,
                       style: AppStyle.font12Greymedium,
                     ),
                   ),
@@ -132,7 +139,7 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      'About this plant:',
+                      'Soil type:',
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
@@ -142,16 +149,12 @@ class RecommendNextCropContent extends StatelessWidget {
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
-                      'classfictionModel.description',
+                      nextCropModel.data!.soilType!,
                       style: AppStyle.font12Greymedium,
                     ),
                   ),
                   SizedBox(
                     height: 5.h,
-                  ),
-                  Divider(
-                    height: 15.h,
-                    thickness: 0.5,
                   ),
                 ],
               ),
