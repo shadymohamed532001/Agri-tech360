@@ -62,10 +62,12 @@ class PopularCard extends StatelessWidget {
                       style: AppStyle.font14Blacksemibold,
                     ),
                     verticalSpacing(8),
-                    Text(
-                      plant.shortDescription,
-                      style: AppStyle.font10Greyregular,
-                      maxLines: 3,
+                    Expanded(
+                      child: Text(
+                        plant.shortDescription,
+                        style: AppStyle.font10Greyregular,
+                        maxLines: 3,
+                      ),
                     ),
                   ],
                 ),

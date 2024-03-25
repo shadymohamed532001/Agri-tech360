@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/Feature/favorites/presentaion/widgets/remove_from_fav_bottom_sheet.dart';
-import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -91,7 +90,6 @@ class FavoriteCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    verticalSpacing(5),
                     Expanded(
                       child: Text(
                         favoriteModle.description,

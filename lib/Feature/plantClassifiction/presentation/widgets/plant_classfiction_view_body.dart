@@ -58,7 +58,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
           child: Column(
             children: [
               PrimaryHeaderContiner(
-                height: MediaQuery.of(context).size.height * 0.18,
+                height: MediaQuery.of(context).size.height * 0.19,
                 child: SafeArea(
                   child: Padding(
                     padding:
@@ -100,7 +100,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       height: 80.h,
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 40.h,
                     ),
                     Text(
                       'Agritech360',
@@ -115,7 +115,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
-                      height: 66,
+                      height: 100,
                     ),
                     cubit.classfictionModel != null
                         ? ClassfictionResponseBody(

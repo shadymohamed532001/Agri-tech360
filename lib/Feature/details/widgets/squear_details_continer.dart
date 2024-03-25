@@ -32,7 +32,7 @@ class SquearDetailsContiner extends StatelessWidget {
           verticalSpacing(16),
           Text(
             explorPlantDetailsSquearText,
-            style: AppStyle.font12Blackregular,
+            style: AppStyle.font12Blackregular.copyWith(fontSize: 10.sp),
             textAlign: TextAlign.center,
           )
         ],

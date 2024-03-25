@@ -22,7 +22,7 @@ class RecommendNextCropContent extends StatelessWidget {
       physics: const AlwaysScrollableScrollPhysics(),
       child: Container(
         width: double.infinity,
-        height: 350.h,
+        height: 360.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(32),
           color: ColorManger.whiteColor,
@@ -71,18 +71,20 @@ class RecommendNextCropContent extends StatelessWidget {
                   SizedBox(
                     height: 5.h,
                   ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      nextCropModel.data!.previousCrop!,
-                      style: AppStyle.font12Greymedium,
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        nextCropModel.data!.previousCrop!,
+                        style: AppStyle.font12Greymedium,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 5.h,
                   ),
                   Divider(
-                    height: 15.h,
+                    height: 12.h,
                     thickness: 0.5,
                   ),
                   SizedBox(
@@ -95,21 +97,23 @@ class RecommendNextCropContent extends StatelessWidget {
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      nextCropModel.data!.recommendedCrop!,
-                      style: AppStyle.font12Greymedium,
+                  Expanded(
+                    flex: 5,
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        nextCropModel.data!.recommendedCrop!,
+                        style: AppStyle.font12Greymedium,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 5.h,
                   ),
                   Divider(
-                    height: 15.h,
+                    height: 12.h,
                     thickness: 0.5,
                   ),
                   Align(
@@ -122,18 +126,20 @@ class RecommendNextCropContent extends StatelessWidget {
                   SizedBox(
                     height: 5.h,
                   ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      nextCropModel.data!.season!,
-                      style: AppStyle.font12Greymedium,
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        nextCropModel.data!.season!,
+                        style: AppStyle.font12Greymedium,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 5.h,
                   ),
                   Divider(
-                    height: 15.h,
+                    height: 12.h,
                     thickness: 0.5,
                   ),
                   Align(
@@ -146,15 +152,17 @@ class RecommendNextCropContent extends StatelessWidget {
                   SizedBox(
                     height: 5.h,
                   ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      nextCropModel.data!.soilType!,
-                      style: AppStyle.font12Greymedium,
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        nextCropModel.data!.soilType!,
+                        style: AppStyle.font12Greymedium,
+                      ),
                     ),
                   ),
                   SizedBox(
-                    height: 5.h,
+                    height: 15.h,
                   ),
                 ],
               ),

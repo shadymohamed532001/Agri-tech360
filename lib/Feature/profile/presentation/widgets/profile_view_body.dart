@@ -81,12 +81,13 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                                     ),
                                     verticalSpacing(2),
                                     Text(
-                                      'Coding with.shadysteha571@gmail.com',
+                                      'shadysteha571@gmail.com',
                                       style: AppStyle.font12Whitesemibold,
                                     ),
                                   ],
                                 ),
                               ),
+                              const Spacer(),
                               IconButton(
                                 onPressed: () {},
                                 icon: const Icon(
