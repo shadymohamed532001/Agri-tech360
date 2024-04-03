@@ -34,7 +34,6 @@ class StoreDataSourcesImpl extends StoreDataSources {
     required String price,
     required String description,
     required String tags,
-    required String seller,
     required List<File> images,
     required File image,
   }) async {
@@ -63,14 +62,10 @@ class StoreDataSourcesImpl extends StoreDataSources {
       'price': price,
       'description': description,
       'tags': tags,
-      'seller': seller,
-      'image': imageFiles[
-          0], // Assuming you want to use the first image as the primary image
-      'images': imageFiles
-          .sublist(1), // Exclude the primary image from additional images
+      'image': imageFiles[0],
+      'images': imageFiles.sublist(1),
     });
 
-    // Make the POST request using provided postFormData method
     await ApiServices.postFormData(
       endpoint: addproductsesendpoint,
       formData: formData,

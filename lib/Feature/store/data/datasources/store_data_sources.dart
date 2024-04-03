@@ -11,7 +11,6 @@ abstract class StoreDataSources {
     required String price,
     required String description,
     required String tags,
-    required String seller,
     required List<File> images,
     required File image,
   });

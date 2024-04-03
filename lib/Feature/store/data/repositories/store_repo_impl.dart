@@ -34,7 +34,6 @@ class StoreRepoImpl extends StoreRepo {
     required String price,
     required String description,
     required String tags,
-    required String seller,
     required List<File> images,
     required File image,
   }) async {
@@ -44,7 +43,6 @@ class StoreRepoImpl extends StoreRepo {
         price: price,
         description: description,
         tags: tags,
-        seller: seller,
         images: images,
         image: image,
       );

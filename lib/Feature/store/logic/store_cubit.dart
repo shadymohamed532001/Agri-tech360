@@ -59,7 +59,6 @@ class StoreCubit extends Cubit<StoreState> {
       image: imageList[0],
       name: productNameController.text,
       tags: productTagsController.text,
-      seller: productSellerController.text,
       price: productPriceController.text,
       description: productDescriptionController.text,
     );
@@ -81,7 +80,6 @@ class StoreCubit extends Cubit<StoreState> {
   TextEditingController productPriceController = TextEditingController();
   TextEditingController productDescriptionController = TextEditingController();
   TextEditingController productTagsController = TextEditingController();
-  TextEditingController productSellerController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;
 }
