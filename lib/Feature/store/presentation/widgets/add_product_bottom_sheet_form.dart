@@ -68,13 +68,6 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
               obscureText: false,
               validator: MyValidatorsHelper.displayProductTagsvalidator,
             ),
-            CustomTextFormFiled(
-              controller: widget.storeCubit.productSellerController,
-              hintText: 'Product Seller',
-              obscureText: false,
-              validator: MyValidatorsHelper.displayProductSallervalidator,
-            ),
-            verticalSpacing(10),
             Padding(
               padding: EdgeInsets.only(right: 8.w, top: 8.h, left: 8.w),
               child: Row(
