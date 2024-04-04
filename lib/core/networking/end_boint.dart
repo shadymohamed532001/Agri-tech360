@@ -1,4 +1,4 @@
-const baseUrl = 'https://d8da-156-203-232-36.ngrok-free.app/';
+const baseUrl = 'https://766b-156-203-232-36.ngrok-free.app/';
 
 const loginendpoint = 'login';
 

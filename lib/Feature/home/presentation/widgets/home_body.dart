@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smartsoil/Feature/home/presentation/widgets/agritech_ai_assistant.dart';
+import 'package:smartsoil/Feature/home/presentation/widgets/agritech_ai_chat.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/heal_your_crop_and_plant_text.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/recntly_viewed_list_view.dart';
 import 'package:smartsoil/Feature/home/presentation/widgets/recommed_next_crop_text.dart';
@@ -40,7 +40,7 @@ class HomeBody extends StatelessWidget {
                         verticalSpacing(25),
                         const WeatherDegreeListView(),
                         verticalSpacing(20),
-                        const AgriteachAiAssistant(),
+                        const AgriteachAiChat(),
                         verticalSpacing(20),
                         const RecntlyViewedListView()
                       ],

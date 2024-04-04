@@ -2,6 +2,7 @@ import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:smartsoil/Feature/ai_chat/data/models/ai_chat_model.dart';
+import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -24,7 +25,7 @@ class _ChatViewState extends State<ChatView> {
       backgroundColor: ColorManger.whiteColor,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Agritech Chat"),
+        title: const Text("Agritech Ai Chat"),
         backgroundColor: ColorManger.whiteColor,
       ),
       body: DashChat(
@@ -88,26 +89,21 @@ class _ChatViewState extends State<ChatView> {
   Future<String?> makeRequest(
       List<Map<String, dynamic>> messagesHistory) async {
     try {
-      var dio = Dio();
-      dio.options.headers['Content-Type'] = 'application/json';
       String token = LocalServices.getData(key: 'token');
-      dio.options.headers['Authorization'] = 'Bearer $token';
+
       List<String> texts = messagesHistory
           .map<String>((message) => message['content'].toString())
           .toList();
       String concatenatedText = texts.join(' ');
+      FormData formData = FormData.fromMap({
+        'message': concatenatedText,
+      });
 
-      var response = await dio.post(
-        '$baseUrl$chatendpoint', // Your API endpoint
-        data: {'message': concatenatedText},
-      );
+      var response = await ApiServices.postFormData(
+          endpoint: chatendpoint, formData: formData, token: token);
 
-      if (response.statusCode == 200) {
-        ChatbotResponse response_2 = ChatbotResponse.fromJson(response.data);
-        return response_2.data;
-      } else {
-        return null;
-      }
+      ChatbotResponse data = ChatbotResponse.fromJson(response);
+      return data.data;
     } catch (e) {
       return null;
     }

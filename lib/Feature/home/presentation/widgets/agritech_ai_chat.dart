@@ -5,8 +5,8 @@ import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
-class AgriteachAiAssistant extends StatelessWidget {
-  const AgriteachAiAssistant({super.key});
+class AgriteachAiChat extends StatelessWidget {
+  const AgriteachAiChat({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class AgriteachAiAssistant extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Agritech Ai Assistant',
+              'Agritech Ai Chat',
               style: AppStyle.font22BlackBold,
             ),
             Padding(
@@ -45,7 +45,7 @@ class AgriteachAiAssistant extends StatelessWidget {
         ),
         verticalSpacing(8),
         Text(
-          'Test your soil Veggies, fruits, grains for rich soil. Legumes, cover crops to fix depleted soil. Ask local experts for your best options.',
+          'Ai assistant to answer your questions related to the plants ,soil or anything related to agriculture',
           style: AppStyle.font12Greyregular,
         ),
       ],
