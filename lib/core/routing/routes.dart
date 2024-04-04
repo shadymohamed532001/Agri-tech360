@@ -17,4 +17,5 @@ class Routes {
   static const String myCardViewRoute = '/myCardView';
   static const String recommedNextCropsViewRoute =
       '/recommedNextCropsViewRoute';
+  static const String chatViewRoute = '/chatView';
 }
