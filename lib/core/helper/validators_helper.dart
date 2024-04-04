@@ -23,8 +23,8 @@ class MyValidatorsHelper {
     if (displayName == null || displayName.isEmpty) {
       return 'Display Porduct Price cannot be empty';
     }
-    if (displayName.length < 3 || displayName.length > 20) {
-      return 'Display Product price must be between 3 and 20 characters';
+    if (displayName.isEmpty || displayName.length > 5) {
+      return 'Display Product price must be between 1 and 5 characters';
     }
     return null;
   }
@@ -41,8 +41,8 @@ class MyValidatorsHelper {
     if (displayName == null || displayName.isEmpty) {
       return 'Display Porduct Tags cannot be empty';
     }
-    if (displayName.length < 3 || displayName.length > 20) {
-      return 'Display Product Tags must be between 3 and 20 characters';
+    if (displayName.length < 5) {
+      return 'Display Product Tags must be at least 5 characters long';
     }
     return null;
   }
