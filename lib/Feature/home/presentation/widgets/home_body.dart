@@ -30,7 +30,7 @@ class HomeBody extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          'Agritech360',
+                          'Agri-tech360',
                           style: AppStyle.font21PrimaryBold,
                         ),
                         verticalSpacing(20),

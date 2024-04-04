@@ -103,7 +103,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       height: 40.h,
                     ),
                     Text(
-                      'Agritech360',
+                      'Agri-tech360',
                       style: AppStyle.font20blacksemibold,
                     ),
                     SizedBox(
