@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smartsoil/Feature/ai_chat/logic/cubit/ai_chat_cubit.dart';
+import 'package:smartsoil/Feature/ai_chat/presentaion/views/ai_chat_view.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
@@ -126,7 +128,13 @@ class AppRoutes {
             child: const PlantCareView(),
           );
         });
-
+      case Routes.chatViewRoute:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: (context) => AiChatCubit(),
+            child: const ChatView(),
+          );
+        });
       default:
         return _unFoundRoute();
     }
