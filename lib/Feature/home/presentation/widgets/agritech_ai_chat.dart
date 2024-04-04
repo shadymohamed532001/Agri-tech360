@@ -45,7 +45,7 @@ class AgriteachAiChat extends StatelessWidget {
         ),
         verticalSpacing(8),
         Text(
-          'Ai assistant to answer your questions related to the plants ,soil or anything related to agriculture',
+          'Hi I am "Agri-tech360" Ai assistant to answer your questions related to the plants ,soil or anything related to agriculture',
           style: AppStyle.font12Greyregular,
         ),
       ],
