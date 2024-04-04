@@ -25,7 +25,7 @@ class _ChatViewState extends State<ChatView> {
       backgroundColor: ColorManger.whiteColor,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("Agritech Ai Chat"),
+        title: const Text("Agri-tech360 Ai Chat"),
         backgroundColor: ColorManger.whiteColor,
       ),
       body: DashChat(

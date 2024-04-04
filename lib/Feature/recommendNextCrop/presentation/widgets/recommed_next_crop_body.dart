@@ -57,7 +57,7 @@ class _RecommedNextCropBodyState extends State<RecommedNextCropBody> {
           child: Column(
             children: [
               PrimaryHeaderContiner(
-                height: MediaQuery.of(context).size.height * 0.18,
+                height: MediaQuery.of(context).size.height * 0.19,
                 child: SafeArea(
                   child: Padding(
                     padding:
@@ -102,7 +102,7 @@ class _RecommedNextCropBodyState extends State<RecommedNextCropBody> {
                       height: 10.h,
                     ),
                     Text(
-                      'Agritech360',
+                      'Agri-tech360',
                       style: AppStyle.font20blacksemibold,
                     ),
                     SizedBox(
