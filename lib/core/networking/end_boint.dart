@@ -29,3 +29,5 @@ const getcommentendpoint = 'comments';
 const recommendcropendpoint = 'recommend-crop';
 
 const chatendpoint = 'chat';
+
+const userDataendpoint = 'user-data';
