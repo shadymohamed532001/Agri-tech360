@@ -38,6 +38,11 @@ import 'package:smartsoil/Feature/plantClassifiction/data/datasources/plant_clas
 import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_classfiction_repo_impl.dart';
 import 'package:smartsoil/Feature/plantClassifiction/domain/repositories/plant_classfictaion_repo.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
+import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
+import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources_impl.dart';
+import 'package:smartsoil/Feature/profile/data/repositories/profile_repo_impl.dart';
+import 'package:smartsoil/Feature/profile/domain/repositories/profile_repo.dart';
+import 'package:smartsoil/Feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources_impl.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/repositories/recommend_next_crop_repo_impl.dart';
@@ -92,6 +97,9 @@ class ServiceLocator {
         RecommendNextCropRepoImpl(
             recommendNextCropDataSources:
                 serviceLocator.get<RecommendNextCropDataSources>()));
+
+    serviceLocator.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
+        profileDataSources: serviceLocator.get<ProfileDataSources>()));
   }
 
   void _setupForDataSources() {
@@ -124,6 +132,9 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<RecommendNextCropDataSources>(
       () => RecommendNextCropDataSourcesImpl(),
+    );
+    serviceLocator.registerLazySingleton<ProfileDataSources>(
+      () => ProfileDataSourcesImpl(),
     );
   }
 
@@ -160,5 +171,8 @@ class ServiceLocator {
         RecommendNextCropCubit(
             recommendNextCropRepo:
                 serviceLocator.get<RecommendNextCropRepo>()));
+
+    serviceLocator.registerFactory<ProfileCubit>(
+        () => ProfileCubit(profileRepo: serviceLocator.get<ProfileRepo>()));
   }
 }
