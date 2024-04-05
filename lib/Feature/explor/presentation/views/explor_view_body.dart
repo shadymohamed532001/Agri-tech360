@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/app_bar_widget.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/explor_plant_info_body.dart';
-import 'package:smartsoil/Feature/store/presentation/widgets/app_search_bar.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:smartsoil/core/routing/routes.dart';
+import 'package:smartsoil/core/widgets/app_search_bar.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/custom_error_widget.dart';
@@ -62,7 +64,13 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                               verticalSpacing(10),
                               const AppBarWidget(title: 'Find your Plant'),
                               verticalSpacing(25),
-                              AppSearchBar(width2: 330.w),
+                              AppSearchBar(
+                                width2: 330.w,
+                                onTap: () {
+                                  context.navigateTo(
+                                      routeName: Routes.searchExplorViewRoute);
+                                },
+                              ),
                               SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.07,

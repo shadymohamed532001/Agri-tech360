@@ -83,9 +83,9 @@ class AppRoutes {
           },
         );
 
-      case Routes.searchViewRoute:
+      case Routes.searchExplorViewRoute:
         return MaterialPageRoute(
-          builder: (context) => const SearchView(),
+          builder: (context) => const SearchExplorView(),
         );
 
       case Routes.recentlySeeAllViewViewRoute:

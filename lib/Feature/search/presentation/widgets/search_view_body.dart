@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-class SearchViewBody extends StatefulWidget {
-  const SearchViewBody({super.key});
+class SearchExplorViewBody extends StatefulWidget {
+  const SearchExplorViewBody({super.key});
 
   @override
-  State<SearchViewBody> createState() => _SearchViewBodyState();
+  State<SearchExplorViewBody> createState() => _SearchViewBodyState();
 }
 
-class _SearchViewBodyState extends State<SearchViewBody> {
+class _SearchViewBodyState extends State<SearchExplorViewBody> {
   @override
   Widget build(BuildContext context) {
     return const Column(
