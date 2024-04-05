@@ -59,6 +59,7 @@ class _InformationAboutPlantState extends State<InformationAboutPlant>
                       style: AppStyle.font14Blacksemibold,
                     ),
                   ],
+                  dividerColor: Colors.transparent,
                   indicatorWeight: 4,
                   indicatorColor: ColorManger.primaryColor,
                   indicatorSize: TabBarIndicatorSize.label,

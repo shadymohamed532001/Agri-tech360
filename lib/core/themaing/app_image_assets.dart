@@ -17,7 +17,9 @@ class ImagesAssetsManger {
   static const degreeiconImage = '$imagePath/Degree_icon.png';
 
   static const menuiconImage = '$imagePath/menu.png';
-  static const appLogo = '$imagePath/logo.png';
 
+  static const appLogo = '$imagePath/agri-tech360_logo.png';
+  static const telephoneCallImage = '$imagePath/telephone-call.png';
+  static const whatsappImage = '$imagePath/whatsapp.png';
   static const uploadImage = '$imagePath/upload.png';
 }

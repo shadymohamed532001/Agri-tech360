@@ -44,7 +44,7 @@ class _MyTabbedPageState extends State<AuthViewBody>
         body: Column(
           children: [
             SizedBox(
-              height: 40.h,
+              height: 20.h,
             ),
             SizedBox(
               width: 220.h,
@@ -58,6 +58,7 @@ class _MyTabbedPageState extends State<AuthViewBody>
                 indicatorColor: ColorManger.primaryColor,
                 indicatorSize: TabBarIndicatorSize.label,
                 controller: _tabController,
+                dividerColor: Colors.transparent,
               ),
             ),
             Expanded(

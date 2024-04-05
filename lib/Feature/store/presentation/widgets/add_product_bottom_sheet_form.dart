@@ -38,9 +38,11 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
             verticalSpacing(10),
             Text(
               'Add Your product',
-              style: AppStyle.font17Blacksemibold,
+              style: AppStyle.font17Blacksemibold.copyWith(
+                fontFamily: 'Raleway',
+              ),
             ),
-            verticalSpacing(10),
+            verticalSpacing(5),
             CustomTextFormFiled(
               controller: widget.storeCubit.productNameController,
               hintText: 'Product Name',
@@ -48,6 +50,7 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
               obscureText: false,
               validator: MyValidatorsHelper.displayProductNamevalidator,
             ),
+            verticalSpacing(5),
             CustomTextFormFiled(
               controller: widget.storeCubit.productPriceController,
               hintText: 'Product Price',
@@ -55,6 +58,7 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
               keyboardType: TextInputType.number,
               validator: MyValidatorsHelper.displayProductPricevalidator,
             ),
+            verticalSpacing(5),
             CustomTextFormFiled(
               controller: widget.storeCubit.productDescriptionController,
               hintText: 'Description',
@@ -62,14 +66,16 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
               maxLine: 3,
               validator: MyValidatorsHelper.displayProductDescribtionevalidator,
             ),
+            verticalSpacing(5),
             CustomTextFormFiled(
               controller: widget.storeCubit.productTagsController,
               hintText: 'Tags',
               obscureText: false,
               validator: MyValidatorsHelper.displayProductTagsvalidator,
             ),
+            verticalSpacing(15),
             Padding(
-              padding: EdgeInsets.only(right: 8.w, top: 8.h, left: 8.w),
+              padding: EdgeInsets.only(right: 8.w, top: 16.h, left: 8.w),
               child: Row(
                 children: [
                   Expanded(
@@ -147,7 +153,7 @@ class _AddProductBottomSheetFormState extends State<AddProductBottomSheetForm> {
                 ],
               ),
             ),
-            verticalSpacing(40),
+            verticalSpacing(10),
           ],
         ),
       ),

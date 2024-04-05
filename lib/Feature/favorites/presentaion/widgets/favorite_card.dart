@@ -101,9 +101,11 @@ class FavoriteCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Text(
-                          'Seller : ${favoriteModle.seller.fullName} ',
-                          style: AppStyle.font13Blacksemibold,
+                        Expanded(
+                          child: Text(
+                            'Seller : ${favoriteModle.seller.fullName}',
+                            style: AppStyle.font13Blacksemibold,
+                          ),
                         ),
                         const SizedBox(width: 7),
                         Text(

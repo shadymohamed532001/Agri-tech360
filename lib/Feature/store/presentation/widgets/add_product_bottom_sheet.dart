@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/add_product_bottom_sheet_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
 import 'package:smartsoil/core/widgets/shows_toust_color.dart';
@@ -62,6 +63,7 @@ class _AddProductBottomSheetState extends State<AddProductBottomSheet> {
                   AddProductBottomSheetForm(
                     storeCubit: storeCubit,
                   ),
+                  verticalSpacing(30),
                   CustomBottom(
                     onPressed: () async {
                       if (storeCubit.formKey.currentState!.validate() == true) {

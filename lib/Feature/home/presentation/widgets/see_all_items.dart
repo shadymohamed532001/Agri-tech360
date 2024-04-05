@@ -38,8 +38,8 @@ class SeeAllItems extends StatelessWidget {
           ),
         ),
       ),
-      separatorBuilder: (context, index) => Divider(
-        height: 35.h,
+      separatorBuilder: (context, index) => Container(
+        height: 38.h,
       ),
       itemCount: plants.length,
     );
