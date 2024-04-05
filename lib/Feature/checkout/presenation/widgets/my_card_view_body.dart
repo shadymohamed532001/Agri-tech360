@@ -11,6 +11,7 @@ import 'package:smartsoil/Feature/checkout/presenation/widgets/total_price_info.
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
+import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/themaing/font_weight_helper.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
@@ -33,7 +34,7 @@ class _MyWidgetState extends State<MyCardViewBody> {
       child: Column(
         children: [
           PrimaryHeaderContiner(
-            height: 120.h,
+            height: 110.h,
             child: SafeArea(
               child: Row(
                 children: [
@@ -55,7 +56,7 @@ class _MyWidgetState extends State<MyCardViewBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                verticalSpacing(40),
+                verticalSpacing(10),
                 ProductCard(
                   storeProductModel: widget.storeProductModel,
                 ),
@@ -80,7 +81,7 @@ class _MyWidgetState extends State<MyCardViewBody> {
                     decoration: BoxDecoration(
                       color: payWithCash
                           ? ColorManger.primaryColor
-                          : Colors.transparent,
+                          : ColorManger.whiteColor,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
                         color: ColorManger.primaryColor,
@@ -90,6 +91,8 @@ class _MyWidgetState extends State<MyCardViewBody> {
                     child: Row(
                       children: [
                         Checkbox(
+                          checkColor: ColorManger.primaryColor,
+                          activeColor: ColorManger.whiteColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -104,7 +107,7 @@ class _MyWidgetState extends State<MyCardViewBody> {
                           Iconsax.money_add,
                           size: 26,
                           color: payWithCash
-                              ? Colors.white
+                              ? ColorManger.whiteColor
                               : ColorManger.blackColor,
                         ),
                         horizontalSpacing(12),
@@ -113,7 +116,7 @@ class _MyWidgetState extends State<MyCardViewBody> {
                           style: AppStyle.font14Whitesemibold.copyWith(
                             fontFamily: 'Releway',
                             color: payWithCash
-                                ? Colors.white
+                                ? ColorManger.whiteColor
                                 : ColorManger.blackColor,
                           ),
                         )
@@ -146,6 +149,8 @@ class _MyWidgetState extends State<MyCardViewBody> {
                     child: Row(
                       children: [
                         Checkbox(
+                          checkColor: ColorManger.primaryColor,
+                          activeColor: ColorManger.whiteColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -177,7 +182,37 @@ class _MyWidgetState extends State<MyCardViewBody> {
                     ),
                   ),
                 ),
-                verticalSpacing(32),
+                verticalSpacing(20),
+                Text(
+                  'Or Connect with the Saller',
+                  style: AppStyle.font16Blackmedium.copyWith(
+                    fontFamily: 'Raleway',
+                    fontWeight: FontWeightHelper.semibold,
+                  ),
+                ),
+                verticalSpacing(10),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        ImagesAssetsManger.whatsappImage,
+                        width: 40.w,
+                        height: 40.h,
+                      ),
+                    ),
+                    horizontalSpacing(10),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Image.asset(
+                        ImagesAssetsManger.telephoneCallImage,
+                        width: 40.w,
+                        height: 40.h,
+                      ),
+                    ),
+                  ],
+                ),
+                verticalSpacing(20),
                 CardInfoItem(
                   title: 'Order Subtotal',
                   value: '\$ ${widget.storeProductModel.price}',
@@ -219,7 +254,6 @@ class _MyWidgetState extends State<MyCardViewBody> {
                         ),
                       );
                     } else {
-                      // If payment method is credit card, show bottom sheet
                       showModalBottomSheet(
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
@@ -241,7 +275,7 @@ class _MyWidgetState extends State<MyCardViewBody> {
                     }
                   },
                 ),
-                const SizedBox(height: 50),
+                verticalSpacing(50),
               ],
             ),
           )

@@ -92,7 +92,9 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 8.w,
+                ),
                 child: Column(
                   children: [
                     Image.asset(
@@ -100,7 +102,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       height: 80.h,
                     ),
                     SizedBox(
-                      height: 40.h,
+                      height: 5.h,
                     ),
                     Text(
                       'Agri-tech360',
@@ -115,7 +117,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(
-                      height: 100,
+                      height: 70,
                     ),
                     cubit.classfictionModel != null
                         ? ClassfictionResponseBody(
@@ -123,7 +125,7 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                           )
                         : EmptyUploadedImage(
                             cubit: cubit,
-                          )
+                          ),
                   ],
                 ),
               )
