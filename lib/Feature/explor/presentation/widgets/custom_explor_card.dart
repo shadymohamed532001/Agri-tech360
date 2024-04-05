@@ -37,7 +37,8 @@ class CustomExplorCard extends StatelessWidget {
               Expanded(
                 flex: 3,
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.h, horizontal: 8.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -50,7 +51,7 @@ class CustomExplorCard extends StatelessWidget {
                         child: Text(
                           plant.mediumDescription,
                           style: AppStyle.font10Greyregular,
-                          maxLines: 8,
+                          maxLines: 6,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

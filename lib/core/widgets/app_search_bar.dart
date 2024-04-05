@@ -11,19 +11,21 @@ class AppSearchBar extends StatelessWidget {
     this.controller,
     this.onFieldSubmitted,
     this.onChanged,
+    this.onTap,
   });
 
   final double width2;
   final TextEditingController? controller;
   final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: GestureDetector(
-        // onTap: () => context.pushName(Routes.searchViewRoute),
+        onTap: onTap,
         child: Container(
           width: width2 * 1,
           height: width2 * .13,

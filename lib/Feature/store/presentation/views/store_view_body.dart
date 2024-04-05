@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/add_product_bottom_sheet.dart';
-import 'package:smartsoil/Feature/store/presentation/widgets/app_search_bar.dart';
+import 'package:smartsoil/core/widgets/app_search_bar.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/hellow_row.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/store_list_of_product.dart';
 import 'package:smartsoil/core/helper/spacing.dart';

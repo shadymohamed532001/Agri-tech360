@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/app_bar_widget.dart';
 import 'package:smartsoil/Feature/explor/presentation/widgets/explor_plant_info_body.dart';
-import 'package:smartsoil/Feature/store/presentation/widgets/app_search_bar.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/custom_error_widget.dart';
@@ -41,7 +40,7 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                     children: [
                       Container(
                         width: double.infinity,
-                        height: 200.h,
+                        height: 140.h,
                         decoration: const BoxDecoration(
                           color: ColorManger.primaryColor,
                           borderRadius: BorderRadius.only(
@@ -61,12 +60,7 @@ class _ExplorViewBodyState extends State<ExplorViewBody> {
                             children: [
                               verticalSpacing(10),
                               const AppBarWidget(title: 'Find your Plant'),
-                              verticalSpacing(25),
-                              AppSearchBar(width2: 330.w),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.07,
-                              ),
+                              verticalSpacing(50),
                               ExplorPlantInfoBody(cubit: cubit),
                             ],
                           ),
