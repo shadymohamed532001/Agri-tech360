@@ -24,3 +24,14 @@ final class SignUpError extends SignUpState {
 }
 
 final class SignUpChangepasswordvisabilty extends SignUpState {}
+
+final class UploadImageErrorState extends SignUpState {
+  final String errorMessage;
+
+  const UploadImageErrorState({required this.errorMessage});  
+  }
+
+final class UploadImageFromGallerySuccessState extends SignUpState {
+  final XFile image;
+  const UploadImageFromGallerySuccessState({required this.image});
+}   
