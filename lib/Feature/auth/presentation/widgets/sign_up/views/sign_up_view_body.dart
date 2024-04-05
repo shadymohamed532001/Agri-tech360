@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/widgets/sign_up_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -71,16 +72,12 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03,
-                ),
+                verticalSpacing(10),
                 Text(
                   'SIGN UP',
                   style: AppStyle.font14Blacksemibold.copyWith(fontSize: 22),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
+                verticalSpacing(15),
                 FadeInDown(
                   child: const SignUpForm(),
                 ),
@@ -117,9 +114,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
-                ),
+                verticalSpacing(20),
                 CustomBottom(
                   bottomtext: 'Sign Up',
                   onPressed: () {
@@ -167,11 +162,12 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
 
   void registerUser(BuildContext context) {
     BlocProvider.of<SignUpCubit>(context).signUpUser(
-        email: context.read<SignUpCubit>().emailController.text,
-        password: context.read<SignUpCubit>().passwordController.text,
-        name: context.read<SignUpCubit>().nameController.text,
-        phone: context.read<SignUpCubit>().phoneController.text,
-        city: context.read<SignUpCubit>().cityController.text,
-        profileImage: 'null');
+      email: context.read<SignUpCubit>().emailController.text,
+      password: context.read<SignUpCubit>().passwordController.text,
+      name: context.read<SignUpCubit>().nameController.text,
+      phone: context.read<SignUpCubit>().phoneController.text,
+      city: context.read<SignUpCubit>().cityController.text,
+      profileImage: 'null',
+    );
   }
 }

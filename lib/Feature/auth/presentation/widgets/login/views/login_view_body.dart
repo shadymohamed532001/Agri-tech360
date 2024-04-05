@@ -7,6 +7,7 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/donot_have_acound_and_sign_up.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/login_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/local_services.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
@@ -27,7 +28,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginLoading) {
-          // show the CircularProgressIndicator widget
           showDialog(
             context: context,
             builder: (_) => const Center(
@@ -59,7 +59,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           }
         }
         if (state is LoginErorr) {
-          Navigator.of(context).pop(); // close the dialog if login fails
+          Navigator.of(context).pop();
           showTouster(
             massage: state.error,
             state: ToustState.ERROR,
@@ -74,9 +74,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.03,
-                ),
+                verticalSpacing(10),
                 Text(
                   'SIGN IN',
                   style: AppStyle.font14Blacksemibold.copyWith(fontSize: 22),
