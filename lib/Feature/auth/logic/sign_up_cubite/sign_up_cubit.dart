@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.dart';
 
@@ -17,7 +20,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required String phone,
     required String city,
-    required String profileImage,
+    required File profilePic ,
   }) {
     emit(SignUpLoading());
     signUpRepo
@@ -27,7 +30,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       password: password,
       phoneNumber: phone,
       city: city,
-      profileImage: profileImage,
+      profilePic: profilePic,
     )
         .then((value) {
       value.fold(
@@ -40,7 +43,27 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
     });
   }
+  Future<File?> uploadImageFromGalleryModel({
+    required ImagePicker picker,
+  }) async {
+    try {
+      XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+        emit(UploadImageFromGallerySuccessState(image: pickedFile));
+        return image; // Return the image file
+      } else {
+        emit(const UploadImageErrorState(errorMessage: "No image picked"));
+        return null;
+      }
+    } catch (e) {
+      emit(UploadImageErrorState(errorMessage: e.toString()));
+      return null;
+    }
+  }
+
+  File? image;
   var formKey = GlobalKey<FormState>();
 
   AutovalidateMode? autovalidateMode = AutovalidateMode.disabled;

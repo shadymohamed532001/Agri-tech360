@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
@@ -15,16 +17,20 @@ class SignUpRepoImpl extends SignUpRepo {
     required String password,
     required String phoneNumber,
     required String city,
-    required String profileImage,
+    required File profilePic,
   }) async {
     try {
       FormData formData = FormData.fromMap({
+        'profilePic': await MultipartFile.fromFile(
+          profilePic.path,
+          filename: 'photo_${DateTime.now().millisecondsSinceEpoch}.jpg',
+          // contentType: MediaType('image', 'jpg'),
+        ),
         'email': email,
         'password': password,
         'fullName': fullName,
         'phoneNumber': phoneNumber,
         'city': city,
-        'profilePic': profileImage,
       });
 
       var response = await ApiServices.postFormData(

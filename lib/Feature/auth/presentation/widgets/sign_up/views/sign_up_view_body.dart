@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/widgets/sign_up_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
@@ -66,6 +69,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
         }
       },
       builder: (context, state) {
+        var signUpCubit =
+            BlocProvider.of<SignUpCubit>(context); // get the cubit instance
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
@@ -77,7 +82,27 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   'SIGN UP',
                   style: AppStyle.font14Blacksemibold.copyWith(fontSize: 22),
                 ),
-                verticalSpacing(15),
+                verticalSpacing(10),
+                GestureDetector(
+                  onTap: () async {
+                    await signUpCubit.uploadImageFromGalleryModel(
+                      picker: ImagePicker(),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: ColorManger.lightMoreGreyColor,
+                    backgroundImage: signUpCubit.image != null
+                        ? FileImage(File(signUpCubit.image!.path))
+                        : null,
+                    child: signUpCubit.image == null
+                        ? const Icon(
+                            Icons.add_photo_alternate,
+                            color: ColorManger.blackColor,
+                          )
+                        : null,
+                  ),
+                ),
                 FadeInDown(
                   child: const SignUpForm(),
                 ),
@@ -161,13 +186,14 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   }
 
   void registerUser(BuildContext context) {
+    var signUpCubite = context.read<SignUpCubit>();
     BlocProvider.of<SignUpCubit>(context).signUpUser(
-      email: context.read<SignUpCubit>().emailController.text,
-      password: context.read<SignUpCubit>().passwordController.text,
-      name: context.read<SignUpCubit>().nameController.text,
-      phone: context.read<SignUpCubit>().phoneController.text,
-      city: context.read<SignUpCubit>().cityController.text,
-      profileImage: 'null',
+      email: signUpCubite.emailController.text,
+      password: signUpCubite.passwordController.text,
+      name: signUpCubite.nameController.text,
+      phone: signUpCubite.phoneController.text,
+      city: signUpCubite.cityController.text,
+      profilePic: signUpCubite.image!,
     );
   }
 }

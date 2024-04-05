@@ -23,7 +23,7 @@ class WeatherDegreeItem extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: 92.w,
+                width: 95.w,
                 height: 110.h,
                 decoration: BoxDecoration(
                   color: ColorManger.whiteColor,
