@@ -17,7 +17,7 @@ import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/presentation/views/recommed_next_plant.dart';
-import 'package:smartsoil/Feature/search/presentation/search_view.dart';
+import 'package:smartsoil/Feature/search/presentation/views/search_store_view.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
@@ -83,9 +83,9 @@ class AppRoutes {
           },
         );
 
-      case Routes.searchExplorViewRoute:
+      case Routes.searchStoreViewRoute:
         return MaterialPageRoute(
-          builder: (context) => const SearchExplorView(),
+          builder: (context) => const SearchStoreView(),
         );
 
       case Routes.recentlySeeAllViewViewRoute:

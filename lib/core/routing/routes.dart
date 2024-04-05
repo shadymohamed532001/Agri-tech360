@@ -11,7 +11,7 @@ class Routes {
   static const String plantCareViewRoute = '/PlantCareView';
   static const String explorViewRoute = '/explorView';
   static const String informationAboutPlantRoute = '/informationAboutPlantView';
-  static const String searchExplorViewRoute = '/searchExplorView';
+  static const String searchStoreViewRoute = '/searchStoreView';
   static const String ratingAndReviewBodyRoute = '/ratingAndReviewBody';
 
   static const String myCardViewRoute = '/myCardView';
