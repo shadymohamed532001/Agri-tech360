@@ -13,18 +13,9 @@ class GeneralProfileComponents extends StatelessWidget {
     return Column(
       children: [
         CustomListTittle(
-          title: const Text('All Orders'),
+          title: const Text('favorites'),
           leading: Image.asset(
-            ImagesAssetsManger.applogoBlack,
-            width: 30.w,
-            height: 30.h,
-          ),
-          trailing: const Icon(Icons.arrow_right),
-        ),
-        CustomListTittle(
-          title: const Text('Wishlist'),
-          leading: Image.asset(
-            ImagesAssetsManger.applogoBlack,
+            ImagesAssetsManger.favoritesImage,
             width: 30.w,
             height: 30.h,
           ),
@@ -33,16 +24,7 @@ class GeneralProfileComponents extends StatelessWidget {
         CustomListTittle(
           title: const Text('Viewed recently'),
           leading: Image.asset(
-            ImagesAssetsManger.applogoBlack,
-            width: 30.w,
-            height: 30.h,
-          ),
-          trailing: const Icon(Icons.arrow_right),
-        ),
-        CustomListTittle(
-          title: const Text('Addresses'),
-          leading: Image.asset(
-            ImagesAssetsManger.applogoBlack,
+            ImagesAssetsManger.recentImage,
             width: 30.w,
             height: 30.h,
           ),
