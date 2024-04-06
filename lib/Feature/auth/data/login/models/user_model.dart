@@ -49,7 +49,7 @@ class Data {
     data['phoneNumber'] = phoneNumber;
     data['token'] = token;
     data['id'] = id;
-    data['profilePic'] = id;
+    data['profilePic'] = profilePic;
 
     return data;
   }
@@ -61,5 +61,6 @@ class Data {
     phoneNumber = json['phoneNumber'];
     token = json['token'];
     id = json['id'];
+    profilePic = json['profilePic'];
   }
 }

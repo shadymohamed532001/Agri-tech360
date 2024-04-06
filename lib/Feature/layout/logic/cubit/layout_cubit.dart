@@ -6,6 +6,7 @@ import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
 import 'package:smartsoil/Feature/layout/domain/repositories/layout_repo.dart';
+import 'package:smartsoil/Feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 part 'layout_state.dart';
 
@@ -40,7 +41,6 @@ class LayoutCubit extends Cubit<LayoutState> {
       BlocProvider.of<HomeCubit>(context).getWeather();
       BlocProvider.of<ExplorCubit>(context).getPlants();
     }
-    //  When Navigation to favorites scarean
 
     if (currentIndex == 1) {
       BlocProvider.of<StoreCubit>(context).getProducts();
@@ -50,7 +50,9 @@ class LayoutCubit extends Cubit<LayoutState> {
       BlocProvider.of<FavoritesCubit>(context).getFavorites();
       BlocProvider.of<StoreCubit>(context).getProducts();
     }
-
+    if (currentIndex == 4) {
+      BlocProvider.of<ProfileCubit>(context).getProfileData();
+    }
     emit(ChangeBottomNavState(index: index));
   }
 

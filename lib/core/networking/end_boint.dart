@@ -1,4 +1,4 @@
-const baseUrl = 'https://9e6a-156-203-232-36.ngrok-free.app/';
+const baseUrl = 'https://232e-156-203-232-36.ngrok-free.app/';
 
 const loginendpoint = 'login';
 
@@ -29,3 +29,5 @@ const getcommentendpoint = 'comments';
 const recommendcropendpoint = 'recommend-crop';
 
 const chatendpoint = 'chat';
+
+const userDataendpoint = 'user-data';

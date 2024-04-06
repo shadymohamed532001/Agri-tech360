@@ -6,6 +6,7 @@ import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
 import 'package:smartsoil/Feature/layout/logic/cubit/layout_cubit.dart';
+import 'package:smartsoil/Feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 import 'package:smartsoil/core/Di/service_locator.dart';
 import 'package:smartsoil/core/routing/app_routes.dart';
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => serviceLocator.get<CommentCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => serviceLocator.get<ProfileCubit>(),
           ),
         ],
         child: const MaterialApp(

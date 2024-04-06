@@ -21,7 +21,6 @@ class CommentCubit extends Cubit<CommentState> {
     );
     adCommentEither.fold(
       (failure) {
-        log(failure.errMessage);
         emit(AddCommentError(error: failure.toString()));
       },
       (comments) async {
@@ -45,8 +44,7 @@ class CommentCubit extends Cubit<CommentState> {
       },
       (comments) {
         commentsList = comments;
-        // print(commentsList[0].comment);
-        // print(commentsList[0].commenter.fullName);
+       
 
         emit(GetCommentsSuccess(comments: comments));
       },
