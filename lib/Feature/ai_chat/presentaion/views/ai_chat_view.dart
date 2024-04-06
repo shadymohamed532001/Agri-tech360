@@ -15,8 +15,12 @@ class ChatView extends StatefulWidget {
 }
 
 class _ChatViewState extends State<ChatView> {
-  final _user = ChatUser(id: '1', firstName: 'Mohab');
-  final _bot = ChatUser(id: '2', firstName: 'Broxi');
+  final _user = ChatUser(id: '1', firstName: 'user-data');
+  final _bot = ChatUser(
+    id: '2',
+    firstName: 'Agri-tech360',
+    profileImage: 'assets/images/agri-tech360_logo.png',
+  );
   List<ChatMessage> messages = [];
 
   @override

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smartsoil/Feature/store/logic/store_cubit.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/add_product_bottom_sheet.dart';
-import 'package:smartsoil/core/widgets/app_search_bar.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/hellow_row.dart';
 import 'package:smartsoil/Feature/store/presentation/widgets/store_list_of_product.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
@@ -24,12 +22,11 @@ class StoreViewBody extends StatelessWidget {
         child: Column(
           children: [
             PrimaryHeaderContiner(
-              height: MediaQuery.of(context).size.height / 3.6,
+              height: MediaQuery.of(context).size.height / 5.5,
               child: Column(
                 children: [
                   const HellowRow(),
                   verticalSpacing(25),
-                  AppSearchBar(width2: 330.w),
                 ],
               ),
             ),

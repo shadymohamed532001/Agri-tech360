@@ -100,6 +100,8 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
         profileDataSources: serviceLocator.get<ProfileDataSources>()));
+
+  
   }
 
   void _setupForDataSources() {
@@ -174,5 +176,6 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<ProfileCubit>(
         () => ProfileCubit(profileRepo: serviceLocator.get<ProfileRepo>()));
+        
   }
 }

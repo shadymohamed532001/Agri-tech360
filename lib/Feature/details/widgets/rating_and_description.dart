@@ -35,11 +35,9 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Text(
             widget.productModel.name,
-            style: AppStyle.font20blacksemibold.
-            copyWith(
+            style: AppStyle.font20blacksemibold.copyWith(
               fontFamily: 'Raleway',
             ),
           ),
@@ -66,30 +64,22 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
                   ),
                 ],
               ),
-         
             ],
           ),
           verticalSpacing(16),
-           Text(
+          Text(
             'Product details',
-            style: AppStyle.font16blacksemibold.
-            copyWith(
+            style: AppStyle.font16blacksemibold.copyWith(
               fontFamily: 'Raleway',
             ),
           ),
           verticalSpacing(8),
-             Text(
-              widget.productModel.description,
-            style: AppStyle.font14Greyregular.
-            copyWith(
+          Text(
+            widget.productModel.description,
+            style: AppStyle.font14Greyregular.copyWith(
               fontFamily: 'Raleway',
             ),
           ),
-
-        
-
-          
-          
           verticalSpacing(25),
           SizedBox(
             height: 80,

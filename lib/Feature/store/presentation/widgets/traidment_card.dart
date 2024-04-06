@@ -1,9 +1,7 @@
-import 'dart:math';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
@@ -81,25 +79,6 @@ class TraidmentProductCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          const Icon(
-                            Iconsax.star5,
-                            color: ColorManger.yellowColor,
-                            size: 20,
-                          ),
-                          horizontalSpacing(2),
-                          Text(
-                            Random().nextDouble().toStringAsFixed(1),
-                            style: AppStyle.font12Blackmedium,
-                          ),
-                          horizontalSpacing(4),
-                          Text(
-                            '(${Random().nextInt(100)} Reviews)',
-                            style: AppStyle.font12Greyregular,
-                          ),
-                        ],
-                      ),
                       verticalSpacing(3),
                       Text(
                         'Seller : ${productModel.seller.fullName}',

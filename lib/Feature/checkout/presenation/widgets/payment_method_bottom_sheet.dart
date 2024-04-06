@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:smartsoil/Feature/checkout/logic/cubit/check_out_cubit.dart';
 import 'package:smartsoil/Feature/checkout/presenation/views/thank_you_view.dart';
-import 'package:smartsoil/Feature/checkout/presenation/widgets/pay_ment_method_list_view.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
@@ -22,10 +21,6 @@ class PayMentMethodBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 50, bottom: 20),
-            child: PayMentMethodListView(),
-          ),
           CustomBottomSheetConsummer(
             storeProductModel: storeProductModel,
           )
