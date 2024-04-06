@@ -22,4 +22,15 @@ class ImagesAssetsManger {
   static const telephoneCallImage = '$imagePath/telephone-call.png';
   static const whatsappImage = '$imagePath/whatsapp.png';
   static const uploadImage = '$imagePath/upload.png';
+  static const profileImage = '$imagePath/profile.png';
+  static const changepasswordImage = '$imagePath/change-password.png';
+
+  static const favoritesImage = '$imagePath/favorites.png';
+
+
+  static const recentImage = '$imagePath/recent.png';
+
+
+   static const  privacyImage = '$imagePath/privacy.png';
+  
 }
