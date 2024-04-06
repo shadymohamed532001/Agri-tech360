@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import 'package:smartsoil/Feature/comments/data/models/comment_model.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
+import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -11,6 +13,7 @@ class UserCommentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var standerImage = 'https://cdn-icons-png.freepik.com/512/3033/3033143.png';
     return Column(
       children: [
         Row(
@@ -21,9 +24,14 @@ class UserCommentCard extends StatelessWidget {
                 CircleAvatar(
                   backgroundColor: Colors.transparent,
                   radius: 16,
-                  backgroundImage: NetworkImage(
-                    commentModel.commenter.profilePic,
-                  ),
+                  backgroundImage:
+                      commentModel.commenter.profilePic == standerImage
+                          ? CachedNetworkImageProvider(
+                              commentModel.commenter.profilePic,
+                            )
+                          : CachedNetworkImageProvider(
+                              '$baseUrl${commentModel.commenter.profilePic}',
+                            ),
                 ),
                 horizontalSpacing(10),
                 Text(
