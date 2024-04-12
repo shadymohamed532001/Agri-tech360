@@ -194,7 +194,12 @@ class _MyWidgetState extends State<MyCardViewBody> {
                 Row(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        BlocProvider.of<CheckOutCubit>(context).launchWhatsApp(
+                            phoneNumber:
+                                widget.storeProductModel.seller.phoneNumber,
+                            context: context);
+                      },
                       child: Image.asset(
                         ImagesAssetsManger.whatsappImage,
                         width: 40.w,
@@ -203,7 +208,12 @@ class _MyWidgetState extends State<MyCardViewBody> {
                     ),
                     horizontalSpacing(10),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        BlocProvider.of<CheckOutCubit>(context).launchphone(
+                            phoneNumber:
+                                widget.storeProductModel.seller.phoneNumber,
+                            context: context);
+                      },
                       child: Image.asset(
                         ImagesAssetsManger.telephoneCallImage,
                         width: 40.w,
