@@ -5,6 +5,9 @@ import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.da
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo_impl.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
+import 'package:smartsoil/Feature/checkout/data/repo/checkout_repo.dart';
+import 'package:smartsoil/Feature/checkout/data/repo/checkout_repo_impl.dart';
+import 'package:smartsoil/Feature/checkout/logic/cubit/check_out_cubit.dart';
 import 'package:smartsoil/Feature/comments/data/datasources/comment_data_sources.dart';
 import 'package:smartsoil/Feature/comments/data/datasources/comment_data_sources_impl.dart';
 import 'package:smartsoil/Feature/comments/data/repositories/comment_repo_impl.dart';
@@ -68,6 +71,8 @@ class ServiceLocator {
   void _setupForRepos() {
     serviceLocator
         .registerLazySingleton<OnBoardingRepo>(() => OnBoardingRepoImpl());
+    serviceLocator
+        .registerLazySingleton<CheckOutRepo>(() => CheckOutRepoImpl());
     serviceLocator.registerLazySingleton<LoginRepo>(() => LoginRepoImpl());
     serviceLocator.registerLazySingleton<SignUpRepo>(() => SignUpRepoImpl());
 
@@ -100,8 +105,6 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
         profileDataSources: serviceLocator.get<ProfileDataSources>()));
-
-  
   }
 
   void _setupForDataSources() {
@@ -176,6 +179,8 @@ class ServiceLocator {
 
     serviceLocator.registerFactory<ProfileCubit>(
         () => ProfileCubit(profileRepo: serviceLocator.get<ProfileRepo>()));
-        
+
+    serviceLocator.registerFactory<CheckOutCubit>(
+        () => CheckOutCubit(checkOutRepo: serviceLocator.get<CheckOutRepo>()));
   }
 }
