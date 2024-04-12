@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:smartsoil/Feature/checkout/data/repo/checkout_repo_impl.dart';
+import 'package:smartsoil/Feature/checkout/data/models/payment_intent_input_model.dart';
 import 'package:smartsoil/Feature/checkout/logic/cubit/check_out_cubit.dart';
+import 'package:smartsoil/Feature/checkout/presenation/views/thank_you_view.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/card_Info_item.dart';
-import 'package:smartsoil/Feature/checkout/presenation/widgets/payment_method_bottom_sheet.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/product_card.dart';
 import 'package:smartsoil/Feature/checkout/presenation/widgets/total_price_info.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
@@ -231,48 +231,56 @@ class _MyWidgetState extends State<MyCardViewBody> {
                   value: '\$ ${widget.storeProductModel.price} + \$8.97',
                 ),
                 const SizedBox(height: 50),
-                CustomBottom(
-                  bottomHeight: 60,
-                  bottomtext: 'Complete Payment',
-                  backgroundColor: ColorManger.primaryColor,
-                  onPressed: () {
-                    if (payWithCash) {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: const Text('Cash Payment'),
-                          content:
-                              const Text('You have chosen to pay with cash.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('OK'),
-                            ),
-                          ],
-                        ),
-                      );
-                    } else {
-                      showModalBottomSheet(
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(32),
-                            topRight: Radius.circular(32),
-                          ),
-                        ),
-                        context: context,
-                        builder: (context) {
-                          return BlocProvider(
-                            create: (context) =>
-                                CheckOutCubit(CheckOutRepoImpl()),
-                            child: PayMentMethodBottomSheet(
+                BlocConsumer<CheckOutCubit, CheckOutState>(
+                  listener: (context, state) {
+                    if (state is CheckOutSuccess) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ThankYouView(
                               storeProductModel: widget.storeProductModel,
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       );
                     }
+                  },
+                  builder: (context, state) {
+                    return CustomBottom(
+                      isLoading: state is CheckOutLoading ? true : false,
+                      backgroundColor: ColorManger.primaryColor,
+                      bottomtext: 'pay',
+                      onPressed: () {
+                        if (payWithCash) {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Cash Payment'),
+                              content: const Text(
+                                  'You have chosen to pay with cash.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          PaymentIntentInputModel paymentIntentInput =
+                              PaymentIntentInputModel(
+                            customerId: 'cus_Pdbvxp1eBo1KYs',
+                            amount: widget.storeProductModel.price.toString(),
+                            currency: 'USD',
+                          );
+                          BlocProvider.of<CheckOutCubit>(context)
+                              .makepayment(paymentIntentInput);
+                        }
+                      },
+                    );
                   },
                 ),
                 verticalSpacing(50),
