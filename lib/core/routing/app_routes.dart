@@ -5,6 +5,7 @@ import 'package:smartsoil/Feature/ai_chat/presentaion/views/ai_chat_view.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/views/auth_view_body.dart';
+import 'package:smartsoil/Feature/checkout/logic/cubit/check_out_cubit.dart';
 import 'package:smartsoil/Feature/checkout/presenation/views/my_card_view.dart';
 import 'package:smartsoil/Feature/details/view/product_details_view.dart';
 import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfiction_cubit.dart';
@@ -109,8 +110,11 @@ class AppRoutes {
         );
       case Routes.myCardViewRoute:
         return MaterialPageRoute(
-          builder: (context) => MyCardView(
-            storeProductModel: routeSettings.arguments as StoreProductModel,
+          builder: (context) => BlocProvider(
+            create: (context) => serviceLocator.get<CheckOutCubit>(),
+            child: MyCardView(
+              storeProductModel: routeSettings.arguments as StoreProductModel,
+            ),
           ),
         );
       case Routes.recommedNextCropsViewRoute:
