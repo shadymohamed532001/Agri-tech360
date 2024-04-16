@@ -26,30 +26,40 @@ class CheckOutCubit extends Cubit<CheckOutState> {
     });
   }
 
-  void launchWhatsApp(
-      {required String phoneNumber, required BuildContext context}) async {
-    emit(LunchWhatsAppLoading());
-    try {
-      Uri url = Uri.parse(
-        'https://wa.me/$phoneNumber',
-      );
-      bool launched = await launchUrl(url);
+ void launchWhatsApp(
+    {required String phoneNumber, required BuildContext context}) async {
+  emit(LunchWhatsAppLoading());
+  try {
+    // Add Egypt's country code if not already present
+    final String fullPhoneNumber = phoneNumber.startsWith('+20') ? phoneNumber : '+20$phoneNumber';
 
-      if (launched) {
-        emit(LunchWhatsAppSuccess());
-      } else {
-        context.pop();
-      }
-    } catch (e) {
-      if (e is DioException) {
-        emit(LunchWhatsAppError(
-          error: ServerFailure.fromDioException(e).errMessage,
-        ));
-      } else {
-        emit(LunchWhatsAppError(error: ServerFailure(e.toString()).errMessage));
-      }
+    // Create the URL for the WhatsApp link
+    Uri url = Uri.parse(
+      'https://wa.me/$fullPhoneNumber',
+    );
+
+    // Attempt to launch the URL
+    bool launched = await launchUrl(url);
+
+    if (launched) {
+      // Emit success state if the URL was launched successfully
+      emit(LunchWhatsAppSuccess());
+    } else {
+      // Handle case where the URL failed to launch
+      context.pop();
+    }
+  } catch (e) {
+    // Handle exceptions that may arise during URL launching
+    if (e is DioException) {
+      emit(LunchWhatsAppError(
+        error: ServerFailure.fromDioException(e).errMessage,
+      ));
+    } else {
+      emit(LunchWhatsAppError(error: ServerFailure(e.toString()).errMessage));
     }
   }
+}
+
 
   void launchphone(
       {required String phoneNumber, required BuildContext context}) async {

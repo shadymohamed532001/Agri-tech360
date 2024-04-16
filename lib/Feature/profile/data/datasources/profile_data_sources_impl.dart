@@ -16,4 +16,27 @@ class ProfileDataSourcesImpl implements ProfileDataSources {
 
     return user;
   }
+
+  @override
+  Future<UserModel> updateProfile({
+    required String fullName,
+    required String city,
+    required String phoneNumber,
+  }) async {
+    String token = LocalServices.getData(key: 'token');
+    var response = await ApiServices.put(
+      url: updateuserdataendpoint,
+      token: token,
+      body: {
+        'fullName': fullName,
+        'city': city,
+        'phoneNumber': phoneNumber,
+      },
+    );
+    UserModel user = UserModel.fromJson(
+      response.data,
+    );
+
+    return user;
+  }
 }
