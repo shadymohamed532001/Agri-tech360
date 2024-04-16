@@ -22,4 +22,25 @@ class ProfileRepoImpl implements ProfileRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, UserModel>> updateProfile({
+    required String fullName,
+    required String city,
+    required String phoneNumber,
+  }) async {
+    try {
+      final response = await profileDataSources.updateProfile(
+        city: city,
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+      );
+      return right(response);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

@@ -13,6 +13,30 @@ class ApiServices {
     );
   }
 
+
+  static Future<Response> put({
+    required String url,
+    required Map<String, dynamic> body,
+    required String token,
+    Map<String, String>? headers,
+    String contentType = 'application/json',
+  }) async {
+    // Set the headers for the request
+    _dio?.options.headers = {
+      'Content-Type': contentType,
+      'Authorization': 'Bearer $token',
+      ...?headers,
+    };
+
+    // Make the PUT request and return the response
+    Response response = await _dio!.put(
+      url,
+      data: body,
+    );
+
+    return response;
+  }
+
   static Future<Response> post(
       {required body,
       required String url,
@@ -26,7 +50,7 @@ class ApiServices {
           headers: headers ?? {'Authorization': "Bearer $token"},
         ));
 
-    return response;
+    return response.data;
   }
 
   static Future<Map<String, dynamic>> postData(

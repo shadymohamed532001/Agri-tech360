@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/models/next_crop_model.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -58,9 +59,6 @@ class RecommendNextCropContent extends StatelessWidget {
                     nextCropModel.data!.soilType!,
                     style: AppStyle.font16blacksemibold,
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
@@ -68,10 +66,8 @@ class RecommendNextCropContent extends StatelessWidget {
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
                   Expanded(
+                    flex: 0,
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
@@ -80,16 +76,12 @@ class RecommendNextCropContent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
+                  verticalSpacing(5),
                   Divider(
-                    height: 12.h,
+                    height: 5.h,
                     thickness: 0.5,
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
+                  verticalSpacing(5),
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
@@ -98,24 +90,21 @@ class RecommendNextCropContent extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 5,
+                    flex: 2,
                     child: Align(
-                      alignment: Alignment.bottomLeft,
+                      alignment: Alignment.topLeft,
                       child: Text(
                         nextCropModel.data!.recommendedCrop!,
                         style: AppStyle.font12Greymedium,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
+                  verticalSpacing(5),
                   Divider(
-                    height: 12.h,
+                    height: 5.h,
                     thickness: 0.5,
                   ),
+                  verticalSpacing(5),
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
@@ -127,6 +116,7 @@ class RecommendNextCropContent extends StatelessWidget {
                     height: 5.h,
                   ),
                   Expanded(
+                    flex: 0,
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
@@ -135,13 +125,12 @@ class RecommendNextCropContent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
+                  verticalSpacing(5),
                   Divider(
-                    height: 12.h,
+                    height: 5.h,
                     thickness: 0.5,
                   ),
+                  verticalSpacing(5),
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: Text(
@@ -149,10 +138,8 @@ class RecommendNextCropContent extends StatelessWidget {
                       style: AppStyle.font14blackmedium,
                     ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
                   Expanded(
+                    flex: 0,
                     child: Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
@@ -162,7 +149,7 @@ class RecommendNextCropContent extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15.h,
+                    height: 20.h,
                   ),
                 ],
               ),

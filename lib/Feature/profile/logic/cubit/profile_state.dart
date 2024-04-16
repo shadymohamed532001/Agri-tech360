@@ -15,7 +15,20 @@ final class ProfileErrorState extends ProfileState {
   final String error;
   const ProfileErrorState({required this.error});
 }
+
 final class ProfileSuccessState extends ProfileState {
   final UserModel userData;
   const ProfileSuccessState({required this.userData});
+}
+
+final class UpdateProfileLoadingState extends ProfileState {}
+
+final class UpdateProfileErrorState extends ProfileState {
+  final String error;
+  const UpdateProfileErrorState({required this.error});
+}
+
+final class UpdateProfileSuccessState extends ProfileState {
+  final UserModel userUpdatedModel;
+  const UpdateProfileSuccessState({required this.userUpdatedModel});
 }

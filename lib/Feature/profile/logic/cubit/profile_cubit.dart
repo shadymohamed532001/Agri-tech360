@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/profile/domain/repositories/profile_repo.dart';
@@ -22,4 +23,33 @@ class ProfileCubit extends Cubit<ProfileState> {
       );
     }
   }
+
+  void updateProfileData({
+    required String fullName,
+    required String city,
+    required String phoneNumber,
+  }) async {
+    {
+      emit(UpdateProfileLoadingState());
+      final profileEither = await profileRepo.updateProfile(
+        city: city,
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+      );
+
+      profileEither.fold(
+        (failure) {
+          emit(UpdateProfileErrorState(error: failure.errMessage.toString()));
+        },
+        (userUpdatedData) {
+          emit(UpdateProfileSuccessState(userUpdatedModel: userUpdatedData));
+          getProfileData();
+        },
+      );
+    }
+  }
+
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController phonecontroller = TextEditingController();
 }

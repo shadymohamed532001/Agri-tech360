@@ -51,7 +51,7 @@ class CustomExplorCard extends StatelessWidget {
                         child: Text(
                           plant.mediumDescription,
                           style: AppStyle.font10Greyregular,
-                          maxLines: 6,
+                          maxLines: 5,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
