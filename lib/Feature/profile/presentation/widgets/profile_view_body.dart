@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/Custom_list_tittle.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/general_profile_components.dart';
+import 'package:smartsoil/Feature/profile/presentation/widgets/update_profile_foem.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
@@ -158,38 +159,7 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                                           ),
                                         ),
                                         isUserDataUpdateShow
-                                            ? FadeInLeft(
-                                                child: Column(
-                                                  children: [
-                                                    const CustomTextFormFiled(
-                                                      hintText: 'Full name ',
-                                                      obscureText: false,
-                                                    ),
-                                                    const CustomTextFormFiled(
-                                                      hintText: 'City',
-                                                      obscureText: false,
-                                                    ),
-                                                    const CustomTextFormFiled(
-                                                      hintText: 'Phone number',
-                                                      obscureText: false,
-                                                    ),
-                                                    verticalSpacing(10),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 10.w),
-                                                      child: CustomBottom(
-                                                        onPressed: () {},
-                                                        bottomtext: 'Update',
-                                                        backgroundColor:
-                                                            ColorManger
-                                                                .primaryColor,
-                                                        bottomHeight: 45.h,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              )
+                                            ? const UpdateProfileFoem()
                                             : Container(),
                                         CustomListTittle(
                                           title: const Text('Update password'),
