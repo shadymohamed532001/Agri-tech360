@@ -10,4 +10,10 @@ abstract class ProfileRepo {
     required String city,
     required String phoneNumber,
   });
+
+
+  Future<Either<Failure, void>> changePassword({
+    required String password,
+    required String oldpassword,
+  });
 }

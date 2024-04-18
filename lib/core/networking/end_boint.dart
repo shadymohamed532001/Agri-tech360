@@ -33,3 +33,5 @@ const chatendpoint = 'chat';
 const userDataendpoint = 'user-data';
 
 const updateuserdataendpoint = 'update-user-data';
+
+const updatepasswordendpoint = 'update-password';

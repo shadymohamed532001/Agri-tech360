@@ -43,4 +43,23 @@ class ProfileRepoImpl implements ProfileRepo {
       return Left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> changePassword({
+    required String password,
+    required String oldpassword,
+  }) async {
+    try {
+      await profileDataSources.changePassword(
+        oldpassword: oldpassword,
+        password: password,
+      );
+      return right(null);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioException(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

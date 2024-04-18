@@ -33,3 +33,11 @@ final class UpdateProfileSuccessState extends ProfileState {
   const UpdateProfileSuccessState({required this.userUpdatedModel});
 }
 
+final class ChangePasswordLoadingState extends ProfileState {}
+
+final class ChangePasswordErrorState extends ProfileState {
+  final String error;
+  const ChangePasswordErrorState({required this.error});
+}
+
+final class ChangePasswordSuccessState extends ProfileState {}
