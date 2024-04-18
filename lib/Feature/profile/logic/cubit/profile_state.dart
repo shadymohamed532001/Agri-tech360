@@ -32,3 +32,4 @@ final class UpdateProfileSuccessState extends ProfileState {
   final UserModel userUpdatedModel;
   const UpdateProfileSuccessState({required this.userUpdatedModel});
 }
+

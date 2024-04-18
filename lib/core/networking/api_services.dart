@@ -13,17 +13,15 @@ class ApiServices {
     );
   }
 
-
   static Future<Response> put({
     required String url,
-    required Map<String, dynamic> body,
+    required FormData body, // Change to FormData
     required String token,
     Map<String, String>? headers,
-    String contentType = 'application/json',
   }) async {
     // Set the headers for the request
     _dio?.options.headers = {
-      'Content-Type': contentType,
+      'Content-Type': 'multipart/form-data', // Use the correct content type for form data
       'Authorization': 'Bearer $token',
       ...?headers,
     };

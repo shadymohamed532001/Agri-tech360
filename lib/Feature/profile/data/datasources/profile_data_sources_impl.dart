@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
@@ -18,25 +19,26 @@ class ProfileDataSourcesImpl implements ProfileDataSources {
   }
 
   @override
-  Future<UserModel> updateProfile({
+Future<UserModel> updateProfile({
     required String fullName,
     required String city,
     required String phoneNumber,
-  }) async {
+}) async {
     String token = LocalServices.getData(key: 'token');
-    var response = await ApiServices.put(
-      url: updateuserdataendpoint,
-      token: token,
-      body: {
+    
+    FormData formData = FormData.fromMap({
         'fullName': fullName,
         'city': city,
         'phoneNumber': phoneNumber,
-      },
+    });
+
+    var response = await ApiServices.put(
+        url: updateuserdataendpoint,
+        token: token,
+        body: formData, 
     );
-    UserModel user = UserModel.fromJson(
-      response.data,
-    );
+    UserModel user = UserModel.fromJson(response.data);
 
     return user;
-  }
+}
 }

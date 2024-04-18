@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/profile/logic/cubit/profile_cubit.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/Custom_list_tittle.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/general_profile_components.dart';
-import 'package:smartsoil/Feature/profile/presentation/widgets/update_profile_foem.dart';
+import 'package:smartsoil/Feature/profile/presentation/widgets/update_profile_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
@@ -27,15 +27,11 @@ class ProfileViewBody extends StatefulWidget {
 }
 
 class _ProfileViewBodyState extends State<ProfileViewBody> {
-  bool isShow = false;
-  bool isUserDataUpdateShow = false;
-
-  bool isUserpasswordShow = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
+        ProfileCubit cubit = BlocProvider.of<ProfileCubit>(context);
         if (state is ProfileLoadingState) {
           return const Center(
             child: CircularProgressIndicator(
@@ -98,17 +94,6 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                                       ),
                                     ),
                                     const Spacer(),
-                                    IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          isShow = !isShow;
-                                        });
-                                      },
-                                      icon: const Icon(
-                                        Icons.edit,
-                                        color: ColorManger.whiteColor,
-                                      ),
-                                    )
                                   ],
                                 ),
                               ),
@@ -122,107 +107,96 @@ class _ProfileViewBodyState extends State<ProfileViewBody> {
                         padding: const EdgeInsets.all(16),
                         child: Column(
                           children: [
-                            isShow
-                                ? FadeInLeft(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Update',
+                                      style: AppStyle.font14Blacksemibold,
+                                    ),
+                                  ],
+                                ),
+                                CustomListTittle(
+                                  title: const Text('Update profile'),
+                                  leading: Image.asset(
+                                    ImagesAssetsManger.profileImage,
+                                    width: 30.w,
+                                    height: 30.h,
+                                  ),
+                                  trailing: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        cubit.isUserDataUpdateShow =
+                                            !cubit.isUserDataUpdateShow;
+                                      });
+                                    },
+                                    child: Icon(
+                                      cubit.isUserDataUpdateShow
+                                          ? Icons.arrow_drop_down
+                                          : Icons.arrow_right,
+                                    ),
+                                  ),
+                                ),
+                                cubit.isUserDataUpdateShow
+                                    ? const UpdateProfileForm()
+                                    : Container(),
+                                CustomListTittle(
+                                  title: const Text('Update password'),
+                                  leading: Image.asset(
+                                    ImagesAssetsManger.changepasswordImage,
+                                    width: 30.w,
+                                    height: 30.h,
+                                  ),
+                                  trailing: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        cubit.isUserpasswordShow =
+                                            !cubit.isUserpasswordShow;
+                                      });
+                                    },
+                                    child: Icon(
+                                      cubit.isUserpasswordShow
+                                          ? Icons.arrow_drop_down
+                                          : Icons.arrow_right,
+                                    ),
+                                  ),
+                                ),
+                                cubit.isUserpasswordShow
+                                    ? FadeInRight(
+                                        child: Column(
                                           children: [
-                                            Text(
-                                              'Update',
-                                              style:
-                                                  AppStyle.font14Blacksemibold,
+                                            const CustomTextFormFiled(
+                                              hintText: 'Old password',
+                                              obscureText: false,
                                             ),
+                                            const CustomTextFormFiled(
+                                              hintText: 'New password',
+                                              obscureText: false,
+                                            ),
+                                            const CustomTextFormFiled(
+                                              hintText: 'Confirm password',
+                                              obscureText: false,
+                                            ),
+                                            verticalSpacing(10),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 10.w),
+                                              child: CustomBottom(
+                                                onPressed: () {},
+                                                bottomtext: 'Change password',
+                                                backgroundColor:
+                                                    ColorManger.primaryColor,
+                                                bottomHeight: 45.h,
+                                              ),
+                                            )
                                           ],
                                         ),
-                                        CustomListTittle(
-                                          title: const Text('Update profile'),
-                                          leading: Image.asset(
-                                            ImagesAssetsManger.profileImage,
-                                            width: 30.w,
-                                            height: 30.h,
-                                          ),
-                                          trailing: GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                isUserDataUpdateShow =
-                                                    !isUserDataUpdateShow;
-                                              });
-                                            },
-                                            child: Icon(
-                                              isUserDataUpdateShow
-                                                  ? Icons.arrow_drop_down
-                                                  : Icons.arrow_right,
-                                            ),
-                                          ),
-                                        ),
-                                        isUserDataUpdateShow
-                                            ? const UpdateProfileFoem()
-                                            : Container(),
-                                        CustomListTittle(
-                                          title: const Text('Update password'),
-                                          leading: Image.asset(
-                                            ImagesAssetsManger
-                                                .changepasswordImage,
-                                            width: 30.w,
-                                            height: 30.h,
-                                          ),
-                                          trailing: GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                isUserpasswordShow =
-                                                    !isUserpasswordShow;
-                                              });
-                                            },
-                                            child: Icon(
-                                              isUserpasswordShow
-                                                  ? Icons.arrow_drop_down
-                                                  : Icons.arrow_right,
-                                            ),
-                                          ),
-                                        ),
-                                        isUserpasswordShow
-                                            ? FadeInRight(
-                                                child: Column(
-                                                  children: [
-                                                    const CustomTextFormFiled(
-                                                      hintText: 'Old password',
-                                                      obscureText: false,
-                                                    ),
-                                                    const CustomTextFormFiled(
-                                                      hintText: 'New password',
-                                                      obscureText: false,
-                                                    ),
-                                                    const CustomTextFormFiled(
-                                                      hintText:
-                                                          'Confirm password',
-                                                      obscureText: false,
-                                                    ),
-                                                    verticalSpacing(10),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 10.w),
-                                                      child: CustomBottom(
-                                                        onPressed: () {},
-                                                        bottomtext:
-                                                            'Change password',
-                                                        backgroundColor:
-                                                            ColorManger
-                                                                .primaryColor,
-                                                        bottomHeight: 45.h,
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              )
-                                            : Container(),
-                                      ],
-                                    ),
-                                  )
-                                : Container(),
+                                      )
+                                    : Container(),
+                              ],
+                            ),
                             verticalSpacing(20),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,

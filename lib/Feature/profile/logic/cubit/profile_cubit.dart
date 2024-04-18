@@ -43,12 +43,21 @@ class ProfileCubit extends Cubit<ProfileState> {
         },
         (userUpdatedData) {
           emit(UpdateProfileSuccessState(userUpdatedModel: userUpdatedData));
+          fullNameController.clear();
+          cityController.clear();
+          phonecontroller.clear();
           getProfileData();
+                      isUserDataUpdateShow = false;
+
+    
         },
       );
     }
   }
 
+  bool isUserDataUpdateShow = false;
+
+  bool isUserpasswordShow = false;
   TextEditingController fullNameController = TextEditingController();
   TextEditingController cityController = TextEditingController();
   TextEditingController phonecontroller = TextEditingController();
