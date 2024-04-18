@@ -7,4 +7,8 @@ abstract class ProfileDataSources {
     required String city,
     required String phoneNumber,
   });
+  Future<void> changePassword({
+    required String password,
+    required String oldpassword,
+  });
 }

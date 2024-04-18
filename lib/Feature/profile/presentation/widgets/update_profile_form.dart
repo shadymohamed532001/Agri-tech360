@@ -8,8 +8,8 @@ import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/widgets/app_bottom.dart';
 import 'package:smartsoil/core/widgets/app_text_formfield.dart';
 
-class UpdateProfileFoem extends StatelessWidget {
-  const UpdateProfileFoem({
+class UpdateProfileForm extends StatelessWidget {
+  const UpdateProfileForm({
     super.key,
   });
 
@@ -41,7 +41,7 @@ class UpdateProfileFoem extends StatelessWidget {
               child: CustomBottom(
                 onPressed: () {
                   cubit.updateProfileData(
-                    fullName: cubit.cityController.text,
+                    fullName: cubit.fullNameController.text,
                     city: cubit.cityController.text,
                     phoneNumber: cubit.phonecontroller.text,
                   );

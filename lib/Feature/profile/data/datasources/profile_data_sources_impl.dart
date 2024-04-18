@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
@@ -24,19 +25,39 @@ class ProfileDataSourcesImpl implements ProfileDataSources {
     required String phoneNumber,
   }) async {
     String token = LocalServices.getData(key: 'token');
+
+    FormData formData = FormData.fromMap({
+      'fullName': fullName,
+      'city': city,
+      'phoneNumber': phoneNumber,
+    });
+
     var response = await ApiServices.put(
       url: updateuserdataendpoint,
       token: token,
-      body: {
-        'fullName': fullName,
-        'city': city,
-        'phoneNumber': phoneNumber,
-      },
+      body: formData,
     );
-    UserModel user = UserModel.fromJson(
-      response.data,
-    );
+    UserModel user = UserModel.fromJson(response.data);
 
     return user;
+  }
+
+  @override
+  Future<void> changePassword({
+    required String password,
+    required String oldpassword,
+  }) async {
+    String token = LocalServices.getData(key: 'token');
+
+    FormData formData = FormData.fromMap({
+      'old_password': oldpassword,
+      'new_password': password,
+    });
+
+    await ApiServices.put(
+      url: updatepasswordendpoint,
+      token: token,
+      body: formData,
+    );
   }
 }
