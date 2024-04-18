@@ -10,11 +10,9 @@ import 'package:smartsoil/Feature/profile/presentation/widgets/log_out_botton.da
 import 'package:smartsoil/Feature/profile/presentation/widgets/profile_email_and_username.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/update_profile_form.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
-
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
-
 import 'package:smartsoil/core/widgets/custom_error_widget.dart';
 import 'package:smartsoil/core/widgets/shows_toust_color.dart';
 
