@@ -24,7 +24,7 @@ class RecntlyViewedListView extends StatelessWidget {
       builder: (context, state) {
         ExplorCubit cubit = ExplorCubit.getObject(context);
         final List<PlantModle> shuffledPlants = List.of(cubit.plantsresult)
-          ..shuffle(); // show the list Random
+          ..shuffle(); 
         if (state is GetPlantDataSuccessState) {
           return FadeInUp(
             child: Column(
