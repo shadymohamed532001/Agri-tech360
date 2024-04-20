@@ -36,7 +36,13 @@ class GeneralProfileComponents extends StatelessWidget {
             width: 30.w,
             height: 30.h,
           ),
-          trailing: const Icon(Icons.arrow_right),
+          trailing: GestureDetector(
+              onTap: () => {
+                    context.navigateTo(
+                      routeName: Routes.recentlyViewedContent,
+                    )
+                  },
+              child: const Icon(Icons.arrow_right)),
         ),
         verticalSpacing(8),
         const Divider(
