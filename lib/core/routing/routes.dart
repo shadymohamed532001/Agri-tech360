@@ -18,4 +18,5 @@ class Routes {
   static const String recommedNextCropsViewRoute =
       '/recommedNextCropsViewRoute';
   static const String chatViewRoute = '/chatView';
+  static const String favoriteContentViewRoute = '/favoriteContentView';
 }

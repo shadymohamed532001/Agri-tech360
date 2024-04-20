@@ -52,6 +52,7 @@ class LayoutCubit extends Cubit<LayoutState> {
     }
     if (currentIndex == 4) {
       BlocProvider.of<ProfileCubit>(context).getProfileData();
+      BlocProvider.of<FavoritesCubit>(context).getFavorites();
     }
     emit(ChangeBottomNavState(index: index));
   }
