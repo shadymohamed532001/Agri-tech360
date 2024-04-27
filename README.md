@@ -10,10 +10,18 @@
 <div align="start">
   
 # 📱 Agri-tech360 App
-![agri-tech360_logo]()
 
-In this Flutter application, we leverage the power of machine learning models to accurately classify plant diseases and pests. By integrating ML algorithms into our app, we provide farmers and gardeners with a convenient and efficient way to identify and address plant health issues. Our app uses high-quality ML models that have been trained on vast datasets of plant images, enabling us to provide accurate and reliable results. With our app, users can easily capture images of their plants using their smartphone cameras, and our ML models will quickly analyze the images to identify any potential diseases or pests. Our app also provides recommendations for the best course of action based on the identified issue, helping users to take swift and effective action to protect their crops. Overall, our Flutter application is a powerful tool for anyone looking to maintain healthy and thriving plants.
-add the feature of the App
+Welcome to Agri-tech360, your comprehensive agricultural solution designed to elevate your farming experience to new heights. With Agri-tech360, we've combined cutting-edge technology, expert knowledge, and intuitive design to provide you with a complete toolkit for success in agriculture.
+
+At the heart of Agri-tech360 lies our advanced machine-learning capabilities. Our app harnesses the power of machine learning algorithms to accurately diagnose plant leaf diseases with precision and speed. Simply snap a photo of a troubled leaf, and let Agri-tech360 analyze it to identify the disease and recommend the most effective treatment options. Say goodbye to guesswork and uncertainty, and hello to confident decision-making in crop health management.
+
+But Agri-tech360 is more than just a diagnosis tool – it's a visionary. Leveraging predictive analytics and machine learning models, Agri-tech360 forecasts the future of your farm by predicting the next optimal crop for cultivation. By considering soil conditions, historical crop data, and weather forecasts, Agri-tech360 empowers you to make informed decisions that optimize yield and promote sustainable farming practices.
+
+Delve deeper into the world of agriculture with Agri-tech360's extensive plant exploration feature. Our app boasts a vast database of plants, each accompanied by detailed information on their characteristics, growth requirements, and care instructions. Whether you're a seasoned farmer or a novice gardener, Agri-tech360 equips you with the knowledge and insights needed to nurture your plants to their fullest potential.
+
+But we don't stop there. Agri-tech360 is your one-stop shop for all your agricultural needs. Easily purchase recommended treatment products directly through the app, streamlining the process of caring for your crops and saving you time and effort.
+
+With Agri-tech360, the possibilities are endless. Whether you're managing a small family garden or running a large-scale farm operation, our app is here to support you every step of the way. Say hello to smarter farming, improved crop health, and greater productivity with Agri-tech360.
 
 <div align="start">
   
@@ -57,13 +65,11 @@ add the feature of the App
 Once the Roome app is installed and launched, follow these steps to utilize its features:
 
 1. Sign up or log in to your Agri-tech360 account.
-2. Explore hotels by browsing through the available options (Near Me, Recommended, Popular).
-3. Utilize the search functionality to find hotels.
-4. View detailed information about each hotel, including images, descriptions, ratings, and location.
-5. Select a hotel and proceed to the booking process.
-6. Provide the required details, such as check-in/check-out dates and the number of guests.
-7. Confirm your reservation and make the necessary payment.
-8. Receive a confirmation of your booking and download it.
+2. Upload a plant leaf image to Agri-tech360's PlantClassification feature to instantly diagnose diseases and receive treatment recommendations.
+3. Upload an image of the soil and previous crop to Agri-tech360's RecommendNextCrop feature for instant recommendations on the next best crop to plant.
+4. View detailed information about each plant, including images, descriptions, ratings, and Care instructions.
+5. View detailed information about each product, including images, descriptions, ratings, Price, and seller.
+
 
 ## Features
 
