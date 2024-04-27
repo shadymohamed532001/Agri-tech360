@@ -94,19 +94,24 @@ We welcome contributions to Agri-tech360. To contribute, please follow these ste
 - Push your changes to the new branch on your forked repository.
 - Submit a pull request to the original repository.
 
-|                                                        Technology Icon                                                        | Technology Name | URL   
+|                                                        Onboarding 1                                                        | Onboarding 2 | Onboarding 3  
 | :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/134b2a0c-0a96-4c8a-87ec-3ce8c8ac18b3"> |     <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/f7bfebbf-5241-4083-b55c-9e3b00b1aec0">      | <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/8090ab34-edb6-42bb-b057-f14b000c6871"> |
 
-|                                                        Technology Icon                                                        | Technology Name | URL                                                                                          |
-| :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/154fa40b-3cde-4abc-9e81-b21be75f5b77"> |     <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/b30b3b9e-c316-42bb-9ae0-d1e50bb86104">      | <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/99e3d4e7-9946-444d-9f4b-6213ff99e984"> |
 
---------------------------------------------------------------------------------------------------------------------------------
 
-|                                                        Technology Icon                                                        | Technology Name | URL                                                                                          |
+|                                                       Sign In                                                       | Sign Up | Home                                                                                          |
 | :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/99e3d4e7-9946-444d-9f4b-6213ff99e984"> |     <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/99e3d4e7-9946-444d-9f4b-6213ff99e984">      | <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/99e3d4e7-9946-444d-9f4b-6213ff99e984"> |
+| <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/154fa40b-3cde-4abc-9e81-b21be75f5b77"> |     <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/b30b3b9e-c316-42bb-9ae0-d1e50bb86104">      |  <img width="351" alt="home" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/b82e5474-e3a0-4b71-bacd-6bc732bd5920">
+|
+
+
+
+
+
+  |                                                       Ai Chat                                                        | plant Explor | Product Store                                                                                          |
+| :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| <img width="351" alt="store" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/c1f5cfe7-54b2-4ca6-8917-0aec2c3583de"> |     <img width="351" alt="explor" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/027adf39-0ee6-4f0d-99d1-c45448c90b25">    | <img width="351" alt="ai" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/6f7caafa-00e5-42fa-9d32-6e73174fb3b1"> |
 
 |                                                        Technology Icon                                                        | Technology Name | URL                                                                                          |
 | :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
