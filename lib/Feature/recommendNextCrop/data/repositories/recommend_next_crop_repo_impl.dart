@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/models/next_crop_model.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/domain/repositories/recommend_next_crop_repo.dart';
+import 'package:smartsoil/Feature/recommendNextCrop/domain/recommend_next_crop_repo_impl.dart';
 import 'package:smartsoil/core/error/failuer.dart';
 import 'package:smartsoil/core/error/servier_failure.dart';
 
