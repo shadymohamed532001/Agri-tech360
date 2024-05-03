@@ -70,10 +70,19 @@ class StoreCubit extends Cubit<StoreState> {
       (storeProductModel) async {
         emit(StoreAddProductSuccess());
         Navigator.pop(context);
+        clearController();
         await getProducts();
         emit(StoreGetProductsSuccess(products: productResult));
       },
     );
+  }
+
+  void clearController() {
+    productNameController.clear();
+    productPriceController.clear();
+    productDescriptionController.clear();
+    productTagsController.clear();
+    imageList.clear();
   }
 
   TextEditingController productNameController = TextEditingController();
