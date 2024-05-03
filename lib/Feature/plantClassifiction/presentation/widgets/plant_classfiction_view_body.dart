@@ -5,6 +5,7 @@ import 'package:smartsoil/Feature/plantClassifiction/logic/cubit/plant_classfict
 import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/classfiction_response_body.dart';
 import 'package:smartsoil/Feature/plantClassifiction/presentation/widgets/empty_uploaded_image.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
+import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -58,11 +59,11 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
           child: Column(
             children: [
               PrimaryHeaderContiner(
-                height: MediaQuery.of(context).size.height * 0.19,
+                height: 140.h,
                 child: SafeArea(
                   child: Padding(
                     padding:
-                        EdgeInsets.only(left: 16.w, right: 16.w, top: 16.h),
+                        EdgeInsets.only(left: 16.w, right: 16.w, top: 24.h),
                     child: Column(
                       children: [
                         Row(
@@ -101,24 +102,18 @@ class _PlantCareViewBodyState extends State<PlantCareViewBody> {
                       ImagesAssetsManger.appLogo,
                       height: 80.h,
                     ),
-                    SizedBox(
-                      height: 5.h,
-                    ),
+                    verticalSpacing(5),
                     Text(
                       'Agri-tech360',
                       style: AppStyle.font20blacksemibold,
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+                    verticalSpacing(10),
                     Text(
                       plantCareDescription,
                       style: AppStyle.font13Greymedium,
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(
-                      height: 70,
-                    ),
+                    verticalSpacing(70),
                     cubit.classfictionModel != null
                         ? ClassfictionResponseBody(
                             classfictionModel: cubit.classfictionModel!,
