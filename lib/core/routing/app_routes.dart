@@ -17,6 +17,7 @@ import 'package:smartsoil/Feature/layout/presentation/views/layout_views.dart';
 import 'package:smartsoil/Feature/onbording/logic/cubit/onbording_cubit.dart';
 import 'package:smartsoil/Feature/onbording/presentation/on_boarding_view.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/favorite_content.dart';
+import 'package:smartsoil/Feature/profile/presentation/widgets/policies_privets_view.dart';
 import 'package:smartsoil/Feature/profile/presentation/widgets/recntly_viewed_content.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/presenation/views/recommed_next_plant.dart';
@@ -149,6 +150,10 @@ class AppRoutes {
             create: (context) => AiChatCubit(),
             child: const ChatView(),
           );
+        });
+      case Routes.policiesAndPrivacyRoute:
+        return MaterialPageRoute(builder: (context) {
+          return const PoliciesAndPrivacy();
         });
       default:
         return _unFoundRoute();

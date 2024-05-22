@@ -71,7 +71,7 @@ class _RecommedNextCropBodyState extends State<RecommedNextCropBody> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Good afternoon,shady',
+                                  'Welcome to Agri-tech360 👋',
                                   style: AppStyle.font18Whitesemibold,
                                 ),
                                 SizedBox(
