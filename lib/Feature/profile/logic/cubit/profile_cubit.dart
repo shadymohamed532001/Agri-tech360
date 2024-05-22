@@ -1,8 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/profile/domain/repositories/profile_repo.dart';
+import 'package:smartsoil/core/error/servier_failure.dart';
+import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'profile_state.dart';
 
@@ -10,7 +16,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit({required this.profileRepo}) : super(ProfileInitial());
   final ProfileRepo profileRepo;
 
-  UserModel ?userModel;
+  UserModel? userModel;
   void getProfileData() async {
     {
       final profileEither = await profileRepo.getProfileData();
@@ -94,4 +100,33 @@ class ProfileCubit extends Cubit<ProfileState> {
   TextEditingController oldpasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmpasswordController = TextEditingController();
+
+  void launchphone(
+      {required String theUrl, required BuildContext context}) async {
+    emit(LunchUrlLoading());
+    try {
+      Uri url = Uri(
+        path: theUrl,
+      );
+      bool launched = await launchUrl(url);
+
+      if (launched) {
+        emit(LunchUrlSuccess());
+      } else {
+        context.pop();
+      }
+    } catch (e) {
+      if (e is DioException) {
+        emit(LunchUrlAppError(
+          error: ServerFailure.fromDioException(e).errMessage,
+        ));
+      } else {
+        emit(
+          LunchUrlAppError(
+            error: ServerFailure(e.toString()).errMessage,
+          ),
+        );
+      }
+    }
+  }
 }
