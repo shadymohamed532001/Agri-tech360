@@ -1,5 +1,3 @@
-
-<br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/ccec0b90-77a4-441e-b34a-85d9951c03be" alt="Logo" width="300" height="300">
@@ -94,6 +92,8 @@ We welcome contributions to Agri-tech360. To contribute, please follow these ste
 - Push your changes to the new branch on your forked repository.
 - Submit a pull request to the original repository.
 
+
+
 |                                                        Onboarding 1                                                        | Onboarding 2 | Onboarding 3  
 | :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/134b2a0c-0a96-4c8a-87ec-3ce8c8ac18b3"> |     <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/f7bfebbf-5241-4083-b55c-9e3b00b1aec0">      | <img width="351" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/8090ab34-edb6-42bb-b057-f14b000c6871"> |
@@ -128,8 +128,14 @@ We welcome contributions to Agri-tech360. To contribute, please follow these ste
 
 |                                                Soil Classfiction                       |  plantClassfiction | Profile                                                    |
 | :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-|<img width="351" alt="soil classfiction" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/fd333458-2d44-4956-80e3-f5146dc41868"> |  <img width="351" alt="plant classfction" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/25955d40-2bbc-4e69-9462-cec1ae18dd2e">| <img width="351" alt="profile" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/0ec453dd-10aa-43c5-baa7-1556a9ca3ccc">||
+|<img width="351" alt="soil classfiction" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/fd333458-2d44-4956-80e3-f5146dc41868"> |  <img width="351" alt="plant classfction" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/594e108d-962c-4b9b-bf8e-2c71b04ab368">| <img width="351" alt="profile" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/0ec453dd-10aa-43c5-baa7-1556a9ca3ccc">||
 
+
+
+
+|                                                Soil Classfiction                       |  plantClassfiction | Privecy                                                    |
+| :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+|<img width="351" alt="soil classfiction" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/0a222ca4-a3c1-4bb6-bb9c-329a1a504d1f"> |  <img width="351" alt="plant classfction" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/4c43eb09-4678-4972-8576-c9ee631a1203">| <img width="351" alt="profile" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/d48c12a6-0849-468d-9bb6-273621cfaa40">||
 
 
 
@@ -139,6 +145,10 @@ We welcome contributions to Agri-tech360. To contribute, please follow these ste
 | :---------------------------------------------------------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 |<img width="351" alt="comment" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/3c7a4c9e-b625-4595-b241-8cd10722392d">| <img width="351" alt="contact and payment" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/311a05ca-a8df-4135-b28a-c3706384492b"> |  <img width="351" alt="care instraction plant details " src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/ed0bcaa1-2a9c-415c-a4ee-4e8549fe9a14">
  
+
+  |                                                       HomeResult                                                   |   
+  |:---------------------------------------------------------------------------------------------------------------------------: |
+| <img width="351" alt="store" src="https://github.com/shadymohamed532001/Agri-tech360/assets/126605393/46891f96-e9ea-4bb7-a1e9-7338fbaf174c"> |  
 
 
 
