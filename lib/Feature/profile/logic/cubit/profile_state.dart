@@ -44,11 +44,3 @@ final class ChangePasswordSuccessState extends ProfileState {}
 
 
 
-final class LunchUrlLoading extends ProfileState {}
-
-final class LunchUrlSuccess extends ProfileState {}
-
-final class LunchUrlAppError extends ProfileState {
-  final String error;
-  const LunchUrlAppError({required this.error});
-}
