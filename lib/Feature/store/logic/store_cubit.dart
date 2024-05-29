@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
-import 'package:smartsoil/Feature/store/domain/repositories/store_repo.dart';
+import 'package:smartsoil/Feature/store/data/repositories/store_repo.dart';
 part 'store_state.dart';
 
 class StoreCubit extends Cubit<StoreState> {

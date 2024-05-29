@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smartsoil/Feature/layout/domain/entity/change_index_params.dart';
+import 'package:smartsoil/Feature/layout/data/models/change_index_params.dart';
 
 abstract class LayOutRepo {
   void changeBottomNavIndex({required ChangeIndexParams changeIndexParams});

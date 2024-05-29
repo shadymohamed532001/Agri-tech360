@@ -6,7 +6,7 @@ import 'package:smartsoil/bloc_observer.dart.dart';
 import 'package:smartsoil/core/helper/fuctions_helper.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
-import 'package:smartsoil/core/networking/local_services.dart';
+import 'package:smartsoil/core/helper/local_services.dart';
 import 'package:smartsoil/service_locator.dart';
 
 void main() async {
@@ -14,8 +14,8 @@ void main() async {
   Stripe.publishableKey = ApiKeys.stripePublishableKey;
   Bloc.observer = MyBlocObserver();
   ApiServices.init();
-  ServiceLocator().setUpServiceLocator();
   await LocalServices.init();
+  ServiceLocator().setUpServiceLocator();
   fetchDataFromLocalStorage();
   runApp(const MyApp());
 }
