@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:smartsoil/Feature/comments/domain/repositories/comment_repo.dart';
+import 'package:smartsoil/Feature/comments/data/repositories/comment_repo.dart';
 import 'package:smartsoil/Feature/comments/data/models/comment_model.dart';
 
 import 'package:smartsoil/core/error/failuer.dart';

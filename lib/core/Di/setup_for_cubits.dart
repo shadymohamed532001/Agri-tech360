@@ -4,7 +4,7 @@ import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/checkout/data/repo/checkout_repo.dart';
 import 'package:smartsoil/Feature/checkout/logic/cubit/check_out_cubit.dart';
-import 'package:smartsoil/Feature/comments/domain/repositories/comment_repo.dart';
+import 'package:smartsoil/Feature/comments/data/repositories/comment_repo.dart';
 import 'package:smartsoil/Feature/comments/logic/comment_cubite/comment_cubit.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
