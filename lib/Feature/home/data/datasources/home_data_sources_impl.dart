@@ -2,7 +2,7 @@ import 'package:smartsoil/Feature/home/data/datasources/home_data_sources.dart';
 import 'package:smartsoil/Feature/home/data/models/weather_model.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
-import 'package:smartsoil/core/networking/local_services.dart';
+import 'package:smartsoil/core/helper/local_services.dart';
 
 class HomeDatSourceImpl extends HomeDataSource {
   @override

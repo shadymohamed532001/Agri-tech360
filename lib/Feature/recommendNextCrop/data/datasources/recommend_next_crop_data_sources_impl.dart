@@ -4,7 +4,7 @@ import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_n
 import 'package:smartsoil/Feature/recommendNextCrop/data/models/next_crop_model.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
-import 'package:smartsoil/core/networking/local_services.dart';
+import 'package:smartsoil/core/helper/local_services.dart';
 
 class RecommendNextCropDataSourcesImpl extends RecommendNextCropDataSources {
   @override

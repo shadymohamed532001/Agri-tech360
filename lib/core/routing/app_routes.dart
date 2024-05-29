@@ -21,7 +21,6 @@ import 'package:smartsoil/Feature/profile/presentation/widgets/policies_privets_
 import 'package:smartsoil/Feature/profile/presentation/widgets/recntly_viewed_content.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/logic/recommend_next_crop_cubit.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/presenation/views/recommed_next_plant.dart';
-import 'package:smartsoil/Feature/search/presentation/views/search_store_view.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/helper_const.dart';
 import 'package:smartsoil/core/models/planr_model_class.dart';
@@ -92,10 +91,7 @@ class AppRoutes {
             return const FavoriteContent();
           },
         );
-      case Routes.searchStoreViewRoute:
-        return MaterialPageRoute(
-          builder: (context) => const SearchStoreView(),
-        );
+     
       case Routes.recentlyViewedContent:
         return MaterialPageRoute(
           builder: (context) => const RecntlyViewedContent(),

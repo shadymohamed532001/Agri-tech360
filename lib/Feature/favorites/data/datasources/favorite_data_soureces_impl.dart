@@ -3,7 +3,7 @@ import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soure
 import 'package:smartsoil/Feature/favorites/data/models/favorites_models.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
-import 'package:smartsoil/core/networking/local_services.dart';
+import 'package:smartsoil/core/helper/local_services.dart';
 
 class FavoritesDataSoureceImpl extends FavoriteDataSource {
   @override

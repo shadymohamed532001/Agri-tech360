@@ -3,7 +3,7 @@ import 'package:smartsoil/Feature/comments/data/datasources/comment_data_sources
 import 'package:smartsoil/Feature/comments/data/models/comment_model.dart';
 import 'package:smartsoil/core/networking/api_services.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
-import 'package:smartsoil/core/networking/local_services.dart';
+import 'package:smartsoil/core/helper/local_services.dart';
 
 class CommentDataSourcesImpl extends CommentDataSources {
   @override
