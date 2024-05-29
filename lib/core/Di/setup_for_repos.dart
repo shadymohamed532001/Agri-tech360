@@ -24,7 +24,6 @@ import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_cla
 import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
 import 'package:smartsoil/Feature/profile/data/repositories/profile_repo_impl.dart';
 import 'package:smartsoil/Feature/profile/domain/repositories/profile_repo.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/repositories/recommend_next_crop_repo_impl.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/domain/recommend_next_crop_repo_impl.dart';
 import 'package:smartsoil/Feature/store/data/repositories/store_repo_impl.dart';
@@ -62,8 +61,7 @@ class SetupForRepos {
 
     serviceLocator.registerLazySingleton<RecommendNextCropRepo>(() =>
         RecommendNextCropRepoImpl(
-            recommendNextCropDataSources:
-                serviceLocator.get<RecommendNextCropDataSources>()));
+       ));
 
     serviceLocator.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
         profileDataSources: serviceLocator.get<ProfileDataSources>()));

@@ -6,8 +6,6 @@ import 'package:smartsoil/Feature/home/data/datasources/home_data_sources.dart';
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources_impl.dart';
 import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
 import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources_impl.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources.dart';
-import 'package:smartsoil/Feature/recommendNextCrop/data/datasources/recommend_next_crop_data_sources_impl.dart';
 import 'package:smartsoil/service_locator.dart';
 
 class  SetupForDataSources{
@@ -29,9 +27,6 @@ class  SetupForDataSources{
       () => CommentDataSourcesImpl(),
     );
 
-    serviceLocator.registerLazySingleton<RecommendNextCropDataSources>(
-      () => RecommendNextCropDataSourcesImpl(),
-    );
     serviceLocator.registerLazySingleton<ProfileDataSources>(
       () => ProfileDataSourcesImpl(),
     );
