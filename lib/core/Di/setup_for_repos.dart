@@ -9,9 +9,8 @@ import 'package:smartsoil/Feature/comments/data/repositories/comment_repo_impl.d
 import 'package:smartsoil/Feature/comments/domain/repositories/comment_repo.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo_impl.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo.dart';
-import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soureces.dart';
 import 'package:smartsoil/Feature/favorites/data/repositories/favorite_repo_impl.dart';
-import 'package:smartsoil/Feature/favorites/domain/repositories/favorites_repo.dart';
+import 'package:smartsoil/Feature/favorites/data/repositories/favorites_repo.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo_impl.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo.dart';
 import 'package:smartsoil/Feature/layout/data/repositories/layout_repo_impl.dart';
@@ -52,7 +51,7 @@ class SetupForRepos {
        ));
 
     serviceLocator.registerLazySingleton<FavoritesRepo>(() => FavoritesRepoImpl(
-        favoriteDataSource: serviceLocator.get<FavoriteDataSource>()));
+    ));
 
     serviceLocator.registerLazySingleton<CommentRepo>(() => CommentRepoImpl(
         commentDataSources: serviceLocator.get<CommentDataSources>()));

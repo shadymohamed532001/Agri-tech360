@@ -8,7 +8,7 @@ import 'package:smartsoil/Feature/comments/domain/repositories/comment_repo.dart
 import 'package:smartsoil/Feature/comments/logic/comment_cubite/comment_cubit.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo.dart';
 import 'package:smartsoil/Feature/explor/logic/cubit/explor_cubit.dart';
-import 'package:smartsoil/Feature/favorites/domain/repositories/favorites_repo.dart';
+import 'package:smartsoil/Feature/favorites/data/repositories/favorites_repo.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/home/data/repositories/home_repo.dart';
 import 'package:smartsoil/Feature/home/logic/cubit/home_cubit.dart';
