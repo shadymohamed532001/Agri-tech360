@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
-import 'package:smartsoil/Feature/profile/domain/repositories/profile_repo.dart';
+import 'package:smartsoil/Feature/profile/data/repositories/profile_repo.dart';
 import 'package:smartsoil/core/error/failuer.dart';
 import 'package:smartsoil/core/error/servier_failure.dart';
 import 'package:smartsoil/core/helper/local_services.dart';
