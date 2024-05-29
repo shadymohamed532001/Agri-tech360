@@ -4,8 +4,6 @@ import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soure
 import 'package:smartsoil/Feature/favorites/data/datasources/favorite_data_soureces_impl.dart';
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources.dart';
 import 'package:smartsoil/Feature/home/data/datasources/home_data_sources_impl.dart';
-import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
-import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources_impl.dart';
 import 'package:smartsoil/service_locator.dart';
 
 class  SetupForDataSources{
@@ -27,8 +25,6 @@ class  SetupForDataSources{
       () => CommentDataSourcesImpl(),
     );
 
-    serviceLocator.registerLazySingleton<ProfileDataSources>(
-      () => ProfileDataSourcesImpl(),
-    );
+    
   }
 }

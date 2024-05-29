@@ -21,7 +21,6 @@ import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo.dar
 import 'package:smartsoil/Feature/onbording/data/repositories/onbording_repo_impl.dart';
 import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_classfiction_repo_impl.dart';
 import 'package:smartsoil/Feature/plantClassifiction/data/repositories/plant_classfictaion_repo.dart';
-import 'package:smartsoil/Feature/profile/data/datasources/profile_data_sources.dart';
 import 'package:smartsoil/Feature/profile/data/repositories/profile_repo_impl.dart';
 import 'package:smartsoil/Feature/profile/domain/repositories/profile_repo.dart';
 import 'package:smartsoil/Feature/recommendNextCrop/data/repositories/recommend_next_crop_repo_impl.dart';
@@ -64,6 +63,6 @@ class SetupForRepos {
        ));
 
     serviceLocator.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
-        profileDataSources: serviceLocator.get<ProfileDataSources>()));
+        ));
   }
 }
