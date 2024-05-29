@@ -15,7 +15,6 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   ApiServices.init();
   await LocalServices.init();
-
   ServiceLocator().setUpServiceLocator();
   fetchDataFromLocalStorage();
   runApp(const MyApp());
