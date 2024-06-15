@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/details/widgets/more_information_text_bottom.dart';
+import 'package:smartsoil/Feature/details/widgets/plant_details_bottom_sheet.dart';
 import 'package:smartsoil/Feature/details/widgets/squear_details_continer.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
@@ -34,6 +35,21 @@ class PlantDetailsViewBody extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.arrow_back,
+                    size: 28,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 50.h,
+                right: 15.w,
+                child: IconButton(
+                  onPressed: () {
+                    AddNotficationBottomSheet.show(
+                      context: context,
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.notification_add,
                     size: 28,
                   ),
                 ),

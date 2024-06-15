@@ -49,3 +49,13 @@ final class LoadExplorDataToLocalErorrState extends ExplorState {
   const LoadExplorDataToLocalErorrState({required this.error});
 }
 
+final class AddDailyNotificationSuccessState extends ExplorState {}
+
+
+final class AddDailyNotificationErrorState extends ExplorState {
+  final String error;
+  const AddDailyNotificationErrorState({required this.error});
+}
+
+
+

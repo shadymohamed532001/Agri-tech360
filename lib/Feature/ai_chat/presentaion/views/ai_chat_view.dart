@@ -102,13 +102,16 @@ class _ChatViewState extends State<ChatView> {
       FormData formData = FormData.fromMap({
         'message': concatenatedText,
       });
+      debugPrint('start');
 
       var response = await ApiServices.postFormData(
           endpoint: chatendpoint, formData: formData, token: token);
+      debugPrint(response.toString());
 
       ChatbotResponse data = ChatbotResponse.fromJson(response);
       return data.data;
     } catch (e) {
+      debugPrint(e.toString());
       return null;
     }
   }

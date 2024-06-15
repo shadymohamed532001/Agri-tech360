@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/Feature/explor/data/repositories/explor_repo.dart';
+import 'package:smartsoil/core/helper/local_notification_services.dart';
 part 'explor_state.dart';
 
 class ExplorCubit extends Cubit<ExplorState> {
@@ -47,8 +48,7 @@ class ExplorCubit extends Cubit<ExplorState> {
           emit(GetPlantDataErrorState(errormassage: failure.errMessage));
         }, (plants) async {
           plantsresult = plants;
-          await saveExplorDataToLocal(
-              plants);
+          await saveExplorDataToLocal(plants);
           emit(GetPlantDataSuccessState(plants: plants));
         });
       }
@@ -56,5 +56,16 @@ class ExplorCubit extends Cubit<ExplorState> {
       emit(GetPlantDataErrorState(errormassage: e.toString()));
     }
   }
-}
 
+  void addDailyNotification() {
+    try {
+      LocalNotificationService.showRepeatedNotification(
+        body: 'you need to water your plants',
+        title: 'Agri-tech360 Reminder',
+      );
+      emit(AddDailyNotificationSuccessState());
+    } catch (e) {
+      emit(AddDailyNotificationErrorState(error: e.toString()));
+    }
+  }
+}
