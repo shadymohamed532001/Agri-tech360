@@ -56,6 +56,8 @@ With Agri-tech360, the possibilities are endless. Whether you're managing a smal
     └── └── main.dart
 ## Preview
 
+[Click here to see the preview on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7214615918847418368/)
+
 ## Download
 
 ## Usage
