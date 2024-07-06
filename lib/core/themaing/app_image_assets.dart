@@ -21,7 +21,7 @@ class ImagesAssetsManger {
   static const appLogo = '$imagePath/agri-tech360_logo.png';
   static const telephoneCallImage = '$imagePath/telephone-call.png';
   static const whatsappImage = '$imagePath/whatsapp.png';
-  static const uploadImage = '$imagePath/upload.png';
+  static const uploadImage = '$imagePath/icons8-upload-48.png';
   static const profileImage = '$imagePath/profile.png';
   static const changepasswordImage = '$imagePath/change-password.png';
 
