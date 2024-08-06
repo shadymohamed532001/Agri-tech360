@@ -7,7 +7,7 @@
 
 <div align="start">
   
-# 📱 Agri-tech360 App
+# Agri-tech360 App
 
 Welcome to Agri-tech360, your comprehensive agricultural solution designed to elevate your farming experience to new heights. With Agri-tech360, we've combined cutting-edge technology, expert knowledge, and intuitive design to provide you with a complete toolkit for success in agriculture.
 
