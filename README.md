@@ -20,7 +20,6 @@ Delve deeper into the world of agriculture with Agri-tech360's extensive plant e
 But we don't stop there. Agri-tech360 is your one-stop shop for all your agricultural needs. Easily purchase recommended treatment products directly through the app, streamlining the process of caring for your crops and saving you time and effort.
 
 With Agri-tech360, the possibilities are endless. Whether you're managing a small family garden or running a large-scale farm operation, our app is here to support you every step of the way. Say hello to smarter farming, improved crop health, and greater productivity with Agri-tech360.
-
 <div align="start">
   
 # 🖥️ System design
