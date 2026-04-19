@@ -34,6 +34,10 @@ class ProductImageSlider extends StatelessWidget {
                         left: 20.h, right: 20.w, top: 20.h * 3.3),
                     child: CachedNetworkImage(
                       imageUrl: '$baseUrl${productModel.images[selectedIndex]}',
+                      httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
+                      errorWidget: (context, url, error) => const Center(
+                        child: Icon(Icons.image_not_supported_outlined, size: 48),
+                      ),
                     ),
                   ),
                 ),

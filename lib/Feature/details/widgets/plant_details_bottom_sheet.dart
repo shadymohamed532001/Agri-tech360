@@ -109,8 +109,8 @@ class _PlantDetailsBottomSheetState extends State<PlantDetailsBottomSheet>
                       Expanded(
                         child: CustomBottom(
                           onPressed: () {
-                            BlocProvider.of<ExplorCubit>(context)
-                                .addDailyNotification();
+                            // BlocProvider.of<ExplorCubit>(context)
+                            //     .addDailyNotification();
                             context.pop();
                           },
                           backgroundColor: ColorManger.primaryColor,

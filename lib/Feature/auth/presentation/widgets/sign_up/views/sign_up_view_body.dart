@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/auth/logic/sign_up_cubite/sign_up_cubit.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/sign_up/widgets/sign_up_form.dart';
+import 'package:smartsoil/core/error/failuer.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/helper/local_services.dart';
@@ -27,14 +28,18 @@ class SignUpViewBody extends StatefulWidget {
 }
 
 class _SignUpViewBodyState extends State<SignUpViewBody> {
+  bool _isLoadingDialogVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state is SignUpLoading) {
           // show the CircularProgressIndicator widget
+          _isLoadingDialogVisible = true;
           showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (_) => const Center(
               child: CircularProgressIndicator(
                 color: ColorManger.whiteColor,
@@ -42,9 +47,8 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             ),
           );
         } else if (state is SignUpSucess) {
+          _closeLoadingDialogIfNeeded(context);
           if (state.registerModel.status == true) {
-            Navigator.of(context)
-                .pop(); // close the dialog if successfully logged in
             showTouster(
               massage: state.registerModel.message!,
               state: ToustState.SUCCESS,
@@ -52,18 +56,25 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
             LocalServices.saveData(
               key: 'token',
               value: state.registerModel.data!.token,
-            ).then(
-              (value) {
+            ).then((value) {
+              if (!context.mounted) {
+                return;
+              }
+
+              if (value == true) {
                 context.navigateAndRemoveUntil(
                   newRoute: Routes.layOutViewsRoute,
                 );
-              },
-            );
+              }
+            });
           }
         } else if (state is SignUpError) {
-          Navigator.of(context).pop(); // close the dialog if login fails
+          _closeLoadingDialogIfNeeded(context);
+          final prefix = state.failureType == FailureType.flutter
+              ? '[App Error] '
+              : '[Server Error] ';
           showTouster(
-            massage: state.errorMessage,
+            massage: '$prefix${state.errorMessage}',
             state: ToustState.ERROR,
           );
         }
@@ -142,13 +153,22 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                 verticalSpacing(20),
                 CustomBottom(
                   bottomtext: 'Sign Up',
-                  onPressed: () {
+                  isLoading: state is SignUpLoading,
+                  onPressed: state is SignUpLoading
+                      ? () {}
+                      : () {
                     if (context
-                            .read<SignUpCubit>()
-                            .formKey
-                            .currentState!
-                            .validate() &&
-                        widget.isChecked == true) {
+                        .read<SignUpCubit>()
+                        .formKey
+                        .currentState!
+                        .validate()) {
+                      if (!widget.isChecked) {
+                        showTouster(
+                          massage: 'Please agree to Terms and Privacy Policy',
+                          state: ToustState.ERROR,
+                        );
+                        return;
+                      }
                       registerUser(context);
                     } else {
                       context.read<SignUpCubit>().autovalidateMode =
@@ -193,7 +213,16 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
       name: signUpCubite.nameController.text,
       phone: signUpCubite.phoneController.text,
       city: signUpCubite.cityController.text,
-      profilePic: signUpCubite.image!,
+      profilePic: signUpCubite.image,
     );
+  }
+
+  void _closeLoadingDialogIfNeeded(BuildContext context) {
+    if (!_isLoadingDialogVisible) {
+      return;
+    }
+
+    _isLoadingDialogVisible = false;
+    Navigator.of(context, rootNavigator: true).pop();
   }
 }

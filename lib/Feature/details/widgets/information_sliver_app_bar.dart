@@ -29,7 +29,11 @@ class InformationSliverAppBar extends StatelessWidget {
             ),
             child: CachedNetworkImage(
               imageUrl: '$baseUrl${plant.plantImage_2}',
+              httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
               fit: BoxFit.cover,
+              errorWidget: (context, url, error) => const Center(
+                child: Icon(Icons.image_not_supported_outlined, size: 48),
+              ),
             ),
           ),
         ),

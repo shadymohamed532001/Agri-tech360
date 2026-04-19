@@ -32,6 +32,7 @@ class ProfileEmailAndUsername extends StatelessWidget {
                 backgroundImage:
                     CachedNetworkImageProvider(
                   '$baseUrl${cubit.userModel!.data!.profilePic}',
+                  headers: const {'ngrok-skip-browser-warning': 'true'},
                 ),
               ),
               Padding(

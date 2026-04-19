@@ -15,8 +15,9 @@ final class LoginLoading extends LoginState {}
 
 final class LoginErorr extends LoginState {
   final String error;
+  final FailureType failureType;
 
-  LoginErorr({required this.error});
+  LoginErorr({required this.error, this.failureType = FailureType.server});
 }
 
 final class LoginChangePasswordVisiablity extends LoginState {}

@@ -70,8 +70,24 @@ class CustomExplorCard extends StatelessWidget {
                       left: 5,
                       child: CachedNetworkImage(
                         imageUrl: '$baseUrl${plant.plantImage_1}',
+                        httpHeaders: const {
+                          'ngrok-skip-browser-warning': 'true',
+                        },
                         height: 150.h,
                         width: 80.w,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => SizedBox(
+                          height: 150.h,
+                          width: 80.w,
+                          child: const Center(
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => SizedBox(
+                          height: 150.h,
+                          width: 80.w,
+                          child: const Icon(Icons.image_not_supported_outlined),
+                        ),
                       ),
                     ),
                   ],

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/auth/data/sign_up/repositories/sign_up_repo.dart';
+import 'package:smartsoil/core/error/failuer.dart';
 
 part 'sign_up_state.dart';
 
@@ -20,8 +21,11 @@ class SignUpCubit extends Cubit<SignUpState> {
     required String password,
     required String phone,
     required String city,
-    required File profilePic ,
+    File? profilePic,
   }) {
+    if (state is SignUpLoading) {
+      return;
+    }
     emit(SignUpLoading());
     signUpRepo
         .signUpUser(
@@ -35,7 +39,10 @@ class SignUpCubit extends Cubit<SignUpState> {
         .then((value) {
       value.fold(
         (failure) {
-          emit(SignUpError(errorMessage: failure.errMessage));
+          emit(SignUpError(
+            errorMessage: failure.errMessage,
+            failureType: failure.type,
+          ));
         },
         (user) {
           emit(SignUpSucess(registerModel: user));

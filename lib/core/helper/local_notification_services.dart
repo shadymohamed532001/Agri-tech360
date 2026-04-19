@@ -18,10 +18,9 @@ class LocalNotificationService {
       android: AndroidInitializationSettings('@mipmap/ic_launcher'),
       iOS: DarwinInitializationSettings(),
     );
-    flutterLocalNotificationsPlugin.initialize(
-      settings,
+    await flutterLocalNotificationsPlugin.initialize(
+      settings: settings,
       onDidReceiveNotificationResponse: onTap,
-      onDidReceiveBackgroundNotificationResponse: onTap,
     );
   }
 
@@ -40,14 +39,13 @@ class LocalNotificationService {
     );
     tz.initializeTimeZones();
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      2,
-      title,
-      body,
-      tz.TZDateTime.now(tz.local).add(const Duration(seconds: 1)),
-      details,
+      id: 2,
+      title: title,
+      body: body,
+      scheduledDate: tz.TZDateTime.now(tz.local).add(const Duration(seconds: 1)),
+      notificationDetails: details,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       payload: 'zonedSchedule',
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
     );
   }
 
@@ -65,16 +63,17 @@ class LocalNotificationService {
       android: android,
     );
     await flutterLocalNotificationsPlugin.periodicallyShow(
-      1,
-      title,
-      body,
-      RepeatInterval.daily,
-      details,
+      id: 1,
+      title: title,
+      body: body,
+      repeatInterval: RepeatInterval.daily,
+      notificationDetails: details,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       payload: "Payload Data",
     );
   }
 
   static void cancelNotification(int id) async {
-    await flutterLocalNotificationsPlugin.cancel(id);
+    await flutterLocalNotificationsPlugin.cancel(id: id);
   }
 }

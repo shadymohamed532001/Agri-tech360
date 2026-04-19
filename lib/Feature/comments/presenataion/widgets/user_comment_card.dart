@@ -31,6 +31,7 @@ class UserCommentCard extends StatelessWidget {
                             )
                           : CachedNetworkImageProvider(
                               '$baseUrl${commentModel.commenter.profilePic}',
+                              headers: const {'ngrok-skip-browser-warning': 'true'},
                             ),
                 ),
                 horizontalSpacing(10),

@@ -15,21 +15,20 @@ class CustomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        const Spacer(
-          flex: 5,
-        ),
-        Icon(
-          Icons.refresh,
-          color: ColorManger.primaryColor,
-          size: 150.h,
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 12.h),
-          child: Flexible(
-            child: Text(
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.wifi_off_rounded,
+              color: ColorManger.primaryColor,
+              size: 72.h,
+            ),
+            SizedBox(height: 16.h),
+            Text(
               error == 'No Internet Connection' ? '$error. Tap to try' : error,
               style: AppStyle.font10Greyregular.copyWith(
                 color: Colors.black,
@@ -37,34 +36,25 @@ class CustomErrorWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-          ),
-        ),
-        if (error == 'No Internet Connection')
-          Text(
-            'Connect to the internet and try again.',
-            style: AppStyle.font12Blackmedium,
-            textAlign: TextAlign.center,
-          ),
-        const Spacer(
-          flex: 3,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: TextButton(
-            onPressed: onPressed,
-            child: Text(
-              'Try Again',
-              style: AppStyle.font14Blacksemibold,
+            if (error == 'No Internet Connection') ...[
+              SizedBox(height: 8.h),
+              Text(
+                'Connect to the internet and try again.',
+                style: AppStyle.font12Blackmedium,
+                textAlign: TextAlign.center,
+              ),
+            ],
+            SizedBox(height: 16.h),
+            TextButton(
+              onPressed: onPressed,
+              child: Text(
+                'Try Again',
+                style: AppStyle.font14Blacksemibold,
+              ),
             ),
-          ),
+          ],
         ),
-        const Spacer(
-          flex: 5,
-        ),
-        const Row(
-          children: [],
-        )
-      ],
+      ),
     );
   }
 }

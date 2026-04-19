@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/auth/logic/login_cubite/login_cubit.dart';
+import 'package:smartsoil/core/error/failuer.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/donot_have_acound_and_sign_up.dart';
 import 'package:smartsoil/Feature/auth/presentation/widgets/login/widgets/login_form.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
@@ -23,13 +24,23 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
+  bool _isLoadingDialogVisible = false;
+
+  void _closeLoadingDialogIfNeeded(BuildContext context) {
+    if (!_isLoadingDialogVisible) return;
+    _isLoadingDialogVisible = false;
+    Navigator.of(context, rootNavigator: true).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginLoading) {
+          _isLoadingDialogVisible = true;
           showDialog(
             context: context,
+            barrierDismissible: false,
             builder: (_) => const Center(
               child: CircularProgressIndicator(
                 color: ColorManger.whiteColor,
@@ -39,7 +50,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
         }
         if (state is LoginSucess) {
           if (state.loginModel.status == true) {
-            Navigator.of(context).pop();
+            _closeLoadingDialogIfNeeded(context);
             showTouster(
               massage: state.loginModel.message!,
               state: ToustState.SUCCESS,
@@ -51,6 +62,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               value: state.loginModel.data!.token,
             ).then(
               (value) {
+                if (!context.mounted) return;
                 context.navigateAndRemoveUntil(
                   newRoute: Routes.layOutViewsRoute,
                 );
@@ -59,9 +71,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           }
         }
         if (state is LoginErorr) {
-          Navigator.of(context).pop();
+          _closeLoadingDialogIfNeeded(context);
+          final prefix = state.failureType == FailureType.flutter
+              ? '[App Error] '
+              : '[Server Error] ';
           showTouster(
-            massage: state.error,
+            massage: '$prefix${state.error}',
             state: ToustState.ERROR,
           );
         }

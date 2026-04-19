@@ -61,8 +61,13 @@ class PlantDetailsViewBody extends StatelessWidget {
                   duration: const Duration(milliseconds: 600),
                   child: CachedNetworkImage(
                     imageUrl: '$baseUrl${plant.plantImage_1}',
+                    httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                     height: 400.h,
                     width: 250.w,
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.image_not_supported_outlined,
+                      size: 48,
+                    ),
                   ),
                 ),
               ),

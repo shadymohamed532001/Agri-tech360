@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smartsoil/Feature/auth/data/login/models/user_model.dart';
 import 'package:smartsoil/Feature/auth/data/login/repositories/login_repo.dart';
+import 'package:smartsoil/core/error/failuer.dart';
 
 part 'login_state.dart';
 
@@ -25,7 +26,8 @@ class LoginCubit extends Cubit<LoginState> {
       value.fold(
         (failure) {
           emit(LoginErorr(
-            error: failure.errMessage.toString(),
+            error: failure.errMessage,
+            failureType: failure.type,
           ));
         },
         (user) {

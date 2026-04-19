@@ -42,8 +42,11 @@ class PopularCard extends StatelessWidget {
                     left: -20,
                     child: CachedNetworkImage(
                       imageUrl: '$baseUrl${plant.plantImage_1}',
+                      httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                       height: 130.h,
                       width: 100.w,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.image_not_supported_outlined),
                     ),
                   ),
                 ],

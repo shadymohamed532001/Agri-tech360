@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:smartsoil/core/networking/end_boint.dart';
 
 class ApiServices {
@@ -11,6 +12,20 @@ class ApiServices {
         receiveDataWhenStatusError: true,
       ),
     );
+
+    if (kDebugMode) {
+      _dio!.interceptors.add(
+        LogInterceptor(
+          request: true,
+          requestHeader: true,
+          requestBody: true,
+          responseHeader: false,
+          responseBody: true,
+          error: true,
+          logPrint: (object) => debugPrint(object.toString()),
+        ),
+      );
+    }
   }
 
   static Future<Response> put({

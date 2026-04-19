@@ -121,6 +121,9 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
                         child: CachedNetworkImage(
                           imageUrl:
                               '$baseUrl${widget.productModel.images[index]}',
+                          httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.image_not_supported_outlined),
                         ),
                       ),
                     ),

@@ -45,6 +45,11 @@ String token = await LocalServices.getData(key: 'token');
      return Right(favoriteResult);
     } catch (e) {
       if (e is DioException) {
+        // Server returns 404 when the user has no favorites — treat as empty list
+        if (e.type == DioExceptionType.badResponse &&
+            e.response?.statusCode == 404) {
+          return const Right([]);
+        }
         return Left(ServerFailure.fromDioException(e));
       }
       return Left(ServerFailure(e.toString()));

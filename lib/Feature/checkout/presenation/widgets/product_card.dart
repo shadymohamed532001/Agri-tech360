@@ -45,7 +45,10 @@ class ProductCard extends StatelessWidget {
                     height: 75.h,
                     child: CachedNetworkImage(
                       imageUrl: '$baseUrl${storeProductModel.image}',
+                      httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                       fit: BoxFit.contain,
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.image_not_supported_outlined),
                     ),
                   ),
                 ),
