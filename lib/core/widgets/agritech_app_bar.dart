@@ -15,7 +15,7 @@ class Agritech360AppBar extends StatelessWidget {
       centerTitle: true,
       automaticallyImplyLeading: false,
       title: Text(
-        'Agri-tech360',
+        'Plant Ai',
         style: AppStyle.font21PrimaryBold,
       ),
     );

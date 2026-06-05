@@ -16,7 +16,7 @@ class AgriteachAiChat extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Agri-tech360 Ai Chat',
+              'plant Ai Chat',
               style: AppStyle.font22BlackBold,
             ),
             Padding(
