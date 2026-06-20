@@ -90,20 +90,38 @@ class ClassfictionModel {
   });
 
   factory ClassfictionModel.fromJson(Map<String, dynamic> json) {
+    final data = (json['data'] as Map<String, dynamic>?) ?? const {};
+
     return ClassfictionModel(
-      description: json['data']['information'] ?? 'No description',
-      status: json['status'],
-      message: json['message'],
-      confidence: json['data']['confidence'],
-      image: json['data']['image'],
-      predictions: json['data']['predictions'],
-      products: List<List<Product>>.from(
-        json['data']['products'].map<List<Product>>(
-          (products) => List<Product>.from(
-            products.map((product) => Product.fromJson(product)),
-          ),
-        ),
-      ),
+      description: data['information']?.toString() ?? 'No description',
+      status: json['status'] ?? true,
+      message: json['message']?.toString() ?? '',
+      confidence: (data['confidence'] as num?)?.toDouble() ?? 0.0,
+      image: data['image']?.toString() ?? '',
+      predictions: data['predictions']?.toString() ??
+          data['class']?.toString() ??
+          data['label']?.toString() ??
+          '',
+      products: _parseProducts(data['products']),
     );
+  }
+
+  // The backend may omit `products`, return a flat list of products, or a
+  // nested list of product lists. Parse all shapes without crashing.
+  static List<List<Product>> _parseProducts(dynamic raw) {
+    if (raw is! List) return [];
+
+    final result = <List<Product>>[];
+    for (final item in raw) {
+      if (item is List) {
+        result.add(item
+            .whereType<Map<String, dynamic>>()
+            .map((product) => Product.fromJson(product))
+            .toList());
+      } else if (item is Map<String, dynamic>) {
+        result.add([Product.fromJson(item)]);
+      }
+    }
+    return result;
   }
 }
