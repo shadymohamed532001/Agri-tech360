@@ -8,7 +8,6 @@ import 'package:smartsoil/Feature/details/widgets/squear_details_continer.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_image_assets.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 import 'package:smartsoil/core/widgets/line_back_ground.dart';
@@ -60,7 +59,7 @@ class PlantDetailsViewBody extends StatelessWidget {
                 child: FadeInRight(
                   duration: const Duration(milliseconds: 600),
                   child: CachedNetworkImage(
-                    imageUrl: '$baseUrl${plant.plantImage_1}',
+                    imageUrl: plant.imageUrl1,
                     httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                     height: 400.h,
                     width: 250.w,

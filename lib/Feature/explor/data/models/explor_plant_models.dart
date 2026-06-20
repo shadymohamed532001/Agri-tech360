@@ -1,3 +1,5 @@
+import 'package:smartsoil/core/networking/end_boint.dart';
+
 class PlantModle {
   final int id;
   final String name;
@@ -24,6 +26,21 @@ class PlantModle {
     required this.waterRequirement,
     required this.sunlightRequirement,
   });
+
+  /// Returns a usable URL for image 1. If the API already returns a full
+  /// (http/https) URL, it is used as-is; otherwise [baseUrl] is prepended.
+  String get imageUrl1 => _resolveImageUrl(plantImage_1);
+
+  /// Returns a usable URL for image 2. See [imageUrl1].
+  String get imageUrl2 => _resolveImageUrl(plantImage_2);
+
+  static String _resolveImageUrl(String path) {
+    if (path.isEmpty) return path;
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    return '$baseUrl$path';
+  }
 
   factory PlantModle.fromJson(Map<String, dynamic> json) {
     return PlantModle(

@@ -8,7 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -119,8 +118,7 @@ class _RatingAndDescriptionState extends State<RatingAndDescription> {
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: CachedNetworkImage(
-                          imageUrl:
-                              '$baseUrl${widget.productModel.images[index]}',
+                          imageUrl: widget.productModel.imageUrls[index],
                           httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.image_not_supported_outlined),

@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class ProductImageSlider extends StatelessWidget {
@@ -33,7 +32,7 @@ class ProductImageSlider extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: 20.h, right: 20.w, top: 20.h * 3.3),
                     child: CachedNetworkImage(
-                      imageUrl: '$baseUrl${productModel.images[selectedIndex]}',
+                      imageUrl: productModel.imageUrls[selectedIndex],
                       httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                       errorWidget: (context, url, error) => const Center(
                         child: Icon(Icons.image_not_supported_outlined, size: 48),

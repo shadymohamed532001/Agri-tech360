@@ -6,7 +6,6 @@ import 'package:smartsoil/Feature/favorites/logic/cubit/favorites_cubit.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -61,7 +60,7 @@ class TraidmentProductCard extends StatelessWidget {
                               width: 130.w,
                               height: 200.h,
                               child: FancyShimmerImage(
-                                imageUrl: '$baseUrl${productModel.image}',
+                                imageUrl: productModel.imageUrl,
                                 boxFit: BoxFit.fitHeight,
                               ),
                             ),

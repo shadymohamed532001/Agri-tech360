@@ -5,7 +5,6 @@ import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
 import 'package:smartsoil/core/helper/naviagtion_extentaions.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
 import 'package:smartsoil/core/models/planr_model_class.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/routing/routes.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
@@ -41,7 +40,7 @@ class PopularCard extends StatelessWidget {
                     top: -35,
                     left: -20,
                     child: CachedNetworkImage(
-                      imageUrl: '$baseUrl${plant.plantImage_1}',
+                      imageUrl: plant.imageUrl1,
                       httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                       height: 130.h,
                       width: 100.w,

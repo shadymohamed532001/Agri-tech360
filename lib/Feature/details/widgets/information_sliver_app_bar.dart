@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/explor/data/models/explor_plant_models.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 
 class InformationSliverAppBar extends StatelessWidget {
@@ -28,7 +27,7 @@ class InformationSliverAppBar extends StatelessWidget {
               bottomRight: Radius.circular(24),
             ),
             child: CachedNetworkImage(
-              imageUrl: '$baseUrl${plant.plantImage_2}',
+              imageUrl: plant.imageUrl2,
               httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
               fit: BoxFit.cover,
               errorWidget: (context, url, error) => const Center(

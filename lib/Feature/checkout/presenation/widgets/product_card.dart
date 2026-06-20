@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smartsoil/Feature/store/data/models/store_product_model.dart';
 import 'package:smartsoil/core/helper/spacing.dart';
-import 'package:smartsoil/core/networking/end_boint.dart';
 import 'package:smartsoil/core/themaing/app_colors.dart';
 import 'package:smartsoil/core/themaing/app_styles.dart';
 
@@ -44,7 +43,7 @@ class ProductCard extends StatelessWidget {
                     width: 100.w,
                     height: 75.h,
                     child: CachedNetworkImage(
-                      imageUrl: '$baseUrl${storeProductModel.image}',
+                      imageUrl: storeProductModel.imageUrl,
                       httpHeaders: const {'ngrok-skip-browser-warning': 'true'},
                       fit: BoxFit.contain,
                       errorWidget: (context, url, error) =>

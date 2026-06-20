@@ -1,3 +1,5 @@
+import 'package:smartsoil/core/helper/image_url_helper.dart';
+
 class StoreProductModel {
   final int id;
   final String description;
@@ -18,6 +20,12 @@ class StoreProductModel {
     required this.seller,
     required this.tags,
   });
+
+  /// Main image as a usable URL (handles both full URLs and relative paths).
+  String get imageUrl => resolveImageUrl(image);
+
+  /// Gallery images as usable URLs.
+  List<String> get imageUrls => images.map(resolveImageUrl).toList();
 
   factory StoreProductModel.fromJson(Map<String, dynamic> json) {
     // Parse images string into a list of URLs

@@ -1,0 +1,98 @@
+[
+  {
+    "category": "fungicide",
+    "color": "2E7D32",
+    "name": "CopperGuard Fungicide",
+    "price": "14.50",
+    "tags": "fungicide",
+    "description": "Copper-based protective fungicide. Controls early blight, late blight and downy mildew on tomatoes, potatoes and vegetables. Mix 3g per liter of water and spray every 7-10 days."
+  },
+  {
+    "category": "fungicide",
+    "color": "2E7D32",
+    "name": "MancoShield 80 WP",
+    "price": "18.00",
+    "tags": "fungicide",
+    "description": "Broad-spectrum contact fungicide (Mancozeb 80%). Protects leaves and fruit against leaf spot, rust and anthracnose. Apply as a preventive spray before disease appears."
+  },
+  {
+    "category": "fungicide",
+    "color": "2E7D32",
+    "name": "SulfaCure Wettable Sulfur",
+    "price": "9.75",
+    "tags": "fungicide",
+    "description": "Wettable sulfur powder for powdery mildew, rust and mite control. Safe for organic gardens. Do not apply in temperatures above 30C to avoid leaf burn."
+  },
+  {
+    "category": "insecticide",
+    "color": "1565C0",
+    "name": "NeemPro Organic Oil",
+    "price": "12.00",
+    "tags": "insecticide",
+    "description": "Cold-pressed neem oil concentrate. Controls aphids, whiteflies, spider mites and thrips. Organic and bee-friendly when sprayed in the evening. Mix 5ml per liter of water."
+  },
+  {
+    "category": "insecticide",
+    "color": "1565C0",
+    "name": "ImidaShield 35 SC",
+    "price": "16.25",
+    "tags": "insecticide",
+    "description": "Systemic insecticide (Imidacloprid 35%) for sucking pests such as aphids, jassids and whiteflies. Absorbed by the plant for long-lasting protection. Follow label dosage carefully."
+  },
+  {
+    "category": "insecticide",
+    "color": "1565C0",
+    "name": "BioThur BT Spray",
+    "price": "13.40",
+    "tags": "insecticide",
+    "description": "Biological insecticide based on Bacillus thuringiensis. Targets caterpillars and leaf-eating larvae without harming beneficial insects. Ideal for organic crop protection."
+  },
+  {
+    "category": "bactericide",
+    "color": "C62828",
+    "name": "CuproBac Copper Hydroxide",
+    "price": "15.90",
+    "tags": "bactericide",
+    "description": "Copper hydroxide bactericide for bacterial spot, bacterial canker and blight. Forms a protective film on leaves and fruit. Apply at first sign of bacterial infection."
+  },
+  {
+    "category": "bactericide",
+    "color": "C62828",
+    "name": "StreptoCure 50 WP",
+    "price": "21.00",
+    "tags": "bactericide",
+    "description": "Agricultural bactericide for fire blight and bacterial wilt on fruit trees and vegetables. Use as a preventive spray during early flowering. Rotate to avoid resistance."
+  },
+  {
+    "category": "bactericide",
+    "color": "C62828",
+    "name": "AgroBac Defense",
+    "price": "19.50",
+    "tags": "bactericide",
+    "description": "Dual-action copper plus mancozeb formula controlling both bacterial and fungal diseases. Excellent for tomato, pepper and citrus. Provides broad protective coverage."
+  },
+  {
+    "category": "fertilizer",
+    "color": "F9A825",
+    "name": "NPK Balance 20-20-20",
+    "price": "11.25",
+    "tags": "fertilizer",
+    "description": "Water-soluble balanced fertilizer with equal nitrogen, phosphorus and potassium plus micronutrients. Boosts overall growth and recovery after disease. Mix 2g per liter."
+  },
+  {
+    "category": "fertilizer",
+    "color": "F9A825",
+    "name": "RootBoost Seaweed Extract",
+    "price": "17.80",
+    "tags": "stimulant",
+    "description": "Organic seaweed biostimulant rich in natural hormones and trace elements. Strengthens roots, improves stress tolerance and increases plant immunity against disease."
+  },
+  {
+    "category": "fertilizer",
+    "color": "F9A825",
+    "name": "MicroMax Micronutrient Mix",
+    "price": "13.60",
+    "tags": "stimulant",
+    "description": "Chelated micronutrient blend (iron, zinc, manganese, boron) that corrects yellowing and deficiency symptoms. Foliar feed for fast uptake and greener, healthier leaves."
+  }
+]
