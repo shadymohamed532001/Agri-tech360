@@ -24,7 +24,7 @@ class ClassfictionResponseBody extends StatelessWidget {
       physics: const AlwaysScrollableScrollPhysics(),
       child: Container(
         width: double.infinity,
-        height: 500.h,
+        constraints: BoxConstraints(minHeight: 500.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(32),
           color: ColorManger.whiteColor,
@@ -102,12 +102,10 @@ class ClassfictionResponseBody extends StatelessWidget {
                     ),
                   ),
                   classfictionModel.products.isNotEmpty
-                      ? Expanded(
-                          child: ClassfictionProductListView(
-                            products: BlocProvider.of<PlantClassfictionCubite>(
-                                    context)
-                                .productsInfo,
-                          ),
+                      ? ClassfictionProductListView(
+                          products:
+                              BlocProvider.of<PlantClassfictionCubite>(context)
+                                  .productsInfo,
                         )
                       : Padding(
                           padding: const EdgeInsets.only(top: 10, left: 2),
